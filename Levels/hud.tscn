@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b30pgcos787d5"]
+
+[ext_resource type="Texture2D" uid="uid://dtemw1d2mx0ra" path="res://Assets/2D assets/crosshair037.png" id="2_7w52q"]
+
+[node name="HUD" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 544.0
+offset_top = 296.0
+offset_right = 688.0
+offset_bottom = 440.0
+scale = Vector2(0.39, 0.39)
+size_flags_horizontal = 4
+texture = ExtResource("2_7w52q")

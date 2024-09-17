@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr7kigfnvr3sk"]
+
+[ext_resource type="Script" path="res://Scripts/LevelScript.gd" id="1_8ufv2"]
+[ext_resource type="Texture2D" uid="uid://c0mgi2v5qbpn4" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_pgg41"]
+[ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="3_hhwko"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k103u"]
+sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+ground_bottom_color = Color(0.12, 0.12, 0.12, 1)
+ground_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+
+[sub_resource type="Sky" id="Sky_q4hkm"]
+sky_material = SubResource("ProceduralSkyMaterial_k103u")
+
+[sub_resource type="Environment" id="Environment_cdccx"]
+background_mode = 2
+sky = SubResource("Sky_q4hkm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jv47o"]
+albedo_texture = ExtResource("2_pgg41")
+
+[node name="Test scene" type="Node3D"]
+script = ExtResource("1_8ufv2")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_cdccx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0403442, -0.445068, -1.56117)
+material_override = SubResource("StandardMaterial3D_jv47o")
+use_collision = true
+size = Vector3(32.5863, 0.109863, 35.496)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_hhwko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83426, 0, 12.034)

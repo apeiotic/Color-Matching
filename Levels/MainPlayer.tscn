@@ -22,3 +22,6 @@ mesh = SubResource("CapsuleMesh_mr5v7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535859, -0.486463)
 
 [node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera And other Stuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)

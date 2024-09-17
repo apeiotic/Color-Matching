@@ -5,9 +5,17 @@ var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var walking = false
 var sensitivity = 0.01
-var sprinting_speed = 12
+var sprinting_speed = 8
 var stamina = 100
 
+#variable for what Im standing on
+var Black = false
+var Red = false
+var Green = false
+var Grey = false
+var Blue = false
+
+@onready var detector = $"Camera And other Stuff/RayCast3D"
 @onready var camera = $"Camera And other Stuff/Camera3D"
 
 
@@ -15,11 +23,22 @@ var stamina = 100
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-
+	
 func _physics_process(delta: float) -> void:
 	
 	sprint()
-	print(camera.fov)
+	
+	
+	
+	if detector.is_colliding():
+		var collider = detector.get_collider()
+		var groups = collider.get_groups()
+		for group in groups:
+			if "black" in group.to_lower():
+				print("Standing on an object with a 'black' group!")
+				OnBlack()
+				pass
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -53,7 +72,6 @@ func _input(event):
 		camera.rotate_x(-event.relative.y * sensitivity/3)
 
 
-
 func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_pressed("Sprint"):
 		if walking==true: #(when moving set the walking to true)
@@ -63,3 +81,9 @@ func sprint(): #(Run this function in physics process delta)
 		SPEED= 8.5
 	if not Input.is_action_pressed("Sprint"):
 		camera.fov = lerp(camera.fov, 75.0, 0.1)
+
+
+func OnBlack():
+	SPEED =  3
+	sprinting_speed = 5
+	JUMP_VELOCITY = 2

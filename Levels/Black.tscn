@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://blp0ux6vj3sbc"]
+
+[ext_resource type="Texture2D" uid="uid://c0mgi2v5qbpn4" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_k4ie2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqhvr"]
+albedo_texture = ExtResource("1_k4ie2")
+uv1_scale = Vector3(7.565, 7.565, 7.565)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwr1o"]
+size = Vector3(14.6672, 0.686035, 12.1851)
+
+[node name="Black" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(14.7647, 0, 0, 0, 3.02666, 0, 0, 0, 10.8595, 0, -0.0291103, 0.62503)
+size = Vector3(1, 0.119629, 1.11511)
+material = SubResource("StandardMaterial3D_xqhvr")
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D"]
+transform = Transform3D(0.0677293, 0, 0, 0, 0.330397, 0, 0, 0, 0.0920854, 0, 0.00961797, -0.0575562)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0557861, -0.0831719, 0.627686)
+shape = SubResource("BoxShape3D_rwr1o")

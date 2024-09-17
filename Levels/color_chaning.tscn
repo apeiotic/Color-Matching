@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dslkbp5ncuecm"]
+
+[ext_resource type="Script" path="res://color_changing.gd" id="1_sierv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m41w7"]
+
+[node name="Color Chaning" type="Node3D"]
+script = ExtResource("1_sierv")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.54604, 0, 0, 0, 2.04975, 0, 0, 0, 1.81259, 0, 0, 0)
+shape = SubResource("BoxShape3D_m41w7")
+
+[connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]

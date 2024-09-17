@@ -23,5 +23,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535859, -0.486463)
 
 [node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera And other Stuff"]
+[node name="Standing Raycast" type="RayCast3D" parent="Camera And other Stuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
+
+[node name="Timer" type="Timer" parent="Camera And other Stuff"]
+wait_time = 0.2
+
+[node name="Dash raycast" type="RayCast3D" parent="Camera And other Stuff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
+target_position = Vector3(0, 0, -5)
+
+[connection signal="timeout" from="Camera And other Stuff/Timer" to="." method="_on_timer_timeout"]

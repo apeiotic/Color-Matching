@@ -4,7 +4,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m41w7"]
 
-[node name="Color Chaning" type="Node3D"]
+[node name="Color Changing" type="Node3D"]
 script = ExtResource("1_sierv")
 
 [node name="Area3D" type="Area3D" parent="."]

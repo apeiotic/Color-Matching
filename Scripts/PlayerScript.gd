@@ -1,47 +1,61 @@
 extends CharacterBody3D
 
+
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
+var jump_count = 0
+var max_jump = 0
 var walking = false
 var sensitivity = 0.01
 var sprinting_speed = 10
 var stamina = 100
 var CameraSprintFov = 90.0
 var CameraNormalFov = 75.0
-var gravity = Vector3(0.0, -9.8, 0.0)
+var gravity = Vector3(0.0, -10.2, 0.0)
 var CanDash = true
 var Is_Dashing = false
 var lerp_amount = 0.09
+var colors = ["Black", "Green", "Red", "Cyan"]
+var PlayerColor = colors[2]
 
+signal color(PlayerColor)
 
 @onready var detector = $"Camera And other Stuff/Standing Raycast"
 @onready var camera = $"Camera And other Stuff/Camera3D"
 @onready var  dashtimer = $"Camera And other Stuff/Timer"
-
+@onready var dashraycast = $"Camera And other Stuff/Dash raycast"
+@onready var jumptimer = $"Camera And other Stuff/JumpTimer"
+@onready var HUD= $"Camera And other Stuff/Camera3D/HUD"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	
 func _physics_process(delta: float) -> void:
 	
+	color.emit(PlayerColor)
 	sprint()
+	dash()
+	jump()
 	
-	
+	print(PlayerColor)
 	
 	if detector.is_colliding():
 		var collider = detector.get_collider()
 		var groups = collider.get_groups()
 		for group in groups:
+			if "green" in group.to_lower():
+				if PlayerColor == "Green":
+					OnGreen()
+				else: 
+					NotSameColor()
 			if "black" in group.to_lower():
-				print("Standing on an object with a 'black' group!")
-				if GLB.colors == "Black":
+				
+				if PlayerColor == "Black":
 					OnBlack()
 				else: 
 					NotSameColor()
 			if "red" in group.to_lower():
-				print("Standing on an object with a 'Red' group!")
-				if GLB.colors == "Red":
+				if PlayerColor == "Red":
 					OnRed()
 				else: 
 					NotSameColor()
@@ -49,15 +63,9 @@ func _physics_process(delta: float) -> void:
 		if Is_Dashing == false:
 			normal()
 	
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
 	
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -71,10 +79,11 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED
 		walking= true
 	else:
-		
 		velocity.x = lerp(velocity.x, 0.0, lerp_amount)
 		velocity.z = lerp(velocity.z, 0.0, lerp_amount)
 		walking=false
+	
+	
 	move_and_slide()
 
 
@@ -95,16 +104,30 @@ func sprint(): #(Run this function in physics process delta)
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
 
 
-
 func dash(): 
 	if Input.is_action_just_pressed("Dash"):
-		if CanDash == true: 
-			if walking == true:
-				dashtimer.start()
-				lerp_amount = 0.01
-				SPEED = 20
-				Is_Dashing = true
-				
+		if CanDash and walking: 
+			var Blink_Dist = 5
+			if dashraycast.is_colliding(): 
+				var NewDashLoc = dashraycast.get_collision_point()
+				var NewBlinkDist = position.z - NewDashLoc.z
+				translate(Vector3(0,0, -NewBlinkDist))
+				print("Was colldiing")
+				CanDash = false
+			else: 
+				translate(Vector3(0,0, -Blink_Dist))
+				CanDash = false
+
+func jump():
+	if Input.is_action_just_pressed("Jump") and jump_count<= max_jump:
+		jumptimer.start()
+		velocity.y = JUMP_VELOCITY
+	if jump_count > 2: 
+		max_jump = 0
+	if is_on_floor() : 
+		jump_count = 0
+
+
 
 func OnBlack(): #what to do when standing on black
 	SPEED =  3
@@ -119,7 +142,14 @@ func OnRed():
 	JUMP_VELOCITY = 3
 	CameraSprintFov = 110.0
 	CameraNormalFov = 80.0
+	CanDash = true
+	max_jump = 3
 
+
+func OnGreen():
+	print("OnGreen")
+	JUMP_VELOCITY = 10.0
+	AutoJumping()
 
 func normal(): #when youre on something which is not in any group
 	SPEED = 5.0
@@ -129,11 +159,26 @@ func normal(): #when youre on something which is not in any group
 	CameraSprintFov = 90.0
 	lerp_amount = 0.09
 
+func AutoJumping(): 
+	velocity.y = JUMP_VELOCITY
+	if is_on_floor(): 
+		AutoJumping()
+	
+
 func NotSameColor(): #function of what to do when our color doesnt match to what Im standing on 
 	print("Dead")
 
 
+
+#singals and shit
 func _on_timer_timeout() -> void:
 	normal()
 	Is_Dashing = false
-	
+
+func _on_color_change() -> void:
+	PlayerColor = colors[1]
+
+
+func _on_timer_2_timeout() -> void:
+	jump_count +=1 
+	pass # Replace with function body.

@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mr5v7"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_551nc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -19,7 +19,7 @@ mesh = SubResource("CapsuleMesh_mr5v7")
 [node name="Camera And other Stuff" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera And other Stuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535859, -0.486463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535859, -0.375177)
 
 [node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
 
@@ -33,4 +33,10 @@ wait_time = 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
 target_position = Vector3(0, 0, -5)
 
+[node name="JumpTimer" type="Timer" parent="Camera And other Stuff"]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="color" from="." to="Camera And other Stuff/Camera3D/HUD" method="_on_character_body_3d_color"]
 [connection signal="timeout" from="Camera And other Stuff/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera And other Stuff/JumpTimer" to="." method="_on_timer_2_timeout"]

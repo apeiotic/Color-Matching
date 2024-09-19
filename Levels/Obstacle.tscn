@@ -1,32 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvsljc7075nvo"]
+[gd_scene load_steps=6 format=3 uid="uid://cq357jlklgkqm"]
 
-[ext_resource type="Material" uid="uid://dqra2phbge0it" path="res://Materials/Lime.tres" id="1_wwbce"]
-[ext_resource type="Script" path="res://Scripts/Jumppad.gd" id="2_dt4cm"]
+[ext_resource type="Material" uid="uid://dbidsyjd7q5mg" path="res://Materials/Obstacle.tres" id="1_3tqh4"]
+[ext_resource type="Script" path="res://Scripts/obstacle.gd" id="2_agwal"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_pbovg"]
+[sub_resource type="BoxMesh" id="BoxMesh_6e8qa"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i3mnx"]
-size = Vector3(1, 0.629792, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6arg"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k5o54"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pce4p"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="JumpPad" type="MeshInstance3D" groups=["Lime"]]
-transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 0, 0, 0)
-material_override = ExtResource("1_wwbce")
-mesh = SubResource("BoxMesh_pbovg")
-script = ExtResource("2_dt4cm")
+[node name="MeshInstance3D" type="MeshInstance3D"]
+material_override = ExtResource("1_3tqh4")
+mesh = SubResource("BoxMesh_6e8qa")
+script = ExtResource("2_agwal")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.68466, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0198822, 0)
-shape = SubResource("BoxShape3D_i3mnx")
+transform = Transform3D(1.01373, 0, 0, 0, 1.01373, 0, 0, 0, 1.01373, 0, 0, 0)
+shape = SubResource("BoxShape3D_v6arg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_k5o54")
+shape = SubResource("ConcavePolygonShape3D_pce4p")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

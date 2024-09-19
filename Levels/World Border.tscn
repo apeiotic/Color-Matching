@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://oqnff1oeqr6"]
+
+[ext_resource type="Script" path="res://Levels/world_border.gd" id="1_0acqy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5wmr"]
+
+[node name="World Border" type="Area3D"]
+script = ExtResource("1_0acqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_v5wmr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr7kigfnvr3sk"]
+[gd_scene load_steps=15 format=3 uid="uid://dr7kigfnvr3sk"]
 
 [ext_resource type="Script" path="res://Scripts/LevelScript.gd" id="1_8ufv2"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_it0kh"]
@@ -7,26 +7,31 @@
 [ext_resource type="Material" uid="uid://uiva1ad5hjth" path="res://Materials/Green.tres" id="4_5fx55"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="4_rrkxr"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="7_l2gwe"]
+[ext_resource type="PackedScene" uid="uid://cq357jlklgkqm" path="res://Levels/Obstacle.tscn" id="8_tudm2"]
+[ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_s8coa"]
+[ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="10_feccc"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k103u"]
-sky_top_color = Color(0.792, 0.795333, 0.8, 1)
-sky_horizon_color = Color(0.74558, 0.74558, 0.74558, 1)
-ground_bottom_color = Color(0.775063, 0.775063, 0.775063, 1)
-ground_horizon_color = Color(0.728872, 0.74308, 0.762858, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xmlge"]
+sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+ground_bottom_color = Color(0.12, 0.12, 0.12, 1)
+ground_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
 
-[sub_resource type="Sky" id="Sky_q4hkm"]
-sky_material = SubResource("ProceduralSkyMaterial_k103u")
+[sub_resource type="Sky" id="Sky_02570"]
+sky_material = SubResource("ProceduralSkyMaterial_xmlge")
 
-[sub_resource type="Environment" id="Environment_cdccx"]
+[sub_resource type="Environment" id="Environment_fh3od"]
 background_mode = 2
-sky = SubResource("Sky_q4hkm")
+sky = SubResource("Sky_02570")
 tonemap_mode = 2
-sdfgi_enabled = true
 glow_enabled = true
-glow_bloom = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_n6hgr"]
 
 [node name="Test scene" type="Node3D"]
 script = ExtResource("1_8ufv2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fh3od")
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -34,42 +39,83 @@ script = ExtResource("1_8ufv2")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
-environment = SubResource("Environment_cdccx")
-
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0403442, -0.445068, -1.56117)
+transform = Transform3D(0.227447, 0, 0, 0, 0.227447, 0, 0, 0, 0.227447, -0.0403442, -0.445068, -6.23275)
 material_override = ExtResource("2_it0kh")
 use_collision = true
 size = Vector3(32.5863, 0.109863, 35.496)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(0.326525, 0, 0, 0, 3.0831, 0, 0, 0, 0.326525, 0.0939312, -0.196029, -1.65287)
-material_override = ExtResource("3_8jfic")
-use_collision = true
-size = Vector3(32.5863, 0.109863, 35.496)
-material = ExtResource("3_8jfic")
-
 [node name="CSGBox3D4" type="CSGBox3D" parent="." groups=["Green"]]
-transform = Transform3D(0.326525, 0, 0, 0, 3.0831, 0, 0, 0, 0.326525, -2.38355, -0.196029, -23.4821)
+transform = Transform3D(0.326525, 0, 0, 0, 3.0831, 0, 0, 0, 0.326525, -2.38355, 2.77858, -45.4605)
 material_override = ExtResource("4_5fx55")
 use_collision = true
 size = Vector3(17.4114, 0.109863, 19.3543)
 material = ExtResource("3_8jfic")
 
 [node name="CharacterBody3D" parent="." groups=["Black"] instance=ExtResource("3_hhwko")]
-transform = Transform3D(0.0460255, 0, -0.99894, 0, 1, 0, 0.99894, 0, 0.0460255, 0.185828, 1.01029, -9.03276)
+transform = Transform3D(0.0460255, 0, -0.99894, 0, 1, 0, 0.99894, 0, 0.0460255, 11.2571, 5.93236, -55.6028)
 
 [node name="Color Chaning" parent="." instance=ExtResource("4_rrkxr")]
-transform = Transform3D(-4.37114e-08, 0, 3.171, 0, 1, 0, -1, 0, -1.38609e-07, -2.68093, 1.02961, -18.6418)
-color = ["Black"]
+transform = Transform3D(-4.37114e-08, 0, 1.1018, 0, 1, 0, -1, 0, -4.81612e-08, -1.32295, 1.68295, -11.0408)
+color = ["Lime", "Green", "Black", "Red", "Blue", "Cyan"]
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
-transform = Transform3D(0.400167, 0, 0, 0, 1, 0, 0, 0, 1, 4.55871, 1.24512, -0.493652)
+[node name="Color Chaning2" parent="." instance=ExtResource("4_rrkxr")]
+transform = Transform3D(-4.37114e-08, 0, 1.1018, 0, 1, 0, -1, 0, -4.81612e-08, -1.32295, 16.1362, -33.3344)
+color = ["Green", "Lime", "Black", "Red", "Blue", "Cyan"]
+
+[node name="Color Chaning3" parent="." instance=ExtResource("4_rrkxr")]
+transform = Transform3D(-4.37114e-08, 0, 1.1018, 0, 1, 0, -1, 0, -4.81612e-08, 0.0458169, 7.803, -52.6252)
+color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan"]
+
+[node name="Color Chaning4" parent="." instance=ExtResource("4_rrkxr")]
+transform = Transform3D(-4.37114e-08, 0, 1.1018, 0, 1, 0, -1, 0, -4.81612e-08, 15.6269, 6.90508, -56.4907)
+color = ["Orange", "Black", "Green", "Red", "Lime", "Blue", "Cyan"]
+
+[node name="Jumppad" parent="." instance=ExtResource("7_l2gwe")]
+transform = Transform3D(2.14, 0.0961839, 0, -2.84525, 0.072343, 0, 0, 0, 3.42939, -4.72297, 1.17407, -13.3081)
+repel_strength = 28.0
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("7_l2gwe")]
+transform = Transform3D(7.44835e-05, 3.35965e-06, 3.42939, -0.678041, 0.11815, -8.01633e-05, -3.49504, -0.0229211, 8.88025e-05, -2.32105, 6.52563, -22.8986)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Red"]]
+transform = Transform3D(3.05854, 0, 0, 0, 0.392699, 0, 0, 0, 2.06948, 6.52431, 4.56073, -53.745)
+material_override = ExtResource("3_8jfic")
 use_collision = true
-size = Vector3(1, 3.49023, 5.89941)
+size = Vector3(3.75562, 1, 5.71595)
 
-[node name="MeshInstance3D" parent="." instance=ExtResource("7_l2gwe")]
-transform = Transform3D(2.14, 0.0961839, 0, -2.84525, 0.072343, 0, 0, 0, 3.42939, -9.59841, 1.17407, -15.4141)
+[node name="MeshInstance3D3" parent="." instance=ExtResource("8_tudm2")]
+transform = Transform3D(3.77788, 0, 0, 0, 10.9903, 0, 0, 0, 6.23208, 3.03977, 6.60658, -51.3332)
 
+[node name="MeshInstance3D4" parent="." instance=ExtResource("8_tudm2")]
+transform = Transform3D(3.77788, 0, 0, 0, 10.9903, 0, 0, 0, 8.4776, 8.0934, 6.60658, -55.7435)
+
+[node name="MeshInstance3D5" parent="." instance=ExtResource("8_tudm2")]
+transform = Transform3D(3.77788, 0, 0, 0, 10.9903, 0, 0, 0, 6.23208, 12.4144, 6.60658, -49.9596)
+
+[node name="Area3D" parent="." instance=ExtResource("9_s8coa")]
+transform = Transform3D(93.7102, 0, 0, 0, 3.53285, 0, 0, 0, 94.6406, -0.30966, -11.2925, -37.9454)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." groups=["Orange"]]
+transform = Transform3D(0.365231, 0, 0, 0, 0.268874, 0, 0, 0, 5.83449, 17.9432, 4.30977, -57.7913)
+material_override = ExtResource("10_feccc")
+use_collision = true
+mesh = SubResource("BoxMesh_n6hgr")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="." groups=["Orange"]]
+transform = Transform3D(0.365231, 0, 0, 0, 0.268874, 0, 0, 0, 5.83449, 22.9432, 6.30977, -57.7913)
+material_override = ExtResource("10_feccc")
+use_collision = true
+mesh = SubResource("BoxMesh_n6hgr")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="." groups=["Orange"]]
+transform = Transform3D(0.182615, 0, -5.05281, 0, 0.268874, 0, 0.316299, 0, 2.91724, 27.4159, 7.1073, -51.6793)
+material_override = ExtResource("10_feccc")
+use_collision = true
+mesh = SubResource("BoxMesh_n6hgr")
+
+[connection signal="color" from="CharacterBody3D" to="Jumppad" method="PlayerColor"]
 [connection signal="ChangeColor" from="Color Chaning" to="CharacterBody3D" method="_on_color_change"]
+[connection signal="ChangeColor" from="Color Chaning2" to="CharacterBody3D" method="_on_color_change"]
+[connection signal="ChangeColor" from="Color Chaning3" to="CharacterBody3D" method="_on_color_change"]
+[connection signal="ChangeColor" from="Color Chaning4" to="CharacterBody3D" method="_on_color_change"]

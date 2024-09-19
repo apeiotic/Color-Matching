@@ -1,7 +1,6 @@
-extends Node3D
-@export var color = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
-var change_colorTo = "Black"
-signal ChangeColor
+extends Area3D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -9,10 +8,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	pass
 
 
-func Body_Enter(body: Node3D) -> void:
-	ChangeColor.emit(color[0])
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		body.dead()
 	pass # Replace with function body.

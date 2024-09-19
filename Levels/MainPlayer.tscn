@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=9 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
+[ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
 [ext_resource type="PackedScene" uid="uid://b30pgcos787d5" path="res://Levels/hud.tscn" id="2_n7qrv"]
+[ext_resource type="Script" path="res://Scripts/PlayerMeshScript.gd" id="3_h8y8a"]
+[ext_resource type="Script" path="res://addons/grappling_hook_3d/src/hook_controller.gd" id="3_p8iac"]
+[ext_resource type="PackedScene" uid="uid://c3uleb4c7m86t" path="res://Levels/timer.tscn" id="5_i4ig8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n67j0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mr5v7"]
+material = ExtResource("2_dqeak")
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_551nc")
@@ -15,19 +20,24 @@ shape = SubResource("CapsuleShape3D_n67j0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mr5v7")
+script = ExtResource("3_h8y8a")
 
 [node name="Camera And other Stuff" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera And other Stuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535859, -0.375177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620474, -0.371418)
 
 [node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
 
+[node name="HookRaycast" type="RayCast3D" parent="Camera And other Stuff/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457799, -0.146399)
+target_position = Vector3(0, 0, -7)
+
+[node name="Timer" parent="Camera And other Stuff/Camera3D" instance=ExtResource("5_i4ig8")]
+position = Vector2(520, 0)
+
 [node name="Standing Raycast" type="RayCast3D" parent="Camera And other Stuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
-
-[node name="Timer" type="Timer" parent="Camera And other Stuff"]
-wait_time = 0.2
 
 [node name="Dash raycast" type="RayCast3D" parent="Camera And other Stuff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
@@ -37,6 +47,18 @@ target_position = Vector3(0, 0, -5)
 wait_time = 0.05
 one_shot = true
 
+[node name="Death Timer" type="Timer" parent="Camera And other Stuff"]
+wait_time = 0.5
+
+[node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
+script = ExtResource("3_p8iac")
+hook_raycast = NodePath("../Camera And other Stuff/Camera3D/HookRaycast")
+player_body = NodePath("..")
+launch_action_name = "Ability 1"
+retract_action_name = "Ability 1"
+
+[connection signal="canhook" from="." to="Hook" method="_on_character_body_3d_canhook"]
+[connection signal="color" from="." to="MeshInstance3D" method="_on_character_body_3d_color"]
 [connection signal="color" from="." to="Camera And other Stuff/Camera3D/HUD" method="_on_character_body_3d_color"]
-[connection signal="timeout" from="Camera And other Stuff/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Camera And other Stuff/JumpTimer" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Camera And other Stuff/Death Timer" to="." method="_on_death_timer_timeout"]

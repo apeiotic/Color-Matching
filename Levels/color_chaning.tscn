@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dslkbp5ncuecm"]
+[gd_scene load_steps=4 format=3 uid="uid://dslkbp5ncuecm"]
 
 [ext_resource type="Script" path="res://color_changing.gd" id="1_sierv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m41w7"]
+size = Vector3(3.47028, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ml3e2"]
 
 [node name="Color Changing" type="Node3D"]
 script = ExtResource("1_sierv")
@@ -10,7 +13,12 @@ script = ExtResource("1_sierv")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.54604, 0, 0, 0, 2.04975, 0, 0, 0, 1.81259, 0, 0, 0)
+transform = Transform3D(0.0983981, 0, 0, 0, 0.369371, 0, 0, 0, 0.326634, -0.0236056, 0, 0)
 shape = SubResource("BoxShape3D_m41w7")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(0.313606, 0, 0, 0, 0.313606, 0, 0, 0, 0.313606, 0, 0, 0)
+mesh = SubResource("SphereMesh_ml3e2")
+
+[connection signal="ChangeColor" from="." to="Area3D/CollisionShape3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]

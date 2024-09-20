@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=3 uid="uid://ci7xykjkxwccl"]
+
+[ext_resource type="Script" path="res://Scripts/LevelScript.gd" id="1_336a0"]
+[ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_nogqf"]
+[ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_ncbl0"]
+[ext_resource type="Material" uid="uid://3dvnem8pq80i" path="res://Materials/Default.tres" id="3_wtlfe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6wuk"]
+sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+ground_bottom_color = Color(0.12, 0.12, 0.12, 1)
+ground_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+
+[sub_resource type="Sky" id="Sky_1kbga"]
+sky_material = SubResource("ProceduralSkyMaterial_i6wuk")
+
+[sub_resource type="Environment" id="Environment_ayi0w"]
+background_mode = 2
+sky = SubResource("Sky_1kbga")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_8vtms"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_234v6"]
+size = Vector3(6.43604, 5.29675, 3.65173)
+
+[node name="Tutorial Level" type="Node3D"]
+script = ExtResource("1_336a0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ayi0w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Walls and shit" type="CSGBox3D" parent="." groups=["Black"]]
+transform = Transform3D(26.3206, 0, 0, 0, 1, 0, 0, 0, 26.2455, 1.80569, -0.484375, -8.31064)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(1.13721, 0.03125, 1.6333)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walls and shit"]
+transform = Transform3D(-4.37114e-08, -0.037993, 0, 26.3207, -4.37114e-08, 0, 0, 0, 1, -0.553027, 6.69744, 0.0117187)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(0.491089, 0.03125, 1.60986)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Walls and shit"]
+transform = Transform3D(-4.37114e-08, -0.037993, 0, 26.3207, -4.37114e-08, 0, 0, 0, 1, -0.236884, 6.69744, 0.0101628)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(0.491089, 0.297852, 1.61298)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Walls and shit"]
+transform = Transform3D(-4.37114e-08, -0.037993, 0, 26.3207, -4.37114e-08, 0, 0, 0, 1, 0.570716, 6.69744, 0.0117187)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(0.491089, 0.03125, 1.60986)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walls and shit"]
+transform = Transform3D(9.01611e-15, 1.66073e-09, -0.997144, 26.3206, -4.37114e-08, 0, -4.38366e-08, -0.0381018, -4.37114e-08, 0.00312409, 6.69744, 0.814196)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(0.491089, 0.03125, 1.14764)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Walls and shit"]
+transform = Transform3D(9.01611e-15, 1.66073e-09, -0.997144, 26.3206, -4.37114e-08, 0, -4.38366e-08, -0.0381018, -4.37114e-08, 0.00312409, 6.69744, -0.78608)
+material_override = ExtResource("1_nogqf")
+use_collision = true
+size = Vector3(0.491089, 0.03125, 1.14764)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.1709, 1.31073, -0.226766)
+material_override = ExtResource("3_wtlfe")
+use_collision = true
+size = Vector3(0.255936, 0.720215, 0.378464)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D6"]
+transform = Transform3D(1.83026e-16, 0.095791, -4.18716e-09, 1.10209e-07, -1.10209e-07, -2.52128, -0.0960654, 6.82586e-16, -4.19915e-09, 0.0175767, -0.449354, 0.0124657)
+text = "In this game each color have thier own perks
+and stuff. 
+
+--->"
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.1709, 1.31073, -9.24935)
+material_override = ExtResource("3_wtlfe")
+use_collision = true
+size = Vector3(0.255936, 0.720215, 0.378464)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D8"]
+transform = Transform3D(1.83026e-16, 0.095791, -4.18716e-09, 1.10209e-07, -1.10209e-07, -2.52128, -0.0960654, 6.82586e-16, -4.19915e-09, 0.0175767, -0.449354, 0.0124657)
+text = "This Circle Allows you to change your color, 
+But you wont know what it changes to
+unless you get it. 
+
+--->"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGBox3D8"]
+transform = Transform3D(0.0726762, 4.44089e-16, 5.16396e-16, -7.10543e-15, 1.91289, 7.10543e-15, -3.97047e-23, 4.44089e-16, 0.0728844, -0.0226978, -4.42023, 0.101312)
+mesh = SubResource("SphereMesh_8vtms")
+skeleton = NodePath("../../CSGBox3D6")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.1709, 1.31073, -15.6742)
+material_override = ExtResource("3_wtlfe")
+use_collision = true
+size = Vector3(0.255936, 0.720215, 0.378464)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D9"]
+transform = Transform3D(1.83026e-16, 0.095791, -4.18716e-09, 1.10209e-07, -1.10209e-07, -2.52128, -0.0960654, 6.82586e-16, -4.19915e-09, 0.0175767, -0.449356, -0.0017162)
+text = "In the bottom left you can see what color you are. 
+
+If you are not the same color as the platform
+you're standing on, YOU DIE.
+
+--->"
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.0359, 1.31073, -25.0431)
+material_override = ExtResource("3_wtlfe")
+use_collision = true
+size = Vector3(0.255936, 0.720215, 0.398138)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D10"]
+transform = Transform3D(1.60752e-16, 0.084133, -3.67757e-09, 9.67961e-08, -9.67961e-08, -2.21444, -0.084374, 5.99514e-16, -3.68811e-09, 0.000825025, -0.449356, 0.190857)
+text = "Here is simple list: 
+Red: Speed Boost and blink
+Black: Slows you and gives you ability to shadow 
+dash (KeybindV). You can only use it once
+Orange: tripple jump and platform spawner(not added yet)
+Lime: JumpPad
+Green: Keeps you jumping and gives you ability to 
+grapple
+White: Default (does nothing)
+
+A lot more is coming but this is just a prototype. 
+--->"
+horizontal_alignment = 0
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_ncbl0")]
+transform = Transform3D(0.999601, 2.01137e-05, 0.0282511, -5.10212e-06, 1, -0.000531511, -0.0282511, 0.000531155, 0.999601, -9.53609, 0.727808, 6.72375)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52555, 2.14838, -26.978)
+shape = SubResource("BoxShape3D_234v6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://v7bt0i4rho2y"]
+
+[ext_resource type="Script" path="res://Scripts/level_switcher.gd" id="1_3gkv4"]
+[ext_resource type="Texture2D" uid="uid://cpci85bjss2qb" path="res://Assets/2D assets/Screenshot 2024-09-20 132347.png" id="1_v5nrc"]
+[ext_resource type="Texture2D" uid="uid://bwkq8lj5pn04b" path="res://Assets/2D assets/Background_.png" id="2_qmvge"]
+[ext_resource type="Texture2D" uid="uid://c037dqaruh6mg" path="res://Assets/2D assets/Warning Image.png" id="4_t1xrx"]
+
+[node name="Level Switcher" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gkv4")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(576, 314)
+scale = Vector2(0.608333, 0.618519)
+texture = ExtResource("2_qmvge")
+
+[node name="Main Level" type="Button" parent="."]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 208.0
+offset_right = 1918.0
+offset_bottom = 884.0
+scale = Vector2(0.165, 0.165)
+icon = ExtResource("1_v5nrc")
+
+[node name="Tutorial Level" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 1398.0
+offset_bottom = 884.0
+scale = Vector2(0.165, 0.165)
+icon = ExtResource("1_v5nrc")
+
+[node name="Tutorial Text" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 320.0
+offset_right = 408.0
+offset_bottom = 352.0
+text = "Tutorial Level"
+
+[node name="Main level text" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 320.0
+offset_right = 928.0
+offset_bottom = 352.0
+text = "Main Level"
+
+[node name="Back Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 26
+text = "Back"
+
+[node name="Warning" type="TextEdit" parent="Back Button"]
+offset_left = 994.0
+offset_top = 608.0
+offset_right = 1152.0
+offset_bottom = 646.0
+text = "This is a prototype
+"
+
+[node name="WarningImage" type="Sprite2D" parent="Back Button"]
+position = Vector2(980.5, 624.5)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_t1xrx")
+
+[connection signal="pressed" from="Main Level" to="." method="_on_main_level_pressed"]
+[connection signal="pressed" from="Tutorial Level" to="." method="_on_tutorial_level_pressed"]
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]

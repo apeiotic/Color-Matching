@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Color Matching"
-run/main_scene="res://Levels/test_scene.tscn"
+run/main_scene="res://Levels/Main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.223377, 0.0995334, 0.074767, 1)
 config/icon="res://icon.svg"
 
 [autoload]

@@ -20,5 +20,9 @@ shape = SubResource("BoxShape3D_m41w7")
 transform = Transform3D(0.313606, 0, 0, 0, 0.313606, 0, 0, 0, 0.313606, 0, 0, 0)
 mesh = SubResource("SphereMesh_ml3e2")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269941, 0)
+text = "Color Changer"
+
 [connection signal="ChangeColor" from="." to="Area3D/CollisionShape3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]

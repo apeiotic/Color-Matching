@@ -49,6 +49,7 @@ one_shot = true
 
 [node name="Death Timer" type="Timer" parent="Camera And other Stuff"]
 wait_time = 0.5
+one_shot = true
 
 [node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
 script = ExtResource("3_p8iac")

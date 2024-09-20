@@ -23,3 +23,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func PlayerColor(PlayerColor: Variant) -> void:
 	Player_Color = PlayerColor
 	pass # Replace with function body.
+
+
+func _on_character_body_3d_color(PlayerColor: Variant) -> void:
+	Player_Color = PlayerColor
+	pass # Replace with function body.

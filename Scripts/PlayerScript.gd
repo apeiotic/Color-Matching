@@ -4,10 +4,11 @@ extends CharacterBody3D
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var jump_count = 0
-var max_jump = 0
+var max_jump = 1
 var walking = false
 var CanDash = true
 var CanHook = false
+var CanSlimeJump = true
 var sensitivity = 0.01
 var sprinting_speed = 10
 var stamina = 100
@@ -16,7 +17,9 @@ var CameraNormalFov = 75.0
 var gravity = Vector3(0.0, -10.2, 0.0)
 var lerp_amount = 0.09
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
-var PlayerColor = colors[2]
+var PlayerColor = colors[0]
+var checkpoint = ["Start" , "Red", "Orange"]
+var savedcheckpoint = checkpoint[0]
 
 #signals
 signal color(PlayerColor)
@@ -42,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	sprint()
 	dash()
 	jump()
-	
+	print(savedcheckpoint)
 	
 	
 	if detector.is_colliding():
@@ -54,7 +57,7 @@ func _physics_process(delta: float) -> void:
 					OnOrange()
 				else: 
 					NotSameColor()
-			if "green" in group.to_lower() and PlayerColor == "Green":
+			if "green" in group.to_lower():
 				if PlayerColor == "Green":
 					OnGreen()
 				else: 
@@ -70,10 +73,11 @@ func _physics_process(delta: float) -> void:
 					OnRed()
 				else: 
 					NotSameColor()
+			if "Lime"in group.to_lower():
+				pass
 	else: 
 		
 		normal()
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
@@ -132,12 +136,14 @@ func dash(): #Dash function
 				CanDash = false
 
 func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump' var
-	if Input.is_action_just_pressed("Jump") and jump_count<= max_jump:
+	if Input.is_action_just_pressed("Jump") and jump_count< max_jump:
 		jumptimer.start()
 		velocity.y = JUMP_VELOCITY
-	if jump_count > 2: 
-		max_jump = 0
-	if is_on_floor() : 
+	if PlayerColor != "Orange": 
+		max_jump = 1
+	elif PlayerColor != "Red" : 
+		max_jump= 2
+	if is_on_floor() :
 		jump_count = 0
 
 func OnBlack(): #what to do when standing on black
@@ -176,7 +182,7 @@ func normal(): #when youre on something which is not in any group
 
 func AutoJumping(): #Autojumping, for slimy object
 	velocity.y = JUMP_VELOCITY
-	if is_on_floor(): 
+	if is_on_floor() and CanSlimeJump == true: 
 		AutoJumping()
 
 func NotSameColor(): #function of what to do when our color doesnt match to what Im standing on 
@@ -199,5 +205,26 @@ func _on_timer_2_timeout() -> void:
 
 
 func _on_death_timer_timeout() -> void:
-	get_tree().reload_current_scene()
-	pass # Replace with function body.
+	if savedcheckpoint == "Start":
+		global_position = Vector3(0,0,0)
+		print("Caleed")
+		PlayerColor = colors[0]
+	if savedcheckpoint == "Red":
+		global_position = Vector3(4.581, 6.867, -57)
+		PlayerColor = colors[2]
+	if savedcheckpoint == "Orange":
+		global_position = Vector3(12, 5, -57)
+		PlayerColor = colors[2]
+	
+
+func _on_orange_checkpoint_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		savedcheckpoint = checkpoint[2]
+		print("CheckPointSaved")
+
+
+func _on_red_checkpoint_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		savedcheckpoint = checkpoint[1]
+		
+		print("CheckPointSaved")

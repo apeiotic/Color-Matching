@@ -10,8 +10,11 @@ var M_Default = preload("res://Materials/Player Colors/P_Default.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GLB.connect("color", Callable(self, "SaveColor"))
 	pass # Replace with function body.
 
+func SaveColor(PlayerColor):
+	playercolor = PlayerColor
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,7 +30,3 @@ func _process(delta: float) -> void:
 		set_surface_override_material(0, M_Cyan)
 	else: 
 		set_surface_override_material(0, M_Default)
-
-func _on_character_body_3d_color(PlayerColor: Variant) -> void:
-	playercolor = PlayerColor
-	pass # Replace with function body.

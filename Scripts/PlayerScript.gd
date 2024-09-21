@@ -7,7 +7,7 @@ var jump_count = 0
 var max_jump = 1
 var walking = false
 var CanDash = true
-var CanHook = false
+var CanHook = true
 var CanSlimeJump = true
 var sensitivity = 0.01
 var sprinting_speed = 10
@@ -41,6 +41,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	
 	color.emit(PlayerColor)
+	GLB.emit_signal("color", PlayerColor)
 	canhook.emit(CanHook)
 	sprint()
 	dash()
@@ -167,9 +168,9 @@ func OnRed(): #what to do when standing on red
 	max_jump = 3
 
 func OnGreen(): #what to do when standing on green
-	
 	JUMP_VELOCITY = 10.0
 	AutoJumping()
+
 
 func normal(): #when youre on something which is not in any group
 	SPEED = 5.0
@@ -178,7 +179,6 @@ func normal(): #when youre on something which is not in any group
 	CameraNormalFov = 75.0
 	CameraSprintFov = 90.0
 	lerp_amount = 0.09
-
 
 func AutoJumping(): #Autojumping, for slimy object
 	velocity.y = JUMP_VELOCITY
@@ -193,16 +193,14 @@ func dead():
 	print("You are Dead")
 	deathtimer.start()
 
-#singals and shit
 
+#singals and shit
 func _on_color_change(color: Variant) -> void:
 	PlayerColor = color
-
 
 func _on_timer_2_timeout() -> void:
 	jump_count +=1 
 	pass # Replace with function body.
-
 
 func _on_death_timer_timeout() -> void:
 	if savedcheckpoint == "Start":
@@ -215,13 +213,11 @@ func _on_death_timer_timeout() -> void:
 	if savedcheckpoint == "Orange":
 		global_position = Vector3(12, 5, -57)
 		PlayerColor = colors[2]
-	
 
 func _on_orange_checkpoint_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		savedcheckpoint = checkpoint[2]
 		print("CheckPointSaved")
-
 
 func _on_red_checkpoint_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):

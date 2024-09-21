@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci7xykjkxwccl"]
+[gd_scene load_steps=12 format=3 uid="uid://ci7xykjkxwccl"]
 
 [ext_resource type="Script" path="res://Scripts/LevelScript.gd" id="1_336a0"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_nogqf"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_ncbl0"]
 [ext_resource type="Material" uid="uid://3dvnem8pq80i" path="res://Materials/Default.tres" id="3_wtlfe"]
+[ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="5_iqr81"]
+[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="6_6gpux"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6wuk"]
 sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
@@ -140,12 +142,19 @@ A lot more is coming but this is just a prototype.
 horizontal_alignment = 0
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_ncbl0")]
-transform = Transform3D(0.999601, 2.01137e-05, 0.0282511, -5.10212e-06, 1, -0.000531511, -0.0282511, 0.000531155, 0.999601, -9.53609, 0.727808, 6.72375)
+transform = Transform3D(0.999601, 2.01137e-05, 0.0282511, -5.10212e-06, 1, -0.000531511, -0.0282511, 0.000531155, 0.999601, 4.06467, 0.727808, -1.0265)
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52555, 2.14838, -26.978)
 shape = SubResource("BoxShape3D_234v6")
+
+[node name="JumpPad" parent="." instance=ExtResource("5_iqr81")]
+transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 4.91633, -0.430617, -7.64923)
+
+[node name="Color Changing" parent="." instance=ExtResource("6_6gpux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16029, 1.80986, -5.72568)
+color = ["Lime", "Black", "Green", "Red", "Blue", "Cyan", "Orange"]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

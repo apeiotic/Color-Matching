@@ -46,7 +46,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
-transform = Transform3D(0.227447, 0, 0, 0, 0.227447, 0, 0, 0, 0.3243, -0.0403442, -0.445068, -4.28984)
+transform = Transform3D(0.227447, 0, 0, 0, 0.74057, 0, 0, 0, 0.3243, -0.0403442, -0.516708, -4.28984)
 material_override = ExtResource("2_it0kh")
 use_collision = true
 size = Vector3(32.5863, 0.109863, 32.3613)
@@ -59,10 +59,10 @@ size = Vector3(17.4114, 0.109863, 19.3543)
 material = ExtResource("3_8jfic")
 
 [node name="CharacterBody3D" parent="." groups=["Black"] instance=ExtResource("3_hhwko")]
-transform = Transform3D(0.999998, 0, -0.00209442, 0, 1, 0, 0.00209442, 0, 0.999998, 0, 0, 0)
+transform = Transform3D(0.999998, 0, -0.00209442, 0, 1, 0, 0.00209442, 0, 0.999998, 0, 0.879008, 0)
 
 [node name="Color Chaning" parent="." instance=ExtResource("4_rrkxr")]
-transform = Transform3D(0.869865, 0, 0.543506, 0, 1, 0, -0.493289, 0, 0.958418, -1.32295, 1.68295, -11.0408)
+transform = Transform3D(0.964326, 0, 0.291663, 0, 1, 0, -0.264715, 0, 1.0625, -1.32295, 1.68295, -11.0408)
 color = ["Lime", "Green", "Black", "Red", "Blue", "Cyan"]
 
 [node name="Color Chaning2" parent="." instance=ExtResource("4_rrkxr")]
@@ -76,6 +76,10 @@ color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan"]
 [node name="Color Chaning4" parent="." instance=ExtResource("4_rrkxr")]
 transform = Transform3D(-4.37114e-08, 0, -1.1018, 0, 1, 0, 1, 0, -4.81612e-08, 15.6269, 6.03302, -56.4907)
 color = ["Orange", "Black", "Green", "Red", "Lime", "Blue", "Cyan"]
+
+[node name="Color Chaning5" parent="." instance=ExtResource("4_rrkxr")]
+transform = Transform3D(-0.769834, 0, -0.703217, 0, 1, 0, 0.638244, 0, -0.848203, 27.5656, 6.88124, -50.8968)
+color = ["Black", "Orange", "Green", "Red", "Lime", "Blue", "Cyan"]
 
 [node name="Jumppad" parent="." instance=ExtResource("7_l2gwe")]
 transform = Transform3D(2.14, 0.0961839, 0, -2.84525, 0.072343, 0, 0, 0, 3.42939, -4.72297, 1.17407, -13.3081)
@@ -168,5 +172,6 @@ mesh = SubResource("TextMesh_mbtm3")
 [connection signal="ChangeColor" from="Color Chaning2" to="CharacterBody3D" method="_on_color_change"]
 [connection signal="ChangeColor" from="Color Chaning3" to="CharacterBody3D" method="_on_color_change"]
 [connection signal="ChangeColor" from="Color Chaning4" to="CharacterBody3D" method="_on_color_change"]
+[connection signal="ChangeColor" from="Color Chaning5" to="CharacterBody3D" method="_on_color_change"]
 [connection signal="body_entered" from="Orange Checkpoint" to="CharacterBody3D" method="_on_orange_checkpoint_body_entered"]
 [connection signal="body_entered" from="Red Checkpoint" to="CharacterBody3D" method="_on_red_checkpoint_body_entered"]

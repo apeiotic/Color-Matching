@@ -25,7 +25,7 @@ script = ExtResource("3_h8y8a")
 [node name="Camera And other Stuff" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Camera And other Stuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620474, -0.371418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537982, -0.441776)
 
 [node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
 

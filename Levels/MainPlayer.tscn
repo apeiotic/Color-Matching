@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=21 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
 [ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
@@ -6,11 +6,166 @@
 [ext_resource type="Script" path="res://Scripts/PlayerMeshScript.gd" id="3_h8y8a"]
 [ext_resource type="Script" path="res://addons/grappling_hook_3d/src/hook_controller.gd" id="3_p8iac"]
 [ext_resource type="PackedScene" uid="uid://c3uleb4c7m86t" path="res://Levels/timer.tscn" id="5_i4ig8"]
+[ext_resource type="Shader" path="res://Materials/MotionLine.gdshader" id="6_ukv2s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n67j0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mr5v7"]
 material = ExtResource("2_dqeak")
+
+[sub_resource type="Animation" id="Animation_2rnso"]
+resource_name = "Bob"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.08, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2wndy"]
+resource_name = "JumpPad"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.261799, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tkqxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ds6sj"]
+resource_name = "Speed Bob"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1g7j"]
+resource_name = "MiniJump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_022kw"]
+resource_name = "Falling Animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 0.392292),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0523599, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ifmi"]
+resource_name = "Long Falling Animation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.784584, 0.450625),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhww0"]
+_data = {
+"Bob": SubResource("Animation_2rnso"),
+"Falling Animation": SubResource("Animation_022kw"),
+"JumpPad": SubResource("Animation_2wndy"),
+"Long Falling Animation": SubResource("Animation_1ifmi"),
+"MiniJump": SubResource("Animation_b1g7j"),
+"RESET": SubResource("Animation_tkqxe"),
+"Speed Bob": SubResource("Animation_ds6sj")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_itdbw"]
+noise_type = 0
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ombom"]
+noise = SubResource("FastNoiseLite_itdbw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8oas"]
+shader = ExtResource("6_ukv2s")
+shader_parameter/line_color = Color(0.92, 0.92, 0.92, 0)
+shader_parameter/line_count = 1.5
+shader_parameter/line_density = 0.814
+shader_parameter/line_faloff = 1.0
+shader_parameter/mask_size = 0.141
+shader_parameter/mask_edge = 0.756
+shader_parameter/animation_speed = 15.573
+shader_parameter/noise = SubResource("NoiseTexture2D_ombom")
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_551nc")
@@ -22,44 +177,75 @@ shape = SubResource("CapsuleShape3D_n67j0")
 mesh = SubResource("CapsuleMesh_mr5v7")
 script = ExtResource("3_h8y8a")
 
-[node name="Camera And other Stuff" type="Node3D" parent="."]
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Camera And other Stuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537982, -0.441776)
+[node name="Neck 2" type="Node3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50017, -0.496168)
 
-[node name="HUD" parent="Camera And other Stuff/Camera3D" instance=ExtResource("2_n7qrv")]
+[node name="Camera3D" type="Camera3D" parent="Neck/Neck 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221889, 0.129726)
 
-[node name="HookRaycast" type="RayCast3D" parent="Camera And other Stuff/Camera3D"]
+[node name="HUD" parent="Neck/Neck 2/Camera3D" instance=ExtResource("2_n7qrv")]
+
+[node name="HookRaycast" type="RayCast3D" parent="Neck/Neck 2/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457799, -0.146399)
 target_position = Vector3(0, 0, -7)
 
-[node name="Timer" parent="Camera And other Stuff/Camera3D" instance=ExtResource("5_i4ig8")]
+[node name="Timer" parent="Neck/Neck 2/Camera3D" instance=ExtResource("5_i4ig8")]
 position = Vector2(520, 0)
 
-[node name="Standing Raycast" type="RayCast3D" parent="Camera And other Stuff"]
+[node name="Standing Raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
 
-[node name="Dash raycast" type="RayCast3D" parent="Camera And other Stuff"]
+[node name="Dash raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
 target_position = Vector3(0, 0, -5)
 
-[node name="JumpTimer" type="Timer" parent="Camera And other Stuff"]
+[node name="JumpTimer" type="Timer" parent="Neck"]
 wait_time = 0.05
 one_shot = true
 
-[node name="Death Timer" type="Timer" parent="Camera And other Stuff"]
+[node name="Death Timer" type="Timer" parent="Neck"]
 wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Neck"]
+libraries = {
+"": SubResource("AnimationLibrary_dhww0")
+}
+
+[node name="ActionLine" type="ColorRect" parent="Neck"]
+z_index = -1
+material = SubResource("ShaderMaterial_x8oas")
+offset_left = -13.0
+offset_top = -11.0
+offset_right = 1162.0
+offset_bottom = 657.0
+
+[node name="JumpPad" type="Timer" parent="Neck"]
+wait_time = 0.3
+
+[node name="FallingRayCast" type="RayCast3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1137, 0)
+target_position = Vector3(0, -10, 0)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RandomTimers" type="Timer" parent="Neck"]
+wait_time = 0.1
 one_shot = true
 
 [node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
 script = ExtResource("3_p8iac")
-hook_raycast = NodePath("../Camera And other Stuff/Camera3D/HookRaycast")
+hook_raycast = NodePath("../Neck/Neck 2/Camera3D/HookRaycast")
 player_body = NodePath("..")
 launch_action_name = "Ability 1"
 retract_action_name = "Ability 1"
 
 [connection signal="canhook" from="." to="Hook" method="_on_character_body_3d_canhook"]
 [connection signal="color" from="." to="MeshInstance3D" method="_on_character_body_3d_color"]
-[connection signal="color" from="." to="Camera And other Stuff/Camera3D/HUD" method="_on_character_body_3d_color"]
-[connection signal="timeout" from="Camera And other Stuff/JumpTimer" to="." method="_on_timer_2_timeout"]
-[connection signal="timeout" from="Camera And other Stuff/Death Timer" to="." method="_on_death_timer_timeout"]
+[connection signal="color" from="." to="Neck/Neck 2/Camera3D/HUD" method="_on_character_body_3d_color"]
+[connection signal="timeout" from="Neck/JumpTimer" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Neck/Death Timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Neck/JumpPad" to="." method="jump_pad_timeout"]
+[connection signal="timeout" from="Neck/RandomTimers" to="." method="RandomTImerEnd"]

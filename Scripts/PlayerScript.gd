@@ -1,53 +1,57 @@
 extends CharacterBody3D
 
 #variables
+var walking = false
+var CanDash = true
+var CanSlimeJump = true
+var jumppading= false
+var SlimeJump = false
+var fallen = false
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var jump_count = 0
 var max_jump = 1
-var walking = false
-var CanDash = true
-var CanHook = true
-var CanSlimeJump = true
-var sensitivity = 0.01
 var sprinting_speed = 10
 var stamina = 100
 var CameraSprintFov = 90.0
 var CameraNormalFov = 75.0
 var gravity = Vector3(0.0, -10.2, 0.0)
 var lerp_amount = 0.09
+var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
 var PlayerColor = colors[0]
-var checkpoint = ["Start" , "Red", "Orange"]
-var savedcheckpoint = checkpoint[0]
 
 #signals
 signal color(PlayerColor)
 signal canhook()
 
 #refrences
-@onready var detector = $"Camera And other Stuff/Standing Raycast"
-@onready var camera = $"Camera And other Stuff/Camera3D"
-@onready var dashraycast = $"Camera And other Stuff/Dash raycast"
-@onready var jumptimer = $"Camera And other Stuff/JumpTimer"
-@onready var HUD= $"Camera And other Stuff/Camera3D/HUD"
-@onready var deathtimer = $"Camera And other Stuff/Death Timer"
+@onready var detector = $"Neck/Standing Raycast"
+@onready var camera = $"Neck/Neck 2/Camera3D"
+@onready var dashraycast = $"Neck/Dash raycast"
+@onready var jumptimer = $Neck/JumpTimer
+@onready var HUD= $"Neck/Neck 2/Camera3D/HUD"
+@onready var deathtimer = $"Neck/Death Timer"
+@onready var neck = $Neck
+@onready var neck_animation = $Neck/AnimationPlayer
+@onready var JumppadTimer= $Neck/JumpPad
+@onready var RandomTimer = $Neck/RandomTimers
 
 #at start function
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	
+	
 #Event tick
 func _physics_process(delta: float) -> void:
 	
 	color.emit(PlayerColor)
 	GLB.emit_signal("color", PlayerColor)
-	canhook.emit(CanHook)
+	
 	sprint()
 	dash()
 	jump()
-	print(savedcheckpoint)
-	
+	print(jumppading)
 	
 	if detector.is_colliding():
 		var collider = detector.get_collider()
@@ -82,8 +86,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
+		fallen = true
 	
-	
+	if fallen == true: 
+		if is_on_floor():
+			RandomTimer.start(0.5)
+			jumppading = true
+			neck_animation.stop()
+			neck_animation.play("Falling Animation")
+			fallen = false
+
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left", "Right", "Up", "Down")
@@ -99,6 +112,32 @@ func _physics_process(delta: float) -> void:
 		velocity.z = lerp(velocity.z, 0.0, lerp_amount)
 		walking=false
 	
+	#Camera Sway
+	if GLB.Camera_Sway == true and jumppading != true and SlimeJump != true:
+		if input_dir.x > 0:
+			neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(-2), sway_speed)
+		elif input_dir.x < 0:
+			neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(2), sway_speed)
+		else:
+			neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(0), sway_speed)
+	
+	#Camera Sway
+	if GLB.Camera_Sway == true and jumppading != true and SlimeJump != true:
+		if input_dir.y > 0:
+			neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(1.5), sway_speed)
+		elif input_dir.y < 0:
+			neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(-1.5), sway_speed)
+		else: 
+			neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(0), sway_speed)
+	
+	#Camera Bob
+	if GLB.Camera_Bob == true and jumppading != true and SlimeJump != true: 
+		if input_dir.y> 0:
+			neck_animation.play("Bob")
+		elif input_dir.y < 0:
+			neck_animation.play("Bob")
+		else:
+			neck_animation.stop()
 	
 	move_and_slide()
 
@@ -106,8 +145,8 @@ func _physics_process(delta: float) -> void:
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * sensitivity/3)
-		camera.rotate_x(-event.relative.y *sensitivity/3)
+		rotate_y(-event.relative.x * GLB.sensitivity/3)
+		camera.rotate_x(-event.relative.y *GLB.sensitivity/3)
 
 func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_pressed("Sprint"):
@@ -140,6 +179,7 @@ func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump'
 	if Input.is_action_just_pressed("Jump") and jump_count< max_jump:
 		jumptimer.start()
 		velocity.y = JUMP_VELOCITY
+		neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(-2), 0.35)
 	if PlayerColor != "Orange": 
 		max_jump = 1
 	elif PlayerColor != "Red" : 
@@ -156,7 +196,7 @@ func OnBlack(): #what to do when standing on black
 
 func OnOrange():
 	max_jump = 3
-	CanHook = true
+	GLB.Can_hook = true
 
 func OnRed(): #what to do when standing on red
 	SPEED =  8
@@ -166,10 +206,12 @@ func OnRed(): #what to do when standing on red
 	CameraNormalFov = 80.0
 	CanDash = true
 	max_jump = 3
+	lerp_amount = 0.12
 
 func OnGreen(): #what to do when standing on green
 	JUMP_VELOCITY = 10.0
 	AutoJumping()
+
 
 
 func normal(): #when youre on something which is not in any group
@@ -182,6 +224,11 @@ func normal(): #when youre on something which is not in any group
 
 func AutoJumping(): #Autojumping, for slimy object
 	velocity.y = JUMP_VELOCITY
+	SlimeJump = true
+	neck_animation.stop()
+	neck_animation.play("MiniJump")
+	jumptimer.start(0.4)
+	print(neck_animation.current_animation)
 	if is_on_floor() and CanSlimeJump == true: 
 		AutoJumping()
 
@@ -193,6 +240,13 @@ func dead():
 	print("You are Dead")
 	deathtimer.start()
 
+func jumppadeffect():
+	JumppadTimer.start()
+	jumppading = true
+	neck_animation.stop()
+	neck_animation.play("JumpPad")
+	
+	print(neck_animation.current_animation)
 
 #singals and shit
 func _on_color_change(color: Variant) -> void:
@@ -203,24 +257,16 @@ func _on_timer_2_timeout() -> void:
 	pass # Replace with function body.
 
 func _on_death_timer_timeout() -> void:
-	if savedcheckpoint == "Start":
-		global_position = Vector3(0,0,0)
-		print("Caleed")
-		PlayerColor = colors[0]
-	if savedcheckpoint == "Red":
-		global_position = Vector3(4.581, 6.867, -57)
-		PlayerColor = colors[2]
-	if savedcheckpoint == "Orange":
-		global_position = Vector3(12, 5, -57)
-		PlayerColor = colors[2]
+	get_tree().reload_current_scene()
 
-func _on_orange_checkpoint_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
-		savedcheckpoint = checkpoint[2]
-		print("CheckPointSaved")
 
-func _on_red_checkpoint_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
-		savedcheckpoint = checkpoint[1]
-		
-		print("CheckPointSaved")
+func jump_pad_timeout() -> void:
+	jumppading = false
+	SlimeJump= false
+	pass # Replace with function body.
+
+
+func RandomTImerEnd() -> void:
+	jumppading= false
+	fallen= false
+	print("Randomize timer end")

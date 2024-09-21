@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6lurx3w2g4ge"]
+
+[ext_resource type="Shader" path="res://Materials/MotionLine.gdshader" id="1_le56s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_05cgm"]
+noise_type = 0
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8jw1a"]
+noise = SubResource("FastNoiseLite_05cgm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trm1u"]
+shader = ExtResource("1_le56s")
+shader_parameter/line_color = Color(0.920995, 0.920995, 0.920995, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 0.244
+shader_parameter/line_faloff = 0.25
+shader_parameter/mask_size = 0.1
+shader_parameter/mask_edge = 0.442
+shader_parameter/animation_speed = 15.573
+shader_parameter/noise = SubResource("NoiseTexture2D_8jw1a")
+
+[node name="Motion Line" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_trm1u")
+offset_right = 1151.0
+offset_bottom = 645.0

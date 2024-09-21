@@ -24,7 +24,6 @@ var _hook_model: Node3D = null
 var hook_target_normal: Vector3 = Vector3.ZERO
 var hook_target_node: Marker3D = null
 var hook_target_position: Vector3
-var canhook = false
 
 signal hook_launched()
 signal hook_attached(body)
@@ -32,7 +31,7 @@ signal hook_detached()
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed(launch_action_name) and canhook == true:
+	if Input.is_action_just_pressed(launch_action_name) and GLB.Can_hook == true:
 		hook_launched.emit()
 		
 		
@@ -103,9 +102,3 @@ func _handle_hook(delta: float) -> void:
 		false: source_position = player_body.global_position
 	
 	_hook_model.extend_from_to(source_position, hook_target_node.global_position, hook_target_normal)
-
-
-
-func _on_character_body_3d_canhook(CanHook: bool) -> void:
-	canhook = CanHook
-	pass # Replace with function body.

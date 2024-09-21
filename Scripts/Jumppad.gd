@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 
 func ColorSaving(PlayerColor):
 	Player_Color = PlayerColor
-	print("this is from jumpad", Player_Color)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
@@ -22,6 +21,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			var repel_direction = global_transform.basis.y.normalized()
 			var player_velocity = repel_direction * repel_strength
 			body.velocity += player_velocity
+			body.jumppadeffect()
 
 
 func PlayerColor(PlayerColor: Variant) -> void:

@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 func compare_Speed_and_visibilty():
-	if  L_Playerspeed > 4 : 
+	if  L_Playerspeed > 7 : 
 		material.set_shader_parameter("line_count", 1) 
 		material.set_shader_parameter("mask_edge", lerp(0.5, 0.657, 0.1))
 	

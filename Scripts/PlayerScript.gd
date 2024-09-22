@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+#region Variables
 #variables
 var walking = false
 var CanDash = true
@@ -7,6 +8,7 @@ var CanSlimeJump = true
 var jumppading= false
 var SlimeJump = false
 var fallen = false
+var sprinting = true
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var jump_count = 0
@@ -20,10 +22,15 @@ var lerp_amount = 0.09
 var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
 var PlayerColor = colors[0]
+var x_rotation = 0.0
+
+#endregion
 
 #signals
 signal color(PlayerColor)
 signal canhook()
+
+#region Refrences
 
 #refrences
 @onready var detector = $"Neck/Standing Raycast"
@@ -36,6 +43,9 @@ signal canhook()
 @onready var neck_animation = $Neck/AnimationPlayer
 @onready var JumppadTimer= $Neck/JumpPad
 @onready var RandomTimer = $Neck/RandomTimers
+@onready var staminabar = $"Stamina ProgressBar"
+
+#endregion
 
 #at start function
 func _ready():
@@ -45,13 +55,18 @@ func _ready():
 #Event tick
 func _physics_process(delta: float) -> void:
 	
+	var playerspeed = velocity.length()
+	
 	color.emit(PlayerColor)
 	GLB.emit_signal("color", PlayerColor)
+	GLB.emit_signal("stamina", stamina)
+	GLB.emit_signal("playerspeed", playerspeed)
+	
+	staminabar.material.set_shader_parameter("value", stamina)
 	
 	sprint()
 	dash()
 	jump()
-	print(jumppading)
 	
 	if detector.is_colliding():
 		var collider = detector.get_collider()
@@ -97,6 +112,7 @@ func _physics_process(delta: float) -> void:
 			fallen = false
 
 
+#region Movement System
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left", "Right", "Up", "Down")
@@ -111,7 +127,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, 0.0, lerp_amount)
 		velocity.z = lerp(velocity.z, 0.0, lerp_amount)
 		walking=false
+#endregion
 	
+#region Camera Sway and bob
 	#Camera Sway
 	if GLB.Camera_Sway == true and jumppading != true and SlimeJump != true:
 		if input_dir.x > 0:
@@ -139,24 +157,45 @@ func _physics_process(delta: float) -> void:
 		else:
 			neck_animation.stop()
 	
+#endregion
 	move_and_slide()
 
 
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * GLB.sensitivity/3)
+		rotate_y(-event.relative.x * GLB.sensitivity / 3)
+		
+		var mouse_y = -event.relative.y * GLB.sensitivity / 3
+		x_rotation += mouse_y
 		camera.rotate_x(-event.relative.y *GLB.sensitivity/3)
+		x_rotation = clamp(x_rotation, -1.5, 1.5)
+		
+		camera.rotation.x = x_rotation
 
 func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_pressed("Sprint"):
-		if walking==true: #(when moving set the walking to true)
-			SPEED = sprinting_speed
-			camera.fov = lerp(camera.fov, CameraSprintFov, 0.075) #(this is for FOV change of camera so you would need a refrence to camera)
+		if walking==true and stamina >= 0: #(when moving set the walking to true)
+			if stamina > 0:
+				SPEED = sprinting_speed
+				stamina = stamina - 0.5
+				camera.fov = lerp(camera.fov, CameraSprintFov, 0.075) #(this is for FOV change of camera so you would need a refrence to camera)
+				sprinting= true
+				stamina = clamp(stamina, -1, 100)
+				
+	
+	
 	if Input.is_action_just_released("Sprint"):
-		SPEED= 8.5
-	if not Input.is_action_pressed("Sprint"):
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
+		SPEED= 8.5
+		
+	
+	
+	if not Input.is_action_pressed("Sprint") or stamina <= 0:
+			camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
+			sprinting = false
+			stamina = stamina + 1
+			stamina = clamp(stamina, -1, 100)
 
 func dash(): #Dash function
 	if Input.is_action_just_pressed("Dash"):
@@ -187,6 +226,9 @@ func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump'
 	if is_on_floor() :
 		jump_count = 0
 
+
+
+#region Color Regions
 func OnBlack(): #what to do when standing on black
 	SPEED =  3
 	sprinting_speed = 5
@@ -211,7 +253,7 @@ func OnRed(): #what to do when standing on red
 func OnGreen(): #what to do when standing on green
 	JUMP_VELOCITY = 10.0
 	AutoJumping()
-
+#endregion
 
 
 func normal(): #when youre on something which is not in any group
@@ -248,6 +290,9 @@ func jumppadeffect():
 	
 	print(neck_animation.current_animation)
 
+
+#region Timers And signal
+
 #singals and shit
 func _on_color_change(color: Variant) -> void:
 	PlayerColor = color
@@ -270,3 +315,4 @@ func RandomTImerEnd() -> void:
 	jumppading= false
 	fallen= false
 	print("Randomize timer end")
+#endregion

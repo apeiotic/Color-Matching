@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://oqnff1oeqr6"]
 
-[ext_resource type="Script" path="res://Levels/world_border.gd" id="1_0acqy"]
+[ext_resource type="Script" path="res://Scripts/world_border.gd" id="1_0acqy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5wmr"]
 

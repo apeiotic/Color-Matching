@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr7kigfnvr3sk"]
+[gd_scene load_steps=20 format=3 uid="uid://dr7kigfnvr3sk"]
 
 [ext_resource type="Script" path="res://Scripts/LevelScript.gd" id="1_8ufv2"]
+[ext_resource type="Texture2D" uid="uid://co0ft7uyqhxga" path="res://Assets/HDRI/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_4ll8p"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_it0kh"]
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="3_8jfic"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="3_hhwko"]
@@ -12,19 +13,38 @@
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="10_feccc"]
 [ext_resource type="Texture2D" uid="uid://c0mgi2v5qbpn4" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="11_xuwer"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xmlge"]
-sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
-ground_bottom_color = Color(0.12, 0.12, 0.12, 1)
-ground_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ecc13"]
+panorama = ExtResource("2_4ll8p")
 
-[sub_resource type="Sky" id="Sky_02570"]
-sky_material = SubResource("ProceduralSkyMaterial_xmlge")
+[sub_resource type="Sky" id="Sky_61tlh"]
+sky_material = SubResource("PanoramaSkyMaterial_ecc13")
 
-[sub_resource type="Environment" id="Environment_fh3od"]
+[sub_resource type="Environment" id="Environment_opxv3"]
 background_mode = 2
-sky = SubResource("Sky_02570")
-tonemap_mode = 2
+sky = SubResource("Sky_61tlh")
+tonemap_mode = 3
+ssao_intensity = 26.75
+sdfgi_bounce_feedback = 0.28
+sdfgi_min_cell_size = 0.01
+sdfgi_cascade0_distance = 0.64
+sdfgi_max_distance = 10.24
 glow_enabled = true
+glow_intensity = 0.95
+glow_strength = 0.83
+glow_blend_mode = 4
+glow_hdr_threshold = 0.25
+fog_enabled = true
+fog_light_energy = 0.87
+fog_sky_affect = 0.0
+fog_height_density = 0.8819
+volumetric_fog_density = 0.0522
+volumetric_fog_anisotropy = -0.2
+volumetric_fog_length = 0.01
+volumetric_fog_ambient_inject = 0.03
+adjustment_enabled = true
+adjustment_brightness = 1.06
+adjustment_contrast = 1.15
+adjustment_saturation = 1.3
 
 [sub_resource type="BoxMesh" id="BoxMesh_n6hgr"]
 
@@ -40,14 +60,14 @@ albedo_texture = ExtResource("11_xuwer")
 [node name="Test scene" type="Node3D"]
 script = ExtResource("1_8ufv2")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fh3od")
-
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_opxv3")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(0.227447, 0, 0, 0, 0.74057, 0, 0, 0, 0.3243, -0.0403442, -0.516708, -4.28984)
@@ -63,7 +83,7 @@ size = Vector3(17.4114, 0.109863, 19.3543)
 material = ExtResource("3_8jfic")
 
 [node name="CharacterBody3D" parent="." groups=["Black"] instance=ExtResource("3_hhwko")]
-transform = Transform3D(0.999959, 0, 0.00907545, 0, 1, 0, -0.00907545, 0, 0.999959, -2.24866, 0.889581, 14.1033)
+transform = Transform3D(0.999959, 0, 0.00907545, 0, 1, 0, -0.00907545, 0, 0.999959, -2.24866, -0.0158426, 14.1033)
 
 [node name="Color Chaning" parent="." instance=ExtResource("4_rrkxr")]
 transform = Transform3D(0.964326, 0, 0.291663, 0, 1, 0, -0.264715, 0, 1.0625, -1.32295, 1.68295, -11.0408)

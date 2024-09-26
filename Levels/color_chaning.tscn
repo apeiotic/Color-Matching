@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dslkbp5ncuecm"]
 
-[ext_resource type="Script" path="res://color_changing.gd" id="1_sierv"]
+[ext_resource type="Script" path="res://Scripts/color_changing.gd" id="1_sierv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m41w7"]
 size = Vector3(3.47028, 1, 1)
@@ -26,3 +26,4 @@ text = "Color Changer"
 
 [connection signal="ChangeColor" from="." to="Area3D/CollisionShape3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

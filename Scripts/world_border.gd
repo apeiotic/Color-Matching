@@ -14,4 +14,5 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		body.dead()
+	print("playerentered")
 	pass # Replace with function body.

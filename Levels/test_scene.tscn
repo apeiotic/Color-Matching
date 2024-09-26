@@ -16,12 +16,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ecc13"]
 panorama = ExtResource("2_4ll8p")
 
-[sub_resource type="Sky" id="Sky_61tlh"]
+[sub_resource type="Sky" id="Sky_mbr6i"]
 sky_material = SubResource("PanoramaSkyMaterial_ecc13")
 
 [sub_resource type="Environment" id="Environment_opxv3"]
 background_mode = 2
-sky = SubResource("Sky_61tlh")
+sky = SubResource("Sky_mbr6i")
 tonemap_mode = 3
 ssao_intensity = 26.75
 sdfgi_bounce_feedback = 0.28

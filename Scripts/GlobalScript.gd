@@ -4,6 +4,8 @@ signal JumppadCollision
 signal color(PlayerColor)
 signal stamina(stamina)
 signal playerspeed(playerspeed)
+signal colorchange(color)
+signal dead
 
 var sensitivity  = 0.01
 var Camera_Sway = true
@@ -21,4 +23,6 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
+		
+	
 	pass

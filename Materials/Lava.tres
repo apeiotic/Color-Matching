@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://t5vcyp2eh3a2"]
+
+[ext_resource type="Texture2D" uid="uid://sturkjdxi7gq" path="res://Materials/texture/lava_rocks_01_color_1k.png" id="1_qjmhq"]
+[ext_resource type="Texture2D" uid="uid://csaxpeh2vpdyf" path="res://Materials/texture/lava_rocks_01_ambient_occlusion_1k.png" id="2_3804q"]
+[ext_resource type="Texture2D" uid="uid://cy74pg6m7tcx7" path="res://Materials/texture/lava_rocks_01_height_1k.png" id="3_0d5og"]
+[ext_resource type="Texture2D" uid="uid://hognv6s004h0" path="res://Materials/texture/lava_rocks_01_emission_1k.png" id="3_4wa42"]
+[ext_resource type="Texture2D" uid="uid://5yybym2xs00b" path="res://Materials/texture/lava_rocks_01_normal_dx_1k.png" id="4_qundy"]
+[ext_resource type="Texture2D" uid="uid://bkk8py3ylcuhy" path="res://Materials/texture/lava_rocks_01_roughness_1k.png" id="5_nwfcx"]
+
+[resource]
+albedo_texture = ExtResource("1_qjmhq")
+roughness_texture = ExtResource("5_nwfcx")
+emission_enabled = true
+emission = Color(0.94, 0.250667, 0, 1)
+emission_energy_multiplier = 7.93
+emission_operator = 1
+emission_texture = ExtResource("3_4wa42")
+normal_enabled = true
+normal_scale = 4.53
+normal_texture = ExtResource("4_qundy")
+ao_enabled = true
+ao_texture = ExtResource("2_3804q")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_0d5og")
+uv1_scale = Vector3(35.04, 35.04, 35.04)

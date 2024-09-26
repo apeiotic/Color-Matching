@@ -21,7 +21,7 @@ var gravity = Vector3(0.0, -10.2, 0.0)
 var lerp_amount = 0.09
 var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
-var PlayerColor = colors[0]
+var PlayerColor = colors[2]
 var x_rotation = 0.0
 
 #endregion
@@ -50,7 +50,7 @@ signal canhook()
 #at start function
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	GLB.connect("colorchange", Callable(self, "ColorChanging"))
 	
 #Event tick
 func _physics_process(delta: float) -> void:
@@ -187,8 +187,8 @@ func sprint(): #(Run this function in physics process delta)
 	
 	if Input.is_action_just_released("Sprint"):
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
-		SPEED= 8.5
-		
+		SPEED= 5
+		print("released")
 	
 	
 	if not Input.is_action_pressed("Sprint") or stamina <= 0:
@@ -226,6 +226,8 @@ func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump'
 	if is_on_floor() :
 		jump_count = 0
 
+func ColorChanging(color: Variant):
+	PlayerColor = color
 
 
 #region Color Regions
@@ -279,8 +281,8 @@ func NotSameColor(): #function of what to do when our color doesnt match to what
 	pass
 
 func dead():
-	print("You are Dead")
 	deathtimer.start()
+	print("youredead")
 
 func jumppadeffect():
 	JumppadTimer.start()
@@ -296,6 +298,7 @@ func jumppadeffect():
 #singals and shit
 func _on_color_change(color: Variant) -> void:
 	PlayerColor = color
+	print("ColorChanged")
 
 func _on_timer_2_timeout() -> void:
 	jump_count +=1 

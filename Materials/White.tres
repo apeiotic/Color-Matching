@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b7x50u308c71v"]
+
+[ext_resource type="Texture2D" uid="uid://oefj0cmln3td" path="res://addons/kenney_prototype_textures/light/texture_02.png" id="1_eerig"]
+
+[resource]
+albedo_texture = ExtResource("1_eerig")
+metallic = 0.15
+metallic_specular = 0.29
+roughness = 0.05
+uv1_scale = Vector3(9.005, 9.005, 9.005)
+texture_filter = 5

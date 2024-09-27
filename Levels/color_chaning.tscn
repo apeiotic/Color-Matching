@@ -25,5 +25,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269941, 0)
 text = "Color Changer"
 
 [connection signal="ChangeColor" from="." to="Area3D/CollisionShape3D" method="_on_color_changing_change_color"]
-[connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]

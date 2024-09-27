@@ -5,8 +5,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_b5lfc")
-shader_parameter/WATER_COL = Color(1, 0, 0, 1)
-shader_parameter/WATER2_COL = Color(0.546408, 1.56425e-06, 0, 1)
+shader_parameter/WATER_COL = Color(0.673125, 0.30408, 1, 1)
+shader_parameter/WATER2_COL = Color(0.374442, 0.00200185, 0.640902, 1)
 shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
 shader_parameter/distortion_speed = 3.0
 shader_parameter/tile = Vector2(262.895, 396.815)

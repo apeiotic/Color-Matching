@@ -21,7 +21,7 @@ var gravity = Vector3(0.0, -10.2, 0.0)
 var lerp_amount = 0.09
 var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
-var PlayerColor = colors[2]
+var PlayerColor = colors[0]
 var x_rotation = 0.0
 
 #endregion

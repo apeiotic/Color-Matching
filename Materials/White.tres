@@ -1,11 +1,26 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b7x50u308c71v"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b7x50u308c71v"]
 
 [ext_resource type="Texture2D" uid="uid://oefj0cmln3td" path="res://addons/kenney_prototype_textures/light/texture_02.png" id="1_eerig"]
+[ext_resource type="Texture2D" uid="uid://w45cvq3r4pbj" path="res://Materials/White Emis.png" id="2_iihoj"]
+[ext_resource type="Texture2D" uid="uid://c8ln3847h3pup" path="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png" id="3_2y8sw"]
 
 [resource]
 albedo_texture = ExtResource("1_eerig")
 metallic = 0.05
 metallic_specular = 0.29
 roughness = 0.05
+emission_enabled = true
+emission = Color(0.766086, 0.798001, 0.860703, 1)
+emission_energy_multiplier = 4.21
+emission_operator = 1
+emission_on_uv2 = true
+emission_texture = ExtResource("2_iihoj")
+normal_enabled = true
+normal_scale = 2.57
+normal_texture = ExtResource("3_2y8sw")
 uv1_scale = Vector3(9.005, 9.005, 9.005)
+uv2_scale = Vector3(0.063, 0.05, 0.074)
+uv2_offset = Vector3(0.32, 0, 0)
+uv2_triplanar = true
+uv2_world_triplanar = true
 texture_filter = 5

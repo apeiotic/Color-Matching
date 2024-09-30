@@ -9,5 +9,5 @@ shader_parameter/WATER_COL = Color(0.673125, 0.30408, 1, 1)
 shader_parameter/WATER2_COL = Color(0.374442, 0.00200185, 0.640902, 1)
 shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
 shader_parameter/distortion_speed = 3.0
-shader_parameter/tile = Vector2(262.895, 396.815)
+shader_parameter/tile = Vector2(514.815, 297.38)
 shader_parameter/wave_speed = 1.5

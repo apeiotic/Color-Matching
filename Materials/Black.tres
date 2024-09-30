@@ -1,11 +1,26 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cm8o61ahu0hrs"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cm8o61ahu0hrs"]
 
 [ext_resource type="Texture2D" uid="uid://c0mgi2v5qbpn4" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_mbv7r"]
+[ext_resource type="Texture2D" uid="uid://61erhyachrv3" path="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-367-Seamless-Color_emis.png" id="2_sgntc"]
+[ext_resource type="Texture2D" uid="uid://c8ln3847h3pup" path="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png" id="3_7uttv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_022wi"]
 
 [resource]
 albedo_texture = ExtResource("1_mbv7r")
 metallic = 0.68
 metallic_specular = 0.7
-roughness = 0.07
-uv1_scale = Vector3(9.005, 9.005, 9.005)
+roughness = 0.06
+emission_enabled = true
+emission = Color(1.92523e-07, 0.336073, 0.485558, 1)
+emission_energy_multiplier = 0.1
+emission_operator = 1
+emission_texture = ExtResource("2_sgntc")
+normal_enabled = true
+normal_scale = 2.34
+normal_texture = ExtResource("3_7uttv")
+rim_texture = SubResource("CompressedTexture2D_022wi")
+uv1_scale = Vector3(0.165, 0.165, 0.165)
+uv1_triplanar = true
+uv1_world_triplanar = true
 texture_filter = 5

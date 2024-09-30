@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvsljc7075nvo"]
 
-[ext_resource type="Material" uid="uid://dqra2phbge0it" path="res://Materials/Lime.tres" id="1_wwbce"]
+[ext_resource type="Material" uid="uid://d0p6805qi8uw3" path="res://Materials/Lime.tres" id="1_wwbce"]
 [ext_resource type="Script" path="res://Scripts/Jumppad.gd" id="2_dt4cm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pbovg"]

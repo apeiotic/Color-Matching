@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cy1bnmkbcr3j7"]
+
+[ext_resource type="Shader" path="res://UI/Scrolling.gdshader" id="1_bpsyv"]
+[ext_resource type="Texture2D" uid="uid://x4qv677fhjl7" path="res://UI/modern-military-futuristic-camouflage-seamless-pattern-background-futuristic-hi-tech-design-vector-futuristic-texture-seamless-122937992.jpg" id="2_1ugh4"]
+
+[resource]
+shader = ExtResource("1_bpsyv")
+shader_parameter/scroll_speed = 0.1
+shader_parameter/angle_degrees = 122.727
+shader_parameter/repeat_x = 2.0
+shader_parameter/repeat_y = 2.0
+shader_parameter/row_offset = 0.514
+shader_parameter/texture_to_scroll = ExtResource("2_1ugh4")

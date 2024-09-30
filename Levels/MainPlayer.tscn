@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=27 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
 [ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
@@ -10,8 +10,6 @@
 [ext_resource type="Shader" path="res://Materials/Shader/Stamina_ProgressBar.gdshader" id="7_8dieg"]
 [ext_resource type="Script" path="res://Scripts/action_line.gd" id="7_t6w3n"]
 [ext_resource type="Script" path="res://Scripts/Stamina.gd" id="9_m2oix"]
-[ext_resource type="Shader" path="res://Materials/Shader/LensFalre.gdshader" id="10_rj2n4"]
-[ext_resource type="Texture2D" uid="uid://dvbqn7622x7gx" path="res://Materials/—Pngtree—creative sun light effect with_4276807.png" id="11_vmdme"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n67j0"]
 
@@ -154,17 +152,6 @@ _data = {
 "Speed Bob": SubResource("Animation_ds6sj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvt7x"]
-shader = ExtResource("10_rj2n4")
-shader_parameter/Blur = 0.0
-shader_parameter/FlareThreshold = 0.855
-shader_parameter/Flares = 1
-shader_parameter/FlareSpacing = 0.0
-shader_parameter/Intensity = 8.0
-shader_parameter/Saturation_ = 0.4
-shader_parameter/FlareMult = ExtResource("11_vmdme")
-shader_parameter/FlareMult2 = ExtResource("11_vmdme")
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_itdbw"]
 noise_type = 0
 frequency = 0.05
@@ -265,12 +252,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Effects" type="Node" parent="Neck"]
-
-[node name="Lens Flare" type="ColorRect" parent="Neck/Effects"]
-z_index = -3
-material = SubResource("ShaderMaterial_pvt7x")
-offset_right = 1152.0
-offset_bottom = 647.0
 
 [node name="ActionLine" type="ColorRect" parent="Neck/Effects"]
 z_index = -1

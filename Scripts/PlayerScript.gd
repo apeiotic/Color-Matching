@@ -21,9 +21,9 @@ var gravity = Vector3(0.0, -10.2, 0.0)
 var lerp_amount = 0.09
 var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
+var standingColor = ""
 var PlayerColor = colors[0]
 var x_rotation = 0.0
-
 #endregion
 
 #signals
@@ -31,7 +31,6 @@ signal color(PlayerColor)
 signal canhook()
 
 #region Refrences
-
 #refrences
 @onready var detector = $"Neck/Standing Raycast"
 @onready var camera = $"Neck/Neck 2/Camera3D"
@@ -64,40 +63,71 @@ func _physics_process(delta: float) -> void:
 	
 	staminabar.material.set_shader_parameter("value", stamina)
 	
+	
 	sprint()
 	dash()
 	jump()
 	
 	if detector.is_colliding():
+		
 		var collider = detector.get_collider()
 		var groups = collider.get_groups()
+		print(collider.get_groups())
 		for group in groups:
-			if "Orange" in group.to_lower():
+			
+			if "orange" in group.to_lower():
+				print("MF orange 6848516321")
 				if PlayerColor == "Orange":
 					OnOrange()
+					print("MF orange 6848516321")
+					standingColor = "Orange"
 				else: 
 					NotSameColor()
 			if "green" in group.to_lower():
 				if PlayerColor == "Green":
 					OnGreen()
+					standingColor = "Green"
 				else: 
 					NotSameColor()
 			if "black" in group.to_lower():
-				
 				if PlayerColor == "Black":
 					OnBlack()
+					standingColor = "Black"
 				else: 
 					NotSameColor()
 			if "red" in group.to_lower():
 				if PlayerColor == "Red":
 					OnRed()
+					standingColor = "Red"
 				else: 
 					NotSameColor()
 			if "Lime"in group.to_lower():
 				pass
+			
+			if "blue" in group.to_lower():
+				if PlayerColor == "Blue":
+					OnBlue()
+					standingColor = "Blue"
+				else:
+					NotSameColor()
 	else: 
-		
 		normal()
+	
+	#region saved Color effect
+	if standingColor == "Black":
+		OnBlack()
+	elif standingColor == "Red":
+		OnRed()
+	elif standingColor == "Blue":
+		OnBlue()
+	elif standingColor == "Green":
+		OnGreen()
+	elif standingColor == "Orange":
+		OnOrange()
+	else:
+		normal()
+	#endregion 
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
@@ -111,7 +141,8 @@ func _physics_process(delta: float) -> void:
 			neck_animation.play("Falling Animation")
 			fallen = false
 
-
+	if walking != true: 
+		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
 #region Movement System
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -188,7 +219,6 @@ func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_just_released("Sprint"):
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
 		SPEED= 5
-		print("released")
 	
 	
 	if not Input.is_action_pressed("Sprint") or stamina <= 0:
@@ -241,11 +271,14 @@ func OnBlack(): #what to do when standing on black
 func OnOrange():
 	max_jump = 3
 	GLB.Can_hook = true
+	SPEED =  5
+	sprinting_speed = 8.0
+	print(SPEED)
 
 func OnRed(): #what to do when standing on red
 	SPEED =  8
 	sprinting_speed = 13
-	JUMP_VELOCITY = 3
+	JUMP_VELOCITY = 5
 	CameraSprintFov = 110.0
 	CameraNormalFov = 80.0
 	CanDash = true
@@ -255,6 +288,15 @@ func OnRed(): #what to do when standing on red
 func OnGreen(): #what to do when standing on green
 	JUMP_VELOCITY = 10.0
 	AutoJumping()
+	
+func OnBlue():
+	lerp_amount = 0.005
+	JUMP_VELOCITY = 8
+	SPEED =  8
+	sprinting_speed = 12
+	CameraSprintFov = 110.0
+	CameraNormalFov = 90.0
+	gravity = Vector3(0,-12,0)
 #endregion
 
 
@@ -317,5 +359,4 @@ func jump_pad_timeout() -> void:
 func RandomTImerEnd() -> void:
 	jumppading= false
 	fallen= false
-	print("Randomize timer end")
 #endregion

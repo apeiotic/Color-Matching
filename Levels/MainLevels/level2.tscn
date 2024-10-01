@@ -1,5 +1,6 @@
-[gd_scene load_steps=41 format=4 uid="uid://di8ta2dit7pgt"]
+[gd_scene load_steps=47 format=4 uid="uid://di8ta2dit7pgt"]
 
+[ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_kdclf"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_rch0d"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="2_5wvvo"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_bm7lh"]
@@ -13,6 +14,10 @@
 [ext_resource type="Material" uid="uid://c1s55smgnmwar" path="res://Materials/Portal.tres" id="11_6r8ye"]
 [ext_resource type="PackedScene" uid="uid://d07hphn0010nv" path="res://Assets/3d Assets/City Assets/Cabinet_01.dae" id="12_e2lb6"]
 [ext_resource type="PackedScene" uid="uid://c2tx6l61nawfh" path="res://Assets/3d Assets/City Assets/ElectricBox_02.dae" id="13_x6bi8"]
+[ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="14_wqtej"]
+[ext_resource type="PackedScene" uid="uid://ddxpcf2f4iq6b" path="res://Levels/Interactable_Objects/pallet.tscn" id="15_xcpdb"]
+[ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="16_h7yxs"]
+[ext_resource type="PackedScene" uid="uid://bjpmso3jem1kp" path="res://Levels/Interactable_Objects/HandBag.tscn" id="17_mqryx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jvdwt"]
 energy_multiplier = 3.1
@@ -250,7 +255,11 @@ shadow_mesh = SubResource("ArrayMesh_hbj8h")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m4ihr"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsrtl"]
+size = Vector3(4.78345, 5.31195, 1)
+
 [node name="Level 2" type="Node3D"]
+script = ExtResource("1_kdclf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(13.1629, 0, 0, 0, 2.94756, 0, 0, 0, 15.8988, -0.0104441, -2.73414, -7.84655)
@@ -799,3 +808,27 @@ transform = Transform3D(-0.176878, 0, -3.45109, 0, 3.45562, 0, 3.45109, 0, -0.17
 modulate = Color(0.846934, 0.449077, 3.85046e-07, 1)
 text = "JUMP!!!"
 uppercase = true
+
+[node name="Crate 1" parent="." instance=ExtResource("14_wqtej")]
+transform = Transform3D(-5.9986e-08, -0.68616, 1.18846, 1.37232, -2.9993e-08, 5.19494e-08, 0, 1.18846, 0.68616, 0.0460575, 1.03835, -12.4346)
+
+[node name="Pallet" parent="." instance=ExtResource("15_xcpdb")]
+transform = Transform3D(1.00884, 0, 1.00884, 0, 1.42672, 0, -1.00884, 0, 1.00884, 2.47178, 0.813054, -15.7056)
+
+[node name="Crate 2" parent="." instance=ExtResource("14_wqtej")]
+transform = Transform3D(1.30357, 0, 0, 0, 1.30357, 0, 0, 0, 1.30357, 2.56598, 1.31155, -15.7923)
+
+[node name="Crate 3" parent="." instance=ExtResource("16_h7yxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02499, 1.00785, -15.0932)
+
+[node name="RigidBody3D10" parent="." instance=ExtResource("17_mqryx")]
+transform = Transform3D(0.609855, -0.792513, 0, 0.792513, 0.609855, 0, 0, 0, 1, -1.30772, 1.5147, -15.0529)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2772, 15.6817, -18.89)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.069285, -0.111694, 0.302216, 0)
+shape = SubResource("BoxShape3D_rsrtl")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

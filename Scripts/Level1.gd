@@ -30,5 +30,5 @@ func PusherActivate(body: Node3D) -> void:
 
 #finsih line reached
 func Finish_Line_reached(body: Node3D) -> void:
-	print("Finish line reached")
-	pass # Replace with function body.
+	if body.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Levels/MainLevels/level4.tscn")

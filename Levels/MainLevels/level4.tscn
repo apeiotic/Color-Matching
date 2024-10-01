@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d073v22is5r0s"]
+[gd_scene load_steps=25 format=4 uid="uid://d073v22is5r0s"]
 
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_id6as"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_bfx4l"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="5_tahvm"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="7_ab11o"]
 [ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="10_t7w3a"]
+[ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="11_b3t67"]
+[ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="12_homd3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnacu"]
 
@@ -177,10 +179,10 @@ size = Vector3(14.6715, 22.4843, 11.3423)
 material = ExtResource("1_id6as")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="." groups=["Blue"]]
-transform = Transform3D(-1.01218e-16, 0.115526, 1.03398e-23, 8.83476e-10, 0, 0.266328, 0.0202116, 0, -1.16416e-08, 0.612868, 7.92416, 5.1209)
+transform = Transform3D(-1.01218e-16, 0.115526, 1.03398e-23, 8.83476e-10, 0, 0.266328, 0.0202116, 0, -1.16416e-08, 0.612868, 7.21223, 5.1209)
 material_override = ExtResource("2_bfx4l")
 use_collision = true
-size = Vector3(14.6715, 23.479, 10.1161)
+size = Vector3(14.6715, 23.479, 15.4623)
 material = ExtResource("1_id6as")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="." groups=["Blue"]]
@@ -327,7 +329,7 @@ size = Vector3(14.6715, 10.9242, 12.0973)
 material = ExtResource("1_id6as")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_hfcpk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.585632, 4.07832, -0.926424)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.713461, 4.07832, -0.9422)
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -410,7 +412,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.28647)
 size = Vector3(20, 20, 24.0867)
 mesh_lod_threshold = 0.0
 ambient_mode = 2
-ambient_color = Color(0.909804, 0.0862745, 0, 1)
+ambient_color = Color(1, 0.702415, 0.649969, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591315, 4.14197, 10.0776)
@@ -476,3 +478,9 @@ shape = SubResource("ConcavePolygonShape3D_77227")
 [node name="Color Changing3" parent="." instance=ExtResource("5_tahvm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.644546, 2.83291, -0.971611)
 color = ["Blue", "Black", "Green", "Red", "Lime", "Cyan", "Orange"]
+
+[node name="Crate 1" parent="." instance=ExtResource("11_b3t67")]
+transform = Transform3D(0.263635, -0.874127, -0.407921, 0.817197, 0.427078, -0.387032, 0.512529, -0.231317, 0.826926, 3.20572, 2.70144, 0.416808)
+
+[node name="Crate 2" parent="." instance=ExtResource("12_homd3")]
+transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -2.01159, 2.69215, 0.454716)

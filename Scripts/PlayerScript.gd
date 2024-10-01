@@ -63,7 +63,6 @@ func _physics_process(delta: float) -> void:
 	
 	staminabar.material.set_shader_parameter("value", stamina)
 	
-	
 	sprint()
 	dash()
 	jump()
@@ -113,19 +112,18 @@ func _physics_process(delta: float) -> void:
 	else: 
 		normal()
 	
+	
 	#region saved Color effect
 	if standingColor == "Black":
 		OnBlack()
-	elif standingColor == "Red":
+	if standingColor == "Red":
 		OnRed()
-	elif standingColor == "Blue":
+	if standingColor == "Blue":
 		OnBlue()
-	elif standingColor == "Green":
+	if standingColor == "Green":
 		OnGreen()
-	elif standingColor == "Orange":
+	if standingColor == "Orange":
 		OnOrange()
-	else:
-		normal()
 	#endregion 
 	
 	# Add the gravity.
@@ -323,7 +321,7 @@ func NotSameColor(): #function of what to do when our color doesnt match to what
 	pass
 
 func dead():
-	deathtimer.start()
+	get_tree().reload_current_scene()
 	print("youredead")
 
 func jumppadeffect():

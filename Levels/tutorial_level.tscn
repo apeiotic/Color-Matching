@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ci7xykjkxwccl"]
 
-[ext_resource type="Script" path="res://Scripts/Level1.gd" id="1_336a0"]
+[ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_8hi74"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_nogqf"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_ncbl0"]
 [ext_resource type="Material" uid="uid://3dvnem8pq80i" path="res://Materials/Default.tres" id="3_wtlfe"]
@@ -27,7 +27,7 @@ glow_enabled = true
 size = Vector3(6.43604, 5.29675, 3.65173)
 
 [node name="Tutorial Level" type="Node3D"]
-script = ExtResource("1_336a0")
+script = ExtResource("1_8hi74")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ayi0w")
@@ -120,19 +120,21 @@ you're standing on, YOU DIE.
 --->"
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="."]
-transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.0359, 1.31073, -25.0431)
+transform = Transform3D(1.24059e-13, 2.2851e-08, -13.7204, 13.7597, -2.2851e-08, 0, -6.01454e-07, -0.52277, -5.99736e-07, -10.0359, 1.43043, -25.0431)
 material_override = ExtResource("3_wtlfe")
 use_collision = true
-size = Vector3(0.255936, 0.720215, 0.398138)
+size = Vector3(0.273335, 0.720215, 0.398138)
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D10"]
-transform = Transform3D(1.60752e-16, 0.084133, -3.67757e-09, 9.67961e-08, -9.67961e-08, -2.21444, -0.084374, 5.99514e-16, -3.68811e-09, 0.000825025, -0.449356, 0.190857)
+transform = Transform3D(1.60752e-16, 0.084133, -3.67757e-09, 9.67961e-08, -9.67961e-08, -2.21444, -0.084374, 5.99514e-16, -3.68811e-09, -0.00353695, -0.449348, 0.190857)
 text = "Here is simple list: 
 Red: Speed Boost and blink
 Black: Slows you and gives you ability to shadow 
 dash (KeybindV). You can only use it once
 Orange: tripple jump and platform spawner(not added yet)
 Lime: JumpPad
+Blue: It makes you very slippery but makes you very fast 
+as well. 
 Green: Keeps you jumping and gives you ability to 
 grapple
 White: Default (does nothing)
@@ -142,12 +144,12 @@ A lot more is coming but this is just a prototype.
 horizontal_alignment = 0
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_ncbl0")]
-transform = Transform3D(0.999601, 2.01137e-05, 0.0282511, -5.10212e-06, 1, -0.000531511, -0.0282511, 0.000531155, 0.999601, 4.06467, 0.727808, -1.0265)
+transform = Transform3D(0.999601, 2.01137e-05, 0.0282511, -5.10212e-06, 1, -0.000531511, -0.0282511, 0.000531155, 0.999601, -8.52357, 0.727808, 8.56071)
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52555, 2.14838, -26.978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42784, 2.14838, -26.978)
 shape = SubResource("BoxShape3D_234v6")
 
 [node name="JumpPad" parent="." instance=ExtResource("5_iqr81")]

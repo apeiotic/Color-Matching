@@ -231,6 +231,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="Death Timer" type="Timer" parent="Neck"]
+process_callback = 0
 wait_time = 0.5
 one_shot = true
 

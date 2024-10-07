@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_ncbl0"]
 [ext_resource type="Material" uid="uid://3dvnem8pq80i" path="res://Materials/Default.tres" id="3_wtlfe"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="5_iqr81"]
-[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="6_6gpux"]
+[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="6_6gpux"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6wuk"]
 sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)

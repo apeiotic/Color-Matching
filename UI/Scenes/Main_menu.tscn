@@ -1,0 +1,218 @@
+[gd_scene load_steps=11 format=3 uid="uid://b48l7ear8lc3v"]
+
+[ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_3bgtc"]
+[ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_mf2qj"]
+[ext_resource type="Theme" uid="uid://djaw4fh85h3dy" path="res://UI/Script/MainMenu.tres" id="2_qkyvr"]
+[ext_resource type="Texture2D" uid="uid://c037dqaruh6mg" path="res://UI/images/Warning Image.png" id="4_0n1lt"]
+[ext_resource type="AudioStream" uid="uid://bwjwnoje3l5v7" path="res://Audio/SFX/Hover.wav" id="5_vaqpp"]
+[ext_resource type="AudioStream" uid="uid://bt3vas6gdwumw" path="res://Audio/SFX/Select.wav" id="6_drcgc"]
+
+[sub_resource type="Shader" id="Shader_4nxkh"]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : source_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqx03"]
+shader = SubResource("Shader_4nxkh")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(0.968627, 0, 0, 1)
+shader_parameter/line_freq = 12.525
+shader_parameter/height = 0.6
+shader_parameter/speed = 0.16
+shader_parameter/scale = Vector2(1.285, 16)
+
+[sub_resource type="Gradient" id="Gradient_xq3q3"]
+offsets = PackedFloat32Array(0, 0.225146, 0.467836, 0.719298, 0.836257, 0.880117)
+colors = PackedColorArray(0.980614, 0.947052, 0.946844, 0.0189694, 0.73889, 0.286861, 0.284053, 0.255495, 0.635294, 0.00392157, 0, 0.356863, 0.855152, 0.604394, 0.602837, 0.141733, 0.89729, 0.71948, 0.718375, 0.100501, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sh3xe"]
+gradient = SubResource("Gradient_xq3q3")
+fill_from = Vector2(0.5, 0.7)
+fill_to = Vector2(0.5, 0.2)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3bgtc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gqx03")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0.568627)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_sh3xe")
+
+[node name="Margin Play" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -114.58
+offset_right = 114.5
+offset_bottom = -49.58
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin Play"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Play" type="Button" parent="Margin Play/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qkyvr")
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_mf2qj")
+theme_override_font_sizes/font_size = 56
+text = "play"
+metadata/_edit_lock_ = true
+
+[node name="Margin Quit" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = 42.155
+offset_right = 89.5
+offset_bottom = 106.155
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Margin Quit"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Quit" type="Button" parent="Margin Quit/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_qkyvr")
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_mf2qj")
+theme_override_font_sizes/font_size = 56
+text = "quit"
+metadata/_edit_lock_ = true
+
+[node name="Marging Setting" type="MarginContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -32.0
+offset_right = 199.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Marging Setting"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Settings" type="Button" parent="Marging Setting/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_qkyvr")
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_mf2qj")
+theme_override_font_sizes/font_size = 56
+text = "settings"
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Warning" type="TextEdit" parent="MarginContainer4"]
+layout_mode = 2
+text = "Alpha Stage"
+
+[node name="WarningImage" type="Sprite2D" parent="MarginContainer4"]
+position = Vector2(-17.475, 24)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_0n1lt")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_vaqpp")
+volume_db = 10.0
+pitch_scale = 1.22
+bus = &"SoundEffects"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_drcgc")
+bus = &"SoundEffects"
+
+[connection signal="mouse_entered" from="Margin Play/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Margin Play/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Margin Quit/VBoxContainer2/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Margin Quit/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="Marging Setting/VBoxContainer2/Settings" to="." method="_on_settings_mouse_entered"]

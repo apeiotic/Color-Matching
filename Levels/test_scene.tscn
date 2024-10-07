@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="3_8jfic"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="3_hhwko"]
 [ext_resource type="Material" uid="uid://uiva1ad5hjth" path="res://Materials/Green.tres" id="4_5fx55"]
-[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="4_rrkxr"]
+[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="4_rrkxr"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="7_l2gwe"]
 [ext_resource type="PackedScene" uid="uid://cq357jlklgkqm" path="res://Levels/Obstacle.tscn" id="8_tudm2"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_s8coa"]

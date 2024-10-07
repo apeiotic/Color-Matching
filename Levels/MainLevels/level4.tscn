@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="3_ys071"]
 [ext_resource type="Material" uid="uid://d0jxrrt5bsvu5" path="res://Materials/Glowy.tres" id="4_ny5vd"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="4_ph437"]
-[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_chaning.tscn" id="5_tahvm"]
+[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="5_tahvm"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="7_ab11o"]
 [ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="10_t7w3a"]
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="11_b3t67"]
@@ -61,12 +61,12 @@ sky_rotation = Vector3(0, -1.30551, 0)
 tonemap_mode = 1
 tonemap_exposure = 1.13
 ssr_enabled = true
-ssao_enabled = true
 ssao_radius = 22.1
 ssao_power = 1.60766
 ssao_detail = 2.94
 ssao_horizon = 0.05
 ssao_light_affect = 0.03
+sdfgi_enabled = true
 glow_enabled = true
 glow_intensity = 1.78
 glow_bloom = 0.09
@@ -204,6 +204,13 @@ transform = Transform3D(0.0202116, -5.0498e-09, -1.16416e-08, 8.83476e-10, 0, 0.
 material_override = ExtResource("2_bfx4l")
 use_collision = true
 size = Vector3(14.6715, 144.553, 64.0939)
+material = ExtResource("1_id6as")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="." groups=["Blue"]]
+transform = Transform3D(-1.76695e-09, 6.31165e-16, -0.0731052, 0.0202116, -5.0498e-09, -6.39107e-09, -8.83477e-10, -0.115526, 6.59124e-16, 1.21163, 9.12823, 13.3082)
+material_override = ExtResource("2_bfx4l")
+use_collision = true
+size = Vector3(14.6715, 145.12, 64.0939)
 material = ExtResource("1_id6as")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="." groups=["Blue"]]
@@ -374,13 +381,14 @@ size = Vector3(3.74609, 1, 1)
 
 [node name="JumpPad" parent="." instance=ExtResource("4_ph437")]
 transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 0.278246, -4.26322, 23.2033)
+repel_strength = 16.0
 
 [node name="Color Changing" parent="." instance=ExtResource("5_tahvm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.691725, -1.30032, 18.8636)
 color = ["Lime", "Black", "Green", "Red", "Blue", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("5_tahvm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.691725, 5.01967, 23.9489)
+transform = Transform3D(-1.77502, 0, 1.55177e-07, 0, 1.77502, 0, -1.55177e-07, 0, -1.77502, 0.691725, 6.11656, 24.7456)
 color = ["Blue", "Cyan", "Lime", "Black", "Green", "Red", "Orange"]
 
 [node name="World Border" parent="." instance=ExtResource("7_ab11o")]
@@ -476,7 +484,7 @@ mesh = SubResource("BoxMesh_mtoxl")
 shape = SubResource("ConcavePolygonShape3D_77227")
 
 [node name="Color Changing3" parent="." instance=ExtResource("5_tahvm")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.644546, 2.83291, -0.971611)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.644546, 3.87137, -0.971611)
 color = ["Blue", "Black", "Green", "Red", "Lime", "Cyan", "Orange"]
 
 [node name="Crate 1" parent="." instance=ExtResource("11_b3t67")]

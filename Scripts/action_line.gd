@@ -13,7 +13,7 @@ func saveplayerspeed (playerspeed):
 func _process(delta: float) -> void:
 	compare_Speed_and_visibilty()
 	
-	pass
+
 
 func compare_Speed_and_visibilty():
 	if  L_Playerspeed > 7 : 

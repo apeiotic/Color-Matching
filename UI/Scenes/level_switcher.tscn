@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://v7bt0i4rho2y"]
+
+[ext_resource type="Script" path="res://Scripts/level_switcher.gd" id="1_3gkv4"]
+[ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_88vei"]
+[ext_resource type="Texture2D" uid="uid://m8c3ex56nibt" path="res://UI/images/GUI/TitlePanel01.png" id="2_gqayu"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="3_oxt0h"]
+[ext_resource type="Texture2D" uid="uid://h4nmmoaeakhw" path="res://UI/images/GUI/Slider02.png" id="4_mk5me"]
+[ext_resource type="Material" uid="uid://cy1bnmkbcr3j7" path="res://Materials/Scrolling Texture.tres" id="4_ri64u"]
+[ext_resource type="Texture2D" uid="uid://c6pvpigh1vyvy" path="res://UI/images/GUI/HoverButton11.png" id="7_xg0ri"]
+[ext_resource type="Theme" uid="uid://dq2bcxrdylvqh" path="res://UI/Script/LevelSwitcher.tres" id="7_y5if3"]
+[ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="8_7oeaf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ca0yi"]
+texture = ExtResource("7_xg0ri")
+expand_margin_left = 13.0
+expand_margin_top = 6.0
+expand_margin_right = 13.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eedhe"]
+texture = ExtResource("8_7oeaf")
+expand_margin_left = 13.0
+expand_margin_top = 6.0
+expand_margin_right = 13.0
+expand_margin_bottom = 6.0
+
+[node name="Level Switcher" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gkv4")
+
+[node name="TitlePanel01" type="Sprite2D" parent="."]
+position = Vector2(560, 80)
+texture = ExtResource("2_gqayu")
+
+[node name="Button" type="Button" parent="TitlePanel01"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -1.525
+anchor_right = 0.5
+anchor_bottom = -1.525
+offset_left = -249.0
+offset_top = -31.5
+offset_right = -75.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("3_oxt0h")
+theme_override_font_sizes/font_size = 28
+text = "Level switcher
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Back Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 36.0
+scale = Vector2(2.337, 2.685)
+theme_override_font_sizes/font_size = 26
+icon = ExtResource("4_mk5me")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 0.458824)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
+z_index = -1
+material = ExtResource("4_ri64u")
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 646.0
+metadata/_edit_lock_ = true
+
+[node name="Tutorial button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 152.0
+offset_right = 316.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("2_88vei")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/hover = SubResource("StyleBoxTexture_ca0yi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_eedhe")
+text = "tutorial"
+
+[node name="level 1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 153.0
+offset_right = 474.0
+offset_bottom = 203.0
+theme = ExtResource("7_y5if3")
+theme_override_fonts/font = ExtResource("2_88vei")
+text = "1"
+
+[node name="level 2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 152.0
+offset_right = 622.0
+offset_bottom = 202.0
+theme = ExtResource("7_y5if3")
+theme_override_fonts/font = ExtResource("2_88vei")
+text = "2"
+
+[node name="level 3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 152.0
+offset_right = 774.0
+offset_bottom = 202.0
+theme = ExtResource("7_y5if3")
+theme_override_fonts/font = ExtResource("2_88vei")
+text = "3"
+
+[node name="level 4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 152.0
+offset_right = 926.0
+offset_bottom = 202.0
+theme = ExtResource("7_y5if3")
+theme_override_fonts/font = ExtResource("2_88vei")
+text = "4"
+
+[node name="HoverButton11" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(559, 53)
+scale = Vector2(3.16191, 4.02381)
+texture = ExtResource("8_7oeaf")
+
+[connection signal="pressed" from="Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Tutorial button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="level 4" to="." method="_on_level_4_pressed"]

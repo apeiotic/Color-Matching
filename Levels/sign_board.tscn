@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ndygkfdh5qk"]
+
+[ext_resource type="Material" uid="uid://ibjekthlh810" path="res://Materials/SignMaterial.tres" id="1_8bi0v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_he2xl"]
+material = ExtResource("1_8bi0v")
+
+[node name="Sign board" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0662952, 0, 0, 0)
+material_override = ExtResource("1_8bi0v")
+mesh = SubResource("BoxMesh_he2xl")

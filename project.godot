@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Color Matching"
-run/main_scene="res://UI/Main_menu.tscn"
+run/main_scene="res://UI/Scenes/Main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.223377, 0.0995334, 0.074767, 1)
 config/icon="res://icon.svg"
@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 
 GLB="*res://Scripts/GlobalScript.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

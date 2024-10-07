@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 #region Variables
 #variables
+#-------Booleans----------#
 var walking = false
 var CanDash = true
 var CanSlimeJump = true
@@ -9,7 +10,14 @@ var jumppading= false
 var SlimeJump = false
 var fallen = false
 var sprinting = true
-var SPEED = 5.0
+var can_wallrun = false
+var is_wallrunning = false
+var is_wallrun_jumping = false
+
+var wallrun_current_angle = 0
+var wallrun_angle = 15
+var wallrun_delay = 0.4
+var SPEED : float = 5.0
 var JUMP_VELOCITY = 4.5
 var jump_count = 0
 var max_jump = 1
@@ -18,12 +26,19 @@ var stamina = 100
 var CameraSprintFov = 90.0
 var CameraNormalFov = 75.0
 var gravity = Vector3(0.0, -10.2, 0.0)
+var wall_jump_dir = Vector3.ZERO
+var wall_jump_horizontal_power =2.5
+var wall_jump_vertical_power = 0.7
+var wall_jump_factor = 0.4
+
 var lerp_amount = 0.09
 var sway_speed = 0.05
 var colors = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
 var standingColor = ""
+var side = ""
 var PlayerColor = colors[0]
 var x_rotation = 0.0
+var direction = Vector3()
 #endregion
 
 #signals
@@ -32,6 +47,8 @@ signal canhook()
 
 #region Refrences
 #refrences
+
+@onready var wallrun_delay_default = wallrun_delay
 @onready var detector = $"Neck/Standing Raycast"
 @onready var camera = $"Neck/Neck 2/Camera3D"
 @onready var dashraycast = $"Neck/Dash raycast"
@@ -42,7 +59,11 @@ signal canhook()
 @onready var neck_animation = $Neck/AnimationPlayer
 @onready var JumppadTimer= $Neck/JumpPad
 @onready var RandomTimer = $Neck/RandomTimers
-@onready var staminabar = $"Stamina ProgressBar"
+@onready var staminabar = $"Effects/Stamina ProgressBar"
+@onready var neck2 = $"Neck/Neck 2"
+@onready var LeftWallDetector = $Neck/LeftWallDetector
+@onready var RIghtWallDetector = $Neck/RightWallDetector
+@onready var ActionLine = $Effects/ActionLine
 
 #endregion
 
@@ -51,8 +72,53 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GLB.connect("colorchange", Callable(self, "ColorChanging"))
 	
+
+
 #Event tick
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("Esc"): 
+		HUD.hide()
+		ActionLine.hide()
+	else:
+		HUD.show()
+		
+	
+	if is_on_floor():
+		can_wallrun = false
+		wallrun_delay = 0.4
+		is_wallrunning = false
+		is_wallrun_jumping = false
+	else:
+		wallrun_delay = clamp(wallrun_delay - delta, 0, wallrun_delay_default)
+		if wallrun_delay == 0:
+			if LeftWallDetector.is_colliding():
+				var leftwalls = LeftWallDetector.get_collider()
+				var leftgroups = leftwalls.get_groups()
+				
+				for group in leftgroups:
+					if "orange" in group.to_lower():
+						can_wallrun = true
+					else:
+						can_wallrun = false
+			elif RIghtWallDetector.is_colliding():
+				var rightwalls = RIghtWallDetector.get_collider()
+				var rightgroups = rightwalls.get_groups()
+				
+				for group in rightgroups: 
+					if "orange" in group.to_lower():
+						can_wallrun = true
+					else: 
+						can_wallrun = false
+		else:
+			can_wallrun = false
+			
+			
+		velocity += gravity * delta
+		fallen = true
+
+	
+	
 	
 	var playerspeed = velocity.length()
 	
@@ -66,19 +132,21 @@ func _physics_process(delta: float) -> void:
 	sprint()
 	dash()
 	jump()
+	process_wallrun()
+	process_wallrun_rotation(delta)
+	print(wallrun_delay)
 	
+	#region Detecting standing block type
 	if detector.is_colliding():
 		
 		var collider = detector.get_collider()
 		var groups = collider.get_groups()
-		print(collider.get_groups())
 		for group in groups:
 			
 			if "orange" in group.to_lower():
-				print("MF orange 6848516321")
 				if PlayerColor == "Orange":
 					OnOrange()
-					print("MF orange 6848516321")
+					
 					standingColor = "Orange"
 				else: 
 					NotSameColor()
@@ -111,6 +179,7 @@ func _physics_process(delta: float) -> void:
 					NotSameColor()
 	else: 
 		normal()
+	#endregion
 	
 	
 	#region saved Color effect
@@ -126,10 +195,7 @@ func _physics_process(delta: float) -> void:
 		OnOrange()
 	#endregion 
 	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += gravity * delta
-		fallen = true
+
 	
 	if fallen == true: 
 		if is_on_floor():
@@ -141,12 +207,14 @@ func _physics_process(delta: float) -> void:
 
 	if walking != true: 
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
+	
+	
 #region Movement System
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left", "Right", "Up", "Down")
 	var camera_basis = camera.global_transform.basis
-	var direction = camera_basis * Vector3(input_dir.x, 0, input_dir.y)
+	direction = camera_basis * Vector3(input_dir.x, 0, input_dir.y)
 	direction = direction.normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -159,6 +227,8 @@ func _physics_process(delta: float) -> void:
 #endregion
 	
 #region Camera Sway and bob
+	
+
 	#Camera Sway
 	if GLB.Camera_Sway == true and jumppading != true and SlimeJump != true:
 		if input_dir.x > 0:
@@ -188,6 +258,91 @@ func _physics_process(delta: float) -> void:
 	
 #endregion
 	move_and_slide()
+
+func process_wallrun():
+	
+		
+	if Input.is_action_just_pressed("Jump") and is_wallrunning:
+		wallrun_delay = 0.7
+		can_wallrun = false
+		is_wallrunning = false
+		
+		
+		velocity = Vector3.ZERO
+		
+		velocity.y = JUMP_VELOCITY * wall_jump_vertical_power
+		is_wallrun_jumping = true
+		
+		if side == "LEFT":
+			wall_jump_dir = global_transform.basis.x * wall_jump_horizontal_power
+		elif side == "RIGHT":
+			wall_jump_dir = -global_transform.basis.x * wall_jump_horizontal_power
+		
+		wall_jump_dir *= wall_jump_factor
+		
+		if is_wallrun_jumping:
+			direction = (direction * (1- wall_jump_factor)) + wall_jump_dir
+			return
+	
+	
+	
+	if can_wallrun == true:
+		if is_on_wall() and Input.is_action_pressed("Up"):
+			
+			var collision = get_slide_collision(0)
+			var normal = collision.get_normal()
+			
+			var wallrun_dir = Vector3.UP.cross(normal)
+			
+			var player_view_dir = -camera.global_transform.basis.z
+			var dot = wallrun_dir.dot(player_view_dir)
+			if dot<0:
+				wallrun_dir = -wallrun_dir
+				
+			wallrun_dir += -normal *0.01
+			
+			is_wallrunning = true
+			
+			side = get_side(collision.get_position())
+			
+			velocity.y = -0.01
+			direction = wallrun_dir
+			
+		else: 
+			is_wallrunning = false
+
+func process_wallrun_rotation(delta):
+	if is_wallrunning:
+		
+		if side == "RIGHT":
+			wallrun_current_angle += delta * 70
+			wallrun_current_angle = clamp(wallrun_current_angle, -wallrun_angle, wallrun_angle)
+		elif side == "LEFT":
+			wallrun_current_angle -= delta * 70
+			wallrun_current_angle = clamp(wallrun_current_angle, -wallrun_angle, wallrun_angle)
+	
+	
+	# Return back to normal view
+	else:
+		if wallrun_current_angle > 0:
+			wallrun_current_angle -= delta * 40
+			wallrun_current_angle = max(0, wallrun_current_angle)
+		elif wallrun_current_angle < 0:
+			wallrun_current_angle += delta * 40
+			wallrun_current_angle = min(wallrun_current_angle, 0)
+	
+	
+	neck2.rotation_degrees = Vector3(0, 0, 1) * wallrun_current_angle
+
+func get_side(point):
+	point = to_local(point)
+	
+	if point.x > 0:
+		return "RIGHT"
+	elif point.x < 0:
+		return "LEFT"
+	else: 
+		return "CENTER"
 
 
 
@@ -271,7 +426,7 @@ func OnOrange():
 	GLB.Can_hook = true
 	SPEED =  5
 	sprinting_speed = 8.0
-	print(SPEED)
+	
 
 func OnRed(): #what to do when standing on red
 	SPEED =  8
@@ -312,7 +467,7 @@ func AutoJumping(): #Autojumping, for slimy object
 	neck_animation.stop()
 	neck_animation.play("MiniJump")
 	jumptimer.start(0.4)
-	print(neck_animation.current_animation)
+	
 	if is_on_floor() and CanSlimeJump == true: 
 		AutoJumping()
 
@@ -322,7 +477,7 @@ func NotSameColor(): #function of what to do when our color doesnt match to what
 
 func dead():
 	get_tree().reload_current_scene()
-	print("youredead")
+	
 
 func jumppadeffect():
 	JumppadTimer.start()
@@ -330,7 +485,6 @@ func jumppadeffect():
 	neck_animation.stop()
 	neck_animation.play("JumpPad")
 	
-	print(neck_animation.current_animation)
 
 
 #region Timers And signal
@@ -338,7 +492,7 @@ func jumppadeffect():
 #singals and shit
 func _on_color_change(color: Variant) -> void:
 	PlayerColor = color
-	print("ColorChanged")
+	
 
 func _on_timer_2_timeout() -> void:
 	jump_count +=1 

@@ -1,14 +1,17 @@
 extends Control
 
+
 @onready var SD_hover: AudioStreamPlayer2D = $Audio/Hover
 @onready var SD_select: AudioStreamPlayer2D = $Audio/Select
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	pass
 
 
@@ -19,8 +22,11 @@ func _on_quit_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	SD_select.play()
-	await SD_select.finished 
-	get_tree().change_scene_to_file("res://UI/Scenes/level_switcher.tscn")
+	await (0.9)
+	
+	var loadingscreen = load("res://UI/Scenes/LoadingScreens/LS_MainToLevelSwitr.tscn")
+	get_tree().change_scene_to_packed(loadingscreen)
+	
 
 
 func _on_play_mouse_entered() -> void:

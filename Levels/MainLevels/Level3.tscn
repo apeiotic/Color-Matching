@@ -1283,7 +1283,7 @@ color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan", "Orange"]
 transform = Transform3D(21.9416, 0, 0, 0, 1, 0, 0, 0, 0.951669, 2.19453, 1.43891, -3.81388)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform"]
-transform = Transform3D(-6.51869e-08, 0.999992, -0.000169666, 0.00890787, -0.000169664, -0.999922, -0.999874, -1.57579e-06, -0.0089083, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(-6.51869e-08, 0.999992, -0.000169667, 0.00890787, -0.000169664, -0.999922, -0.999874, -1.57579e-06, -0.0089083, 0.0804991, 0.204911, 0.175739)
 material_override = ExtResource("4_vdinq")
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
@@ -1298,7 +1298,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-6.51869e-08, 0.999992, -0.000169666, 0.00890787, -0.000169664, -0.999922, -0.999874, -1.57579e-06, -0.0089083, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(-6.51869e-08, 0.999992, -0.000169667, 0.00890787, -0.000169664, -0.999922, -0.999874, -1.57579e-06, -0.0089083, 0.0804991, 0.204911, 0.175739)
 progress = 10.2268
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -1314,7 +1314,7 @@ autoplay = "Up Down "
 transform = Transform3D(6.07289, 0, 0, 0, 0.40068, 0, 0, 0, 0.422227, 2.19453, 5.38046, -22.1204)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform2"]
-transform = Transform3D(-6.51843e-08, 0.999992, -0.000169654, 0.0089075, -0.000169664, -0.99985, -0.999833, -1.57579e-06, -0.00890765, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(-6.51843e-08, 0.999992, -0.000169654, 0.0089075, -0.000169664, -0.99985, -0.999833, -1.57579e-06, -0.00890766, 0.0804991, 0.204911, 0.175739)
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
 
@@ -1328,7 +1328,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform2/Path3D"]
-transform = Transform3D(-6.51843e-08, 0.999992, -0.000169654, 0.0089075, -0.000169664, -0.99985, -0.999833, -1.57579e-06, -0.00890765, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(-6.51843e-08, 0.999992, -0.000169654, 0.0089075, -0.000169664, -0.99985, -0.999833, -1.57579e-06, -0.00890766, 0.0804991, 0.204911, 0.175739)
 progress = 10.2268
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform2/Path3D/PathFollow3D"]

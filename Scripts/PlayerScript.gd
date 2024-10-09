@@ -13,6 +13,8 @@ var sprinting = true
 var can_wallrun = false
 var is_wallrunning = false
 var is_wallrun_jumping = false
+var CanWallrunDelay = false
+var Wallrunned = false
 
 var wallrun_current_angle = 0
 var wallrun_angle = 15
@@ -64,6 +66,7 @@ signal canhook()
 @onready var LeftWallDetector = $Neck/LeftWallDetector
 @onready var RIghtWallDetector = $Neck/RightWallDetector
 @onready var ActionLine = $Effects/ActionLine
+@onready var wallrun_delayTimer: Timer = $Neck/WallrunDelay
 
 #endregion
 
@@ -82,16 +85,29 @@ func _physics_process(delta: float) -> void:
 		ActionLine.hide()
 	else:
 		HUD.show()
-		
+	
+
+	if is_wallrunning == true: 
+		Wallrunned = true
+		CanWallrunDelay = true
+	
+	#region if not is on floor and checking for wallrun
+	
+
 	
 	if is_on_floor():
 		can_wallrun = false
 		wallrun_delay = 0.4
 		is_wallrunning = false
 		is_wallrun_jumping = false
+		Wallrunned = false
 	else:
 		wallrun_delay = clamp(wallrun_delay - delta, 0, wallrun_delay_default)
 		if wallrun_delay == 0:
+			
+			if not LeftWallDetector.is_colliding() and not RIghtWallDetector.is_colliding():
+				can_wallrun = false
+			
 			if LeftWallDetector.is_colliding():
 				var leftwalls = LeftWallDetector.get_collider()
 				var leftgroups = leftwalls.get_groups()
@@ -116,7 +132,20 @@ func _physics_process(delta: float) -> void:
 			
 		velocity += gravity * delta
 		fallen = true
-
+	
+	
+	
+	#if is_wallrunning == true:
+		#Wallrunned = true
+		#CanWallrunDelay = true
+		
+	
+	if CanWallrunDelay == true: 
+		if is_wallrunning == false:
+			wallrun_delayTimer.start()
+	
+	
+	#endregion
 	
 	
 	
@@ -134,7 +163,7 @@ func _physics_process(delta: float) -> void:
 	jump()
 	process_wallrun()
 	process_wallrun_rotation(delta)
-	print(wallrun_delay)
+	print( is_on_wall())
 	
 	#region Detecting standing block type
 	if detector.is_colliding():
@@ -257,16 +286,22 @@ func _physics_process(delta: float) -> void:
 			neck_animation.stop()
 	
 #endregion
+	
+	
 	move_and_slide()
 
 func process_wallrun():
 	
 		
-	if Input.is_action_just_pressed("Jump") and is_wallrunning:
+	if Input.is_action_just_pressed("Jump") and Wallrunned:
+		
+		if is_wallrunning == false: 
+			await(get_tree().create_timer(0.5))
+			Wallrunned = false
+		
 		wallrun_delay = 0.7
 		can_wallrun = false
 		is_wallrunning = false
-		
 		
 		velocity = Vector3.ZERO
 		
@@ -359,7 +394,7 @@ func _input(event):
 
 func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_pressed("Sprint"):
-		if walking==true and stamina >= 0: #(when moving set the walking to true)
+		if walking==true and stamina > 0: #(when moving set the walking to true)
 			if stamina > 0:
 				SPEED = sprinting_speed
 				stamina = stamina - 0.5
@@ -512,3 +547,10 @@ func RandomTImerEnd() -> void:
 	jumppading= false
 	fallen= false
 #endregion
+
+
+func _on_wallrun_delay_timeout() -> void:
+	#Wallrunned = false
+	CanWallrunDelay = false
+	print('yoinkkkkkkkkkkk')
+	pass # Replace with function body.

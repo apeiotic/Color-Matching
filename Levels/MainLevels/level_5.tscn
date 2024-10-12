@@ -93,16 +93,28 @@ use_collision = true
 size = Vector3(1.74268, 0.104492, 1.38617)
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.0972e-07, -1, 0, 9.37329, -4.37114e-08, 0, 0, 0, 21.5944, 13.7925, 4.85522, -96.2804)
+transform = Transform3D(-4.0972e-07, -1, 0, 9.37329, -4.37114e-08, 0, 0, 0, 21.5944, 13.7925, 11.7555, -96.2804)
 material_override = ExtResource("1_qucut")
 use_collision = true
-size = Vector3(9.10363, 0.104492, 11.032)
+size = Vector3(10.576, 0.104492, 11.032)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.0972e-07, -1, 0, 9.37329, -4.37114e-08, 0, 0, 0, 21.5944, -15.6231, 2.93633, -98.4683)
+transform = Transform3D(-4.0972e-07, -1, 0, 9.37329, -4.37114e-08, 0, 0, 0, 21.5944, -15.6231, 9.76298, -98.4683)
 material_override = ExtResource("1_qucut")
 use_collision = true
-size = Vector3(9.2977, 0.104492, 11.2347)
+size = Vector3(10.7543, 0.104492, 11.2347)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="."]
+transform = Transform3D(-5.3183e-14, -4.46131e-08, -2.76026, 9.37329, -4.37114e-08, -2.37184e-15, -4.0972e-07, -1, -1.3154e-07, -1.42545, 9.85125, -198.892)
+material_override = ExtResource("1_qucut")
+use_collision = true
+size = Vector3(10.7732, 0.104492, 11.7653)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.80242e-14, 4.37114e-08, 3.5722, 9.37329, -4.37114e-08, 0, 4.0972e-07, 1, -1.56146e-07, 1.05064, 9.85149, 22.7263)
+material_override = ExtResource("1_qucut")
+use_collision = true
+size = Vector3(10.7543, 0.104492, 11.2347)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="."]
 transform = Transform3D(4.68394, -0.0118885, 0, 0.0538757, 1.03358, 0, 0, 0, 21.5944, -1.95077, -17.5343, -75.4853)
@@ -123,28 +135,28 @@ use_collision = true
 size = Vector3(1.74268, 0.104492, 0.28067)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(15.3056, 0, 0, 0, 1, 0, 0, 0, 10.4118, -0.969679, -10.2183, -47.8018)
+transform = Transform3D(15.3056, 0, 0, 0, 1, 0, 0, 0, 10.4118, -0.969679, -10.2183, -45.0587)
 material_override = ExtResource("1_63664")
 use_collision = true
-size = Vector3(1.98715, 27.1072, 0.828735)
+size = Vector3(1.98715, 27.1072, 1.35565)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(12.6498, 0, 0, 0, 2.07948, 0, 0, 0, 101.78, -16.1222, 46.3102, -95.5581)
+transform = Transform3D(12.6498, 0, 0, 0, 2.07948, 0, 0, 0, 101.78, -16.1222, 60.1992, -95.5581)
 material_override = ExtResource("1_qucut")
 use_collision = true
 size = Vector3(1.72797, 0.104492, 2.42795)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(12.6498, 0, 0, 0, 2.07948, 0, 0, 0, 101.78, 16.4999, 46.5867, -93.769)
+transform = Transform3D(12.6498, 0, 0, 0, 2.07948, 0, 0, 0, 101.78, 14.1025, 60.2399, -93.769)
 material_override = ExtResource("1_qucut")
 use_collision = true
 size = Vector3(1.64874, 0.104492, 2.3928)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="."]
-transform = Transform3D(12.7247, 0, 0, 0, 1, 0, 0, 0, 10.4118, -0.154316, 2.52089, -170.859)
+transform = Transform3D(12.7247, 0, 0, 0, 1, 0, 0, 0, 10.4118, -0.154316, 2.52089, -180.503)
 material_override = ExtResource("1_63664")
 use_collision = true
-size = Vector3(2.83435, 49.5531, 1.75079)
+size = Vector3(2.83435, 49.5531, 3.60322)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Orange"]]
 transform = Transform3D(-1.21274, 0.597957, 0, -10.9725, -0.0660892, 0, 0, 0, 12.9912, 3.39324, 4.16975, -20.1918)
@@ -231,7 +243,7 @@ transform = Transform3D(2.59237, 0, 0, 0, 3.73734, 0, 0, 0, 3.73734, 1.79447, 4.
 color = ["Orange", "Red", "Black", "Green", "Lime", "Blue", "Cyan"]
 
 [node name="Color Changing3" parent="." instance=ExtResource("3_81kuh")]
-transform = Transform3D(2.5857, 0, 0.267991, 0, 3.73734, 0, -0.185889, 0, 3.72772, 0.824621, 7.15585, -39.8765)
+transform = Transform3D(2.5857, 0, 0.267991, 0, 3.73734, 0, -0.185889, 0, 3.72772, 0.0894307, 8.43286, -35.852)
 color = ["Red", "Orange", "Black", "Green", "Lime", "Blue", "Cyan"]
 
 [node name="Color Changing6" parent="." instance=ExtResource("3_81kuh")]

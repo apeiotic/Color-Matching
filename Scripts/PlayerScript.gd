@@ -93,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	
 	#region if not is on floor and checking for wallrun
 	
-
+	
 	
 	if is_on_floor():
 		can_wallrun = false
@@ -101,6 +101,8 @@ func _physics_process(delta: float) -> void:
 		is_wallrunning = false
 		is_wallrun_jumping = false
 		Wallrunned = false
+	
+	
 	else:
 		wallrun_delay = clamp(wallrun_delay - delta, 0, wallrun_delay_default)
 		if wallrun_delay == 0:
@@ -114,7 +116,10 @@ func _physics_process(delta: float) -> void:
 				
 				for group in leftgroups:
 					if "orange" in group.to_lower():
-						can_wallrun = true
+						if PlayerColor ==  "Orange":
+							can_wallrun = true
+						else:
+							can_wallrun = false
 					else:
 						can_wallrun = false
 			elif RIghtWallDetector.is_colliding():
@@ -123,8 +128,11 @@ func _physics_process(delta: float) -> void:
 				
 				for group in rightgroups: 
 					if "orange" in group.to_lower():
-						can_wallrun = true
-					else: 
+						if PlayerColor ==  "Orange":
+							can_wallrun = true
+						else: 
+							can_wallrun = false
+					else:
 						can_wallrun = false
 		else:
 			can_wallrun = false
@@ -132,6 +140,7 @@ func _physics_process(delta: float) -> void:
 			
 		velocity += gravity * delta
 		fallen = true
+	
 	
 	
 	

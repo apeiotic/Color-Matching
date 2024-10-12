@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=29 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
 [ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
@@ -12,7 +12,11 @@
 [ext_resource type="Script" path="res://Scripts/action_line.gd" id="7_t6w3n"]
 [ext_resource type="Script" path="res://Scripts/Stamina.gd" id="9_m2oix"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n67j0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x2p6"]
+size = Vector3(1, 1.897, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vb3gg"]
+size = Vector3(1, 1.89575, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mr5v7"]
 material = ExtResource("2_dqeak")
@@ -194,10 +198,12 @@ shader_parameter/gradient = SubResource("GradientTexture2D_w8fd2")
 script = ExtResource("1_551nc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_n67j0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052536, 0)
+shape = SubResource("BoxShape3D_7x2p6")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_n67j0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0516357, 0)
+shape = SubResource("BoxShape3D_vb3gg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mr5v7")

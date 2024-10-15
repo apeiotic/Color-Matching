@@ -1,13 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfwbrgpd2o0cl"]
+[gd_scene load_steps=18 format=3 uid="uid://bfwbrgpd2o0cl"]
 
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="1_63664"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_qucut"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_r2syw"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_6jjt0"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="2_j2eud"]
+[ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="3_5eofq"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="3_81kuh"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="7_xusgh"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="8_70tm6"]
+[ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_kqxxf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q02gn"]
 sky_top_color = Color(0.0842141, 0.109491, 0.144642, 1)
@@ -32,15 +34,15 @@ ssr_enabled = true
 ssr_fade_in = 1.883
 ssr_fade_out = 1.51572
 ssr_depth_tolerance = 16.91
+ssao_enabled = true
 ssao_radius = 22.1
 ssao_power = 1.60766
 ssao_detail = 2.94
 ssao_horizon = 0.05
 ssao_light_affect = 0.03
 ssil_intensity = 0.35
-sdfgi_enabled = true
-sdfgi_bounce_feedback = 0.89
-sdfgi_energy = 0.313
+sdfgi_bounce_feedback = 0.79
+sdfgi_energy = 0.377
 glow_enabled = true
 glow_intensity = 2.76
 glow_bloom = 0.03
@@ -117,8 +119,8 @@ use_collision = true
 size = Vector3(10.7543, 0.104492, 11.2347)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="."]
-transform = Transform3D(4.68394, -0.0118885, 0, 0.0538757, 1.03358, 0, 0, 0, 21.5944, -1.95077, -17.5343, -75.4853)
-material_override = ExtResource("2_j2eud")
+transform = Transform3D(17.2804, -0.0116334, 0, 0.198763, 1.0114, 0, 0, 0, 33.8002, -1.95077, -17.5343, -75.4853)
+material_override = ExtResource("3_5eofq")
 use_collision = true
 size = Vector3(7.99165, 0.104492, 9.10606)
 
@@ -203,11 +205,11 @@ transform = Transform3D(-1.49249, -0.112688, -0.0262072, -0.045787, 0.105228, 2.
 spot_range = 12.1511
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lighting"]
-transform = Transform3D(-0.840377, 0.0802403, -1.23622, -1.76835, -0.379476, 1.17749, -0.250262, 2.12136, 0.30782, -0.636399, 15.9726, -103.517)
+transform = Transform3D(-0.840378, 0.08024, -1.23622, -1.76835, -0.379476, 1.17749, -0.250262, 2.12136, 0.30782, -0.636399, 15.9726, -103.517)
 spot_range = 12.1511
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Lighting"]
-transform = Transform3D(0.359275, 0, 0, 0, 0.652198, 0, 0, 0, 3.13734, 7.02858, 16.6392, -99.339)
+transform = Transform3D(0.359275, 0, 0, 0, 0.652198, 0, 0, 0, 3.13734, 7.02858, 16.6392, -106.781)
 material = SubResource("StandardMaterial3D_g6pqm")
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lighting"]
@@ -251,7 +253,7 @@ transform = Transform3D(2.59237, 0, 0, 0, 3.73734, 0, 0, 0, 3.73734, -0.897833, 
 color = ["Orange", "Red", "Black", "Green", "Lime", "Blue", "Cyan"]
 
 [node name="Color Changing4" parent="." instance=ExtResource("3_81kuh")]
-transform = Transform3D(2.54234, 0, -0.730654, 0, 3.73734, 0, 0.50681, 0, 3.66522, 1.00142, 4.61049, -72.9999)
+transform = Transform3D(2.54234, 0, -0.730654, 0, 3.73734, 0, 0.50681, 0, 3.66522, 2.61087, 5.74045, -74.3051)
 color = ["Lime", "Orange", "Red", "Black", "Green", "Blue", "Cyan"]
 
 [node name="Color Changing5" parent="." instance=ExtResource("3_81kuh")]
@@ -259,7 +261,7 @@ transform = Transform3D(1.64515, 0, 1.6297e-14, 0, 2.84102, 0, 1.45972e-14, 0, 2
 color = ["Lime", "Orange", "Red", "Black", "Green", "Blue", "Cyan"]
 
 [node name="Color Changing8" parent="." instance=ExtResource("3_81kuh")]
-transform = Transform3D(1.52451, 0, -1.08604, 0, 2.84102, 0, 0.618387, 0, 2.6774, 6.16466, 5.34347, -92.7747)
+transform = Transform3D(1.52451, 0, -1.08604, 0, 2.84102, 0, 0.618387, 0, 2.6774, 6.564, 7.88296, -95.7744)
 color = ["Orange", "Lime", "Red", "Black", "Green", "Blue", "Cyan"]
 
 [node name="Color Changing7" parent="." instance=ExtResource("3_81kuh")]
@@ -267,7 +269,7 @@ transform = Transform3D(1.64515, 0, 1.6297e-14, 0, 2.84102, 0, 1.45972e-14, 0, 2
 color = ["Red", "Lime", "Orange", "Black", "Green", "Blue", "Cyan"]
 
 [node name="JumpPad" parent="." instance=ExtResource("7_xusgh")]
-transform = Transform3D(-3.8613e-07, 0, -7.40108, 0, 0.259738, 0, 8.83363, 0, -3.23512e-07, 4.38796, -2.28486, -83.7923)
+transform = Transform3D(-3.8613e-07, 0, -7.40108, 0, 0.342075, 0, 8.83363, 0, -3.23512e-07, 4.38796, -2.34341, -83.7923)
 repel_strength = 10.0
 
 [node name="JumpPad2" parent="." instance=ExtResource("7_xusgh")]
@@ -333,3 +335,6 @@ mesh = SubResource("CylinderMesh_5qimb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D8/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_a0aiq")
+
+[node name="World Border" parent="." instance=ExtResource("9_kqxxf")]
+transform = Transform3D(782.965, 0, 0, 0, 1, 0, 0, 0, 923.671, -5.63852, -17.4106, -100.74)

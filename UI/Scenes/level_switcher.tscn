@@ -341,6 +341,55 @@ theme_override_fonts/font = ExtResource("3_oxt0h")
 theme_override_font_sizes/font_size = 56
 text = "Time"
 
+[node name="level 6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 319.0
+offset_right = 616.0
+offset_bottom = 524.0
+scale = Vector2(0.21949, 0.303509)
+theme = ExtResource("7_y5if3")
+theme_override_fonts/font = ExtResource("2_88vei")
+text = "6 "
+
+[node name="Level1 highlighter" type="TextureRect" parent="level 6"]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.5
+offset_top = -168.5
+offset_right = -145.5
+offset_bottom = -103.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.25373, 5.06505)
+texture = SubResource("GradientTexture2D_ywm16")
+metadata/_edit_lock_ = true
+
+[node name="Status" type="Label" parent="level 6"]
+layout_mode = 0
+offset_top = 257.174
+offset_right = 170.0
+offset_bottom = 334.175
+scale = Vector2(1.16439, 0.798462)
+theme_override_fonts/font = ExtResource("10_gdstc")
+theme_override_font_sizes/font_size = 56
+text = "Status"
+
+[node name="Time" type="Label" parent="level 6"]
+layout_mode = 0
+offset_top = 319.819
+offset_right = 170.0
+offset_bottom = 396.82
+scale = Vector2(1.12509, 0.763278)
+theme_override_fonts/font = ExtResource("3_oxt0h")
+theme_override_font_sizes/font_size = 56
+text = "Time"
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -386,14 +435,14 @@ texture = ExtResource("8_7oeaf")
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Node"]
 stream = ExtResource("11_641xx")
-volume_db = 10.0
+volume_db = 20.0
 panning_strength = 0.0
 bus = &"SoundEffects"
 
 [node name="Select" type="AudioStreamPlayer2D" parent="Node"]
 stream = ExtResource("12_csj4u")
 volume_db = 5.66
-pitch_scale = 1.19
+pitch_scale = 1.2
 panning_strength = 0.0
 bus = &"SoundEffects"
 
@@ -410,3 +459,5 @@ bus = &"SoundEffects"
 [connection signal="pressed" from="level 4" to="." method="_on_level_4_pressed"]
 [connection signal="mouse_entered" from="level 5" to="." method="_on_level_5_mouse_entered"]
 [connection signal="pressed" from="level 5" to="." method="_on_level_5_pressed"]
+[connection signal="mouse_entered" from="level 6" to="." method="_on_level_5_mouse_entered"]
+[connection signal="pressed" from="level 6" to="." method="_on_level_6_pressed"]

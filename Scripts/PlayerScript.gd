@@ -468,8 +468,8 @@ func OnBlack(): #what to do when standing on black
 func OnOrange():
 	max_jump = 3
 	GLB.Can_hook = true
-	SPEED =  5
-	sprinting_speed = 8.0
+	SPEED =  8
+	sprinting_speed = 9.0
 	
 
 func OnRed(): #what to do when standing on red

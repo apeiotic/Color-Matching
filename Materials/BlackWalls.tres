@@ -1,0 +1,34 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dsjfaf1vpn136"]
+
+[ext_resource type="Texture2D" uid="uid://dhsl3tvqqjs3l" path="res://Materials/texture/JS Displacement/RedEmiss.png" id="1_bwkkn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_15hra"]
+load_path = "res://.godot/imported/texture_01.png-60e3b3d3143b179c069dbcbff77ff160.bptc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_df14v"]
+load_path = "res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i2uw4"]
+
+[resource]
+albedo_texture = SubResource("CompressedTexture2D_15hra")
+metallic = 0.57
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.25
+emission_operator = 1
+emission_on_uv2 = true
+emission_texture = ExtResource("1_bwkkn")
+normal_enabled = true
+normal_scale = 3.81
+normal_texture = SubResource("CompressedTexture2D_df14v")
+rim_texture = SubResource("CompressedTexture2D_i2uw4")
+uv1_scale = Vector3(0.165, 0.165, 0.165)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_scale = Vector3(-0.02, -0.02, -0.02)
+uv2_triplanar = true
+uv2_world_triplanar = true
+texture_filter = 5

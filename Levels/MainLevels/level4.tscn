@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://d073v22is5r0s"]
+[gd_scene load_steps=27 format=4 uid="uid://d073v22is5r0s"]
 
+[ext_resource type="Script" path="res://UI/Script/level_4.gd" id="1_68764"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_id6as"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_bfx4l"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_hfcpk"]
@@ -46,6 +47,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d167c")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1us8a"]
+size = Vector3(5.12061, 5.21893, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ls28"]
 energy_multiplier = 3.1
@@ -107,6 +111,7 @@ material = ExtResource("10_t7w3a")
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Level 4" type="Node3D"]
+script = ExtResource("1_68764")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." groups=["Blue"]]
 transform = Transform3D(0.478857, 0, 0, 0, 0.981457, 0, 0, 0, 0.489928, 0.718561, -3.16528, -1.2579)
@@ -292,6 +297,13 @@ skeleton = NodePath("")
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Cube7"]
 transform = Transform3D(1.48228, 0, 1.42109e-14, 0, 1.48228, 0, -1.42109e-14, 0, 1.48228, -0.230896, 4.65565, 0.428104)
 size = Vector3(8.99121, 10.4243, 9.29639)
+
+[node name="Area3D" type="Area3D" parent="Cube7"]
+transform = Transform3D(-6.47926e-08, 0, 1.48228, 0, 1.48228, 0, -1.48228, 0, -6.47926e-08, -0.479843, 0.587801, -0.103004)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube7/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.574598, 0.0499916, 1.92958, 0.410759)
+shape = SubResource("BoxShape3D_1us8a")
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="." groups=["Blue"]]
 transform = Transform3D(0.0202116, 9.15091e-10, -1.16416e-08, 8.83476e-10, -2.42754e-16, 0.266328, 8.35631e-10, -0.0317736, 5.32907e-15, -24.0478, 3.84609, 61.0436)
@@ -492,3 +504,5 @@ transform = Transform3D(0.263635, -0.874127, -0.407921, 0.817197, 0.427078, -0.3
 
 [node name="Crate 2" parent="." instance=ExtResource("12_homd3")]
 transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -2.01159, 2.69215, 0.454716)
+
+[connection signal="body_entered" from="Cube7/Area3D" to="." method="_on_area_3d_body_entered"]

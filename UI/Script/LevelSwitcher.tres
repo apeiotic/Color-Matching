@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dq2bcxrdylvqh"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dq2bcxrdylvqh"]
 
 [ext_resource type="Texture2D" uid="uid://c0stsada5qfda" path="res://UI/images/GUI/HoverButton07.png" id="1_7vfqi"]
 [ext_resource type="Texture2D" uid="uid://hv3c14awkcbe" path="res://UI/images/GUI/Button07.png" id="1_aqeyw"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="1_p602c"]
+[ext_resource type="Texture2D" uid="uid://cm7hm63oeeqmd" path="res://UI/images/GUI/SelectedButton07.png" id="4_0gvq3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8v0lr"]
 
@@ -27,6 +28,13 @@ expand_margin_top = 30.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4eqdg"]
+content_margin_left = 127.0
+content_margin_top = 32.0
+content_margin_right = 75.0
+content_margin_bottom = 21.0
+texture = ExtResource("4_0gvq3")
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
 
 [resource]
 default_base_scale = 1.45

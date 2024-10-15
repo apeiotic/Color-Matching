@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy13h71ncmsfe"]
+[gd_scene load_steps=9 format=3 uid="uid://dy13h71ncmsfe"]
 
-[ext_resource type="Script" path="res://UI/Scenes/pause_menu.gd" id="1_h03i7"]
+[ext_resource type="Script" path="res://UI/Script/pause_menu.gd" id="1_h03i7"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_r4wo5"]
 [ext_resource type="Shader" path="res://Materials/Hex.gdshader" id="3_foxmt"]
 [ext_resource type="Texture2D" uid="uid://d2kon1qanlf7j" path="res://UI/images/GUI/MainPanel01.png" id="4_ivbv7"]
+[ext_resource type="Theme" uid="uid://f6vcws1rdpjs" path="res://UI/Script/Pause_Theme.tres" id="4_we5wl"]
+[ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="6_nb5te"]
+[ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="7_l2qps"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6r03a"]
 shader = ExtResource("3_foxmt")
@@ -35,8 +38,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainPanel01" type="Sprite2D" parent="Control2"]
-position = Vector2(20.375, 24.63)
-scale = Vector2(0.282864, 0.671727)
+position = Vector2(20.375, 30.065)
+scale = Vector2(0.282864, 0.692353)
 texture = ExtResource("4_ivbv7")
 
 [node name="Control" type="Control" parent="."]
@@ -78,19 +81,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -92.5
-offset_top = -111.38
-offset_right = 92.5
-offset_bottom = -38.38
+offset_left = -79.0
+offset_top = -104.505
+offset_right = 80.0
+offset_bottom = -53.505
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resume button" type="Button" parent="Resume"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+theme = ExtResource("4_we5wl")
 theme_override_fonts/font = ExtResource("2_r4wo5")
 theme_override_font_sizes/font_size = 42
-text = "Resume"
+text = " Resume "
+
+[node name="Restart" type="HBoxContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -36.98
+offset_right = 80.0
+offset_bottom = 14.02
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart Button" type="Button" parent="Restart"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("4_we5wl")
+theme_override_fonts/font = ExtResource("2_r4wo5")
+theme_override_font_sizes/font_size = 42
+text = " Restart "
 
 [node name="Quit" type="HBoxContainer" parent="."]
 z_index = 2
@@ -101,9 +128,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -57.69
-offset_top = 56.825
+offset_top = 85.995
 offset_right = 64.31
-offset_bottom = 129.825
+offset_bottom = 158.995
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -113,9 +140,10 @@ z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = ExtResource("4_we5wl")
 theme_override_fonts/font = ExtResource("2_r4wo5")
 theme_override_font_sizes/font_size = 42
-text = "Quit"
+text = " Quit "
 
 [node name="Settings" type="HBoxContainer" parent="."]
 z_index = 2
@@ -126,9 +154,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.69
-offset_top = -27.92
+offset_top = 18.53
 offset_right = 103.31
-offset_bottom = 45.08
+offset_bottom = 91.53
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -138,9 +166,30 @@ z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = ExtResource("4_we5wl")
 theme_override_fonts/font = ExtResource("2_r4wo5")
 theme_override_font_sizes/font_size = 42
-text = "Settings"
+text = " Settings "
 
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_nb5te")
+volume_db = 20.0
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_l2qps")
+volume_db = 5.66
+pitch_scale = 1.2
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[connection signal="mouse_entered" from="Resume/Resume button" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Resume/Resume button" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Restart/Restart Button" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="pressed" from="Restart/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="Quit/Quit Button" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Quit/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="Settings/Setting Button" to="." method="_on_setting_button_mouse_entered"]

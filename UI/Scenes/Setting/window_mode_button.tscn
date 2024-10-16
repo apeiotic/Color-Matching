@@ -11,3 +11,6 @@ text = "Window Mode"
 
 [node name="OptionButton" parent="HBoxContainer" index="2"]
 theme_override_font_sizes/font_size = 16
+
+[connection signal="mouse_entered" from="HBoxContainer/OptionButton" to="." method="_on_option_button_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]

@@ -1,6 +1,10 @@
 extends Control
 
 @onready var option_button: OptionButton = $HBoxContainer/OptionButton
+@onready var hover: AudioStreamPlayer2D = $Audio/Hover
+@onready var select: AudioStreamPlayer2D = $Audio/Select
+
+
 
 const RESOLUTION_DICTIONARY : Dictionary = {
 	"1152 x 648" : Vector2i(1152, 648),
@@ -19,3 +23,11 @@ func add_resolution_items() -> void:
 
 func on_resolution_selected(index: int ) -> void: 
 	DisplayServer.window_set_size(RESOLUTION_DICTIONARY.values()[index])
+
+
+func _on_option_button_mouse_entered() -> void:
+	hover.play()
+
+
+func _on_option_button_pressed() -> void:
+	select.play()

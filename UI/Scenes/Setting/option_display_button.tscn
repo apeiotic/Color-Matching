@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://djo0cj81h3a7f"]
+[gd_scene load_steps=8 format=3 uid="uid://djo0cj81h3a7f"]
 
 [ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="1_3yva4"]
 [ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="2_tgw6r"]
 [ext_resource type="Theme" uid="uid://b36xc52yme2w4" path="res://UI/Scenes/Setting/Scripts/Dropdown_theme.tres" id="3_ojh3n"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="3_to3lv"]
+[ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="5_d45r6"]
+[ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="6_r5uxp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrdci"]
 texture = ExtResource("2_tgw6r")
@@ -41,3 +43,18 @@ layout_mode = 2
 theme = ExtResource("3_ojh3n")
 theme_override_fonts/font = ExtResource("3_to3lv")
 theme_override_font_sizes/font_size = 1
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_d45r6")
+volume_db = 10.0
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_r5uxp")
+volume_db = 5.66
+pitch_scale = 1.19
+panning_strength = 0.0
+bus = &"SoundEffects"

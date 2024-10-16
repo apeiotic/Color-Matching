@@ -1,6 +1,8 @@
 extends Control
 
 @onready var option_button: OptionButton = $HBoxContainer/OptionButton
+@onready var hover: AudioStreamPlayer2D = $Audio/Hover
+@onready var select: AudioStreamPlayer2D = $Audio/Select
 
 const WINDOW_MODE_ARRAY : Array[String] = [
 	"Full_Screen",
@@ -33,3 +35,11 @@ func on_window_mode_selected(index: int) -> void:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 		
 		
+
+
+func _on_option_button_mouse_entered() -> void:
+	hover.play()
+
+
+func _on_option_button_pressed() -> void:
+	select.play()

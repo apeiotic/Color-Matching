@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu4cdw2810wuu"]
+[gd_scene load_steps=12 format=3 uid="uid://bu4cdw2810wuu"]
 
 [ext_resource type="Script" path="res://UI/Scenes/Setting/Scripts/MainSettingPage.gd" id="1_kw2pn"]
 [ext_resource type="Material" uid="uid://bmbmn8md4n2tv" path="res://Materials/HexMaterial.tres" id="1_vh3v4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c5tpmq5t27hl2" path="res://UI/images/GUI/Button16.png" id="4_qpnnt"]
 [ext_resource type="Texture2D" uid="uid://cvxngwpiq4813" path="res://UI/images/GUI/Button13.png" id="5_wh4lh"]
 [ext_resource type="Texture2D" uid="uid://bdq3pfm0j75b1" path="res://UI/images/GUI/Button01.png" id="6_4mrch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqdgy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hryfy"]
 texture = ExtResource("4_qpnnt")
@@ -73,6 +75,7 @@ theme_override_constants/margin_top = 9
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_822k6")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hqdgy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hryfy")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ddina")
 theme_override_styles/normal = SubResource("StyleBoxTexture_eiqts")

@@ -7,6 +7,8 @@ signal playerspeed(playerspeed)
 signal colorchange(color)
 signal ColorChangerForMesh(color)
 
+
+
 var sensitivity  = 0.01
 var Camera_Sway = true
 var Camera_Bob = true

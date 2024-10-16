@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcyo5813068v5"]
+
+[ext_resource type="PackedScene" uid="uid://b7jwa4oo8wwtq" path="res://UI/Scenes/Setting/window_mode_button.tscn" id="1_0lbgh"]
+[ext_resource type="Theme" uid="uid://drbwtrmpx1tkf" path="res://UI/Scenes/Setting/Tabs_Theme.tres" id="1_gql5m"]
+[ext_resource type="PackedScene" uid="uid://tgg6q8n14exk" path="res://UI/Scenes/Setting/resolution_mode_button.tscn" id="2_f1lxa"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 75.0
+offset_right = -100.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_gql5m")
+tab_alignment = 1
+current_tab = 1
+
+[node name="gameplay" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="graphics" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/graphics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/graphics/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="Window_Mode_Button" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("1_0lbgh")]
+layout_mode = 2
+
+[node name="Resolution_Mode_Button" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("2_f1lxa")]
+layout_mode = 2
+
+[node name="sound" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/sound/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="HSlider" type="HSlider" parent="TabContainer/sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="HSlider2" type="HSlider" parent="TabContainer/sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0

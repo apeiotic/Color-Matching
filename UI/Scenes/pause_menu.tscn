@@ -1,16 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy13h71ncmsfe"]
+[gd_scene load_steps=8 format=3 uid="uid://dy13h71ncmsfe"]
 
 [ext_resource type="Script" path="res://UI/Script/pause_menu.gd" id="1_h03i7"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_r4wo5"]
-[ext_resource type="Shader" path="res://Materials/Hex.gdshader" id="3_foxmt"]
+[ext_resource type="Material" uid="uid://bmbmn8md4n2tv" path="res://Materials/HexMaterial.tres" id="3_68idn"]
 [ext_resource type="Texture2D" uid="uid://d2kon1qanlf7j" path="res://UI/images/GUI/MainPanel01.png" id="4_ivbv7"]
 [ext_resource type="Theme" uid="uid://f6vcws1rdpjs" path="res://UI/Script/Pause_Theme.tres" id="4_we5wl"]
 [ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="6_nb5te"]
 [ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="7_l2qps"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r03a"]
-shader = ExtResource("3_foxmt")
-shader_parameter/SCALE = Vector2(1920, 1080)
 
 [node name="Pause Menu" type="Control"]
 process_mode = 3
@@ -53,7 +49,7 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 z_index = -3
-material = SubResource("ShaderMaterial_6r03a")
+material = ExtResource("3_68idn")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

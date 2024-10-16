@@ -247,6 +247,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
 target_position = Vector3(0, 0, -5)
 
+[node name="Looking At Raycast" type="RayCast3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
+target_position = Vector3(0, 0, -10)
+
 [node name="JumpTimer" type="Timer" parent="Neck"]
 wait_time = 0.05
 one_shot = true
@@ -312,10 +316,10 @@ script = ExtResource("7_t6w3n")
 
 [node name="Stamina ProgressBar" type="ColorRect" parent="Effects"]
 material = SubResource("ShaderMaterial_57f2x")
-offset_left = 1045.0
-offset_top = 447.0
-offset_right = 1139.0
-offset_bottom = 541.0
+offset_left = 1060.0
+offset_top = 450.0
+offset_right = 1154.0
+offset_bottom = 544.0
 script = ExtResource("9_m2oix")
 
 [connection signal="canhook" from="." to="Hook" method="_on_character_body_3d_canhook"]

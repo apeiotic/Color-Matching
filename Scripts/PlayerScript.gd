@@ -67,6 +67,7 @@ signal canhook()
 @onready var RIghtWallDetector = $Neck/RightWallDetector
 @onready var ActionLine = $Effects/ActionLine
 @onready var wallrun_delayTimer: Timer = $Neck/WallrunDelay
+@onready var looking_at_raycast: RayCast3D = $"Neck/Looking At Raycast"
 
 #endregion
 
@@ -165,6 +166,7 @@ func _physics_process(delta: float) -> void:
 	GLB.emit_signal("stamina", stamina)
 	GLB.emit_signal("playerspeed", playerspeed)
 	
+	
 	staminabar.material.set_shader_parameter("value", stamina)
 	
 	sprint()
@@ -172,7 +174,6 @@ func _physics_process(delta: float) -> void:
 	jump()
 	process_wallrun()
 	process_wallrun_rotation(delta)
-	print( is_on_wall())
 	
 	#region Detecting standing block type
 	if detector.is_colliding():
@@ -180,6 +181,7 @@ func _physics_process(delta: float) -> void:
 		var collider = detector.get_collider()
 		var groups = collider.get_groups()
 		for group in groups:
+			
 			
 			if "orange" in group.to_lower():
 				if PlayerColor == "Orange":
@@ -233,7 +235,9 @@ func _physics_process(delta: float) -> void:
 		OnOrange()
 	#endregion 
 	
-
+		
+		
+	
 	
 	if fallen == true: 
 		if is_on_floor():
@@ -559,7 +563,4 @@ func RandomTImerEnd() -> void:
 
 
 func _on_wallrun_delay_timeout() -> void:
-	#Wallrunned = false
 	CanWallrunDelay = false
-	print('yoinkkkkkkkkkkk')
-	pass # Replace with function body.

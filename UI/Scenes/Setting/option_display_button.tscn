@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://djo0cj81h3a7f"]
+
+[ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="1_3yva4"]
+[ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="2_tgw6r"]
+[ext_resource type="Theme" uid="uid://b36xc52yme2w4" path="res://UI/Scenes/Setting/Scripts/Dropdown_theme.tres" id="3_ojh3n"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="3_to3lv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrdci"]
+texture = ExtResource("2_tgw6r")
+texture_margin_left = 22.0
+
+[node name="Option_Display_Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 160
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3yva4")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_xrdci")
+text = "BASE_LABEL"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+theme = ExtResource("3_ojh3n")
+theme_override_fonts/font = ExtResource("3_to3lv")
+theme_override_font_sizes/font_size = 1

@@ -537,7 +537,7 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [sub_resource type="Curve3D" id="Curve3D_qy0eb"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0787624, -10.0215, 0.0845833, 0, 0, 0, 0, 0, 0, 0.0804991, 0.204926, 0.175739),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0787624, -8.33789, 0.0845833, 0, 0, 0, 0, 0, 0, 0.0804991, 0.204926, 0.175739),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -1295,7 +1295,7 @@ color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan", "Orange"]
 transform = Transform3D(21.9416, 0, 0, 0, 1, 0, 0, 0, 0.951669, 2.19453, 1.43891, -3.81388)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform"]
-transform = Transform3D(-6.70552e-08, 1, -0.000410296, 0.00890185, -0.000169536, -2.4199, -0.99996, -1.5758e-06, -0.0215425, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(2.23517e-08, 1, -0.0004918, 0.0106678, -0.000203212, -2.41986, -0.999943, -2.14577e-06, -0.025816, 0.0791045, -6.65495, 0.102541)
 material_override = ExtResource("4_vdinq")
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
@@ -1310,8 +1310,8 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-6.51869e-08, 0.999992, -0.000169666, 0.00890787, -0.000169664, -0.999921, -0.999873, -1.57579e-06, -0.00890829, 0.0804991, 0.204911, 0.175739)
-progress = 10.2268
+transform = Transform3D(2.23497e-08, 0.999992, -0.000203215, 0.0106668, -0.00020321, -0.999903, -0.999853, -2.14575e-06, -0.0106673, 0.0791045, -6.65495, 0.102541)
+progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
 remote_path = NodePath("../../../MeshInstance3D4")
@@ -1326,7 +1326,7 @@ autoplay = "Up Down "
 transform = Transform3D(6.07289, 0, 0, 0, 0.40068, 0, 0, 0, 0.422227, 2.19453, 5.38046, -22.1204)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform2"]
-transform = Transform3D(-6.70552e-08, 1, -0.000410296, 0.00890185, -0.000169536, -2.4199, -0.99996, -1.5758e-06, -0.0215425, 0.0804991, 0.204911, 0.175739)
+transform = Transform3D(9.31323e-09, 1, -0.00060995, 0.0132306, -0.000252023, -2.41979, -0.999913, -3.32482e-06, -0.032018, 0.0791046, -8.2552, 0.102543)
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
 
@@ -1337,11 +1337,12 @@ transform = Transform3D(-4.60219e-08, 0.0227932, -0.99977, 1, -0.000434017, -9.9
 shape = SubResource("ConvexPolygonShape3D_vohlx")
 
 [node name="Path3D" type="Path3D" parent="Moving Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1.24046, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform2/Path3D"]
-transform = Transform3D(-6.51842e-08, 0.999992, -0.000169654, 0.0089075, -0.000169664, -0.999849, -0.999832, -1.57579e-06, -0.00890765, 0.0804991, 0.204911, 0.175739)
-progress = 10.2268
+transform = Transform3D(2.23489e-08, 0.999992, -0.0002032, 0.0106664, -0.00020321, -0.999831, -0.999815, -2.14575e-06, -0.0106666, 0.0791045, -6.65495, 0.102541)
+progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform2/Path3D/PathFollow3D"]
 remote_path = NodePath("../../../MeshInstance3D4")

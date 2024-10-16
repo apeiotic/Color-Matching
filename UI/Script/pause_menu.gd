@@ -2,10 +2,12 @@ extends Control
 
 @onready var hover: AudioStreamPlayer2D = $Sounds/Hover
 @onready var select: AudioStreamPlayer2D = $Sounds/Select
+@onready var settings_page: Control = $Settings_Page
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	settings_page.hide()
 	hide()
 	
 
@@ -66,3 +68,7 @@ func _on_restart_button_pressed() -> void:
 
 func _on_restart_button_mouse_entered() -> void:
 	hover.play()
+
+
+func _on_setting_button_pressed() -> void:
+	settings_page.show()

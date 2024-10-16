@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy13h71ncmsfe"]
+[gd_scene load_steps=9 format=3 uid="uid://dy13h71ncmsfe"]
 
 [ext_resource type="Script" path="res://UI/Script/pause_menu.gd" id="1_h03i7"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_r4wo5"]
 [ext_resource type="Material" uid="uid://bmbmn8md4n2tv" path="res://Materials/HexMaterial.tres" id="3_68idn"]
 [ext_resource type="Texture2D" uid="uid://d2kon1qanlf7j" path="res://UI/images/GUI/MainPanel01.png" id="4_ivbv7"]
 [ext_resource type="Theme" uid="uid://f6vcws1rdpjs" path="res://UI/Script/Pause_Theme.tres" id="4_we5wl"]
+[ext_resource type="PackedScene" uid="uid://ddge3a6at76fv" path="res://UI/Scenes/Setting/settings_page_PauseMenu.tscn" id="6_lcg25"]
 [ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="6_nb5te"]
 [ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="7_l2qps"]
 
@@ -167,6 +168,10 @@ theme_override_fonts/font = ExtResource("2_r4wo5")
 theme_override_font_sizes/font_size = 42
 text = " Settings "
 
+[node name="Settings_Page" parent="." instance=ExtResource("6_lcg25")]
+z_index = 2
+layout_mode = 1
+
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Sounds"]
@@ -189,3 +194,4 @@ bus = &"SoundEffects"
 [connection signal="mouse_entered" from="Quit/Quit Button" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Quit/Quit Button" to="." method="_on_quit_button_pressed"]
 [connection signal="mouse_entered" from="Settings/Setting Button" to="." method="_on_setting_button_mouse_entered"]
+[connection signal="pressed" from="Settings/Setting Button" to="." method="_on_setting_button_pressed"]

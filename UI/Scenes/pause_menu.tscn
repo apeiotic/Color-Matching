@@ -169,7 +169,8 @@ theme_override_font_sizes/font_size = 42
 text = " Settings "
 
 [node name="Settings_Page" parent="." instance=ExtResource("6_lcg25")]
-z_index = 2
+visible = false
+z_index = 4
 layout_mode = 1
 
 [node name="Sounds" type="Node2D" parent="."]

@@ -27,6 +27,7 @@ grow_vertical = 2
 scale = Vector2(0.284001, 0.284001)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+z_index = -1
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_7w52q")

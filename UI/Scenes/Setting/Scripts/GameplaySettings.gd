@@ -32,7 +32,7 @@ func Lable_Text() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(GLB.Camera_Sway)
+	
 	if label_enum =="Head Bob":
 		if check_button.button_pressed == true:
 			GLB.Camera_Bob = true

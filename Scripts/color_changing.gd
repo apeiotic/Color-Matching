@@ -12,16 +12,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	GLB.emit_signal("ColorChangerForMesh", color[0])
-	pass
+	
 
 
 func Body_Enter(body: Node3D) -> void:
 	ChangeColor.emit(color[0])
 	GLB.colorchange.emit(color[0])
-	pass # Replace with function body.
+	 # Replace with function body.
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	GLB.colorchange.emit(color[0])
 	
-	pass # Replace with function body.
+	 # Replace with function body.

@@ -1,6 +1,6 @@
-[gd_scene load_steps=89 format=4 uid="uid://cea4uacthafah"]
+[gd_scene load_steps=93 format=4 uid="uid://cea4uacthafah"]
 
-[ext_resource type="Script" path="res://Scripts/Level1.gd" id="1_hkx2s"]
+[ext_resource type="Script" path="res://UI/Script/level_3.gd" id="1_weqy8"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_oywo8"]
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="3_pod0i"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="4_vdinq"]
@@ -9,7 +9,10 @@
 [ext_resource type="Material" uid="uid://ba7v2gt5gg8ca" path="res://Materials/NO_Texture.tres" id="7_b8eu8"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="8_swcm0"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_48olp"]
+[ext_resource type="Texture2D" uid="uid://oefj0cmln3td" path="res://addons/kenney_prototype_textures/light/texture_02.png" id="9_ponni"]
+[ext_resource type="Texture2D" uid="uid://w45cvq3r4pbj" path="res://Materials/White Emis.png" id="10_lunst"]
 [ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="10_mpw3u"]
+[ext_resource type="Texture2D" uid="uid://c8ln3847h3pup" path="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png" id="11_2v6mk"]
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="12_1hcar"]
 [ext_resource type="Material" uid="uid://c1s55smgnmwar" path="res://Materials/Portal.tres" id="13_qoe1v"]
 [ext_resource type="Material" uid="uid://d0jxrrt5bsvu5" path="res://Materials/Glowy.tres" id="14_itojn"]
@@ -530,6 +533,26 @@ emission_energy_multiplier = 2.32
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p2s2x"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehtjd"]
+albedo_texture = ExtResource("9_ponni")
+metallic = 0.05
+metallic_specular = 0.29
+roughness = 0.05
+emission_enabled = true
+emission = Color(0.766086, 0.798001, 0.860703, 1)
+emission_energy_multiplier = 7.61
+emission_operator = 1
+emission_on_uv2 = true
+emission_texture = ExtResource("10_lunst")
+normal_enabled = true
+normal_scale = 2.57
+normal_texture = ExtResource("11_2v6mk")
+uv1_scale = Vector3(9.005, 9.005, 9.005)
+uv2_scale = Vector3(-0.079, 4.85, -0.175)
+uv2_offset = Vector3(0.32, 0, 0)
+uv2_triplanar = true
+texture_filter = 5
+
 [sub_resource type="BoxMesh" id="BoxMesh_qnncd"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vohlx"]
@@ -777,7 +800,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yijrn")
 
 [node name="Level 3" type="Node3D"]
-script = ExtResource("1_hkx2s")
+script = ExtResource("1_weqy8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(1.23443, 0, 0, 0, 1, 0, 0, 0, 1, 2.74829, -6.81368, 4.28069)
@@ -1295,8 +1318,8 @@ color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan", "Orange"]
 transform = Transform3D(21.9416, 0, 0, 0, 1, 0, 0, 0, 0.951669, 2.19453, 1.43891, -3.81388)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform"]
-transform = Transform3D(2.23517e-08, 1, -0.0004918, 0.0106678, -0.000203212, -2.41986, -0.999943, -2.14577e-06, -0.025816, 0.0791045, -6.65495, 0.102541)
-material_override = ExtResource("4_vdinq")
+transform = Transform3D(-2.16067e-07, 1, -0.000491516, 0.0106678, -0.000203092, -2.41986, -0.999943, -2.38232e-06, -0.025816, 0.0804991, 0.204925, 0.175739)
+material_override = SubResource("StandardMaterial3D_ehtjd")
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
 
@@ -1310,7 +1333,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(2.23497e-08, 0.999992, -0.000203215, 0.0106668, -0.00020321, -0.999903, -0.999853, -2.14575e-06, -0.0106673, 0.0791045, -6.65495, 0.102541)
+transform = Transform3D(-9.68488e-08, 0.999992, -0.000203098, 0.0106668, -0.000203092, -0.999903, -0.999853, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -1326,7 +1349,7 @@ autoplay = "Up Down "
 transform = Transform3D(6.07289, 0, 0, 0, 0.40068, 0, 0, 0, 0.422227, 2.19453, 5.38046, -22.1204)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform2"]
-transform = Transform3D(9.31323e-09, 1, -0.00060995, 0.0132306, -0.000252023, -2.41979, -0.999913, -3.32482e-06, -0.032018, 0.0791046, -8.2552, 0.102543)
+transform = Transform3D(-1.11759e-07, 1, -0.000609599, 0.0132306, -0.000251877, -2.41979, -0.999913, -3.44403e-06, -0.032018, 0.0804991, 0.254201, 0.175739)
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
 
@@ -1341,7 +1364,7 @@ transform = Transform3D(1, 0, 0, 0, 1.24046, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform2/Path3D"]
-transform = Transform3D(2.23489e-08, 0.999992, -0.0002032, 0.0106664, -0.00020321, -0.999831, -0.999815, -2.14575e-06, -0.0106666, 0.0791045, -6.65495, 0.102541)
+transform = Transform3D(-9.68451e-08, 0.999992, -0.000203083, 0.0106664, -0.000203092, -0.999831, -0.999815, -2.2631e-06, -0.0106666, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform2/Path3D/PathFollow3D"]
@@ -1638,3 +1661,4 @@ size = Vector3(22.4287, 10.1028, 12.0698)
 [connection signal="ChangeColor" from="Color Changing" to="CharacterBody3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Cube/Area3D" to="." method="PusherActivate"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="Finish_Line_reached"]
+[connection signal="body_entered" from="portal/Area3D" to="." method="_on_area_3d_body_entered"]

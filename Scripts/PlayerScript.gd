@@ -68,6 +68,7 @@ signal canhook()
 @onready var ActionLine = $Effects/ActionLine
 @onready var wallrun_delayTimer: Timer = $Neck/WallrunDelay
 @onready var looking_at_raycast: RayCast3D = $"Neck/Looking At Raycast"
+@onready var radial_drag: ColorRect = $"Effects/Radial Drag"
 
 #endregion
 
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Esc"): 
 		HUD.hide()
 		ActionLine.hide()
+		
 	else:
 		HUD.show()
 	
@@ -338,16 +340,16 @@ func process_wallrun():
 		if is_on_wall() and Input.is_action_pressed("Up"):
 			
 			var collision = get_slide_collision(0)
-			var normal = collision.get_normal()
+			var wall_normal = collision.get_normal()
 			
-			var wallrun_dir = Vector3.UP.cross(normal)
+			var wallrun_dir = Vector3.UP.cross(wall_normal)
 			
 			var player_view_dir = -camera.global_transform.basis.z
 			var dot = wallrun_dir.dot(player_view_dir)
 			if dot<0:
 				wallrun_dir = -wallrun_dir
 				
-			wallrun_dir += -normal *0.01
+			wallrun_dir += -wall_normal *0.01
 			
 			is_wallrunning = true
 			
@@ -448,7 +450,7 @@ func dash(): #Dash function
 func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump' var
 	if Input.is_action_just_pressed("Jump") and jump_count< max_jump:
 		jumptimer.start()
-		velocity.y = JUMP_VELOCITY
+		velocity.y = velocity.y + JUMP_VELOCITY
 		neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(-2), 0.35)
 	if PlayerColor != "Orange": 
 		max_jump = 1
@@ -498,6 +500,7 @@ func OnBlue():
 	CameraSprintFov = 110.0
 	CameraNormalFov = 90.0
 	gravity = Vector3(0,-12,0)
+
 #endregion
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dslkbp5ncuecm"]
+[gd_scene load_steps=6 format=3 uid="uid://dslkbp5ncuecm"]
 
 [ext_resource type="Script" path="res://Scripts/color_changing.gd" id="1_sierv"]
 [ext_resource type="Script" path="res://Scripts/ColorChangerMesh.gd" id="2_745m7"]
+[ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="3_dkqfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m41w7"]
 size = Vector3(3.47028, 1, 1)
@@ -12,20 +13,23 @@ size = Vector3(3.47028, 1, 1)
 script = ExtResource("1_sierv")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.33506, 0, 0, 0, 1.33506, 0, 0, 0, 1.33506, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.160717, 0, 0, 0, 0.603308, 0, 0, 0, 0.533504, 0.00486158, 0, 0)
 shape = SubResource("BoxShape3D_m41w7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(0.377648, 0, 0, 0, 0.377648, 0, 0, 0, 0.377648, 0, 0, 0)
+transform = Transform3D(0.377648, 0, 0, 0, 0.377648, 0, 0, 0, 0.377648, 0, -0.0299395, 0)
 mesh = SubResource("SphereMesh_ml3e2")
 script = ExtResource("2_745m7")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269941, 0)
-text = "Color Changer"
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0.346828, 0)
+text = "color changer"
+font = ExtResource("3_dkqfw")
+font_size = 122
 
 [connection signal="ChangeColor" from="." to="Area3D/CollisionShape3D" method="_on_color_changing_change_color"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="Body_Enter"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

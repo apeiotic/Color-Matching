@@ -5,7 +5,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.start()
-	pass # Replace with function body.
+	GLBSaving.connect("level1", Callable(self, "GettingTimeAndSaving"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,3 +18,10 @@ func _on_timer_timeout() -> void:
 	var min = int(total_time_seconds / 60)
 	var sec= total_time_seconds - min *60
 	$Label.text = '%02d: %02d' % [min, sec]
+
+func GettingTimeAndSaving():
+	print("SIGNAL GIVEN")
+	var SavingData : SavedGame = SavedGame.new()
+	SavingData.level1_time = total_time_seconds 
+	
+	ResourceSaver.save(SavingData, "user://savegame.tres")

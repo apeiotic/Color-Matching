@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 GLB="*res://Scripts/GlobalScript.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GLBSaving="*res://Scripts/Saving_Autoload.gd"
 
 [debug]
 

@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dm463"]
 texture = ExtResource("3_p73ke")
-texture_margin_left = 50.0
+texture_margin_left = 25.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lllvw"]
 texture = ExtResource("4_xe1oh")
@@ -43,15 +43,16 @@ offset_bottom = 40.0
 theme_override_constants/separation = 42
 
 [node name="Audio Name Lbl" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q6soo")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_dm463")
-text = "Master Volume"
+text = "music"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 32)
@@ -75,6 +76,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q6soo")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_tl833")
-text = "100 %"
+text = "Mute"
 
 [connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

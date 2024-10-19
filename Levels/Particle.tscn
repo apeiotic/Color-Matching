@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0pbitdr67u2v"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uj8lq"]
+lifetime_randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 128.0
+angle_min = -720.0
+angle_max = 704.4
+direction = Vector3(0, 0, 0)
+spread = 79.505
+flatness = 0.105
+initial_velocity_min = 0.1
+initial_velocity_max = 0.25
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.37
+turbulence_influence_min = 0.079
+turbulence_influence_max = 0.124
+turbulence_initial_displacement_min = -5.6
+turbulence_initial_displacement_max = 1.49012e-06
+sub_emitter_keep_velocity = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg2i1"]
+albedo_color = Color(0.258824, 0.819608, 0.364706, 1)
+emission_enabled = true
+emission = Color(0, 0.827903, 0.391502, 1)
+emission_energy_multiplier = 4.41
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcbj7"]
+material = SubResource("StandardMaterial3D_wg2i1")
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(2.06877, 0, 0, 0, 1.00015, 0, 0, 0, 1.90906, 0.120063, 3.55205, 0.200148)
+amount = 750
+lifetime = 20.0
+preprocess = 16.0
+process_material = SubResource("ParticleProcessMaterial_uj8lq")
+draw_pass_1 = SubResource("BoxMesh_fcbj7")

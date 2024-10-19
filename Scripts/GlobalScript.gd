@@ -6,6 +6,7 @@ signal stamina(stamina)
 signal playerspeed(playerspeed)
 signal colorchange(color)
 signal ColorChangerForMesh(color)
+signal ColorChanging(color)
 
 
 
@@ -14,6 +15,7 @@ var Camera_Sway = true
 var Camera_Bob = true
 var Can_hook = false
 var state = false
+var Camera_Drag = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -26,6 +26,12 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 general/balloon_path="res://dialogue/balloon.tscn"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=0
+
 [display]
 
 window/stretch/mode="canvas_items"

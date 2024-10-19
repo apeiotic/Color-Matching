@@ -1889,7 +1889,7 @@ cache/0/32/12/glyphs/72/size = Vector2(24, 26)
 cache/0/32/12/glyphs/72/uv_rect = Rect2(131, 1, 24, 26)
 cache/0/32/12/glyphs/72/texture_idx = 0
 
-[sub_resource type="Image" id="Image_8702e"]
+[sub_resource type="Image" id="Image_lru55"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ALOzs5mysrKmuLi4Ev///wD///8A////AP///wC4uLgSsrKyprKyspf///8A////ALKysqaysrLZsbGxs7i4uBL///8A////ALi4uBKysrKzsrKy2bKysqX///8A////ALi4uBKxsbGzsrKy2bGxsbO4uLgSuLi4ErKysrOysrLZsbGxs7S0tBH///8A////AP///wC4uLgSsbGxs7KystmysrLFsrKyxbKystmxsbGztLS0Ef///wD///8A////AP///wD///8AuLi4ErGxsbOysrLZsrKy2bGxsbO0tLQR////AP///wD///8A////AP///wD///8A////ALi4uBKysrKlsrKypbS0tBH///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A"),
 "format": "RGBA8",
@@ -1899,7 +1899,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ak10u"]
-image = SubResource("Image_8702e")
+image = SubResource("Image_lru55")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neb4c"]
 texture = ExtResource("1_w2c81")

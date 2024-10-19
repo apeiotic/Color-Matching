@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://fgvg1vereqae"]
+
+[ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_4jgte"]
+[ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="2_o2ygn"]
+[ext_resource type="Material" uid="uid://crnaaffmkpf4q" path="res://Materials/Green2.tres" id="2_wko0j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ickht"]
+sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+ground_bottom_color = Color(0.12, 0.12, 0.12, 1)
+ground_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
+
+[sub_resource type="Sky" id="Sky_t1l86"]
+sky_material = SubResource("ProceduralSkyMaterial_ickht")
+
+[sub_resource type="Environment" id="Environment_t3spy"]
+background_mode = 2
+sky = SubResource("Sky_t1l86")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1auo5"]
+lifetime_randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 128.0
+angle_min = -720.0
+angle_max = 704.4
+direction = Vector3(0, 0, 0)
+spread = 79.505
+flatness = 0.105
+initial_velocity_min = 0.1
+initial_velocity_max = 0.25
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.37
+turbulence_influence_min = 0.079
+turbulence_influence_max = 0.124
+turbulence_initial_displacement_min = -5.6
+turbulence_initial_displacement_max = 1.49012e-06
+sub_emitter_keep_velocity = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg2i1"]
+emission_enabled = true
+emission = Color(0, 0.827903, 0.391502, 1)
+emission_energy_multiplier = 4.41
+
+[sub_resource type="BoxMesh" id="BoxMesh_ab5rp"]
+material = SubResource("StandardMaterial3D_wg2i1")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t3spy")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_4jgte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33644, 3.64303)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(16.1238, 0, 0, 0, 0.0963903, 0, 0, 0, 14.5276, 0, 0, 0)
+material_override = ExtResource("2_wko0j")
+use_collision = true
+
+[node name="Color Changing" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285752, 0.963652, -3.05394)
+
+[node name="Color Changing2" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51092, 0.963652, -3.05394)
+color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan", "Orange"]
+
+[node name="Color Changing3" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02503, 0.963652, -3.05394)
+color = ["Red", "Green", "Black", "Lime", "Blue", "Cyan", "Orange"]
+
+[node name="Color Changing4" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.87685, 0.956145, -3.02557)
+color = ["Lime", "Green", "Red", "Black", "Blue", "Cyan", "Orange"]
+
+[node name="Color Changing5" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54122, 0.956145, -3.02557)
+color = ["Blue", "Lime", "Green", "Red", "Black", "Cyan", "Orange"]
+
+[node name="Color Changing6" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21679, 0.956145, -3.02557)
+color = ["Cyan", "Blue", "Lime", "Green", "Red", "Black", "Orange"]
+
+[node name="Color Changing7" parent="." instance=ExtResource("2_o2ygn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.78705, 0.956145, -3.02557)
+color = ["Orange", "Cyan", "Blue", "Lime", "Green", "Red", "Black"]
+
+[node name="Jumppad" type="Node3D" parent="."]
+transform = Transform3D(1.6714, 0, 0, 0, 1.6714, 0, 0, 0, 1.6714, 0.179787, 0.352201, 0.887014)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(2.06877, 0, 0, 0, 1.00015, 0, 0, 0, 1.90906, 0.120063, 3.55205, 0.200148)
+amount = 750
+lifetime = 20.0
+preprocess = 16.0
+process_material = SubResource("ParticleProcessMaterial_1auo5")
+draw_pass_1 = SubResource("BoxMesh_ab5rp")

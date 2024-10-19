@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckctkalbuvv87"]
+
+[ext_resource type="Script" path="res://UI/Scenes/Setting/Scripts/GameplaySettings.gd" id="1_8qd17"]
+[ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="2_cek0s"]
+[ext_resource type="Texture2D" uid="uid://bdq3pfm0j75b1" path="res://UI/images/GUI/Button01.png" id="3_qkbfv"]
+[ext_resource type="Theme" uid="uid://b36xc52yme2w4" path="res://UI/Scenes/Setting/Scripts/Dropdown_theme.tres" id="3_uspbw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p2a8h"]
+texture = ExtResource("3_qkbfv")
+texture_margin_left = 16.0
+texture_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqys5"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qd17")
+label_enum = "Head sway"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cek0s")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_p2a8h")
+text = "Head Bob"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 145
+theme_override_styles/separator = SubResource("StyleBoxFlat_kqys5")
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_uspbw")
+
+[connection signal="mouse_entered" from="HBoxContainer/CheckButton" to="." method="_on_check_button_mouse_entered"]
+[connection signal="pressed" from="HBoxContainer/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

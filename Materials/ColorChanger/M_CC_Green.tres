@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dba0ggctrec1"]
+
+[ext_resource type="Shader" path="res://Materials/Shader/Energy_Ball.gdshader" id="1_4f1we"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4f1we")
+shader_parameter/base_color = Color(0, 1, 0, 1)
+shader_parameter/pulse_color = Color(7.09929e-07, 0.400108, 4.81307e-07, 1)
+shader_parameter/speed = 0.361
+shader_parameter/scale = 6.427
+shader_parameter/distortion = 1.174
+shader_parameter/shield_power = 0.267
+shader_parameter/rim_power = 1.882
+shader_parameter/pulse_frequency = 1.766

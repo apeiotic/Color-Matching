@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://doyhpejyo8cu7"]
+
+[ext_resource type="Script" path="res://UI/Scenes/Setting/senstivity_slider.gd" id="1_im2sb"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_m2egi"]
+[ext_resource type="Texture2D" uid="uid://bdq3pfm0j75b1" path="res://UI/images/GUI/Button01.png" id="3_chfp6"]
+[ext_resource type="Texture2D" uid="uid://h4nmmoaeakhw" path="res://UI/images/GUI/Slider02.png" id="4_uvk84"]
+[ext_resource type="Texture2D" uid="uid://chub6whtj4p1t" path="res://UI/images/GUI/Slider01.png" id="5_0lpa7"]
+[ext_resource type="Texture2D" uid="uid://ib2xkblkcg4i" path="res://UI/images/GUI/Slider_Highlight.png" id="6_n0qt6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dm463"]
+texture = ExtResource("3_chfp6")
+texture_margin_left = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lllvw"]
+texture = ExtResource("5_0lpa7")
+texture_margin_top = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j70k7"]
+texture = ExtResource("6_n0qt6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vtpca"]
+texture = ExtResource("6_n0qt6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tl833"]
+texture = ExtResource("3_chfp6")
+texture_margin_left = 30.0
+
+[node name="Senstivity Slider" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_im2sb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 42
+
+[node name="Audio Name Lbl" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m2egi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_dm463")
+text = "Senstivity"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("4_uvk84")
+theme_override_icons/grabber_highlight = ExtResource("4_uvk84")
+theme_override_styles/slider = SubResource("StyleBoxTexture_lllvw")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_j70k7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_vtpca")
+max_value = 1.0
+step = 0.001
+value = 0.38
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Audio Num Lbl2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m2egi")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_tl833")
+text = "100"
+
+[connection signal="mouse_entered" from="HBoxContainer/HSlider" to="." method="_on_h_slider_mouse_entered"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

@@ -240,3 +240,4 @@ bus = &"SoundEffects"
 [connection signal="mouse_entered" from="Margin Quit/VBoxContainer2/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Margin Quit/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="Marging Setting/VBoxContainer2/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="Marging Setting/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]

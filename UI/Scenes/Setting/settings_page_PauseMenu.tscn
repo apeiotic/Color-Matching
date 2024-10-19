@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddge3a6at76fv"]
+
+[ext_resource type="PackedScene" uid="uid://bu4cdw2810wuu" path="res://UI/Scenes/Setting/settings_page.tscn" id="1_ba71y"]
+[ext_resource type="Script" path="res://UI/Scenes/Setting/settings_page_pause_menu.gd" id="2_bac1v"]
+
+[node name="Settings_Page" instance=ExtResource("1_ba71y")]
+script = ExtResource("2_bac1v")

@@ -12,7 +12,6 @@ func saveplayerspeed (playerspeed):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(L_Playerspeed)
 	if GLB.Camera_Drag == true: 
 		if L_Playerspeed > 7:
 			material.set_shader_parameter("max_drag_distance", 0.05)

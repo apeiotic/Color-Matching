@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckvgyvclnwggo"]
+[gd_scene load_steps=4 format=3 uid="uid://ckvgyvclnwggo"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_cital"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="1_e0cdh"]
+[ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="2_trqos"]
 
 [node name="DialogueLabel" type="RichTextLabel"]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("1_e0cdh")
+theme_override_fonts/mono_font = ExtResource("2_trqos")
+theme_override_fonts/italics_font = ExtResource("2_trqos")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

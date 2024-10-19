@@ -7,15 +7,17 @@ signal playerspeed(playerspeed)
 signal colorchange(color)
 signal ColorChangerForMesh(color)
 signal ColorChanging(color)
+signal EnablePlayerMovement
 
 
 
-var sensitivity  = 0.01
-var Camera_Sway = true
-var Camera_Bob = true
-var Can_hook = false
-var state = false
-var Camera_Drag = true
+var sensitivity : float = 0.01
+var Camera_Sway: bool = true
+var Camera_Bob: bool = true
+var Can_hook: bool = false
+var state: bool = false
+var Camera_Drag: bool = true
+var Camera_shake : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

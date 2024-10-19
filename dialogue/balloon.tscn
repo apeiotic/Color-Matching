@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://dialogue/balloon.gd" id="1_36de5"]
+[ext_resource type="Theme" uid="uid://dux8bsdyu6g42" path="res://dialogue/DialogueTheme.tres" id="2_5b3cm"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://cm6bik82nxhen" path="res://icon.svg" id="4_quua1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -91,14 +92,17 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme = ExtResource("2_5b3cm")
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 117.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_5b3cm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
@@ -119,31 +123,20 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 
-[node name="Responses" type="MarginContainer" parent="Balloon"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -558.0
-offset_right = 494.0
-offset_bottom = -154.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 2
-script = ExtResource("3_72ixx")
-response_template = NodePath("ResponseExample")
+offset_left = 21.0
+offset_top = 465.0
+offset_right = 21.0
+offset_bottom = 465.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 3305
 
-[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
-layout_mode = 2
-text = "Response example"
+[node name="Icon" type="Sprite2D" parent="Balloon/HBoxContainer"]
+position = Vector2(-1, 12)
+scale = Vector2(1.01953, 1.00781)
+texture = ExtResource("4_quua1")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

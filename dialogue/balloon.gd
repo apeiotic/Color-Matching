@@ -31,6 +31,7 @@ var dialogue_line: DialogueLine:
 		# The dialogue has finished so close the balloon
 		if not next_dialogue_line:
 			queue_free()
+			GLB.emit_signal("EnablePlayerMovement")
 			return
 
 		# If the node isn't ready yet then none of the labels will be ready yet either
@@ -45,8 +46,8 @@ var dialogue_line: DialogueLine:
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
 
-		responses_menu.hide()
-		responses_menu.set_responses(dialogue_line.responses)
+		#responses_menu.hide()
+		#responses_menu.set_responses(dialogue_line.responses)
 
 		# Show our balloon
 		balloon.show()
@@ -60,7 +61,7 @@ var dialogue_line: DialogueLine:
 		# Wait for input
 		if dialogue_line.responses.size() > 0:
 			balloon.focus_mode = Control.FOCUS_NONE
-			responses_menu.show()
+			
 		elif dialogue_line.time != "":
 			var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 			await get_tree().create_timer(time).timeout
@@ -81,17 +82,11 @@ var dialogue_line: DialogueLine:
 ## The label showing the currently spoken dialogue
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 
-## The menu of responses
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
-
-	# If the responses menu doesn't have a next action set, use this one
-	if responses_menu.next_action.is_empty():
-		responses_menu.next_action = next_action
 
 
 func _unhandled_input(_event: InputEvent) -> void:

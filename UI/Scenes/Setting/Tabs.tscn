@@ -64,6 +64,14 @@ layout_mode = 2
 layout_mode = 2
 label_enum = "Head Bob"
 
+[node name="Control3" parent="TabContainer/gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_g28vx")]
+layout_mode = 2
+label_enum = "Camera Shake"
+
+[node name="Control4" parent="TabContainer/gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_g28vx")]
+layout_mode = 2
+label_enum = "Camera Drag"
+
 [node name="Audio Slider" parent="TabContainer/gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_alh3m")]
 layout_mode = 2
 

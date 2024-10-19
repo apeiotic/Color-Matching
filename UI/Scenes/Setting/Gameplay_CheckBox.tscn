@@ -13,7 +13,7 @@ texture_margin_right = 16.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqys5"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="Control" type="Control"]
+[node name="GamePlay_CheckBox" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,12 +29,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_cek0s")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_p2a8h")
-text = "Head Bob"
+text = "Camera Shake"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hdmcnievbc57"]
+[gd_scene load_steps=14 format=3 uid="uid://hdmcnievbc57"]
 
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="1_5cr7t"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_12bqt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://dsjfaf1vpn136" path="res://Materials/BlackWalls.tres" id="7_y55l3"]
 [ext_resource type="Material" uid="uid://ddjuqtuonx20x" path="res://Materials/CellMaterial.tres" id="8_lvdjm"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="9_mlfvg"]
+[ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="10_utxrh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxblk"]
 sky_top_color = Color(0.0842141, 0.109491, 0.144642, 1)
@@ -67,7 +68,7 @@ material_override = ExtResource("1_5cr7t")
 use_collision = true
 size = Vector3(1, 149.059, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D4" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(7.96237, 0, 0, 0, 0.0147072, 0, 0, 0, 7.60296, 27.0365, 12.1092, 28.9395)
 material_override = ExtResource("7_y55l3")
 use_collision = true
@@ -184,3 +185,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.4
 text = "Look Up!"
 font = ExtResource("9_mlfvg")
 font_size = 82
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("10_utxrh")]
+transform = Transform3D(2.06877, 0, 0, 0, 1.00015, 0, 0, 0, 1.90906, 0.120065, 11.4116, 11.0448)

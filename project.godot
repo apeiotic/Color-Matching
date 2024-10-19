@@ -22,15 +22,15 @@ GLB="*res://Scripts/GlobalScript.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
-[dialogue_manager]
-
-general/balloon_path="res://dialogue/balloon.tscn"
-
 [debug]
 
 gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
 gdscript/warnings/shadowed_variable=0
+
+[dialogue_manager]
+
+general/balloon_path="res://dialogue/balloon.tscn"
 
 [display]
 

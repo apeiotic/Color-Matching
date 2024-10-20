@@ -41,6 +41,7 @@ var side = ""
 var PlayerColor = colors[0]
 var x_rotation = 0.0
 var direction = Vector3()
+var Current_Level
 #endregion
 
 #signals
@@ -89,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		HUD.show()
 	
-
+	Current_Level = get_tree().current_scene
 	if is_wallrunning == true: 
 		Wallrunned = true
 		CanWallrunDelay = true
@@ -527,7 +528,8 @@ func NotSameColor(): #function of what to do when our color doesnt match to what
 	pass
 
 func dead():
-	get_tree().reload_current_scene()
+	GLB.emit_signal("Died")
+	
 	
 
 func jumppadeffect():

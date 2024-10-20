@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://di8ta2dit7pgt"]
+[gd_scene load_steps=48 format=4 uid="uid://di8ta2dit7pgt"]
 
 [ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_kdclf"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_rch0d"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ddxpcf2f4iq6b" path="res://Levels/Interactable_Objects/pallet.tscn" id="15_xcpdb"]
 [ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="16_h7yxs"]
 [ext_resource type="PackedScene" uid="uid://bjpmso3jem1kp" path="res://Levels/Interactable_Objects/HandBag.tscn" id="17_mqryx"]
+[ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="19_hglu7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jvdwt"]
 energy_multiplier = 3.1
@@ -774,5 +775,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2772, 15.6817, -18.89)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.37114e-08, 0, 0.069285, 0, 1, 0, -1, 0, -3.02854e-09, 4.47908, -1.49473, -16.0657)
 shape = SubResource("BoxShape3D_rsrtl")
+
+[node name="Death menu" parent="." instance=ExtResource("19_hglu7")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

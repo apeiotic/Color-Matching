@@ -6,6 +6,7 @@ extends Node2D
 func _ready() -> void:
 	timer.start()
 	GLBSaving.connect("level1", Callable(self, "GettingTimeAndSaving"))
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,7 +8,8 @@ signal colorchange(color)
 signal ColorChangerForMesh(color)
 signal ColorChanging(color)
 signal EnablePlayerMovement
-
+signal Died
+signal Died_With_Level(level)
 
 
 var sensitivity : float = 0.01

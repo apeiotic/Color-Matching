@@ -1,0 +1,379 @@
+[gd_scene load_steps=20 format=3 uid="uid://8q4fuapeql63"]
+
+[ext_resource type="Script" path="res://UI/Script/Death_Menu.gd" id="1_4owmb"]
+[ext_resource type="Theme" uid="uid://djaw4fh85h3dy" path="res://UI/Script/MainMenu.tres" id="1_kxenv"]
+[ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="1_rfk2f"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="3_hapol"]
+[ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="5_igpfl"]
+[ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="6_du3ad"]
+[ext_resource type="PackedScene" uid="uid://ddge3a6at76fv" path="res://UI/Scenes/Setting/settings_page_PauseMenu.tscn" id="7_fucm8"]
+
+[sub_resource type="Shader" id="Shader_14ryd"]
+code = "shader_type canvas_item;
+ //Comment this if you want another render mode.
+uniform vec2 center = vec2(0.5);
+uniform float size: hint_range(0.0,5.0) = 1.0; //change size to well, change the size of your gradient
+uniform vec2 squishness = vec2(1.0); // how squashed your gradient is
+
+//choose colors in the inspector
+uniform vec4 color1 : source_color;
+uniform vec4 color2 : source_color;
+uniform vec4 color3 : source_color;
+uniform vec4 color4 : source_color;
+uniform vec4 color5 : source_color;
+uniform vec4 color6 : source_color;
+
+//choose how far the colors are from each other in the inspector
+uniform float step1 : hint_range(0.0,1.0) = 0.159;
+uniform float step2 : hint_range(0.0,1.0) = 0.182;
+uniform float step3 : hint_range(0.0,1.0) = 0.233;
+uniform float step4 : hint_range(0.0,1.0) = 0.264;
+uniform float step5 : hint_range(0.0,1.0) = 0.265;
+uniform float step6 : hint_range(0.0,1.0) = 0.266;
+
+void fragment() {
+	float dist = distance(center*squishness,UV*squishness);
+	vec4 color = mix(color1, color2, smoothstep(step1*size, step2*size, dist));
+	color = mix(color, color3, smoothstep(step2*size, step3*size, dist));
+	color = mix(color, color4, smoothstep(step3*size, step4*size, dist));
+	color = mix(color, color5, smoothstep(step4*size, step5*size, dist));
+	color = mix(color, color6, smoothstep(step5*size, step6*size, dist));
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkkal"]
+shader = SubResource("Shader_14ryd")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/size = 3.143
+shader_parameter/squishness = Vector2(1.075, 1)
+shader_parameter/color1 = Color(0.16244, 0, 0.0332726, 1)
+shader_parameter/color2 = Color(0.324459, 0.0404394, 0, 1)
+shader_parameter/color3 = null
+shader_parameter/color4 = null
+shader_parameter/color5 = null
+shader_parameter/color6 = null
+shader_parameter/step1 = 0.102
+shader_parameter/step2 = 0.232
+shader_parameter/step3 = 0.233
+shader_parameter/step4 = 0.264
+shader_parameter/step5 = 0.265
+shader_parameter/step6 = 0.266
+
+[sub_resource type="Gradient" id="Gradient_id44x"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oq7lg"]
+gradient = SubResource("Gradient_id44x")
+
+[sub_resource type="Shader" id="Shader_8evur"]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : source_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdu1s"]
+shader = SubResource("Shader_8evur")
+shader_parameter/background_color = Color(0, 0, 0, 0)
+shader_parameter/line_color = Color(0.644692, 1.68458e-07, 0.334992, 0.207843)
+shader_parameter/line_freq = 9.56
+shader_parameter/height = 0.6
+shader_parameter/speed = 0.4
+shader_parameter/scale = Vector2(2, 16.124)
+
+[sub_resource type="Shader" id="Shader_wi8o6"]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : source_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0ut1"]
+shader = SubResource("Shader_wi8o6")
+shader_parameter/background_color = Color(0, 0, 0, 0)
+shader_parameter/line_color = Color(1, 0, 0, 0.333333)
+shader_parameter/line_freq = 9.56
+shader_parameter/height = 0.6
+shader_parameter/speed = 0.4
+shader_parameter/scale = Vector2(2, 16.411)
+
+[sub_resource type="Gradient" id="Gradient_o8h88"]
+offsets = PackedFloat32Array(0, 0.0585938, 0.0898438, 0.929688, 0.96875, 1)
+colors = PackedColorArray(0.281667, 2.1358e-07, 6.01634e-08, 0.517647, 0.511673, 0, 0, 0.414323, 0.607843, 0, 0, 0.231373, 0.937255, 0, 0, 0.180392, 1, 0.434811, 0.366139, 0.316624, 1, 0, 0, 0.239216)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfh3k"]
+gradient = SubResource("Gradient_o8h88")
+
+[sub_resource type="Shader" id="Shader_dd0j8"]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : source_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jgps6"]
+shader = SubResource("Shader_dd0j8")
+shader_parameter/background_color = Color(0, 0, 0, 0)
+shader_parameter/line_color = Color(1, 0, 0, 0.666667)
+shader_parameter/line_freq = 9.56
+shader_parameter/height = 0.6
+shader_parameter/speed = 0.4
+shader_parameter/scale = Vector2(-1.025, 14.865)
+
+[node name="Death menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4owmb")
+
+[node name="Full Background" type="Control" parent="."]
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Full Background"]
+material = SubResource("ShaderMaterial_mkkal")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_oq7lg")
+
+[node name="TextureRect2" type="TextureRect" parent="Full Background/TextureRect"]
+material = SubResource("ShaderMaterial_vdu1s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -430.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6, 1)
+texture = SubResource("GradientTexture1D_oq7lg")
+
+[node name="TextureRect3" type="TextureRect" parent="Full Background/TextureRect"]
+material = SubResource("ShaderMaterial_o0ut1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_oq7lg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -431.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.0605303, 0.0605303, 0.0605303, 0.580392)
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_right = -174.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.68, 1)
+texture = SubResource("GradientTexture1D_nfh3k")
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect/TextureRect2"]
+material = SubResource("ShaderMaterial_jgps6")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -648.0
+offset_right = 390.0
+offset_bottom = -647.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 1.5708
+scale = Vector2(1, -256.24)
+texture = SubResource("GradientTexture1D_oq7lg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -432.0
+offset_bottom = 645.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 91
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 49
+
+[node name="You Died Text" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.242351, 0.0122114, 1.20327e-08, 1)
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("1_rfk2f")
+theme_override_font_sizes/font_size = 53
+text = "you died"
+horizontal_alignment = 1
+
+[node name="Reset" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.717647)
+theme_override_colors/font_shadow_color = Color(0.235875, 0.0115829, 3.60981e-08, 1)
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("3_hapol")
+theme_override_font_sizes/font_size = 26
+text = "Press 'R' to reset"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -331.615
+offset_top = -148.0
+offset_right = -93.615
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="Main_Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_kxenv")
+theme_override_fonts/font = ExtResource("1_rfk2f")
+theme_override_font_sizes/font_size = 28
+text = "main menu"
+flat = true
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_kxenv")
+theme_override_fonts/font = ExtResource("1_rfk2f")
+theme_override_font_sizes/font_size = 28
+text = "settings"
+flat = true
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_kxenv")
+theme_override_fonts/font = ExtResource("1_rfk2f")
+theme_override_font_sizes/font_size = 28
+text = "restart"
+flat = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("5_igpfl")
+volume_db = 20.0
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource("6_du3ad")
+volume_db = 5.66
+pitch_scale = 1.2
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[node name="Settings_Page" parent="." instance=ExtResource("7_fucm8")]
+visible = false
+layout_mode = 1
+
+[connection signal="mouse_entered" from="VBoxContainer/Main_Menu" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Settings" to="." method="_on_button_2_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Restart" to="." method="_on_button_3_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]

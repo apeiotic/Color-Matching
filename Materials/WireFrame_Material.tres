@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bg4q8d0hgweee"]
+
+[ext_resource type="Shader" path="res://Materials/WireFrame.gdshader" id="1_1tm0b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1tm0b")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/wire_color_start = Color(1, 0, 0, 1)
+shader_parameter/wire_color_end = Color(0, 0, 1, 1)
+shader_parameter/wire_width = 0.78
+shader_parameter/wire_smoothness = 0.01
+shader_parameter/emission_color = Color(1, 0, 0, 1)

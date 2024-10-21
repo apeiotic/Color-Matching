@@ -53,10 +53,10 @@ signal canhook()
 
 @onready var wallrun_delay_default = wallrun_delay
 @onready var detector = $"Neck/Standing Raycast"
-@onready var camera = $"Neck/Neck 2/Camera3D"
+@onready var camera = $"Neck/Neck 2/Neck 3/Camera3D"
 @onready var dashraycast = $"Neck/Dash raycast"
 @onready var jumptimer = $Neck/JumpTimer
-@onready var HUD= $"Neck/Neck 2/Camera3D/HUD"
+@onready var HUD= $"Neck/Neck 2/Neck 3/Camera3D/HUD"
 @onready var deathtimer = $"Neck/Death Timer"
 @onready var neck = $Neck
 @onready var neck_animation = $Neck/AnimationPlayer

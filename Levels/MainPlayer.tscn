@@ -68,7 +68,7 @@ size = Vector3(1, 1.89575, 1)
 material = ExtResource("2_dqeak")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lxyvy"]
-frequency = 0.3162
+frequency = 0.6951
 
 [sub_resource type="Animation" id="Animation_2rnso"]
 resource_name = "Bob"
@@ -256,18 +256,21 @@ noise = SubResource("FastNoiseLite_lxyvy")
 [node name="Neck 2" type="Node3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50017, -0.496168)
 
-[node name="Camera3D" type="Camera3D" parent="Neck/Neck 2"]
+[node name="Neck 3" type="Node3D" parent="Neck/Neck 2"]
+
+[node name="Camera3D" type="Camera3D" parent="Neck/Neck 2/Neck 3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221889, 0.129726)
 
-[node name="HUD" parent="Neck/Neck 2/Camera3D" instance=ExtResource("2_n7qrv")]
+[node name="HUD" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("2_n7qrv")]
+metadata/_edit_use_anchors_ = true
 
-[node name="HookRaycast" type="RayCast3D" parent="Neck/Neck 2/Camera3D"]
+[node name="HookRaycast" type="RayCast3D" parent="Neck/Neck 2/Neck 3/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457799, -0.146399)
 target_position = Vector3(0, 0, -7)
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="Neck/Neck 2/Camera3D"]
+[node name="CanvasLayer3" type="CanvasLayer" parent="Neck/Neck 2/Neck 3/Camera3D"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Neck/Neck 2/Camera3D/CanvasLayer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Neck/Neck 2/Neck 3/Camera3D/CanvasLayer3"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -275,11 +278,13 @@ offset_left = -20.0
 offset_right = 66.0
 offset_bottom = 52.0
 grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Timer" parent="Neck/Neck 2/Camera3D/CanvasLayer3/HBoxContainer" instance=ExtResource("5_i4ig8")]
+[node name="Timer" parent="Neck/Neck 2/Neck 3/Camera3D/CanvasLayer3/HBoxContainer" instance=ExtResource("5_i4ig8")]
 position = Vector2(-36, 0)
 
-[node name="Pause Menu" parent="Neck/Neck 2/Camera3D" instance=ExtResource("6_8xgr3")]
+[node name="Pause Menu" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("6_8xgr3")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Standing Raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
@@ -332,14 +337,14 @@ one_shot = true
 
 [node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
 script = ExtResource("3_p8iac")
-hook_raycast = NodePath("../Neck/Neck 2/Camera3D/HookRaycast")
+hook_raycast = NodePath("../Neck/Neck 2/Neck 3/Camera3D/HookRaycast")
 player_body = NodePath("..")
 launch_action_name = "Ability 1"
 retract_action_name = "Ability 1"
 
 [connection signal="canhook" from="." to="Hook" method="_on_character_body_3d_canhook"]
 [connection signal="color" from="." to="MeshInstance3D" method="_on_character_body_3d_color"]
-[connection signal="color" from="." to="Neck/Neck 2/Camera3D/HUD" method="_on_character_body_3d_color"]
+[connection signal="color" from="." to="Neck/Neck 2/Neck 3/Camera3D/HUD" method="_on_character_body_3d_color"]
 [connection signal="timeout" from="Neck/JumpTimer" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Neck/Death Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Neck/JumpPad" to="." method="jump_pad_timeout"]

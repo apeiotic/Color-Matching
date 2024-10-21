@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://d073v22is5r0s"]
+[gd_scene load_steps=28 format=4 uid="uid://d073v22is5r0s"]
 
 [ext_resource type="Script" path="res://UI/Script/level_4.gd" id="1_68764"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_id6as"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="10_t7w3a"]
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="11_b3t67"]
 [ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="12_homd3"]
+[ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="14_nk2b6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnacu"]
 
@@ -504,5 +505,7 @@ transform = Transform3D(0.263635, -0.874127, -0.407921, 0.817197, 0.427078, -0.3
 
 [node name="Crate 2" parent="." instance=ExtResource("12_homd3")]
 transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -2.01159, 2.69215, 0.454716)
+
+[node name="Death menu" parent="." instance=ExtResource("14_nk2b6")]
 
 [connection signal="body_entered" from="Cube7/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://hdmcnievbc57"]
+[gd_scene load_steps=16 format=3 uid="uid://hdmcnievbc57"]
 
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="1_5cr7t"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_12bqt"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="1_las13"]
+[ext_resource type="Script" path="res://Levels/MainLevels/level_7.gd" id="1_ytknn"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="2_fxry4"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="3_ewgy5"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="6_qg2gm"]
@@ -10,6 +11,7 @@
 [ext_resource type="Material" uid="uid://ddjuqtuonx20x" path="res://Materials/CellMaterial.tres" id="8_lvdjm"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="9_mlfvg"]
 [ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="10_utxrh"]
+[ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="12_athmp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxblk"]
 sky_top_color = Color(0.0842141, 0.109491, 0.144642, 1)
@@ -61,6 +63,7 @@ adjustment_contrast = 1.55
 adjustment_saturation = 2.07
 
 [node name="Level 7" type="Node3D"]
+script = ExtResource("1_ytknn")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(7.24147, 0, 0, 0, 0.0647631, 0, 0, 0, 6.9146, 0, -4.7944, 0)
@@ -188,3 +191,5 @@ font_size = 82
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("10_utxrh")]
 transform = Transform3D(2.06877, 0, 0, 0, 1.00015, 0, 0, 0, 1.90906, 0.120065, 11.4116, 11.0448)
+
+[node name="Death menu" parent="." instance=ExtResource("12_athmp")]

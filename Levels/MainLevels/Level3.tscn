@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://cea4uacthafah"]
+[gd_scene load_steps=94 format=4 uid="uid://cea4uacthafah"]
 
 [ext_resource type="Script" path="res://UI/Script/level_3.gd" id="1_weqy8"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_oywo8"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="12_1hcar"]
 [ext_resource type="Material" uid="uid://c1s55smgnmwar" path="res://Materials/Portal.tres" id="13_qoe1v"]
 [ext_resource type="Material" uid="uid://d0jxrrt5bsvu5" path="res://Materials/Glowy.tres" id="14_itojn"]
+[ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="17_8l3pr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luvga"]
 metallic = 0.36
@@ -1318,7 +1319,7 @@ color = ["Red", "Black", "Green", "Lime", "Blue", "Cyan", "Orange"]
 transform = Transform3D(21.9416, 0, 0, 0, 1, 0, 0, 0, 0.951669, 2.19453, 1.43891, -3.81388)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform"]
-transform = Transform3D(-2.16067e-07, 1, -0.000491516, 0.0106678, -0.000203092, -2.41986, -0.999943, -2.38232e-06, -0.025816, 0.0804991, 0.204925, 0.175739)
+transform = Transform3D(-3.35276e-07, 1, -0.000491516, 0.0106678, -0.000203091, -2.41986, -0.999943, -2.50153e-06, -0.025816, 0.0804991, 0.204925, 0.175739)
 material_override = SubResource("StandardMaterial3D_ehtjd")
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
@@ -1333,7 +1334,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-9.68488e-08, 0.999992, -0.000203098, 0.0106668, -0.000203092, -0.999903, -0.999853, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
+transform = Transform3D(-9.68487e-08, 0.999992, -0.000203098, 0.0106668, -0.000203092, -0.999903, -0.999852, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -1657,6 +1658,9 @@ skeleton = NodePath("")
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21436, 4.94861, 3.96509)
 size = Vector3(22.4287, 10.1028, 12.0698)
+
+[node name="Death menu" parent="." instance=ExtResource("17_8l3pr")]
+z_index = 6
 
 [connection signal="ChangeColor" from="Color Changing" to="CharacterBody3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Cube/Area3D" to="." method="PusherActivate"]

@@ -13,7 +13,7 @@ var trauma := 0.0
 var speed: float
 var time := 0.0
 
-@onready var camera := $"."
+@onready var camera :=$"Neck 2/Neck 3"
 @onready var initial_rotation := camera.rotation_degrees as Vector3
 
 func _ready() -> void:

@@ -1,7 +1,9 @@
 extends MeshInstance3D
 
+
 @export var repel_strength = 15.0
 var Player_Color = ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GLB.connect("color", Callable(self, "ColorSaving"))

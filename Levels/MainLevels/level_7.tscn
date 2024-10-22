@@ -63,6 +63,7 @@ adjustment_contrast = 1.55
 adjustment_saturation = 2.07
 
 [node name="Level 7" type="Node3D"]
+transform = Transform3D(1, -2.62768e-05, -8.07945e-05, 2.62768e-05, 1, -0.00013212, 8.07945e-05, 0.00013212, 1, 0, 0, 0)
 script = ExtResource("1_ytknn")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -163,7 +164,7 @@ material_override = ExtResource("7_y55l3")
 size = Vector3(73.4229, 21.2853, 1)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
-transform = Transform3D(2.80107, 0, 0, 0, -3.5195e-07, -1.39319, 0, 8.05167, -6.08984e-08, 9.45463, -9.73952, 12.9796)
+transform = Transform3D(2.80107, 0, -1.60583e-12, 2.90257e-12, -3.51924e-07, -1.39319, 0, 8.05167, -6.08852e-08, 9.45457, -9.73962, 12.2404)
 material_override = ExtResource("8_lvdjm")
 size = Vector3(73.4229, 21.2853, 1)
 

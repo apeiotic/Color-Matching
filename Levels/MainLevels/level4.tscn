@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://d073v22is5r0s"]
+[gd_scene load_steps=30 format=4 uid="uid://d073v22is5r0s"]
 
 [ext_resource type="Script" path="res://UI/Script/level_4.gd" id="1_68764"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_id6as"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="4_ph437"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="5_tahvm"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="7_ab11o"]
-[ext_resource type="Material" uid="uid://k0w6vopmq431" path="res://Materials/Acid.tres" id="10_t7w3a"]
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="11_b3t67"]
+[ext_resource type="Shader" path="res://Levels/MainLevels/Cell.gdshader" id="11_ujjbl"]
 [ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="12_homd3"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="14_nk2b6"]
 
@@ -105,8 +105,48 @@ emission = Color(0, 0.868002, 0.959466, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6nevp"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhbi4"]
+render_priority = 0
+shader = ExtResource("11_ujjbl")
+shader_parameter/grid_size = 589.09
+shader_parameter/cell_size = 3.53
+shader_parameter/gutter_size = 0.07
+shader_parameter/cell_color = Color(0.245568, 0.000578965, 0.40331, 1)
+shader_parameter/gutter_color = Color(0, 0.272626, 0.590189, 1)
+shader_parameter/cell_roundedness = 0.222
+shader_parameter/cell_manipulator_radius = 109.835
+shader_parameter/cell_manipulator_uv_pos = Vector2(0.515, 0.525)
+shader_parameter/manipulated_cell_size = 8.718
+shader_parameter/manipulator_gutter_color = Color(0.367613, 0.422092, 9.62615e-08, 1)
+shader_parameter/cell_manipulation_anim_speed = 0.303
+shader_parameter/gutter_noise_color = Color(0.418919, 0.330986, 0.276949, 1)
+shader_parameter/gutter_noise_speed = 20.62
+shader_parameter/fresnel_color = Color(0, 0.469861, 0.120163, 1)
+shader_parameter/fresnel_intensity = 8.27
+shader_parameter/fresnel_amount = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_becj0"]
+render_priority = 0
+shader = ExtResource("11_ujjbl")
+shader_parameter/grid_size = 589.09
+shader_parameter/cell_size = 3.53
+shader_parameter/gutter_size = 0.07
+shader_parameter/cell_color = Color(0.0960662, 0.171694, 0.0548158, 1)
+shader_parameter/gutter_color = Color(0.118354, 0.347174, 4.33177e-07, 1)
+shader_parameter/cell_roundedness = 0.222
+shader_parameter/cell_manipulator_radius = 109.835
+shader_parameter/cell_manipulator_uv_pos = Vector2(0.515, 0.525)
+shader_parameter/manipulated_cell_size = 8.718
+shader_parameter/manipulator_gutter_color = Color(0.367613, 0.422092, 9.62615e-08, 1)
+shader_parameter/cell_manipulation_anim_speed = 0.303
+shader_parameter/gutter_noise_color = Color(0.418919, 0.330986, 0.276949, 1)
+shader_parameter/gutter_noise_speed = 20.62
+shader_parameter/fresnel_color = Color(0, 0.469861, 0.120163, 1)
+shader_parameter/fresnel_intensity = 8.27
+shader_parameter/fresnel_amount = 15.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_mtoxl"]
-material = ExtResource("10_t7w3a")
+material = SubResource("ShaderMaterial_becj0")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_77227"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -393,8 +433,7 @@ use_collision = true
 size = Vector3(3.74609, 1, 1)
 
 [node name="JumpPad" parent="." instance=ExtResource("4_ph437")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 0.621978, -4.26322, 23.2033)
-repel_strength = 16.0
+transform = Transform3D(3.19752, 0, 0, 0, 0.143823, 0, 0, 0, 2.33239, 0.510832, -4.26322, 23.2033)
 
 [node name="Color Changing" parent="." instance=ExtResource("5_tahvm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.691725, -1.30032, 18.8636)
@@ -443,12 +482,6 @@ omni_range = 9.61475
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 
-[node name="CSGBox3D19" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533615, -5.99804, 22.5533)
-material_override = ExtResource("2_bfx4l")
-use_collision = true
-size = Vector3(2.29324, 3.43536, 2.1377)
-
 [node name="CSGBox3D20" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39381, -1.68997, 27.8024)
 material_override = ExtResource("2_bfx4l")
@@ -486,9 +519,8 @@ use_collision = true
 size = Vector3(0.718906, 0.528563, 5.81647)
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(-3.7537e-06, 0, -71.9589, 0, 1, 0, 85.8746, 0, -3.14542e-06, -25.8896, -7.88456, 25.7315)
-material_override = ExtResource("10_t7w3a")
-material_overlay = ExtResource("10_t7w3a")
+transform = Transform3D(-3.94659e-06, 0, -116.574, 0, 1, 0, 90.2874, 0, -5.09561e-06, -21.0077, -7.88456, 23.0628)
+material_override = SubResource("ShaderMaterial_mhbi4")
 mesh = SubResource("BoxMesh_mtoxl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D7"]

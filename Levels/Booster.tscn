@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw07ynt57rq55"]
+
+[ext_resource type="Material" uid="uid://chbhwfhso3j2i" path="res://Materials/Shader/Booster.tres" id="1_sbda4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y3h3g"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.995068, -0.000651228, 0.0502076, -0.0461752, -0.00599982, 1.08202, -0.000371165, -0.999482, -0.00652799, 0, 0, 0)
+material_override = ExtResource("1_sbda4")
+mesh = SubResource("PlaneMesh_y3h3g")
+skeleton = NodePath("../Plane")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(2.4219e-06, 0.986574, -0.0017653, -1.00131, -6.1118e-10, -0.00231449, -0.00178222, 0.00133932, 1.30036, 0.0159765, 0.00206199, -0.316614)
+material_override = ExtResource("1_sbda4")
+mesh = SubResource("PlaneMesh_y3h3g")
+skeleton = NodePath("../../Plane")

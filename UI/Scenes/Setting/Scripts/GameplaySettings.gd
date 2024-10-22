@@ -30,17 +30,19 @@ func _process(delta: float) -> void:
 	if label_enum == "Head sway":
 		if check_button.button_pressed == true:
 			GLB.Camera_Sway = true
+			
 		else: 
 			GLB.Camera_Sway = false
+		
 	
 	if label_enum == "Camera Shake":
 		if check_button.button_pressed == true:
 			GLB.Camera_shake == true
 		else:
-			GLB.Camera_shake == true
+			GLB.Camera_shake == false
 	
 	if label_enum == "Camera Drag":
 		if check_button.button_pressed == true:
 			GLB.Camera_Drag == true
 		else:
-			GLB.Camera_Drag == true
+			GLB.Camera_Drag ==false

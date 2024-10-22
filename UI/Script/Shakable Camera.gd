@@ -52,18 +52,18 @@ func saveplayerspeed(playerspeed):
 func trauma_amount_based_on_speed():
 	if speed > 7:
 		add_trauma(0.05)
-		max_x = 0.5
-		max_y= 0.5
-		max_z = 0.25
+		max_x = 0.25
+		max_y= 0.25
+		max_z = 0.12
 	
 	if speed > 8.5:
 		add_trauma(0.1)
-		max_x = 1.0
-		max_y=1.0
-		max_z = 1.0
+		max_x = 0.5
+		max_y=0.5
+		max_z = 0.5
 	
 	if speed > 10.0:
 		add_trauma(0.8)
-		max_x =2.0
-		max_y= 2.0
+		max_x =1.0
+		max_y= 1.0
 		max_z =1.0

@@ -28,10 +28,10 @@ void fragment() {
 	vec3 deltas = fwidth(barys);
 	vec3 barys_s = smoothstep(deltas * wire_width - wire_smoothness, deltas * wire_width + wire_smoothness, barys);
 	float wires = min(barys_s.x, min(barys_s.y, barys_s.z));
-	
+
 	// Calculate gradient color for the wire based on the screen position or vertex position
 	vec3 gradient_color = mix(wire_color_start.rgb, wire_color_end.rgb, FRAGCOORD.y / VIEWPORT_SIZE.y);
-	
+
 	// Apply gradient to wire color
 	ALBEDO = mix(gradient_color, albedo.rgb, wires);
 

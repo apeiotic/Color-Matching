@@ -6,8 +6,8 @@
 render_priority = 0
 shader = ExtResource("1_1tm0b")
 shader_parameter/albedo = Color(0, 0, 0, 1)
-shader_parameter/wire_color_start = Color(1, 0, 0, 1)
+shader_parameter/wire_color_start = Color(0.917028, 0.284097, 0, 1)
 shader_parameter/wire_color_end = Color(0, 0, 1, 1)
-shader_parameter/wire_width = 0.78
+shader_parameter/wire_width = 0.55
 shader_parameter/wire_smoothness = 0.01
-shader_parameter/emission_color = Color(1, 0, 0, 1)
+shader_parameter/emission_color = Color(0.902605, 0.808278, 4.62055e-06, 1)

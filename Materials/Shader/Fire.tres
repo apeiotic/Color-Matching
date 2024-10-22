@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d03y6052v5qyk"]
+
+[ext_resource type="Shader" path="res://Materials/Shader/Fire.gdshader" id="1_4cbs0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4cbs0")
+shader_parameter/detail_strength = 3.0
+shader_parameter/scroll_speed = 2.41
+shader_parameter/fire_height = 0.685
+shader_parameter/fire_shape = -5.84
+shader_parameter/fire_thickness = 0.145
+shader_parameter/fire_sharpness = 1.749
+shader_parameter/intensity = 1.0
+shader_parameter/fire_color = Color(0.299238, 1, 0.509744, 1)
+shader_parameter/noise_octaves = 6
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = 0.5
+shader_parameter/noise_amplitude = 1.04
+shader_parameter/noise_frequency = 1.39

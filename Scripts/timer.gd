@@ -20,7 +20,6 @@ func _ready() -> void:
 # This is called every time the timer times out (every 10 milliseconds)
 func _on_timer_timeout() -> void:
 	total_time_milliseconds += 10
-	print(FormattedTime)
 	var sec = int(total_time_milliseconds / 1000)  
 	var millis = total_time_milliseconds % 1000 / 10 
 	FormattedTime = '%02d:%02d' % [sec, millis]  

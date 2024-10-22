@@ -14,10 +14,10 @@ func saveplayerspeed (playerspeed):
 func _process(delta: float) -> void:
 	if GLB.Camera_Drag == true: 
 		if L_Playerspeed > 7:
-			material.set_shader_parameter("max_drag_distance", 0.05)
+			material.set_shader_parameter("max_drag_distance", 0.025)
 		
 		if L_Playerspeed >9:
-			material.set_shader_parameter("max_drag_distance", 0.1)
+			material.set_shader_parameter("max_drag_distance", 0.05)
 			
 		if L_Playerspeed < 7:
 			material.set_shader_parameter("max_drag_distance", 0)

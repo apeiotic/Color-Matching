@@ -11,3 +11,6 @@ signal level7
 signal level8
 signal level9
 signal level10
+
+signal Level1Finished
+signal Level1_time(FormattedTime)

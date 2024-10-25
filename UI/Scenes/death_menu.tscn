@@ -59,10 +59,10 @@ shader_parameter/step4 = 0.264
 shader_parameter/step5 = 0.265
 shader_parameter/step6 = 0.266
 
-[sub_resource type="Gradient" id="Gradient_id44x"]
+[sub_resource type="Gradient" id="Gradient_lsjl0"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_oq7lg"]
-gradient = SubResource("Gradient_id44x")
+gradient = SubResource("Gradient_lsjl0")
 
 [sub_resource type="Shader" id="Shader_8evur"]
 code = "/*
@@ -101,7 +101,7 @@ shader_parameter/height = 0.6
 shader_parameter/speed = 0.4
 shader_parameter/scale = Vector2(2, 16.124)
 
-[sub_resource type="Shader" id="Shader_wi8o6"]
+[sub_resource type="Shader" id="Shader_j5ji8"]
 code = "/*
 	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
 	Procedural Electric Background Shader by Yui Kinomoto @arlez80
@@ -130,7 +130,7 @@ void fragment( )
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0ut1"]
-shader = SubResource("Shader_wi8o6")
+shader = SubResource("Shader_j5ji8")
 shader_parameter/background_color = Color(0, 0, 0, 0)
 shader_parameter/line_color = Color(1, 0, 0, 0.333333)
 shader_parameter/line_freq = 9.56
@@ -138,14 +138,14 @@ shader_parameter/height = 0.6
 shader_parameter/speed = 0.4
 shader_parameter/scale = Vector2(2, 16.411)
 
-[sub_resource type="Gradient" id="Gradient_o8h88"]
+[sub_resource type="Gradient" id="Gradient_kxsua"]
 offsets = PackedFloat32Array(0, 0.0585938, 0.0898438, 0.929688, 0.96875, 1)
 colors = PackedColorArray(0.281667, 2.1358e-07, 6.01634e-08, 0.517647, 0.511673, 0, 0, 0.414323, 0.607843, 0, 0, 0.231373, 0.937255, 0, 0, 0.180392, 1, 0.434811, 0.366139, 0.316624, 1, 0, 0, 0.239216)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_nfh3k"]
-gradient = SubResource("Gradient_o8h88")
+gradient = SubResource("Gradient_kxsua")
 
-[sub_resource type="Shader" id="Shader_dd0j8"]
+[sub_resource type="Shader" id="Shader_bk0od"]
 code = "/*
 	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
 	Procedural Electric Background Shader by Yui Kinomoto @arlez80
@@ -174,7 +174,7 @@ void fragment( )
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jgps6"]
-shader = SubResource("Shader_dd0j8")
+shader = SubResource("Shader_bk0od")
 shader_parameter/background_color = Color(0, 0, 0, 0)
 shader_parameter/line_color = Color(1, 0, 0, 0.666667)
 shader_parameter/line_freq = 9.56

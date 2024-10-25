@@ -14,12 +14,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#print(ComapairingCurrentLevel)
+	
 	pass
 
 
 func _on_restart_pressed() -> void:
-	print(get_tree().current_scene)
+	
 	get_tree().reload_current_scene()
 	
 

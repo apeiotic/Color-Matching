@@ -51,4 +51,4 @@ shader_parameter/wire_color_start = Color(0.937316, 0.545966, 0.237532, 1)
 shader_parameter/wire_color_end = Color(0.489689, 0.200698, 0, 1)
 shader_parameter/wire_width = 0.55
 shader_parameter/wire_smoothness = 0.005
-shader_parameter/emission_color = Color(0, 0, 0, 0)
+shader_parameter/emission_color = Color(0.853247, 0.369977, 1.92523e-07, 1)

@@ -27,7 +27,7 @@ float noise(vec2 x) {
     vec2 p = floor(x);
     vec2 f = fract(x);
 
-    float n = 
+    float n =
         hash(p)       * (1.0 - f.x) * (1.0 - f.y) +
         hash(p + vec2(1.0, 0.0)) * f.x * (1.0 - f.y) +
         hash(p + vec2(0.0, 1.0)) * (1.0 - f.x) * f.y +
@@ -41,7 +41,7 @@ float fbm(vec2 p) {
     float total = 0.0;
     float amplitude = noise_amplitude;
     float frequency = noise_frequency;
-    
+
     for (int i = 0; i < noise_octaves; i++) {
         total += noise(p * frequency) * amplitude;
         frequency *= noise_lacunarity;

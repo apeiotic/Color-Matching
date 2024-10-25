@@ -28,18 +28,27 @@ func died_func():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GLBSaving.emit_signal("level1")
 
-
+func LevelFinished():
+	GLBSaving.emit_signal("Level1Finished")
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		#get_tree().change_scene_to_file("res://Levels/MainLevels/level2.tscn")
 		died_func()
 
+func _on_area_3d_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		LevelFinished()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		player.queue_free()
+		GLBSaving.emit_signal("level1")
+
 #region Dialogue system
 
 func _on_area_detected_body_entered(body: Node3D) -> void:
-	if not is_in_dialogue:
-		start_dialogue()
+	if body.is_in_group("Player"):
+		if not is_in_dialogue:
+			start_dialogue()
 
 func start_dialogue() -> void:
 	is_in_dialogue = true

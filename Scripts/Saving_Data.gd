@@ -1,8 +1,14 @@
 class_name SavedGame
 extends  Resource
 
-#------Saving Time------#
+#-------------Saving Time--------------#
+
+#------------level1--------------#
 @export var level1_time : String
+@export var level1_time2 : String
+@export var level1_time3 : String
+
+#------------level2--------------#
 @export var level2_time : String
 @export var level3_time : String
 @export var level4_time : String

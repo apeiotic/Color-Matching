@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://cea4uacthafah"]
+[gd_scene load_steps=105 format=4 uid="uid://cea4uacthafah"]
 
 [ext_resource type="Script" path="res://UI/Script/level_3.gd" id="1_weqy8"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_oywo8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://d03y6052v5qyk" path="res://Materials/Shader/Fire.tres" id="18_to4ln"]
 [ext_resource type="Material" uid="uid://bg4q8d0hgweee" path="res://Materials/WireFrame_Material.tres" id="19_gsohv"]
 [ext_resource type="Material" uid="uid://cwlmjrvocamdp" path="res://Materials/Shader/WireFrame_VolcanoGround.tres" id="20_e01vx"]
+[ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="21_8vwoo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luvga"]
 metallic = 0.36
@@ -941,7 +942,7 @@ size = Vector3(16.795, 13.9189, 15.268)
 material = SubResource("StandardMaterial3D_luvga")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_4oejs")]
-transform = Transform3D(0.998073, 0, 0, 0, 0.998073, 0, 0, 0, 0.998073, 4.38795, 1.26907, 2.44219)
+transform = Transform3D(0.998073, 0, 4.61853e-14, 0, 0.998073, 0, -4.61853e-14, 0, 0.998073, 2.14712, 1.02398, 2.14015)
 collision_layer = 3
 collision_mask = 3
 
@@ -1036,16 +1037,16 @@ use_collision = true
 size = Vector3(1, 8.31998, 3.62317)
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="."]
-transform = Transform3D(1.28844, 0, 0, 0, 1.10512, 0, 0, 0, 6.65713, 0.269422, 9.04012, -31.8626)
+transform = Transform3D(1.28844, 0, 0, 0, 1.10512, 0, 0, 0, 6.65713, 0.269422, 11.773, -31.8626)
 material_override = ExtResource("6_q3rt4")
 use_collision = true
-size = Vector3(1, 8.09309, 3.62317)
+size = Vector3(1, 13.0389, 3.62317)
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="."]
-transform = Transform3D(1.28844, 0, 0, 0, 1.10512, 0, 0, 0, 6.65713, 5.26359, 9.04012, -38.8158)
+transform = Transform3D(1.28844, 0, 0, 0, 1.10512, 0, 0, 0, 6.65713, 5.26359, 11.5684, -38.8158)
 material_override = ExtResource("6_q3rt4")
 use_collision = true
-size = Vector3(1, 8.09309, 5.47452)
+size = Vector3(1, 12.6687, 5.47452)
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -1473,7 +1474,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-9.68482e-08, 0.999992, -0.000203098, 0.0106667, -0.000203092, -0.999903, -0.999846, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
+transform = Transform3D(-9.68477e-08, 0.999992, -0.000203098, 0.0106667, -0.000203092, -0.999903, -0.999842, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -1788,6 +1789,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21436, 4.94861, 3.96509)
 size = Vector3(22.4287, 10.1028, 12.0698)
 
 [node name="Death menu" parent="." instance=ExtResource("17_8l3pr")]
+visible = false
 z_index = 6
 
 [node name="Booster" type="Node3D" parent="."]
@@ -1822,7 +1824,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271085, 4.02221, -22.1369)
 material_override = ExtResource("6_q3rt4")
 size = Vector3(1.27368, 3.40466, 1)
 
+[node name="Finsihed Levels" parent="." instance=ExtResource("21_8vwoo")]
+visible = false
+
 [connection signal="ChangeColor" from="Color Changing" to="CharacterBody3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Cube/Area3D" to="." method="PusherActivate"]
-[connection signal="body_entered" from="portal/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="Finish_Line_reached"]
+[connection signal="body_entered" from="portal/Area3D" to="." method="_on_area_3d_body_entered"]

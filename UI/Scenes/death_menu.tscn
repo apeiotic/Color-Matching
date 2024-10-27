@@ -333,7 +333,7 @@ layout_mode = 2
 theme = ExtResource("1_kxenv")
 theme_override_fonts/font = ExtResource("1_rfk2f")
 theme_override_font_sizes/font_size = 28
-text = "main menu"
+text = "main menu "
 flat = true
 
 [node name="Settings" type="Button" parent="VBoxContainer"]

@@ -1,4 +1,6 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue. 
-Nathan: Here are some choices.
+assistant: [[Hey|Hello|Hi]], welcome to the first level.
+assistant: This one’s pretty simple, so you should be able to get through it without much trouble.
+assistant: But if you’re finding it tricky, here’s a hint:
+assistant: Sometimes a slightly delayed jump can work better.
 => END

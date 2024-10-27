@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://d073v22is5r0s"]
+[gd_scene load_steps=31 format=4 uid="uid://d073v22is5r0s"]
 
 [ext_resource type="Script" path="res://UI/Script/level_4.gd" id="1_68764"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="1_id6as"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://Levels/MainLevels/Cell.gdshader" id="11_ujjbl"]
 [ext_resource type="PackedScene" uid="uid://c76xw8647wlkr" path="res://Levels/Interactable_Objects/Crate2.tscn" id="12_homd3"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="14_nk2b6"]
+[ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="15_jk20g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnacu"]
 
@@ -343,7 +344,7 @@ size = Vector3(8.99121, 10.4243, 9.29639)
 transform = Transform3D(-6.47926e-08, 0, 1.48228, 0, 1.48228, 0, -1.48228, 0, -6.47926e-08, -0.479843, 0.587801, -0.103004)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube7/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.574598, 0.0499916, 1.92958, 0.410759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.69407e-21, 0, 0.574598, 0.0499916, 1.92958, 0.33448)
 shape = SubResource("BoxShape3D_1us8a")
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="." groups=["Blue"]]
@@ -389,7 +390,7 @@ size = Vector3(14.6715, 10.9242, 12.0452)
 material = ExtResource("1_id6as")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_hfcpk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.713461, 4.07832, -0.9422)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.700692, 3.4299, -1.10276)
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -539,5 +540,8 @@ transform = Transform3D(0.263635, -0.874127, -0.407921, 0.817197, 0.427078, -0.3
 transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -2.01159, 2.69215, 0.454716)
 
 [node name="Death menu" parent="." instance=ExtResource("14_nk2b6")]
+
+[node name="Finsihed Levels" parent="." instance=ExtResource("15_jk20g")]
+visible = false
 
 [connection signal="body_entered" from="Cube7/Area3D" to="." method="_on_area_3d_body_entered"]

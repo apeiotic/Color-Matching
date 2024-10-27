@@ -26,10 +26,10 @@ func died_func():
 	Player.queue_free()
 	death_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GLBSaving.emit_signal("level1")
+	
 
-func LevelFinished():
-	GLBSaving.emit_signal("Level1Finished")
+
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
@@ -38,10 +38,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		LevelFinished()
+		GLBSaving.emit_signal("Level1Finished")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.queue_free()
 		GLBSaving.emit_signal("level1")
+		
 
 #region Dialogue system
 
@@ -55,12 +56,16 @@ func start_dialogue() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if player:
 		player.set_physics_process(false)
+		player.stop_animations()
 	var balloon: Node = Balloon.instantiate()
 	get_tree().current_scene.add_child(balloon)
 	balloon.start(dialogue_resource, dialogue_start)
+	get_tree().paused = true
 
 
 func EnablePlayerMovement():
 	player.set_physics_process(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+
 #endregion

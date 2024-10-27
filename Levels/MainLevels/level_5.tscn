@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bfwbrgpd2o0cl"]
+[gd_scene load_steps=30 format=4 uid="uid://bfwbrgpd2o0cl"]
 
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="1_63664"]
 [ext_resource type="Script" path="res://Scripts/level_5.gd" id="1_g20eh"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_kqxxf"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="12_6rf5h"]
 [ext_resource type="Material" uid="uid://bg4q8d0hgweee" path="res://Materials/WireFrame_Material.tres" id="13_ljsmg"]
+[ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="15_k5te5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q02gn"]
 sky_top_color = Color(0.0646477, 0.0864206, 0.116699, 1)
@@ -155,6 +156,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h74cx")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg8ex"]
+size = Vector3(1, 5.4762, 6.34583)
+
 [node name="Level 5" type="Node3D"]
 transform = Transform3D(0.668017, 0, 0, 0, 0.463363, 0, 0, 0, 0.463363, 0, -14.1075, 0)
 script = ExtResource("1_g20eh")
@@ -219,7 +223,7 @@ material_override = ExtResource("1_63664")
 use_collision = true
 size = Vector3(1.76555, 38.2025, 2.15439)
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="." groups=["Red"]]
+[node name="CSGBox3D15" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(4.33336e-07, 0, 5.94311, 0, 0.0248365, 0, -18.5833, 0, 1.46851e-07, 75.3762, -5.17147, -183.935)
 material_override = ExtResource("5_ofl2v")
 use_collision = true
@@ -284,7 +288,7 @@ use_collision = true
 size = Vector3(1, 0.104492, 0.936905)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_6jjt0")]
-transform = Transform3D(1.49697, 0, 3.74118e-07, 0, 2.15813, 0, -2.59504e-07, 0, 2.15813, 2.41121e-06, 3.72732, 19.1917)
+transform = Transform3D(1.33484, 0, 3.33599e-07, 0, 1.92439, 0, -2.31398e-07, 0, 1.92439, 0, 3.08362, 17.6283)
 
 [node name="Lighting" type="Node3D" parent="."]
 
@@ -524,3 +528,15 @@ transform = Transform3D(0.837596, 0, 0, 0, 0.73213, 0, 0, 0, 0.793226, 0.0246661
 material_override = ExtResource("13_ljsmg")
 mesh = SubResource("ArrayMesh_cx8eg")
 skeleton = NodePath("")
+
+[node name="Finsihed Levels" parent="." instance=ExtResource("15_k5te5")]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.7283, 49.7163, -182.219)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.790282, 0, 0, 0, 3.42947, 0, 0, 0, 3.42947, 0, 7.895, -0.400452)
+shape = SubResource("BoxShape3D_cg8ex")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

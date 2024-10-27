@@ -12,7 +12,7 @@ signal Died
 signal Died_With_Level(level)
 
 
-var sensitivity : float = 0.01
+var sensitivity : float = 1.5
 var Camera_Sway = true
 var Camera_Bob = true
 var Can_hook: bool = false

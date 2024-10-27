@@ -62,9 +62,8 @@ theme_override_icons/grabber_highlight = ExtResource("4_uvk84")
 theme_override_styles/slider = SubResource("StyleBoxTexture_lllvw")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_j70k7")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_vtpca")
-max_value = 1.0
+max_value = 2.0
 step = 0.001
-value = 0.38
 
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2

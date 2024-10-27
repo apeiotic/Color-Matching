@@ -296,52 +296,54 @@ transform = Transform3D(3.46202, 0, 0, 0, 0.289531, 0, 0, 0, 3.33675, 0, 0.37013
 transform = Transform3D(0.504322, 0, 0, 0, 1, 0, 0, 0, 0.787114, 0.00136785, -0.409121, -2.10103e-05)
 shape = SubResource("BoxShape3D_i3mnx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Booster VFX" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Booster VFX"]
 transform = Transform3D(0.280883, -0.000101009, 0.000440603, -0.0130343, -0.00175459, 8.30888, -0.000104765, -0.291597, -6.17404e-05, -0.241859, -8.11375, 0.230167)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../Plane")
+skeleton = NodePath("../../Plane")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Booster VFX/MeshInstance3D"]
 transform = Transform3D(2.4187e-06, 0.999999, -0.00135754, -0.999998, -5.82077e-10, -0.00177988, -0.00177988, 0.00135754, 0.999998, 0, 0, 0)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../../Plane")
+skeleton = NodePath("../../../Plane")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Booster VFX"]
 transform = Transform3D(0.280883, -0.000101009, 0.000440603, -0.0130343, -0.00175459, 8.30888, -0.000104765, -0.291597, -6.17404e-05, -0.232822, -8.11375, -0.2358)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../Plane")
+skeleton = NodePath("../../Plane")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Booster VFX/MeshInstance3D2"]
 transform = Transform3D(2.4187e-06, 0.999999, -0.00135754, -0.999998, -5.82077e-10, -0.00177988, -0.00177988, 0.00135754, 0.999998, 0, 0, 0)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../../Plane")
+skeleton = NodePath("../../../Plane")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Booster VFX"]
 transform = Transform3D(0.280883, -0.000101009, 0.000440603, -0.0130343, -0.00175459, 8.30888, -0.000104765, -0.291597, -6.17404e-05, 0.240123, -8.11375, -0.2358)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../Plane")
+skeleton = NodePath("../../Plane")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D3"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Booster VFX/MeshInstance3D3"]
 transform = Transform3D(2.4187e-06, 0.999999, -0.00135754, -0.999998, -5.82077e-10, -0.00177988, -0.00177988, 0.00135754, 0.999998, 0, 0, 0)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../../Plane")
+skeleton = NodePath("../../../Plane")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Booster VFX"]
 transform = Transform3D(0.280705, -0.000101, 0.000618114, -0.013026, -0.00175445, 11.6564, -0.000104699, -0.291572, -8.66145e-05, 0.231086, -9.86667, 0.239549)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../Plane")
+skeleton = NodePath("../../Plane")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D4"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Booster VFX/MeshInstance3D4"]
 transform = Transform3D(2.4187e-06, 0.999999, -0.00135754, -0.999998, -5.82077e-10, -0.00177988, -0.00177988, 0.00135754, 0.999998, 0, 0, 0)
 material_override = ExtResource("6_q2mjh")
 mesh = SubResource("PlaneMesh_8768k")
-skeleton = NodePath("../../Plane")
+skeleton = NodePath("../../../Plane")
 
 [connection signal="body_entered" from="Plane/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -398,11 +398,11 @@ func get_side(point):
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * GLB.sensitivity / 3)
+		rotate_y(-event.relative.x * GLB.sensitivity / 25)
 		
-		var mouse_y = -event.relative.y * GLB.sensitivity / 3
+		var mouse_y = -event.relative.y * GLB.sensitivity / 25
 		x_rotation += mouse_y
-		camera.rotate_x(-event.relative.y *GLB.sensitivity/3)
+		camera.rotate_x(-event.relative.y *GLB.sensitivity/25)
 		x_rotation = clamp(x_rotation, -1.5, 1.5)
 		
 		camera.rotation.x = x_rotation
@@ -503,6 +503,9 @@ func OnBlue():
 
 #endregion
 
+func stop_animations():
+	neck_animation.stop()
+	
 
 func normal(): #when youre on something which is not in any group
 	SPEED = 5.0
@@ -528,8 +531,7 @@ func NotSameColor(): #function of what to do when our color doesnt match to what
 
 func dead():
 	GLB.emit_signal("Died")
-	
-	
+
 
 func jumppadeffect():
 	JumppadTimer.start()

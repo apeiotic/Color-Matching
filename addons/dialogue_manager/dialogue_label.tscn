@@ -1,17 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckvgyvclnwggo"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="1_cital"]
-[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="1_e0cdh"]
-[ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="2_trqos"]
+[ext_resource type="FontFile" uid="uid://c3t4wl71o526c" path="res://UI/Fonts/BebasNeue-Regular.ttf" id="1_m41ym"]
+[ext_resource type="FontFile" uid="uid://bqgpwvpac80l3" path="res://UI/Fonts/GTProeliumItalic.otf" id="2_2cwq4"]
 
 [node name="DialogueLabel" type="RichTextLabel"]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_fonts/normal_font = ExtResource("1_e0cdh")
-theme_override_fonts/mono_font = ExtResource("2_trqos")
-theme_override_fonts/italics_font = ExtResource("2_trqos")
+theme_override_fonts/normal_font = ExtResource("1_m41ym")
+theme_override_fonts/mono_font = ExtResource("1_m41ym")
+theme_override_fonts/italics_font = ExtResource("2_2cwq4")
+theme_override_fonts/bold_italics_font = ExtResource("2_2cwq4")
+theme_override_fonts/bold_font = ExtResource("1_m41ym")
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 42
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

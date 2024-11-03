@@ -3,6 +3,8 @@ extends Node3D
 @onready var Player: CharacterBody3D = $CharacterBody3D
 @onready var player: CharacterBody3D = $CharacterBody3D
 
+var notificationCalled = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GLB.connect("Died", Callable(self, "died_func"))
@@ -24,3 +26,15 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.queue_free()
 		GLBSaving.emit_signal("level5")
+
+
+func Callnotification():
+	notificationCalled = true
+	GLB.emit_signal("Notification_color", Color.ORANGE, "orange")
+	GLB.emit_signal("Notification_Abilitytext", "New Wallrunning ability called" )
+
+
+func _on_notification_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		if notificationCalled != true:
+			Callnotification()

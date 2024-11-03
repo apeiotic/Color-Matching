@@ -1,0 +1,345 @@
+[gd_scene load_steps=6 format=3 uid="uid://crft4bxveb3oj"]
+
+[ext_resource type="Material" uid="uid://cy1bnmkbcr3j7" path="res://Materials/Scrolling Texture.tres" id="1_2wb26"]
+[ext_resource type="PackedScene" uid="uid://wwdo3xnap2k0" path="res://UI/Scenes/DataShower_LS.tscn" id="2_dbhf8"]
+[ext_resource type="PackedScene" uid="uid://dpqcjhfmco188" path="res://UI/Scenes/level_switcher_window.tscn" id="2_gghqj"]
+[ext_resource type="AudioStream" uid="uid://cq7tu4jokf8yq" path="res://Sound Effects/sound (1).wav" id="3_qva16"]
+[ext_resource type="AudioStream" uid="uid://bglghu5jcsi3m" path="res://Sound Effects/click.wav" id="4_2uet6"]
+
+[node name="New Level Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+z_index = -5
+material = ExtResource("1_2wb26")
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
+z_index = -4
+layout_mode = 2
+color = Color(0, 0, 0, 0.431373)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = 13.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LevelSwitcherDataShower" parent="MarginContainer2" instance=ExtResource("2_dbhf8")]
+layout_mode = 2
+
+[node name="LevelSwitcher Window" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.301889
+anchor_right = -0.120551
+anchor_bottom = 0.301889
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window2" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.301889
+anchor_right = 0.0183377
+anchor_bottom = 0.301889
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+Level = "level2"
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window3" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.301889
+anchor_right = 0.157227
+anchor_bottom = 0.301889
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+Level = "level3"
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window4" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.301889
+anchor_right = 0.296116
+anchor_bottom = 0.301889
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window5" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435004
+anchor_top = 0.301889
+anchor_right = 0.435004
+anchor_bottom = 0.301889
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window6" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.530284
+anchor_right = -0.120551
+anchor_bottom = 0.530284
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window7" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.530284
+anchor_right = 0.0183377
+anchor_bottom = 0.530284
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window8" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.530284
+anchor_right = 0.157227
+anchor_bottom = 0.530284
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window9" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.530284
+anchor_right = 0.296116
+anchor_bottom = 0.530284
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window10" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435004
+anchor_top = 0.530284
+anchor_right = 0.435004
+anchor_bottom = 0.530284
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window11" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.752506
+anchor_right = -0.120551
+anchor_bottom = 0.752506
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window12" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.752506
+anchor_right = 0.0183377
+anchor_bottom = 0.752506
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window13" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.752506
+anchor_right = 0.157227
+anchor_bottom = 0.752506
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window14" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.752506
+anchor_right = 0.296116
+anchor_bottom = 0.752506
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window15" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435004
+anchor_top = 0.752506
+anchor_right = 0.435004
+anchor_bottom = 0.752506
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window16" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.974728
+anchor_right = -0.120551
+anchor_bottom = 0.974728
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window17" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.974728
+anchor_right = 0.0183377
+anchor_bottom = 0.974728
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window18" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.974728
+anchor_right = 0.157227
+anchor_bottom = 0.974728
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window19" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.974728
+anchor_right = 0.296116
+anchor_bottom = 0.974728
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="LevelSwitcher Window20" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435004
+anchor_top = 0.974728
+anchor_right = 0.435004
+anchor_bottom = 0.974728
+offset_left = 170.875
+offset_top = -135.624
+offset_right = 298.875
+offset_bottom = -3.62396
+scale = Vector2(1, 1)
+HoverSound = NodePath("../Audio/Hover")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_qva16")
+volume_db = 10.0
+panning_strength = 0.0
+bus = &"SoundEffects"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_2uet6")
+volume_db = 5.66
+pitch_scale = 1.19
+panning_strength = 0.0
+bus = &"SoundEffects"

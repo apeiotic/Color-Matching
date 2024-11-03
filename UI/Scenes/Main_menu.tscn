@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b48l7ear8lc3v"]
+[gd_scene load_steps=11 format=3 uid="uid://b48l7ear8lc3v"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_3bgtc"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_mf2qj"]
 [ext_resource type="Theme" uid="uid://djaw4fh85h3dy" path="res://UI/Script/MainMenu.tres" id="2_qkyvr"]
-[ext_resource type="Texture2D" uid="uid://c037dqaruh6mg" path="res://UI/images/Warning Image.png" id="4_0n1lt"]
-[ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="5_cpcte"]
-[ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="6_srpt0"]
+[ext_resource type="AudioStream" uid="uid://cq7tu4jokf8yq" path="res://Sound Effects/sound (1).wav" id="5_teicj"]
+[ext_resource type="AudioStream" uid="uid://bglghu5jcsi3m" path="res://Sound Effects/click.wav" id="6_kgt8m"]
 
 [sub_resource type="Shader" id="Shader_4nxkh"]
 code = "/*
@@ -101,6 +100,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_sh3xe")
 
 [node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+visible = false
 material = SubResource("ShaderMaterial_rpn2j")
 layout_mode = 1
 anchors_preset = 15
@@ -200,37 +200,16 @@ theme_override_font_sizes/font_size = 56
 text = "settings"
 flat = true
 
-[node name="MarginContainer4" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Warning" type="TextEdit" parent="MarginContainer4"]
-layout_mode = 2
-text = "Alpha Stage"
-
-[node name="WarningImage" type="Sprite2D" parent="MarginContainer4"]
-position = Vector2(-17.475, 24)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("4_0n1lt")
-
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("5_cpcte")
+stream = ExtResource("5_teicj")
 volume_db = 10.0
 panning_strength = 0.0
 bus = &"SoundEffects"
 
 [node name="Select" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("6_srpt0")
+stream = ExtResource("6_kgt8m")
 volume_db = 5.66
 pitch_scale = 1.19
 panning_strength = 0.0

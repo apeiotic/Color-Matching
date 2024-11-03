@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bfwbrgpd2o0cl"]
+[gd_scene load_steps=34 format=4 uid="uid://bfwbrgpd2o0cl"]
 
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="1_63664"]
 [ext_resource type="Script" path="res://Scripts/level_5.gd" id="1_g20eh"]
@@ -11,10 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="7_gxfps"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="7_xusgh"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="8_70tm6"]
+[ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="9_cvwt6"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_kqxxf"]
+[ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="10_4u86g"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="12_6rf5h"]
 [ext_resource type="Material" uid="uid://bg4q8d0hgweee" path="res://Materials/WireFrame_Material.tres" id="13_ljsmg"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="15_k5te5"]
+[ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="16_8cd5n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q02gn"]
 sky_top_color = Color(0.0646477, 0.0864206, 0.116699, 1)
@@ -159,6 +162,8 @@ shadow_mesh = SubResource("ArrayMesh_h74cx")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg8ex"]
 size = Vector3(1, 5.4762, 6.34583)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hs7l8"]
+
 [node name="Level 5" type="Node3D"]
 transform = Transform3D(0.668017, 0, 0, 0, 0.463363, 0, 0, 0, 0.463363, 0, -14.1075, 0)
 script = ExtResource("1_g20eh")
@@ -218,10 +223,10 @@ use_collision = true
 size = Vector3(1.76555, 38.2025, 2.15439)
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(5.58109e-07, 0, 5.94311, 0, 1, 0, -23.9341, 0, 1.46851e-07, 34.768, -15.766, -176.806)
+transform = Transform3D(5.58109e-07, 0, 5.94311, 0, 1, 0, -23.9341, 0, 1.46851e-07, 34.1196, -15.766, -176.806)
 material_override = ExtResource("1_63664")
 use_collision = true
-size = Vector3(1.76555, 38.2025, 2.15439)
+size = Vector3(1.76555, 38.2025, 2.37258)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(4.33336e-07, 0, 5.94311, 0, 0.0248365, 0, -18.5833, 0, 1.46851e-07, 75.3762, -5.17147, -183.935)
@@ -260,11 +265,11 @@ use_collision = true
 size = Vector3(1.76555, 2786.41, 5.39613)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Orange"]]
-transform = Transform3D(-1.21274, 0.597957, 0, -10.9725, -0.0660892, 0, 0, 0, 12.9912, 3.39324, 4.16975, -20.1918)
+transform = Transform3D(-1.21274, 0.597957, 0, -10.9725, -0.0660892, 0, 0, 0, 12.9912, 3.35433, 4.17405, -20.1918)
 material_override = ExtResource("2_j2eud")
 calculate_tangents = false
 use_collision = true
-size = Vector3(1, 0.104492, 0.708771)
+size = Vector3(1, 0.234619, 0.708771)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." groups=["Orange"]]
 transform = Transform3D(0.909182, 0.59856, -0.745336, -11.0017, 0.0496287, 0, 0.052248, 0.0343975, 12.9698, -2.27197, 4.16975, -62.569)
@@ -297,6 +302,7 @@ transform = Transform3D(3.09688, 0, 0, 0, 2.15846, 0, 0, 0, 4.12001, 0.17973, 9.
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
 environment = SubResource("Environment_sqxye")
+script = ExtResource("9_cvwt6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.368812, 1.43958, -0.282435, 0.927208, 0.377733, 1.89944, 1.89793, 0.292775, -0.984723, 0, 2.38322, 0)
@@ -308,6 +314,7 @@ shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 5.13
 shadow_blur = 2.832
+script = ExtResource("10_4u86g")
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(-1.49249, -0.112688, -0.0262072, -0.045787, 0.105228, 2.15508, -0.160387, 2.14944, -0.10836, 6.98106, 16.4077, -106.199)
@@ -346,7 +353,7 @@ transform = Transform3D(0.359275, 0, 0, 0, 0.652198, 0, 0, 0, 3.13734, 2.8751, 1
 material = SubResource("StandardMaterial3D_g6pqm")
 
 [node name="Color Changing" parent="." instance=ExtResource("3_81kuh")]
-transform = Transform3D(1.49697, 0, 0, 0, 2.15813, 0, 0, 0, 2.15813, 0.213624, 1.72545, 19.2273)
+transform = Transform3D(-1.49697, 0, 1.8867e-07, 0, 2.15813, 0, -1.30869e-07, 0, -2.15813, 0.213624, 1.72545, 19.2273)
 color = ["Blue", "Red", "Black", "Green", "Lime", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("3_81kuh")]
@@ -374,7 +381,7 @@ transform = Transform3D(2.15172, 0, 1.40622, 0, 3.73734, 0, -1.44584, 0, 2.09276
 color = ["Orange", "Lime", "Red", "Black", "Green", "Blue", "Cyan"]
 
 [node name="Color Changing5" parent="." instance=ExtResource("3_81kuh")]
-transform = Transform3D(1.64515, 0, 1.4694e-14, 0, 2.84102, 0, 1.45972e-14, 0, 2.60508, 4.15465, 4.25648, -124.114)
+transform = Transform3D(1.64515, 0, 1.4694e-14, 0, 2.51856, 0, 1.45972e-14, 0, 2.60508, 4.15465, 4.25648, -124.114)
 color = ["Lime", "Orange", "Red", "Black", "Green", "Blue", "Cyan"]
 
 [node name="Color Changing11" parent="." instance=ExtResource("3_81kuh")]
@@ -416,14 +423,14 @@ transform = Transform3D(-6.09627e-07, 0, -10.1732, 0, 0.627313, 0, 13.9466, 0, -
 
 [node name="JumpPad6" parent="." instance=ExtResource("7_xusgh")]
 transform = Transform3D(-6.09627e-07, 0, -10.1732, 0, 0.627313, 0, 13.9466, 0, -4.44684e-07, 48.0781, 1.64797, -177.01)
-repel_strength = 22.0
+repel_strength = 26.0
 
 [node name="JumpPad4" parent="." instance=ExtResource("7_xusgh")]
 transform = Transform3D(-6.09627e-07, 0, -10.1732, 0, 0.627313, 0, 13.9466, 0, -4.44684e-07, -22.9464, 13.4585, -183.037)
 repel_strength = 25.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(6.89086, 0, -0.886901, 0, 17.6437, 0, 0.619357, 0, 9.86751, 7.32868, 0, -20.8697)
+transform = Transform3D(6.89086, 0, -0.886901, 0, 35.5264, 0, 0.619357, 0, 9.86751, 7.32868, -17.9609, -20.8697)
 material_override = ExtResource("8_70tm6")
 mesh = SubResource("CylinderMesh_5qimb")
 
@@ -470,6 +477,7 @@ mesh = SubResource("CylinderMesh_5qimb")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D7"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D7/StaticBody3D"]
+transform = Transform3D(1.00205, 0, 0, 0, 1.00205, 0, 0, 0, 1.00205, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_eanre")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
@@ -539,4 +547,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.7283, 49.7163, -182.219)
 transform = Transform3D(0.790282, 0, 0, 0, 3.42947, 0, 0, 0, 3.42947, 0, 7.895, -0.400452)
 shape = SubResource("BoxShape3D_cg8ex")
 
+[node name="Notification" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.51322, -0.958939)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Notification"]
+transform = Transform3D(6.06349, 0, 0, 0, 8.67125, 0, 0, 0, 1, 2.59648e-05, 0.0212574, 0)
+shape = SubResource("BoxShape3D_hs7l8")
+
+[node name="Notification2" parent="." instance=ExtResource("16_8cd5n")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Notification" to="." method="_on_notification_body_entered"]
+[connection signal="timeout" from="Timer" to="Lighting/WorldEnvironment" method="_on_timer_timeout"]

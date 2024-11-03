@@ -2,11 +2,13 @@ extends Node3D
 @onready var death_menu: Control = $"Death menu"
 @onready var Player: CharacterBody3D = $CharacterBody3D
 @onready var player: CharacterBody3D = $CharacterBody3D
+var notificationCalled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GLB.connect("Died", Callable(self, "died_func"))
 	death_menu.hide()
+	Callnotification()
 
 func died_func():
 	Player.queue_free()
@@ -27,3 +29,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		player.queue_free()
 		GLBSaving.emit_signal("level4")
 		
+
+func Callnotification():
+	notificationCalled = true
+	GLB.emit_signal("Notification_color", Color.BLUE, "blue")
+	GLB.emit_signal("Notification_Abilitytext", "Friction Decreased, Jump Velocity Increased,
+	 Speed Increased," )

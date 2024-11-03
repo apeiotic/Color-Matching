@@ -63,3 +63,7 @@ extends  Resource
 @export var CameraShake : bool = false
 @export var CameraDrag : bool = false
 @export var Senstivity: float = 1.0
+
+@export var _SDFGI: bool = true
+@export var Fog: bool = true
+@export var Glow: bool = true

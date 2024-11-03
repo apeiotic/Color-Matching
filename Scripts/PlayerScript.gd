@@ -473,7 +473,7 @@ func OnBlack(): #what to do when standing on black
 
 func OnOrange():
 	max_jump = 3
-	GLB.Can_hook = true
+	#GLB.Can_hook = true
 	SPEED =  8
 	sprinting_speed = 9.0
 	
@@ -485,7 +485,7 @@ func OnRed(): #what to do when standing on red
 	CameraSprintFov = 110.0
 	CameraNormalFov = 80.0
 	CanDash = true
-	max_jump = 2
+	max_jump = 1
 	lerp_amount = 0.12
 
 func OnGreen(): #what to do when standing on green

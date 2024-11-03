@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://hdmcnievbc57"]
+[gd_scene load_steps=27 format=4 uid="uid://hdmcnievbc57"]
 
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_12bqt"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="1_las13"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="3_ewgy5"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="6_qg2gm"]
 [ext_resource type="Material" uid="uid://dsjfaf1vpn136" path="res://Materials/BlackWalls.tres" id="7_y55l3"]
+[ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="8_aw6ln"]
+[ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="9_6rrdq"]
 [ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="10_utxrh"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="12_athmp"]
 [ext_resource type="Shader" path="res://Materials/WireFrame.gdshader" id="12_sfr8o"]
@@ -299,6 +301,7 @@ color = ["Black", "Orange", "Lime", "Green", "Red", "Blue", "Cyan"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
 environment = SubResource("Environment_q7mxc")
+script = ExtResource("8_aw6ln")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
 transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
@@ -306,6 +309,7 @@ light_energy = 0.425
 light_indirect_energy = 7.629
 light_volumetric_fog_energy = 2.248
 light_bake_mode = 1
+script = ExtResource("9_6rrdq")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.956141, 0.292906, 0, -0.292906, -0.956141, 13.0056, 42.5951, 23.7909)

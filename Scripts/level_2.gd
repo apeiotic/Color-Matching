@@ -3,18 +3,16 @@ extends Node3D
 @onready var Player: CharacterBody3D = $CharacterBody3D
 @onready var finsihed_levels: Control = $"Finsihed Levels"
 @onready var player: CharacterBody3D = $CharacterBody3D
+@onready var notification: Control = $Control
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 
-@export var dialogue_resource2: DialogueResource
-
-
+var notificationCalled: bool
+var notificationCalled2: bool
 var is_in_dialogue:bool = false
-var is_in_dialogue2:bool = false
-
 const Balloon = preload("res://dialogue/balloon.tscn")
-const Balloon2 = preload("res://dialogue/balloon.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -65,17 +63,6 @@ func start_dialogue() -> void:
 	get_tree().paused = true
 
 
-func start_dialogue2() -> void:
-	
-	is_in_dialogue2 = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if player:
-		player.set_physics_process(false)
-		player.stop_animations()
-	var Balloon2: Node = Balloon.instantiate()
-	get_tree().current_scene.add_child(Balloon2)
-	Balloon2.start(dialogue_resource2, dialogue_start)
-	get_tree().paused = true
 
 func EnablePlayerMovement():
 	player.set_physics_process(true)
@@ -83,9 +70,25 @@ func EnablePlayerMovement():
 	get_tree().paused = false
 
 
-func _on_area_3d_3_body_entered(body: Node3D) -> void:
-	
+
+func Callnotification():
+	notificationCalled = true
+	GLB.emit_signal("Notification_color", Color.ORANGE, "orange")
+	GLB.emit_signal("Notification_Abilitytext", "Tripple jump Accquired, Speed Increased, ....")
+
+func Callnotification2():
+	notificationCalled2 = true
+	GLB.emit_signal("Notification_color", Color.LIME, "lime")
+	GLB.emit_signal("Notification_Abilitytext", "Access Allowed on jumppad")
+
+
+func Notification_Calling(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("start dialogue 2 called")
-		if not is_in_dialogue2:
-			start_dialogue2()
+		if notificationCalled != true: 
+			Callnotification()
+
+
+func SecondNotification(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		if notificationCalled2 != true: 
+			Callnotification2()

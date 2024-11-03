@@ -1,16 +1,19 @@
-[gd_scene load_steps=105 format=4 uid="uid://cea4uacthafah"]
+[gd_scene load_steps=110 format=4 uid="uid://cea4uacthafah"]
 
 [ext_resource type="Script" path="res://UI/Script/level_3.gd" id="1_weqy8"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_oywo8"]
+[ext_resource type="Resource" uid="uid://x240ur0dhxsy" path="res://dialogue/Level 3.dialogue" id="2_qh8pj"]
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="3_pod0i"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="4_vdinq"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="5_4oejs"]
 [ext_resource type="Material" uid="uid://dviqgfind668b" path="res://Materials/Wall_White.tres" id="6_q3rt4"]
 [ext_resource type="Material" uid="uid://j58jtwhvuc4d" path="res://Materials/White_Rough.tres" id="6_v5yfi"]
 [ext_resource type="Material" uid="uid://ba7v2gt5gg8ca" path="res://Materials/NO_Texture.tres" id="7_b8eu8"]
+[ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="8_fh1rg"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="8_swcm0"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="9_48olp"]
 [ext_resource type="Texture2D" uid="uid://oefj0cmln3td" path="res://addons/kenney_prototype_textures/light/texture_02.png" id="9_ponni"]
+[ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="9_y3fc1"]
 [ext_resource type="Texture2D" uid="uid://w45cvq3r4pbj" path="res://Materials/White Emis.png" id="10_lunst"]
 [ext_resource type="Texture2D" uid="uid://c8ln3847h3pup" path="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png" id="11_2v6mk"]
 [ext_resource type="PackedScene" uid="uid://5a23dx8n0fkf" path="res://Levels/Interactable_Objects/Crate1.tscn" id="12_1hcar"]
@@ -21,6 +24,7 @@
 [ext_resource type="Material" uid="uid://bg4q8d0hgweee" path="res://Materials/WireFrame_Material.tres" id="19_gsohv"]
 [ext_resource type="Material" uid="uid://cwlmjrvocamdp" path="res://Materials/Shader/WireFrame_VolcanoGround.tres" id="20_e01vx"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="21_8vwoo"]
+[ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="23_m2q12"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luvga"]
 metallic = 0.36
@@ -910,8 +914,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r3m3i")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wcr22"]
+size = Vector3(20.762, 4.51965, 1)
+
 [node name="Level 3" type="Node3D"]
 script = ExtResource("1_weqy8")
+dialogue_resource = ExtResource("2_qh8pj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(1.23443, 0, 0, 0, 1, 0, 0, 0, 1, 2.74829, -9.1507, 4.28069)
@@ -935,14 +943,14 @@ size = Vector3(16.795, 19.8835, 15.8302)
 material = SubResource("StandardMaterial3D_luvga")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="."]
-transform = Transform3D(-5.39586e-08, 0, 1, 0, 1, 0, -1.23443, 0, -4.37114e-08, -6.74499, -5.14439, -52.9616)
+transform = Transform3D(-5.39586e-08, 0, 1, 0, 1, 0, -1.23443, 0, -4.37114e-08, -6.74499, -7.01452, -52.9616)
 material_override = ExtResource("6_q3rt4")
 use_collision = true
-size = Vector3(16.795, 13.9189, 15.268)
+size = Vector3(16.795, 17.6592, 15.268)
 material = SubResource("StandardMaterial3D_luvga")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_4oejs")]
-transform = Transform3D(0.998073, 0, 4.61853e-14, 0, 0.998073, 0, -4.61853e-14, 0, 0.998073, 2.14712, 1.02398, 2.14015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63022, 7.11909)
 collision_layer = 3
 collision_mask = 3
 
@@ -1019,16 +1027,16 @@ use_collision = true
 size = Vector3(0.439941, 5.40483, 3.42502)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
-transform = Transform3D(1.28844, 0, 0, 0, 2.31999, 0, 0, 0, 6.65713, 5.29483, -6.75004, -40.4691)
+transform = Transform3D(1.28844, 0, 0, 0, 2.31999, 0, 0, 0, 6.65713, 5.28323, -6.75004, -40.4691)
 material_override = ExtResource("6_q3rt4")
 use_collision = true
 size = Vector3(1, 8.37125, 6.00781)
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="."]
-transform = Transform3D(-5.63195e-08, 0, 0.762716, 0, 2.31999, 0, -1.28844, 0, -3.33394e-08, 2.8424, 2.37536, -56.1583)
+transform = Transform3D(-5.63195e-08, 0, 0.762716, 0, 2.31999, 0, -1.28844, 0, -3.33394e-08, 2.8424, 0.516057, -56.1583)
 material_override = ExtResource("6_q3rt4")
 use_collision = true
-size = Vector3(1, 12.8876, 6.00781)
+size = Vector3(1, 14.4905, 6.00781)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(1.28844, 0, 0, 0, 2.31999, 0, 0, 0, 6.65713, 0.269422, -6.80951, -31.8626)
@@ -1052,6 +1060,7 @@ size = Vector3(1, 12.6687, 5.47452)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
 environment = SubResource("Environment_73p3u")
+script = ExtResource("8_fh1rg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.111848, 0.993387, -0.0259465, 0.446472, 0.0735617, 0.891769, 0.88778, 0.0881581, -0.451747, 0, 2.38322, 0)
@@ -1062,6 +1071,7 @@ shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 5.13
 shadow_blur = 2.832
+script = ExtResource("9_y3fc1")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
 transform = Transform3D(0.367154, 0, -9.73472, 0, 1, 0, 0.233696, 0, 15.294, -4.15119, 0.859662, -12.3009)
@@ -1474,7 +1484,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-9.68477e-08, 0.999992, -0.000203098, 0.0106667, -0.000203092, -0.999903, -0.999842, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
+transform = Transform3D(-9.68472e-08, 0.999992, -0.000203098, 0.0106666, -0.000203092, -0.999903, -0.999836, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -1491,6 +1501,7 @@ transform = Transform3D(6.07289, 0, 0, 0, 0.40068, 0, 0, 0, 0.422227, 2.19453, 5
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Moving Platform2"]
 transform = Transform3D(-1.11759e-07, 1, -0.000609599, 0.0132306, -0.000251877, -2.41979, -0.999913, -3.44403e-06, -0.032018, 0.0804991, 0.254201, 0.175739)
+material_override = SubResource("StandardMaterial3D_ehtjd")
 mesh = SubResource("BoxMesh_qnncd")
 skeleton = NodePath("../..")
 
@@ -1815,9 +1826,9 @@ mesh = SubResource("ArrayMesh_a04w1")
 skeleton = NodePath("")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29921, 4.02221, -22.1369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.28023, 4.02221, -22.1369)
 material_override = ExtResource("6_q3rt4")
-size = Vector3(1.27661, 3.40466, 1)
+size = Vector3(1.31457, 3.40466, 1)
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271085, 4.02221, -22.1369)
@@ -1827,7 +1838,17 @@ size = Vector3(1.27368, 3.40466, 1)
 [node name="Finsihed Levels" parent="." instance=ExtResource("21_8vwoo")]
 visible = false
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46672, 1.45143, -10.7211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.800009, -0.0894778, 0.519689, 3.20923)
+shape = SubResource("BoxShape3D_wcr22")
+
+[node name="Notification" parent="." instance=ExtResource("23_m2q12")]
+
 [connection signal="ChangeColor" from="Color Changing" to="CharacterBody3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Cube/Area3D" to="." method="PusherActivate"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="Finish_Line_reached"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="Notification"]

@@ -10,8 +10,8 @@
 [ext_resource type="Theme" uid="uid://dq2bcxrdylvqh" path="res://UI/Script/LevelSwitcher.tres" id="7_y5if3"]
 [ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="8_7oeaf"]
 [ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="10_gdstc"]
-[ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="11_641xx"]
-[ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="12_csj4u"]
+[ext_resource type="AudioStream" uid="uid://cq7tu4jokf8yq" path="res://Sound Effects/sound (1).wav" id="11_h1f3e"]
+[ext_resource type="AudioStream" uid="uid://bglghu5jcsi3m" path="res://Sound Effects/click.wav" id="12_p8v0m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ca0yi"]
 texture = ExtResource("7_xg0ri")
@@ -434,13 +434,13 @@ texture = ExtResource("8_7oeaf")
 [node name="Node" type="Node" parent="."]
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Node"]
-stream = ExtResource("11_641xx")
+stream = ExtResource("11_h1f3e")
 volume_db = 20.0
 panning_strength = 0.0
 bus = &"SoundEffects"
 
 [node name="Select" type="AudioStreamPlayer2D" parent="Node"]
-stream = ExtResource("12_csj4u")
+stream = ExtResource("12_p8v0m")
 volume_db = 5.66
 pitch_scale = 1.2
 panning_strength = 0.0

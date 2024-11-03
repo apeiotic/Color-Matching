@@ -32,7 +32,7 @@ void fragment( )
 shader = SubResource("Shader_4nxkh")
 shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/line_color = Color(0, 0.816667, 1, 1)
-shader_parameter/line_freq = 9.855
-shader_parameter/height = 0.71
+shader_parameter/line_freq = 6.53
+shader_parameter/height = 0.385
 shader_parameter/speed = 0.366
-shader_parameter/scale = Vector2(0.982, 37.799)
+shader_parameter/scale = Vector2(2.057, 21.084)

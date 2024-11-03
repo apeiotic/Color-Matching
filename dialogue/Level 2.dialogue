@@ -1,6 +1,7 @@
 ~ start
 assistant: [[Hey|Hello|Hi]], great job completing Level 1!
 assistant: As you know, each color has unique abilities. You’ll encounter all of them in the upcoming levels.
-assistant: This level features [color=orange]Orange[/color], which has two perks: one is [i]double jump[/i], and the other you’ll discover soon.
-assistant: Go ahead and conquer this level!
+assistant: But remember, you need to match colors to get those abilities.
+assistant: If you’re not the same color as what you’re standing on, well... you’re done for.
+assistant: It's easy as that!
 => END

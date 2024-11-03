@@ -383,3 +383,50 @@ theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3_mlkik")
 theme_override_font_sizes/font_size = 29
 text = "16: 00 seconds"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_right = 22
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 219
+
+[node name="Main_Menu" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_mlkik")
+theme_override_font_sizes/font_size = 28
+text = "main menu "
+flat = true
+
+[node name="Retry" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_mlkik")
+theme_override_font_sizes/font_size = 28
+text = "retry"
+flat = true
+
+[node name="Next Level" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_mlkik")
+theme_override_font_sizes/font_size = 28
+text = "next level"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Next Level" to="." method="_on_next_level_pressed"]

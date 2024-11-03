@@ -1,16 +1,18 @@
-[gd_scene load_steps=40 format=4 uid="uid://di8ta2dit7pgt"]
+[gd_scene load_steps=43 format=4 uid="uid://di8ta2dit7pgt"]
 
 [ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_kdclf"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_rch0d"]
 [ext_resource type="Resource" uid="uid://cjgfu8ra86xs4" path="res://dialogue/Level 2.dialogue" id="2_2pfsh"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="2_5wvvo"]
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="2_bm7lh"]
-[ext_resource type="Resource" uid="uid://dvr6stga5wa5e" path="res://dialogue/Level 2.1.dialogue" id="3_4cnt8"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="3_qvvqy"]
+[ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="4_fuwkd"]
+[ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="5_olnqo"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="8_wojb6"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="9_7ru7j"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="9_rmjkr"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="12_c4u4m"]
+[ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="15_rgrpp"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="19_hglu7"]
 [ext_resource type="Material" uid="uid://cwlmjrvocamdp" path="res://Materials/Shader/WireFrame_VolcanoGround.tres" id="20_r4uqq"]
 [ext_resource type="Material" uid="uid://driwf74d5yuts" path="res://Materials/Shader/Wire_Frame_Volcano.tres" id="21_qjev3"]
@@ -57,6 +59,14 @@ adjustment_contrast = 1.15
 adjustment_saturation = 1.29
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_edxr7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t5a1o"]
+radius = 0.574695
+height = 3.65228
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_06rix"]
+height = 2.30989
+radius = 0.588465
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uj8lq"]
 lifetime_randomness = 0.13
@@ -286,13 +296,9 @@ shadow_mesh = SubResource("ArrayMesh_moy3a")
 [sub_resource type="BoxShape3D" id="BoxShape3D_30nmc"]
 size = Vector3(5.23886, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4sfso"]
-size = Vector3(1, 0.355469, 1)
-
 [node name="Level 2" type="Node3D"]
 script = ExtResource("1_kdclf")
 dialogue_resource = ExtResource("2_2pfsh")
-dialogue_resource2 = ExtResource("3_4cnt8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(13.1625, 0, 0.130665, 0, 2.94756, 0, -0.108206, 0, 15.8983, 34.6416, 48.4046, 39.1266)
@@ -311,6 +317,7 @@ transform = Transform3D(0.73703, 0, 0.67586, 0, 1, 0, -0.67586, 0, 0.73703, -7.2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
 environment = SubResource("Environment_7wyps")
+script = ExtResource("4_fuwkd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.991209, 0.129775, 0.0257546, 0.00409929, -0.164443, 0.986378, 0.132242, 0.977812, 0.162465, 39.0162, 2.70366, 24.5507)
@@ -321,9 +328,10 @@ shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 5.13
 shadow_blur = 2.832
+script = ExtResource("5_olnqo")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_bm7lh")]
-transform = Transform3D(0.999986, 0, -0.00528818, 0, 1, 0, 0.00528818, 0, 0.999986, 35.0841, 61.4163, 42.0728)
+transform = Transform3D(0.999986, 0, -0.00528818, 0, 1, 0, 0.00528818, 0, 0.999986, 35.0841, 61.4163, 40.3258)
 
 [node name="World Border" parent="." instance=ExtResource("8_wojb6")]
 transform = Transform3D(98.5836, 0, 97.8923, 0, 1, 0, -90.4017, 0, 106.752, 31.1411, 53.1255, 6.32726)
@@ -341,6 +349,11 @@ calculate_tangents = false
 use_collision = true
 mesh = SubResource("CylinderMesh_edxr7")
 material = ExtResource("2_5wvvo")
+
+[node name="Area3D" type="Area3D" parent="CSGMesh3D/CSGMesh3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/CSGMesh3D2/Area3D"]
+shape = SubResource("CapsuleShape3D_t5a1o")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="." groups=["Orange"]]
 transform = Transform3D(0.518136, 0, 0.475133, 0, 4.64589, 0, -0.475133, 0, 0.518136, 31.164, 57.5842, 25.3491)
@@ -367,6 +380,12 @@ material_override = ExtResource("2_5wvvo")
 use_collision = true
 mesh = SubResource("CylinderMesh_edxr7")
 material = ExtResource("2_5wvvo")
+
+[node name="Area3D" type="Area3D" parent="CSGMesh3D3/CSGMesh3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D3/CSGMesh3D2/Area3D"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_06rix")
 
 [node name="Death menu" parent="." instance=ExtResource("19_hglu7")]
 metadata/_edit_use_anchors_ = true
@@ -430,10 +449,6 @@ color = ["Orange", "Black", "Green", "Red", "Lime", "Blue", "Cyan"]
 transform = Transform3D(0.999593, 0, -0.0285319, 0, 1, 0, 0.0285319, 0, 0.999593, 30.8422, 63.706, 13.9747)
 color = ["Lime", "Orange", "Black", "Green", "Red", "Blue", "Cyan"]
 
-[node name="Color Changing4" parent="." instance=ExtResource("9_rmjkr")]
-transform = Transform3D(0.999593, 0, -0.0285319, 0, 1, 0, 0.0285319, 0, 0.999593, 30.8422, 66.6762, 17.5679)
-color = ["Orange", "Lime", "Black", "Green", "Red", "Blue", "Cyan"]
-
 [node name="Color Changing3" parent="." instance=ExtResource("9_rmjkr")]
 transform = Transform3D(0.999593, 0, -0.0285319, 0, 1, 0, 0.0285319, 0, 0.999593, 31.7081, 64.3278, 6.2548)
 color = ["Black", "Lime", "Orange", "Green", "Red", "Blue", "Cyan"]
@@ -462,10 +477,10 @@ shape = SubResource("BoxShape3D_30nmc")
 [node name="Area3D3" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7012, 63.9934, 17.3198)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
-transform = Transform3D(1.42582, 0, 0, 0, 1.42582, 0, 0, 0, 1.42582, 0, 0.129204, 0.219963)
-shape = SubResource("BoxShape3D_4sfso")
+[node name="Control" parent="." instance=ExtResource("15_rgrpp")]
 
+[connection signal="body_entered" from="CSGMesh3D/CSGMesh3D2/Area3D" to="." method="Notification_Calling"]
+[connection signal="body_entered" from="CSGMesh3D3/CSGMesh3D2/Area3D" to="." method="SecondNotification"]
 [connection signal="body_entered" from="Area3D" to="." method="Finished"]
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_entered" from="Area3D3" to="." method="_on_area_3d_3_body_entered"]

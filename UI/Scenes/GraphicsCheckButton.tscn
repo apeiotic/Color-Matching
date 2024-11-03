@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjnwr7kv5igol"]
+
+[ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="1_irw80"]
+[ext_resource type="Script" path="res://UI/Scenes/graphics_check_button.gd" id="1_t8s6r"]
+[ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="2_uqlvj"]
+[ext_resource type="Theme" uid="uid://b36xc52yme2w4" path="res://UI/Scenes/Setting/Scripts/Dropdown_theme.tres" id="3_1jxhu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_favvg"]
+texture = ExtResource("2_uqlvj")
+texture_margin_left = 22.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hr7pf"]
+
+[node name="Graphic Check Button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t8s6r")
+label_enum = "SDFGI"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_irw80")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_favvg")
+text = "Window Mode"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 289
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hr7pf")
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_1jxhu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="toggled" from="HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

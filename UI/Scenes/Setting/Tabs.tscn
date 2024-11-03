@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcyo5813068v5"]
+[gd_scene load_steps=11 format=3 uid="uid://dcyo5813068v5"]
 
 [ext_resource type="PackedScene" uid="uid://b7jwa4oo8wwtq" path="res://UI/Scenes/Setting/window_mode_button.tscn" id="1_0lbgh"]
 [ext_resource type="Theme" uid="uid://drbwtrmpx1tkf" path="res://UI/Scenes/Setting/Tabs_Theme.tres" id="1_gql5m"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b2ixuguv5socj" path="res://Audio/SFX/WAV/Minimalist7.wav" id="5_03bmt"]
 [ext_resource type="PackedScene" uid="uid://bslmevde1iycq" path="res://UI/Scenes/Setting/audio_slider.tscn" id="5_xbfny"]
 [ext_resource type="AudioStream" uid="uid://dpcfa6aw4eers" path="res://Audio/SFX/WAV/Wood Block3.wav" id="6_npb36"]
+[ext_resource type="PackedScene" uid="uid://bjnwr7kv5igol" path="res://UI/Scenes/GraphicsCheckButton.tscn" id="7_10nqa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -32,9 +33,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_gql5m")
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="gameplay" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -76,7 +78,6 @@ label_enum = "Camera Drag"
 layout_mode = 2
 
 [node name="graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -101,6 +102,17 @@ layout_mode = 2
 
 [node name="Resolution_Mode_Button" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("2_f1lxa")]
 layout_mode = 2
+
+[node name="GamePlay_CheckBox" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("7_10nqa")]
+layout_mode = 2
+
+[node name="GamePlay_CheckBox2" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("7_10nqa")]
+layout_mode = 2
+label_enum = "Glow"
+
+[node name="GamePlay_CheckBox3" parent="TabContainer/graphics/MarginContainer/VBoxContainer" instance=ExtResource("7_10nqa")]
+layout_mode = 2
+label_enum = "Fog"
 
 [node name="sound" type="TabBar" parent="TabContainer"]
 visible = false

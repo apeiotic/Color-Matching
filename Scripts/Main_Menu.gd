@@ -31,15 +31,16 @@ func _on_play_pressed() -> void:
 
 func _on_play_mouse_entered() -> void:
 	SD_hover.play()
+	
 
 
 func _on_quit_mouse_entered() -> void:
 	SD_hover.play()
-
+	
 
 func _on_settings_mouse_entered() -> void:
 	SD_hover.play()
-
+	
 
 func _on_settings_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/Scenes/Setting/settings_page.tscn")

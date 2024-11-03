@@ -10,6 +10,11 @@ signal ColorChanging(color)
 signal EnablePlayerMovement
 signal Died
 signal Died_With_Level(level)
+signal Notification_color(GivenColor: Color, Text: String)
+signal Notification_Abilitytext(AbilityList: String)
+signal SaveWorldEnvironment(Value:bool, Type: String)
+signal LevelSelectorData(HoveredLevel: String)
+
 
 
 var sensitivity : float = 1.5

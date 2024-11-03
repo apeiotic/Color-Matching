@@ -112,4 +112,48 @@ func Level6func(FormattedTime: String):
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level6")
-	print("lauda")
+	
+
+
+func _on_main_menu_pressed() -> void:
+	var LoadingMainMenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
+	get_tree().change_scene_to_packed(LoadingMainMenu)
+
+
+
+func _on_retry_pressed() -> void:
+	get_tree().reload_current_scene()
+
+func get_current_level_name() -> String:
+	# Get the scene's filename using filename property
+	var scene_path = get_tree().current_scene.scene_file_path
+	var scene_name = scene_path.get_file().get_basename()  # Get only the filename, excluding the path and extension
+	return scene_name
+
+func _on_next_level_pressed() -> void:
+	var current_level_name = get_current_level_name()
+	print(current_level_name)
+	
+	if current_level_name.to_lower() == "level1":
+		var level2 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel2.tscn")
+		get_tree().change_scene_to_packed(level2)
+	
+	if current_level_name.to_lower() == "level2":
+		print("onlevel2")
+		var level3 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel3.tscn")
+		get_tree().change_scene_to_packed(level3)
+	
+	if current_level_name.to_lower() == "level3":
+		var level4 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel4.tscn")
+		get_tree().change_scene_to_packed(level4)
+	
+	if current_level_name.to_lower() == "level4":
+		var level5 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel5.tscn")
+		get_tree().change_scene_to_packed(level5)
+	
+	if current_level_name.to_lower() == "level5":
+		var level6 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel6.tscn")
+		get_tree().change_scene_to_packed(level6)
+	
+	if current_level_name.to_lower() == "level_6":
+		print("Level7")

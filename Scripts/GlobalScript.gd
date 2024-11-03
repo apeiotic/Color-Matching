@@ -14,6 +14,7 @@ signal Notification_color(GivenColor: Color, Text: String)
 signal Notification_Abilitytext(AbilityList: String)
 signal SaveWorldEnvironment(Value:bool, Type: String)
 signal LevelSelectorData(HoveredLevel: String)
+signal LSClicked
 
 
 

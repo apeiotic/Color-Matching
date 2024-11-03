@@ -6,7 +6,7 @@ var scene_load_status = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sceneName = "res://UI/Scenes/level_switcher.tscn"
+	sceneName = "res://UI/Scenes/new_level_selector.tscn"
 	ResourceLoader.load_threaded_request(sceneName)
 
 

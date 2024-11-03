@@ -1,10 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://crft4bxveb3oj"]
+[gd_scene load_steps=17 format=3 uid="uid://crft4bxveb3oj"]
 
-[ext_resource type="Material" uid="uid://cy1bnmkbcr3j7" path="res://Materials/Scrolling Texture.tres" id="1_2wb26"]
+[ext_resource type="Material" uid="uid://bmbmn8md4n2tv" path="res://Materials/HexMaterial.tres" id="1_2geva"]
 [ext_resource type="PackedScene" uid="uid://wwdo3xnap2k0" path="res://UI/Scenes/DataShower_LS.tscn" id="2_dbhf8"]
 [ext_resource type="PackedScene" uid="uid://dpqcjhfmco188" path="res://UI/Scenes/level_switcher_window.tscn" id="2_gghqj"]
 [ext_resource type="AudioStream" uid="uid://cq7tu4jokf8yq" path="res://Sound Effects/sound (1).wav" id="3_qva16"]
 [ext_resource type="AudioStream" uid="uid://bglghu5jcsi3m" path="res://Sound Effects/click.wav" id="4_2uet6"]
+[ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="6_nqq6b"]
+[ext_resource type="Texture2D" uid="uid://cherx7wto3rl2" path="res://UI/images/GUI/MainPanel02.png" id="7_msyfq"]
+[ext_resource type="FontFile" uid="uid://c3t4wl71o526c" path="res://UI/Fonts/BebasNeue-Regular.ttf" id="8_uempo"]
+[ext_resource type="Texture2D" uid="uid://bstejjgjpee3u" path="res://UI/images/GUI/Button15.png" id="9_ee5jy"]
+[ext_resource type="Texture2D" uid="uid://c5tpmq5t27hl2" path="res://UI/images/GUI/Button16.png" id="10_xqcd8"]
+[ext_resource type="Texture2D" uid="uid://d2vtkaw7cye34" path="res://UI/images/GUI/Button11.png" id="11_y8lao"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7dkw"]
+texture = ExtResource("7_msyfq")
+texture_margin_left = 43.0
+texture_margin_top = 12.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yupv3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbm3c"]
+texture = ExtResource("9_ee5jy")
+texture_margin_left = 7.0
+texture_margin_right = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nfpo"]
+texture = ExtResource("10_xqcd8")
+texture_margin_left = 7.0
+texture_margin_right = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cw0ip"]
+texture = ExtResource("11_y8lao")
+texture_margin_left = 7.0
+texture_margin_right = 7.0
 
 [node name="New Level Selector" type="Control"]
 layout_mode = 3
@@ -14,7 +43,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+z_index = -3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,15 +52,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-z_index = -5
-material = ExtResource("1_2wb26")
-layout_mode = 2
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -3
+material = ExtResource("1_2geva")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
-z_index = -4
-layout_mode = 2
-color = Color(0, 0, 0, 0.431373)
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45098)
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 z_index = 5
@@ -60,6 +102,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level1"
 
 [node name="LevelSwitcher Window2" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -73,8 +116,8 @@ offset_top = -135.624
 offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
-Level = "level2"
 HoverSound = NodePath("../Audio/Hover")
+Level = "level2"
 
 [node name="LevelSwitcher Window3" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -88,8 +131,8 @@ offset_top = -135.624
 offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
-Level = "level3"
 HoverSound = NodePath("../Audio/Hover")
+Level = "level3"
 
 [node name="LevelSwitcher Window4" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -104,6 +147,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level4"
 
 [node name="LevelSwitcher Window5" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -118,6 +162,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level5"
 
 [node name="LevelSwitcher Window6" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -132,6 +177,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level6"
 
 [node name="LevelSwitcher Window7" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -146,6 +192,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level7"
 
 [node name="LevelSwitcher Window8" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -160,6 +207,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level8"
 
 [node name="LevelSwitcher Window9" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -174,6 +222,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level9"
 
 [node name="LevelSwitcher Window10" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -188,6 +237,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level10"
 
 [node name="LevelSwitcher Window11" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -202,6 +252,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level11"
 
 [node name="LevelSwitcher Window12" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -216,6 +267,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level12"
 
 [node name="LevelSwitcher Window13" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -230,6 +282,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level13"
 
 [node name="LevelSwitcher Window14" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -244,6 +297,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level14"
 
 [node name="LevelSwitcher Window15" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -258,6 +312,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level15"
 
 [node name="LevelSwitcher Window16" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -272,6 +327,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level16"
 
 [node name="LevelSwitcher Window17" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -286,6 +342,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level17"
 
 [node name="LevelSwitcher Window18" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -300,6 +357,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level18"
 
 [node name="LevelSwitcher Window19" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -314,6 +372,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level19"
 
 [node name="LevelSwitcher Window20" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -328,6 +387,7 @@ offset_right = 298.875
 offset_bottom = -3.62396
 scale = Vector2(1, 1)
 HoverSound = NodePath("../Audio/Hover")
+Level = "level20"
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -343,3 +403,43 @@ volume_db = 5.66
 pitch_scale = 1.19
 panning_strength = 0.0
 bus = &"SoundEffects"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 9
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_nqq6b")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_m7dkw")
+text = "level selector"
+horizontal_alignment = 1
+
+[node name="Back" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 53.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BackButton" type="Button" parent="Back"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_uempo")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yupv3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sbm3c")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nfpo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cw0ip")
+text = "Back"
+
+[connection signal="pressed" from="Back/BackButton" to="MarginContainer2/LevelSwitcherDataShower" method="_on_back_button_pressed"]

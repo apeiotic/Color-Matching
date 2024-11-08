@@ -123,7 +123,7 @@ anchor_bottom = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0175, 0.03, 0, 0.305882)
+color = Color(0.0790428, 0.00405374, 3.00817e-09, 0.305882)
 metadata/_edit_lock_ = true
 
 [node name="LevelPreview_Container" type="MarginContainer" parent="."]

@@ -86,8 +86,9 @@ offset_right = 13.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="LevelSwitcherDataShower" parent="MarginContainer2" instance=ExtResource("2_dbhf8")]
+[node name="LevelSwitcherDataShower" parent="MarginContainer2" node_paths=PackedStringArray("deniedSoundefffect") instance=ExtResource("2_dbhf8")]
 layout_mode = 2
+deniedSoundefffect = NodePath("../../Audio/Select")
 
 [node name="LevelSwitcher Window" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
 layout_mode = 1
@@ -420,7 +421,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("6_nqq6b")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_m7dkw")
-text = "level selector"
+text = "map selector"
 horizontal_alignment = 1
 
 [node name="Back" type="MarginContainer" parent="."]

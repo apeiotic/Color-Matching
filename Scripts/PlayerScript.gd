@@ -23,6 +23,7 @@ var SPEED : float = 5.0
 var JUMP_VELOCITY = 4.5
 var jump_count = 0
 var max_jump = 1
+var AutojumpingValue = 5.5
 var sprinting_speed = 10
 var stamina = 100
 var CameraSprintFov = 90.0
@@ -82,6 +83,7 @@ func _ready():
 
 #Event tick
 func _physics_process(delta: float) -> void:
+	
 	
 	if Input.is_action_just_pressed("Esc"): 
 		HUD.hide()
@@ -189,7 +191,6 @@ func _physics_process(delta: float) -> void:
 			if "orange" in group.to_lower():
 				if PlayerColor == "Orange":
 					OnOrange()
-					
 					standingColor = "Orange"
 				else: 
 					NotSameColor()
@@ -198,6 +199,7 @@ func _physics_process(delta: float) -> void:
 					OnGreen()
 					standingColor = "Green"
 				else: 
+					
 					NotSameColor()
 			if "black" in group.to_lower():
 				if PlayerColor == "Black":
@@ -232,13 +234,14 @@ func _physics_process(delta: float) -> void:
 		OnRed()
 	if standingColor == "Blue":
 		OnBlue()
-	if standingColor == "Green":
-		OnGreen()
+	#if standingColor == "Green":
+		#OnGreen()
 	if standingColor == "Orange":
 		OnOrange()
 	#endregion 
 	
-	
+	if PlayerColor != "Green":
+		CanSlimeJump = false
 	
 	
 	if fallen == true: 
@@ -254,20 +257,32 @@ func _physics_process(delta: float) -> void:
 	
 	
 #region Movement System
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	var input_dir = Input.get_vector("Left", "Right", "Up", "Down")
 	var camera_basis = camera.global_transform.basis
-	direction = camera_basis * Vector3(input_dir.x, 0, input_dir.y)
-	direction = direction.normalized()
+
+	# Ignore the camera's y-axis rotation by zeroing out the y-component
+	var forward = camera_basis.z
+	forward.y = 0
+	forward = forward.normalized()
+
+	var right = camera_basis.x
+	right.y = 0
+	right = right.normalized()
+
+	# Calculate the movement direction based on forward and right
+	direction = (right * input_dir.x + forward * input_dir.y).normalized()
+
+	# Apply movement or deceleration
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		walking= true
+		walking = true
 	else:
 		velocity.x = lerp(velocity.x, 0.0, lerp_amount)
 		velocity.z = lerp(velocity.z, 0.0, lerp_amount)
-		walking=false
+		walking = false
+
 #endregion
 	
 #region Camera Sway and bob
@@ -489,8 +504,7 @@ func OnRed(): #what to do when standing on red
 	lerp_amount = 0.12
 
 func OnGreen(): #what to do when standing on green
-	JUMP_VELOCITY = 10.0
-	AutoJumping()
+	AutoJumping(AutojumpingValue)
 	
 func OnBlue():
 	lerp_amount = 0.005
@@ -499,6 +513,7 @@ func OnBlue():
 	sprinting_speed = 12
 	CameraSprintFov = 110.0
 	CameraNormalFov = 90.0
+	max_jump = 1
 	gravity = Vector3(0,-12,0)
 
 #endregion
@@ -515,15 +530,15 @@ func normal(): #when youre on something which is not in any group
 	CameraSprintFov = 90.0
 	lerp_amount = 0.09
 
-func AutoJumping(): #Autojumping, for slimy object
-	velocity.y = JUMP_VELOCITY
+func AutoJumping(JumpValue: float): #Autojumping, for slimy object
+	velocity.y = JumpValue * 1.5
 	SlimeJump = true
 	neck_animation.stop()
 	neck_animation.play("MiniJump")
 	jumptimer.start(0.4)
 	
 	if is_on_floor() and CanSlimeJump == true: 
-		AutoJumping()
+		AutoJumping(AutojumpingValue)
 
 func NotSameColor(): #function of what to do when our color doesnt match to what Im standing on 
 	dead()

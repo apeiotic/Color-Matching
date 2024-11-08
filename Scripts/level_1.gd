@@ -41,7 +41,7 @@ func _on_area_3d_entered(body: Node3D) -> void:
 		GLBSaving.emit_signal("Level1Finished")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.queue_free()
-		GLBSaving.emit_signal("level1")
+		GLBSaving.emit_signal("level7")
 		
 
 #region Dialogue system

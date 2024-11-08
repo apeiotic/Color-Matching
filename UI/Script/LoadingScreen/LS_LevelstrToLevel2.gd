@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	scene_load_status = ResourceLoader.load_threaded_get_status(sceneName, progress)
-	$CanvasLayer/Coutdown.text = str (floor(progress[0] * 100)) + "%"
+	$CanvasLayer/Label.text = str (floor(progress[0] * 100)) + "%"
 	
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 		print("SCene Loaded")

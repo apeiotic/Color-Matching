@@ -11,8 +11,11 @@ signal level7
 signal level8
 signal level9
 signal level10
-
-
+signal level11
+signal level12
+signal level13
+signal level14
+signal level15
 
 #----Signal of level being finished--------#
 signal Level1Finished
@@ -22,6 +25,14 @@ signal Level4Finished
 signal Level5Finished
 signal Level6Finished
 signal Level7Finished
+signal Level8Finished
+signal Level9Finished
+signal Level10Finished
+signal Level11Finished
+signal Level12Finished
+signal Level13Finished
+signal Level14Finished
+signal Level15Finished
 
 
 #------Level finished time--------#
@@ -33,6 +44,13 @@ signal Level5_time(FormattedTime)
 signal Level6_time(FormattedTime)
 signal Level7_time(FormattedTime)
 signal Level8_time(FormattedTime)
+signal Level9_time(FormattedTime)
+signal Level10_time(FormattedTime)
+signal Level11_time(FormattedTime)
+signal Level12_time(FormattedTime)
+signal Level13_time(FormattedTime)
+signal Level14_time(FormattedTime)
+signal Level15_time(FormattedTime)
 
 
 #-------Expected Times-------#

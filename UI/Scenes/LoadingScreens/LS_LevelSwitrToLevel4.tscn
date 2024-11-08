@@ -64,7 +64,7 @@ grow_vertical = 2
 size_flags_horizontal = 6
 texture = SubResource("ViewportTexture_uwn3l")
 
-[node name="Coutdown" type="TextEdit" parent="CanvasLayer"]
+[node name="Coutdown" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,5 +78,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_c5dq7")
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 35
 text = "1%"
+horizontal_alignment = 1

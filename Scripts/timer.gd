@@ -20,8 +20,10 @@ func _ready() -> void:
 	GLBSaving.connect("Level4Finished", Callable(self, "Level4Finished"))
 	GLBSaving.connect("Level5Finished", Callable(self, "Level5Finished"))
 	GLBSaving.connect("Level6Finished", Callable(self, "Level6Finished"))
+	GLBSaving.connect("Level7Finished", Callable(self, "Level7Finished"))
+	GLBSaving.connect("Level8Finished", Callable(self, "Level8Finished"))
+	GLBSaving.connect("Level9Finished", Callable(self, "Level9Finished"))
 	
-
 # Timer update
 func _on_timer_timeout() -> void:
 	if cantime == true:
@@ -99,7 +101,6 @@ func TimeSaveLevel2():
 	ResourceSaver.save(data, "user://savegame.tres")
 	GLBSaving.emit_signal("Level2_time", FormattedTime)
 
-
 func TimeSaveLevel3():
 	var data = load_save_data()
 	
@@ -124,8 +125,6 @@ func TimeSaveLevel3():
 	# Save the data back to the file
 	ResourceSaver.save(data, "user://savegame.tres")
 	GLBSaving.emit_signal("Level3_time", FormattedTime)
-	
-
 
 func TimeSaveLevel4():
 	var data = load_save_data()
@@ -151,7 +150,6 @@ func TimeSaveLevel4():
 	# Save the data back to the file
 	ResourceSaver.save(data, "user://savegame.tres")
 	GLBSaving.emit_signal("Level4_time", FormattedTime)
-
 
 func TimeSaveLevel5():
 	var data = load_save_data()
@@ -204,6 +202,83 @@ func TimeSaveLevel6():
 	GLBSaving.emit_signal("Level6_time", FormattedTime)
 
 
+func TimeSaveLevel7():
+	var data = load_save_data()
+	
+	# Convert the current formatted time into milliseconds for comparison
+	var current_time_ms = time_to_milliseconds(FormattedTime)
+	
+	#region Level7 hihgscores saving
+	
+	# If there is no existing time, or if the current time is better, update the leaderboard
+	if data.level7_time == "" or time_to_milliseconds(data.level7_time) > current_time_ms:
+		data.level7_time3 = data.level7_time2  # Shift times down
+		data.level7_time2 = data.level7_time
+		data.level7_time = FormattedTime
+	elif data.level7_time2 == "" or time_to_milliseconds(data.level7_time2) > current_time_ms:
+		data.level7_time3 = data.level7_time2
+		data.level7_time2 = FormattedTime
+	elif data.level7_time3 == "" or time_to_milliseconds(data.level7_time3) > current_time_ms:
+		data.level7_time3 = FormattedTime
+	#endregion
+	
+	data.FinishedLevel7 = true
+	# Save the data back to the file
+	ResourceSaver.save(data, "user://savegame.tres")
+	GLBSaving.emit_signal("Level7_time", FormattedTime)
+
+func TimeSaveLevel8():
+	var data = load_save_data()
+	
+	
+	# Convert the current formatted time into milliseconds for comparison
+	var current_time_ms = time_to_milliseconds(FormattedTime)
+	
+	#region Level7 hihgscores saving
+	
+	# If there is no existing time, or if the current time is better, update the leaderboard
+	if data.level8_time == "" or time_to_milliseconds(data.level8_time) > current_time_ms:
+		data.level8_time3 = data.level8_time2  # Shift times down
+		data.level8_time2 = data.level8_time
+		data.level8_time = FormattedTime
+	elif data.level8_time2 == "" or time_to_milliseconds(data.level8_time2) > current_time_ms:
+		data.level8_time3 = data.level8_time2
+		data.level8_time2 = FormattedTime
+	elif data.level8_time3 == "" or time_to_milliseconds(data.level8_time3) > current_time_ms:
+		data.level8_time3 = FormattedTime
+	#endregion
+	
+	data.FinishedLevel8 = true
+	# Save the data back to the file
+	ResourceSaver.save(data, "user://savegame.tres")
+	GLBSaving.emit_signal("Level8_time", FormattedTime)
+
+func TimeSaveLevel9():
+	var data = load_save_data()
+	
+	
+	# Convert the current formatted time into milliseconds for comparison
+	var current_time_ms = time_to_milliseconds(FormattedTime)
+	
+	#region Level9 hihgscores saving
+	
+	# If there is no existing time, or if the current time is better, update the leaderboard
+	if data.level9_time == "" or time_to_milliseconds(data.level9_time) > current_time_ms:
+		data.level9_time3 = data.level9_time2  # Shift times down
+		data.level9_time2 = data.level9_time
+		data.level9_time = FormattedTime
+	elif data.level9_time2 == "" or time_to_milliseconds(data.level9_time2) > current_time_ms:
+		data.level9_time3 = data.level9_time2
+		data.level9_time2 = FormattedTime
+	elif data.level9_time3 == "" or time_to_milliseconds(data.level9_time3) > current_time_ms:
+		data.level9_time3 = FormattedTime
+	#endregion
+	
+	data.FinishedLevel9 = true
+	# Save the data back to the file
+	ResourceSaver.save(data, "user://savegame.tres")
+	GLBSaving.emit_signal("Level9_time", FormattedTime)
+
 
 # When level 1 is finished
 func Level1Finished():
@@ -231,3 +306,15 @@ func Level5Finished():
 func Level6Finished():
 	cantime = false
 	TimeSaveLevel6()
+
+func Level7Finished():
+	cantime = false
+	TimeSaveLevel7()
+
+func Level8Finished():
+	cantime = false
+	TimeSaveLevel8()
+
+func Level9Finished():
+	cantime = false
+	TimeSaveLevel9()

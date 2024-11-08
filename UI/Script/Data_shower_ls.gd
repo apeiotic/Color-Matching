@@ -7,17 +7,20 @@ extends Control
 @onready var status: Label = $"DataListed/VBoxContainer/Status Container/Status"
 @onready var level_preview: TextureRect = $LevelPreview_Container/LevelPreview
 @onready var expected_time: Label = $"DataListed/VBoxContainer/Expected Time Container/Expected Time"
+@export var deniedSoundefffect: AudioStreamPlayer2D
+@onready var cant_play: TextureRect = $DataListed/PlayButton/CantPlay
+
 
 var selectedlevel:String
 var SavingData : SavedGame = SavedGame.new()
-var NameArray= ["void leaps", "double daring" , "rush of red", "Blue Velocity",
-"Vertical Blitz", "Echo’s Edge", "Vertical Vortex" ]
+var NameArray= ["void leaps", "double daring" , "rush of red", "blue velocity",
+"vertical blitz", "echo’s edge", "vertical vortex" ]
 
 
 func _ready() -> void:
 	GLB.connect("LevelSelectorData", Callable(self, "SyncingData" ))
 	selectedNone()
-	
+	cant_play.hide()
 
 
 
@@ -132,7 +135,19 @@ func SyncingData(Level):
 		level_name_label.text = NameArray[5]
 		expected_time.text = str(GLBSaving.ExpectedLevel6Time) + ":00"
 	
-
+	elif Level == "level7":
+		if data.FinishedLevel7: 
+			status.text = "finished"
+			best_time.text = data.level7_time
+			second_best_time.text = data.level7_time2
+			third_best_time.text = data.level7_time3
+		else:
+			status.text = "unfinished"
+			best_time.text = "----"
+			second_best_time.text = "----"
+			third_best_time.text = "----"
+		level_name_label.text = NameArray[6]
+		expected_time.text = str(GLBSaving.ExpectedLevel7Time) + ":00"
 
 func _on_back_button_pressed() -> void:
 	var mainmenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
@@ -140,28 +155,43 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
+	var data = load_save_data()
+	
 	if selectedlevel == "level1":
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel1.tscn")
 		get_tree().change_scene_to_packed(Level)
 	elif selectedlevel == "level2":
+		
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel2.tscn")
 		get_tree().change_scene_to_packed(Level)
+		
+			
 	elif selectedlevel == "level3":
+		
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel3.tscn")
 		get_tree().change_scene_to_packed(Level)
+		
 	elif selectedlevel == "level4":
+		
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel4.tscn")
 		get_tree().change_scene_to_packed(Level)
+		
 	elif selectedlevel == "level5":
+		
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel5.tscn")
 		get_tree().change_scene_to_packed(Level)
+		
 	elif selectedlevel == "level6":
+		
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel6.tscn")
 		get_tree().change_scene_to_packed(Level)
 		
+	elif selectedlevel == "level7":
 		
+		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		get_tree().change_scene_to_packed(Level)
 		
-		
+	
 	else: 
 		var Level = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel1.tscn")
 		get_tree().change_scene_to_packed(Level)

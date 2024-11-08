@@ -17,6 +17,6 @@ emission_operator = 1
 emission_texture = ExtResource("2_hb2td")
 normal_enabled = true
 normal_texture = ExtResource("3_cu0e3")
-uv1_scale = Vector3(1.075, 1.075, 1.075)
+uv1_scale = Vector3(-0.075, -0.075, -0.075)
 uv1_triplanar = true
 texture_filter = 5

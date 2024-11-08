@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drv6erfuejceo" path="res://Materials/texture/JS Displacement/Orange nromal.png" id="3_45cth"]
 
 [resource]
-albedo_color = Color(1, 0.533636, 0.389623, 1)
+albedo_color = Color(1, 0.680719, 0.582075, 1)
 albedo_texture = ExtResource("1_uauj1")
 albedo_texture_force_srgb = true
 metallic = 0.15

@@ -35,11 +35,43 @@ extends  Resource
 @export var level6_time2 : String
 @export var level6_time3 : String
 
+#------------level7--------------#.
 @export var level7_time : String
+@export var level7_time2 : String
+@export var level7_time3 : String
+
+#------------level8--------------#.
 @export var level8_time : String
+@export var level8_time2 : String
+@export var level8_time3 : String
+
 @export var level9_time : String
-@export var level10_time :String
-@export var level11_time :String
+@export var level9_time2 : String
+@export var level9_time3 : String
+
+@export var level10_time : String
+@export var level10_time2 : String
+@export var level10_time3 : String
+
+@export var level11_time : String
+@export var level11_time2 : String
+@export var level11_time3 : String
+
+@export var level12_time : String
+@export var level12_time2 : String
+@export var level12_time3 : String
+
+@export var level13_time : String
+@export var level13_time2 : String
+@export var level13_time3 : String
+
+@export var level14_time : String
+@export var level14_time2 : String
+@export var level14_time3 : String
+
+@export var level15_time : String
+@export var level15_time2 : String
+@export var level15_time3 : String
 
 #endregion
 
@@ -55,7 +87,11 @@ extends  Resource
 @export var FinishedLevel8 : bool= false
 @export var FinishedLevel9 : bool= false
 @export var FinishedLevel10 : bool= false
-
+@export var FinishedLevel11 : bool= false
+@export var FinishedLevel12 : bool= false
+@export var FinishedLevel13 : bool= false
+@export var FinishedLevel14 : bool= false
+@export var FinishedLevel15 : bool= false
 
 ##-------------SETTINGS RELATED-------------##
 @export var CameraBob : bool = false

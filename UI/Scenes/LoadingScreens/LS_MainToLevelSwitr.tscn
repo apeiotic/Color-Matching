@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb6lxnq0omq34"]
+[gd_scene load_steps=5 format=3 uid="uid://bb6lxnq0omq34"]
 
 [ext_resource type="Script" path="res://UI/Script/LoadingScreen/ls_main_to_level_switr.gd" id="1_funae"]
-[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_6646w"]
 
 [sub_resource type="Shader" id="Shader_dkfy0"]
 code = "/*
@@ -56,22 +55,24 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_02y55")
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("ViewportTexture_uwn3l")
 
-[node name="Coutdown" type="TextEdit" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
-offset_top = -25.0
-offset_right = 53.0
-offset_bottom = 20.0
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_6646w")
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 35
 text = "1%"

@@ -14,6 +14,10 @@ func _ready() -> void:
 	GLBSaving.connect("Level4_time", Callable(self,"Level4func" ))
 	GLBSaving.connect("Level5_time", Callable(self,"Level5func" ))
 	GLBSaving.connect("Level6_time", Callable(self,"Level6func" ))
+	GLBSaving.connect("Level7_time", Callable(self,"Level7func" ))
+	GLBSaving.connect("Level8_time", Callable(self,"Level8func" ))
+	GLBSaving.connect("Level9_time", Callable(self,"Level9func" ))
+	
 
 
 # Function to load saved data
@@ -70,6 +74,27 @@ func load_and_display_leaderboard(Level : String):
 			SecondBestScore.text = str(data.level6_time2)
 			ThirdBestScore.text = str(data.level6_time3)
 			expected_time.text = str(GLBSaving.ExpectedLevel6Time) + ".00" + " seconds"
+	if Level == "Level7":
+		if data != null:
+			
+			BestScore.text = str(data.level7_time)
+			SecondBestScore.text = str(data.level7_time2)
+			ThirdBestScore.text = str(data.level7_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel7Time) + ".00" + " seconds"
+	if Level == "Level8":
+		if data != null:
+			
+			BestScore.text = str(data.level8_time)
+			SecondBestScore.text = str(data.level8_time2)
+			ThirdBestScore.text = str(data.level8_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel8Time) + ".00" + " seconds"
+	if Level == "Level9":
+		if data != null:
+			
+			BestScore.text = str(data.level9_time)
+			SecondBestScore.text = str(data.level9_time2)
+			ThirdBestScore.text = str(data.level9_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel9Time) + ".00" + " seconds"
 
 
 # Called when level 1 is completed
@@ -113,7 +138,23 @@ func Level6func(FormattedTime: String):
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level6")
 	
+func Level7func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level7")
+	
+func Level8func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level8")
 
+func Level9func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level9")
 
 func _on_main_menu_pressed() -> void:
 	var LoadingMainMenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
@@ -156,4 +197,5 @@ func _on_next_level_pressed() -> void:
 		get_tree().change_scene_to_packed(level6)
 	
 	if current_level_name.to_lower() == "level_6":
-		print("Level7")
+		var level7 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		get_tree().change_scene_to_packed(level7)

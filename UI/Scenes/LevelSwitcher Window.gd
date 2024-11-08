@@ -105,6 +105,11 @@ func NextLevelToPlay():
 			if data.FinishedLevel5 == false:
 				if data.FinishedLevel4 == true:
 					choose_next_level.show()
+	elif Level == "level6":
+		if data.FinishedLevel7 == false:
+			if data.FinishedLevel6 == false:
+				if data.FinishedLevel5 == true:
+					choose_next_level.show()
 
 
 func load_save_data():
@@ -126,6 +131,26 @@ func ApplyAssets():
 		MainLevelPreview.texture = texture
 	elif Level == "level3":
 		NameOfLebel.text = NameArray[2]
+		var texture = load(ImagePath[2])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level4":
+		NameOfLebel.text = NameArray[3]
+		var texture = load(ImagePath[2])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level5":
+		NameOfLebel.text = NameArray[4]
+		var texture = load(ImagePath[2])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level6":
+		NameOfLebel.text = NameArray[5]
+		var texture = load(ImagePath[2])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level7":
+		NameOfLebel.text = NameArray[6]
 		var texture = load(ImagePath[2])
 		MainLevelPreview.texture = texture
 

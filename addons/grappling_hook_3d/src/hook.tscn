@@ -11,7 +11,7 @@ cap_top = false
 cap_bottom = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8746b"]
-albedo_color = Color(0.568627, 0.568627, 0.568627, 1)
+albedo_color = Color(1, 0.198482, 0.0969367, 1)
 metallic = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_usc5b"]

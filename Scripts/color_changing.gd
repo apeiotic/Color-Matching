@@ -2,6 +2,7 @@ extends Node3D
 @export var color = ["Black", "Green", "Red", "Lime", "Blue", "Cyan", "Orange"]
 var change_colorTo = "Black"
 signal ChangeColor
+@onready var color_changing: AudioStreamPlayer2D = $Node3D/ColorChanging
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _process(delta: float) -> void:
 func Body_Enter(body: Node3D) -> void:
 	ChangeColor.emit(color[0])
 	GLB.colorchange.emit(color[0])
+	color_changing.play()
 	 # Replace with function body.
 
 

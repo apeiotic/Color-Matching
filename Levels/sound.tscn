@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2r4xsvjyh6q0"]
+
+[ext_resource type="Script" path="res://UI/Script/BackgroundSound.gd" id="1_u21ar"]
+[ext_resource type="AudioStream" uid="uid://cd017h2erxlxu" path="res://Sound Effects/BackgroundMusic.wav" id="2_t7w17"]
+[ext_resource type="AudioStream" uid="uid://b50n8wsoqyq5k" path="res://Sound Effects/BackgroundMusic2.wav" id="3_ei3rh"]
+[ext_resource type="AudioStream" uid="uid://dxt5x5cktpc6r" path="res://Sound Effects/BackgroundMusic3.wav" id="4_y3lr5"]
+[ext_resource type="AudioStream" uid="uid://c417ki0oed04c" path="res://Sound Effects/bacground Ambience (1).wav" id="5_saebw"]
+[ext_resource type="AudioStream" uid="uid://sws6uvttdcnt" path="res://Sound Effects/background Ambience.wav" id="6_6s8bi"]
+[ext_resource type="AudioStream" uid="uid://bqkitf7k6rght" path="res://Sound Effects/WinSound.wav" id="7_bifix"]
+[ext_resource type="AudioStream" uid="uid://cds82bhw1ewes" path="res://Sound Effects/wind-artificial-18750.wav" id="8_enx7q"]
+
+[node name="Sound" type="Node"]
+process_mode = 3
+script = ExtResource("1_u21ar")
+
+[node name="Background Music 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t7w17")
+bus = &"Musics"
+
+[node name="Background Music2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ei3rh")
+bus = &"Musics"
+
+[node name="Background Music3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y3lr5")
+bus = &"Musics"
+
+[node name="Ambient Sound 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_saebw")
+volume_db = -45.0
+stream_paused = true
+bus = &"Musics"
+
+[node name="Ambient Sound 2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6s8bi")
+volume_db = -45.0
+bus = &"Musics"
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bifix")
+volume_db = 24.0
+bus = &"SoundEffects"
+
+[node name="WindSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_enx7q")
+bus = &"Musics"
+
+[connection signal="finished" from="Background Music 1" to="." method="BackgroundSoundFinished"]
+[connection signal="finished" from="Background Music2" to="." method="BackgroundSoundFinished"]
+[connection signal="finished" from="Background Music3" to="." method="BackgroundSoundFinished"]
+[connection signal="finished" from="Ambient Sound 1" to="." method="AmbientSoundEffectFinsihed"]
+[connection signal="finished" from="Ambient Sound 2" to="." method="AmbientSoundEffectFinsihed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://4sdkpgwx5fk3"]
+[gd_scene load_steps=62 format=4 uid="uid://4sdkpgwx5fk3"]
 
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_2ky27"]
 [ext_resource type="Script" path="res://Levels/MainLevels/level_6.gd" id="1_s3nxh"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="19_1dr8s"]
 [ext_resource type="Shader" path="res://Materials/WireFrame.gdshader" id="19_5g81o"]
 [ext_resource type="PackedScene" uid="uid://bw07ynt57rq55" path="res://Levels/Booster.tscn" id="19_hyq54"]
+[ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="22_bhoix"]
+[ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="23_sx6h7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p26b0"]
 
@@ -931,6 +933,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65213, -79.0481)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00571, 1.01975, 0)
 shape = SubResource("BoxShape3D_dx761")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("22_bhoix")
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("23_sx6h7")
 
 [connection signal="body_entered" from="CSGMesh3D2/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="CSGMesh3D3/Area3D" to="." method="_on_area_3d_body_entered"]

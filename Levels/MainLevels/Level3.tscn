@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://cea4uacthafah"]
+[gd_scene load_steps=112 format=4 uid="uid://cea4uacthafah"]
 
 [ext_resource type="Script" path="res://UI/Script/level_3.gd" id="1_weqy8"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="2_oywo8"]
@@ -25,6 +25,8 @@
 [ext_resource type="Material" uid="uid://cwlmjrvocamdp" path="res://Materials/Shader/WireFrame_VolcanoGround.tres" id="20_e01vx"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="21_8vwoo"]
 [ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="23_m2q12"]
+[ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="26_m1nu6"]
+[ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="27_vfru6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luvga"]
 metallic = 0.36
@@ -1847,8 +1849,16 @@ shape = SubResource("BoxShape3D_wcr22")
 
 [node name="Notification" parent="." instance=ExtResource("23_m2q12")]
 
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Node3D2"]
+stream = ExtResource("26_m1nu6")
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="Node3D2"]
+stream = ExtResource("27_vfru6")
+
 [connection signal="ChangeColor" from="Color Changing" to="CharacterBody3D" method="_on_color_changing_change_color"]
 [connection signal="body_entered" from="Cube/Area3D" to="." method="PusherActivate"]
-[connection signal="body_entered" from="portal/Area3D" to="." method="Finish_Line_reached"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="portal/Area3D" to="." method="Finish_Line_reached"]
 [connection signal="body_entered" from="Area3D" to="." method="Notification"]

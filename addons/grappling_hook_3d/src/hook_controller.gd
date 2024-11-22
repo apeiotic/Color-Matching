@@ -16,6 +16,7 @@ extends Node
 @export var pull_speed: float = 1.0
 ## A 3D node that serves as the beginning on the rope model
 @export var hook_source: Node3D
+@export var TimerRunOut: Timer
 @export_group("Advanced Settings")
 @export var hook_scene: PackedScene = preload("res://addons/grappling_hook_3d/src/hook.tscn")
 
@@ -31,6 +32,8 @@ signal hook_detached()
 
 
 func _physics_process(delta: float) -> void:
+	
+	
 	if Input.is_action_just_pressed(launch_action_name) and GLB.Can_hook == true:
 		hook_launched.emit()
 		
@@ -55,7 +58,6 @@ func _physics_process(delta: float) -> void:
 func _launch_hook() -> void:
 	if not hook_raycast.is_colliding():
 		return
-		
 	#checking if the object is hookable or not
 	var hookable_object = hook_raycast.get_collider()
 	hook_target_position = hook_raycast.get_collision_point()
@@ -92,13 +94,23 @@ func _retract_hook() -> void:
 func _handle_hook(delta: float) -> void:
 	# Hook pull math
 	var pull_vector = (hook_target_node.global_position - player_body.global_position).normalized()
+
+	# Add forward momentum to the pull
+	var forward_vector = player_body.global_transform.basis.z * -2  # Assuming -Z is forward
+	var combined_vector = (pull_vector + forward_vector * 0.5).normalized()
 	
-	player_body.velocity += pull_vector * pull_speed * delta * 60
+	# Optional: Add a vertical boost for a smoother arc
+	combined_vector.y += 0.5
+	combined_vector = combined_vector.normalized()
+
+	# Apply the force
+	player_body.velocity += combined_vector * pull_speed * delta * 60
 	
 	# Hook model handling
 	var source_position: Vector3
-	match true if hook_source else false:
-		true: source_position = hook_source.global_position
-		false: source_position = player_body.global_position
+	if hook_source:
+		source_position = hook_source.global_position
+	else:
+		source_position = player_body.global_position
 	
 	_hook_model.extend_from_to(source_position, hook_target_node.global_position, hook_target_normal)

@@ -3,6 +3,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $CharacterBody3D
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
+@onready var death_sounds = [$Node3D2/Death, $Node3D2/Death2]
 var notificationCalled = false
 
 const Balloon = preload("res://dialogue/balloon.tscn")
@@ -12,10 +13,15 @@ func _ready() -> void:
 	GLB.connect("Died", Callable(self, "died_func"))
 	death_menu.hide()
 
+func play_random_death_sound():
+	var random_sound = death_sounds[randi() % death_sounds.size()]
+	random_sound.play()
+
 func died_func():
 	player.queue_free()
 	death_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	play_random_death_sound()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

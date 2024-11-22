@@ -63,7 +63,7 @@ signal canhook()
 @onready var neck_animation = $Neck/AnimationPlayer
 @onready var JumppadTimer= $Neck/JumpPad
 @onready var RandomTimer = $Neck/RandomTimers
-@onready var staminabar = $"Effects/Stamina ProgressBar"
+@onready var staminabar = $"Effects/MarginContainer/Stamina ProgressBar"
 @onready var neck2 = $"Neck/Neck 2"
 @onready var LeftWallDetector = $Neck/LeftWallDetector
 @onready var RIghtWallDetector = $Neck/RightWallDetector
@@ -71,6 +71,7 @@ signal canhook()
 @onready var wallrun_delayTimer: Timer = $Neck/WallrunDelay
 @onready var looking_at_raycast: RayCast3D = $"Neck/Looking At Raycast"
 @onready var radial_drag: ColorRect = $"Effects/Radial Drag"
+@onready var green_jump_pad_sound: AudioStreamPlayer2D = $Soundeffects/GreenJumpPadSound
 
 #endregion
 
@@ -79,8 +80,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GLB.connect("colorchange", Callable(self, "ColorChanging"))
 	
-
-
 #Event tick
 func _physics_process(delta: float) -> void:
 	
@@ -170,8 +169,6 @@ func _physics_process(delta: float) -> void:
 	GLB.emit_signal("color", PlayerColor)
 	GLB.emit_signal("stamina", stamina)
 	GLB.emit_signal("playerspeed", playerspeed)
-	
-	
 	staminabar.material.set_shader_parameter("value", stamina)
 	
 	sprint()
@@ -180,6 +177,18 @@ func _physics_process(delta: float) -> void:
 	process_wallrun()
 	process_wallrun_rotation(delta)
 	
+	
+	if velocity.length() > 8.5: 
+		BG_Sound.wind_sound.play()
+		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, 0.0, 0.5)
+		
+	elif velocity.length() > 10.0:
+		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, 10.0, 0.5)
+		
+	else:
+		
+		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, -10.0, 0.5)
+		
 	#region Detecting standing block type
 	if detector.is_colliding():
 		
@@ -226,10 +235,10 @@ func _physics_process(delta: float) -> void:
 		normal()
 	#endregion
 	
-	
 	#region saved Color effect
 	if standingColor == "Black":
 		OnBlack()
+		
 	if standingColor == "Red":
 		OnRed()
 	if standingColor == "Blue":
@@ -239,6 +248,7 @@ func _physics_process(delta: float) -> void:
 	if standingColor == "Orange":
 		OnOrange()
 	#endregion 
+	
 	
 	if PlayerColor != "Green":
 		CanSlimeJump = false
@@ -485,10 +495,11 @@ func OnBlack(): #what to do when standing on black
 	JUMP_VELOCITY = 4
 	CameraSprintFov = 80.0
 	CameraNormalFov = 65.0
+	GLB.Can_hook = true
 
 func OnOrange():
 	max_jump = 3
-	#GLB.Can_hook = true
+	
 	SPEED =  8
 	sprinting_speed = 9.0
 	
@@ -532,6 +543,7 @@ func normal(): #when youre on something which is not in any group
 
 func AutoJumping(JumpValue: float): #Autojumping, for slimy object
 	velocity.y = JumpValue * 1.5
+	green_jump_pad_sound.play()
 	SlimeJump = true
 	neck_animation.stop()
 	neck_animation.play("MiniJump")

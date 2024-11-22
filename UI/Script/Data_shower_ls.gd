@@ -8,7 +8,7 @@ extends Control
 @onready var level_preview: TextureRect = $LevelPreview_Container/LevelPreview
 @onready var expected_time: Label = $"DataListed/VBoxContainer/Expected Time Container/Expected Time"
 @export var deniedSoundefffect: AudioStreamPlayer2D
-@onready var cant_play: TextureRect = $DataListed/PlayButton/CantPlay
+#@onready var cant_play: TextureRect = $DataListed/PlayButton/CantPlay
 
 
 var selectedlevel:String
@@ -20,7 +20,7 @@ var NameArray= ["void leaps", "double daring" , "rush of red", "blue velocity",
 func _ready() -> void:
 	GLB.connect("LevelSelectorData", Callable(self, "SyncingData" ))
 	selectedNone()
-	cant_play.hide()
+	#cant_play.hide()
 
 
 

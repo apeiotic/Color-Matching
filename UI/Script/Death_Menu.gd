@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_restart_pressed() -> void:
-	
+	GLB.emit_signal("Restarted")
 	get_tree().reload_current_scene()
 	
 

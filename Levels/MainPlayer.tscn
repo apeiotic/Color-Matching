@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=36 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
 [ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
@@ -14,6 +14,8 @@
 [ext_resource type="Shader" path="res://Materials/Shader/Radial_Drag.gdshader" id="10_gd72t"]
 [ext_resource type="Script" path="res://UI/Script/Shakable Camera.gd" id="10_h2qou"]
 [ext_resource type="Script" path="res://UI/Script/radial_drag.gd" id="11_n5f0n"]
+[ext_resource type="AudioStream" uid="uid://tqhcv1tvqcw" path="res://Sound Effects/FootStep.wav" id="15_7gxwg"]
+[ext_resource type="AudioStream" uid="uid://cnbwecx36ppdi" path="res://Sound Effects/GreenJumpPad.wav" id="16_w35t3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_itdbw"]
 noise_type = 0
@@ -40,20 +42,22 @@ shader_parameter/samples = 20
 shader_parameter/contrast = 1.0
 
 [sub_resource type="Gradient" id="Gradient_52bbi"]
-offsets = PackedFloat32Array(0, 0.198925, 0.607527, 1)
-colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1, 0.831192, 0.738408, 0, 1, 0, 1, 0, 1)
+offsets = PackedFloat32Array(0.0373134, 0.179104, 0.607527, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.897269, 0.449373, 0, 1, 0.831192, 0.738408, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w8fd2"]
 gradient = SubResource("Gradient_52bbi")
+fill_from = Vector2(0.910256, 0.00854701)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57f2x"]
 shader = ExtResource("7_8dieg")
 shader_parameter/value = 1.0
-shader_parameter/segments = 13
-shader_parameter/radius = 0.475
-shader_parameter/hollow_radius = 0.38
-shader_parameter/margin = 0.174
-shader_parameter/rotation = 0.992
+shader_parameter/segments = 7
+shader_parameter/radius = 0.455
+shader_parameter/hollow_radius = 0.365
+shader_parameter/margin = 0.137
+shader_parameter/rotation = 1.0
 shader_parameter/progress_rotation = -1.0
 shader_parameter/use_value_gradient = true
 shader_parameter/gradient = SubResource("GradientTexture2D_w8fd2")
@@ -231,12 +235,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_n5f0n")
 
-[node name="Stamina ProgressBar" type="ColorRect" parent="Effects"]
+[node name="MarginContainer" type="MarginContainer" parent="Effects"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -173.0
+offset_bottom = -51.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Stamina ProgressBar" type="ColorRect" parent="Effects/MarginContainer"]
 material = SubResource("ShaderMaterial_57f2x")
-offset_left = 1060.0
-offset_top = 450.0
-offset_right = 1154.0
-offset_bottom = 544.0
+layout_mode = 2
 script = ExtResource("9_m2oix")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -264,11 +277,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50017, -0.496168)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221889, 0.129726)
 
 [node name="HUD" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("2_n7qrv")]
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
 metadata/_edit_use_anchors_ = true
 
 [node name="HookRaycast" type="RayCast3D" parent="Neck/Neck 2/Neck 3/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457799, -0.146399)
-target_position = Vector3(0, 0, -7)
+target_position = Vector3(0, 0, -10)
+collision_mask = 3
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="Neck/Neck 2/Neck 3/Camera3D"]
 
@@ -287,6 +305,7 @@ position = Vector2(-36, 0)
 
 [node name="Pause Menu" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("6_8xgr3")]
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Standing Raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
@@ -337,12 +356,28 @@ target_position = Vector3(1, 0, 0)
 wait_time = 0.1
 one_shot = true
 
-[node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
+[node name="Hook" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body", "TimerRunOut")]
 script = ExtResource("3_p8iac")
 hook_raycast = NodePath("../Neck/Neck 2/Neck 3/Camera3D/HookRaycast")
 player_body = NodePath("..")
 launch_action_name = "Ability 1"
 retract_action_name = "Ability 1"
+pull_speed = 0.5
+TimerRunOut = NodePath("HookTimer")
+
+[node name="HookTimer" type="Timer" parent="Hook"]
+wait_time = 2.5
+
+[node name="Soundeffects" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Soundeffects"]
+stream = ExtResource("15_7gxwg")
+
+[node name="GreenJumpPadSound" type="AudioStreamPlayer2D" parent="Soundeffects"]
+stream = ExtResource("16_w35t3")
+panning_strength = 1.57
+
+[node name="FootStepTimer" type="Timer" parent="Soundeffects"]
 
 [connection signal="canhook" from="." to="Hook" method="_on_character_body_3d_canhook"]
 [connection signal="color" from="." to="MeshInstance3D" method="_on_character_body_3d_color"]

@@ -4,7 +4,7 @@ extends Node3D
 @onready var finsihed_levels: Control = $"Finsihed Levels"
 @onready var player: CharacterBody3D = $CharacterBody3D
 @onready var notification: Control = $Control
-
+@onready var death_sounds = [$Node3D3/Death, $Node3D3/Death2]
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 
@@ -22,10 +22,15 @@ func _ready() -> void:
 
 
 
+func play_random_death_sound():
+	var random_sound = death_sounds[randi() % death_sounds.size()]
+	random_sound.play()
+
 func died_func():
-	Player.queue_free()
+	player.queue_free()
 	death_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	play_random_death_sound()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -2,7 +2,7 @@ extends MeshInstance3D
 var Color_Selected : String
 
 @onready var mesh_ins: MeshInstance3D = $"."
-@onready var label_3d: Label3D = $"../../Label3D"
+@onready var label_3d: Label3D=$"../../Label3D"
 
 
 var M_Red = preload("res://Materials/ColorChanger/M_CC_Red.tres")

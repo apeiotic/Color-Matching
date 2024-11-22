@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://10y224c843ka"
+path="res://.godot/imported/Booster_Sound.wav-78c612f3bcba4dad5d958a6a72101483.sample"
+
+[deps]
+
+source_file="res://Sound Effects/Booster_Sound.wav"
+dest_files=["res://.godot/imported/Booster_Sound.wav-78c612f3bcba4dad5d958a6a72101483.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

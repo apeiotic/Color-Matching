@@ -23,13 +23,13 @@ func _process(delta: float) -> void:
 	# Multiply the speed by 5 and round it
 		var rounded_speed = round(speed * 5)
 
-		var speed_text = str(rounded_speed) + " km/h"
+		var speed_text = str(rounded_speed)
 
 	# Set the label's text to the formatted speed
 		speedometre.text = speed_text
 	
 	else:
-		speedometre.text = "0 km/h"
+		speedometre.text = "0"
 
 
 func Playerspeed(playerspeed):

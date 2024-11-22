@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bfwbrgpd2o0cl"]
+[gd_scene load_steps=36 format=4 uid="uid://bfwbrgpd2o0cl"]
 
 [ext_resource type="Material" uid="uid://b8yglpg1bw3vm" path="res://Materials/Red.tres" id="1_63664"]
 [ext_resource type="Script" path="res://Scripts/level_5.gd" id="1_g20eh"]
@@ -18,6 +18,8 @@
 [ext_resource type="Material" uid="uid://bg4q8d0hgweee" path="res://Materials/WireFrame_Material.tres" id="13_ljsmg"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="15_k5te5"]
 [ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="16_8cd5n"]
+[ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="19_pguok"]
+[ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="20_ma0n7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q02gn"]
 sky_top_color = Color(0.0646477, 0.0864206, 0.116699, 1)
@@ -560,6 +562,14 @@ shape = SubResource("BoxShape3D_hs7l8")
 wait_time = 0.7
 one_shot = true
 autostart = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("19_pguok")
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("20_ma0n7")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Notification" to="." method="_on_notification_body_entered"]

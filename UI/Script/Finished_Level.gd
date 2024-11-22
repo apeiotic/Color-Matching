@@ -8,6 +8,7 @@ extends Control
 
 func _ready() -> void:
 	hide()
+	
 	GLBSaving.connect("Level1_time", Callable(self,"Level1func" ))
 	GLBSaving.connect("Level2_time", Callable(self,"Level2func" ))
 	GLBSaving.connect("Level3_time", Callable(self,"Level3func" ))
@@ -17,7 +18,7 @@ func _ready() -> void:
 	GLBSaving.connect("Level7_time", Callable(self,"Level7func" ))
 	GLBSaving.connect("Level8_time", Callable(self,"Level8func" ))
 	GLBSaving.connect("Level9_time", Callable(self,"Level9func" ))
-	
+	GLBSaving.connect("Level10_time", Callable(self,"Level10func" ))
 
 
 # Function to load saved data
@@ -95,6 +96,13 @@ func load_and_display_leaderboard(Level : String):
 			SecondBestScore.text = str(data.level9_time2)
 			ThirdBestScore.text = str(data.level9_time3)
 			expected_time.text = str(GLBSaving.ExpectedLevel9Time) + ".00" + " seconds"
+	if Level == "Level10":
+		if data != null:
+			
+			BestScore.text = str(data.level10_time)
+			SecondBestScore.text = str(data.level10_time2)
+			ThirdBestScore.text = str(data.level10_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel10Time) + ".00" + " seconds"
 
 
 # Called when level 1 is completed
@@ -103,33 +111,35 @@ func Level1func(FormattedTime: String):
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level1")
-	
+	BG_Sound.win_sound.play()
 
 func Level2func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level2")
-	print("level2func called")
+	BG_Sound.win_sound.play()
 
 func Level3func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level3")
-	
+	BG_Sound.win_sound.play()
 
 func Level4func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level4")
+	BG_Sound.win_sound.play()
 
 func Level5func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level5")
+	BG_Sound.win_sound.play()
 
 
 func Level6func(FormattedTime: String):
@@ -137,25 +147,37 @@ func Level6func(FormattedTime: String):
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level6")
-	
+	BG_Sound.win_sound.play()
+
+
 func Level7func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level7")
-	
+	BG_Sound.win_sound.play()
+
 func Level8func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level8")
+	BG_Sound.win_sound.play()
 
 func Level9func(FormattedTime: String):
 	var data = load_save_data()
 	show()
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level9")
+	BG_Sound.win_sound.play()
 
+func Level10func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level10")
+	BG_Sound.win_sound.play()
+	
 func _on_main_menu_pressed() -> void:
 	var LoadingMainMenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
 	get_tree().change_scene_to_packed(LoadingMainMenu)
@@ -173,14 +195,14 @@ func get_current_level_name() -> String:
 
 func _on_next_level_pressed() -> void:
 	var current_level_name = get_current_level_name()
-	print(current_level_name)
+	
 	
 	if current_level_name.to_lower() == "level1":
 		var level2 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel2.tscn")
 		get_tree().change_scene_to_packed(level2)
 	
 	if current_level_name.to_lower() == "level2":
-		print("onlevel2")
+		
 		var level3 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel3.tscn")
 		get_tree().change_scene_to_packed(level3)
 	
@@ -199,3 +221,7 @@ func _on_next_level_pressed() -> void:
 	if current_level_name.to_lower() == "level_6":
 		var level7 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
 		get_tree().change_scene_to_packed(level7)
+	
+	if current_level_name.to_lower() == "level_7":
+		var level8 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		get_tree().change_scene_to_packed(level8)

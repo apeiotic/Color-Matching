@@ -90,306 +90,6 @@ grow_vertical = 2
 layout_mode = 2
 deniedSoundefffect = NodePath("../../Audio/Select")
 
-[node name="LevelSwitcher Window" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.120551
-anchor_top = 0.301889
-anchor_right = -0.120551
-anchor_bottom = 0.301889
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level1"
-
-[node name="LevelSwitcher Window2" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0183377
-anchor_top = 0.301889
-anchor_right = 0.0183377
-anchor_bottom = 0.301889
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level2"
-
-[node name="LevelSwitcher Window3" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.157227
-anchor_top = 0.301889
-anchor_right = 0.157227
-anchor_bottom = 0.301889
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level3"
-
-[node name="LevelSwitcher Window4" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.296116
-anchor_top = 0.301889
-anchor_right = 0.296116
-anchor_bottom = 0.301889
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level4"
-
-[node name="LevelSwitcher Window5" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.435004
-anchor_top = 0.301889
-anchor_right = 0.435004
-anchor_bottom = 0.301889
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level5"
-
-[node name="LevelSwitcher Window6" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.120551
-anchor_top = 0.530284
-anchor_right = -0.120551
-anchor_bottom = 0.530284
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level6"
-
-[node name="LevelSwitcher Window7" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0183377
-anchor_top = 0.530284
-anchor_right = 0.0183377
-anchor_bottom = 0.530284
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level7"
-
-[node name="LevelSwitcher Window8" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.157227
-anchor_top = 0.530284
-anchor_right = 0.157227
-anchor_bottom = 0.530284
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level8"
-
-[node name="LevelSwitcher Window9" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.296116
-anchor_top = 0.530284
-anchor_right = 0.296116
-anchor_bottom = 0.530284
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level9"
-
-[node name="LevelSwitcher Window10" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.435004
-anchor_top = 0.530284
-anchor_right = 0.435004
-anchor_bottom = 0.530284
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level10"
-
-[node name="LevelSwitcher Window11" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.120551
-anchor_top = 0.752506
-anchor_right = -0.120551
-anchor_bottom = 0.752506
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level11"
-
-[node name="LevelSwitcher Window12" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0183377
-anchor_top = 0.752506
-anchor_right = 0.0183377
-anchor_bottom = 0.752506
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level12"
-
-[node name="LevelSwitcher Window13" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.157227
-anchor_top = 0.752506
-anchor_right = 0.157227
-anchor_bottom = 0.752506
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level13"
-
-[node name="LevelSwitcher Window14" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.296116
-anchor_top = 0.752506
-anchor_right = 0.296116
-anchor_bottom = 0.752506
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level14"
-
-[node name="LevelSwitcher Window15" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.435004
-anchor_top = 0.752506
-anchor_right = 0.435004
-anchor_bottom = 0.752506
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level15"
-
-[node name="LevelSwitcher Window16" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.120551
-anchor_top = 0.974728
-anchor_right = -0.120551
-anchor_bottom = 0.974728
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level16"
-
-[node name="LevelSwitcher Window17" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0183377
-anchor_top = 0.974728
-anchor_right = 0.0183377
-anchor_bottom = 0.974728
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level17"
-
-[node name="LevelSwitcher Window18" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.157227
-anchor_top = 0.974728
-anchor_right = 0.157227
-anchor_bottom = 0.974728
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level18"
-
-[node name="LevelSwitcher Window19" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.296116
-anchor_top = 0.974728
-anchor_right = 0.296116
-anchor_bottom = 0.974728
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level19"
-
-[node name="LevelSwitcher Window20" parent="." node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.435004
-anchor_top = 0.974728
-anchor_right = 0.435004
-anchor_bottom = 0.974728
-offset_left = 170.875
-offset_top = -135.624
-offset_right = 298.875
-offset_bottom = -3.62396
-scale = Vector2(1, 1)
-HoverSound = NodePath("../Audio/Hover")
-Level = "level20"
-
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Audio"]
@@ -442,5 +142,193 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_sbm3c")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3nfpo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cw0ip")
 text = "Back"
+
+[node name="Control2" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -19.0
+offset_top = -22.0
+offset_right = 21.0
+offset_bottom = 18.0
+scale = Vector2(1.31367, 1.30373)
+
+[node name="LevelSwitcher Window" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.301889
+anchor_right = -0.120551
+anchor_bottom = 0.301889
+offset_left = 36.8223
+offset_top = 47.9245
+offset_right = 164.822
+offset_bottom = 179.925
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level1"
+
+[node name="LevelSwitcher Window2" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.301889
+anchor_right = 0.0183377
+anchor_bottom = 0.301889
+offset_left = 191.267
+offset_top = 47.9245
+offset_right = 319.267
+offset_bottom = 179.925
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level2"
+
+[node name="LevelSwitcher Window3" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.301889
+anchor_right = 0.157227
+anchor_bottom = 0.301889
+offset_left = 345.711
+offset_top = 47.9245
+offset_right = 473.711
+offset_bottom = 179.925
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level3"
+
+[node name="LevelSwitcher Window4" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.301889
+anchor_right = 0.296116
+anchor_bottom = 0.301889
+offset_left = 500.156
+offset_top = 47.9245
+offset_right = 628.156
+offset_bottom = 179.925
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level4"
+
+[node name="LevelSwitcher Window6" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.530284
+anchor_right = -0.120551
+anchor_bottom = 0.530284
+offset_left = 36.8223
+offset_top = 186.789
+offset_right = 164.822
+offset_bottom = 318.789
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level5"
+
+[node name="LevelSwitcher Window7" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.530284
+anchor_right = 0.0183377
+anchor_bottom = 0.530284
+offset_left = 191.267
+offset_top = 186.789
+offset_right = 319.267
+offset_bottom = 318.789
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level6"
+
+[node name="LevelSwitcher Window8" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.530284
+anchor_right = 0.157227
+anchor_bottom = 0.530284
+offset_left = 345.711
+offset_top = 186.789
+offset_right = 473.711
+offset_bottom = 318.789
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level7"
+
+[node name="LevelSwitcher Window9" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.530284
+anchor_right = 0.296116
+anchor_bottom = 0.530284
+offset_left = 500.156
+offset_top = 186.789
+offset_right = 628.156
+offset_bottom = 318.789
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level8"
+
+[node name="LevelSwitcher Window11" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.120551
+anchor_top = 0.752506
+anchor_right = -0.120551
+anchor_bottom = 0.752506
+offset_left = 36.8223
+offset_top = 321.9
+offset_right = 164.822
+offset_bottom = 453.9
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level9"
+
+[node name="LevelSwitcher Window12" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0183377
+anchor_top = 0.752506
+anchor_right = 0.0183377
+anchor_bottom = 0.752506
+offset_left = 191.267
+offset_top = 321.9
+offset_right = 319.267
+offset_bottom = 453.9
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level10"
+
+[node name="LevelSwitcher Window13" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157227
+anchor_top = 0.752506
+anchor_right = 0.157227
+anchor_bottom = 0.752506
+offset_left = 345.711
+offset_top = 321.9
+offset_right = 473.711
+offset_bottom = 453.9
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level11"
+
+[node name="LevelSwitcher Window14" parent="Control2" node_paths=PackedStringArray("HoverSound") instance=ExtResource("2_gghqj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296116
+anchor_top = 0.752506
+anchor_right = 0.296116
+anchor_bottom = 0.752506
+offset_left = 500.156
+offset_top = 321.9
+offset_right = 628.156
+offset_bottom = 453.9
+scale = Vector2(1, 1)
+HoverSound = NodePath("../../Audio/Hover")
+Level = "level12"
 
 [connection signal="pressed" from="Back/BackButton" to="MarginContainer2/LevelSwitcherDataShower" method="_on_back_button_pressed"]

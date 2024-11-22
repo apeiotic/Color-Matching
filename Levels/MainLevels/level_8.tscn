@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://rj52c7x5f18h"]
+[gd_scene load_steps=51 format=4 uid="uid://rj52c7x5f18h"]
 
 [ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="1_hqn5d"]
 [ext_resource type="Script" path="res://Scripts/level_8.gd" id="1_sh2tc"]
@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="16_s56u4"]
 [ext_resource type="Material" uid="uid://dbidsyjd7q5mg" path="res://Materials/Obstacle.tres" id="17_hvhvb"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="18_wxmhb"]
+[ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="19_16r55"]
+[ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="20_utx0h"]
+[ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="21_dlvl5"]
+[ext_resource type="AudioStream" uid="uid://c417ki0oed04c" path="res://Sound Effects/bacground Ambience (1).wav" id="22_76873"]
+[ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="23_3lf0l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oufvj"]
 sky_top_color = Color(0.0679689, 0.0903383, 0.121446, 1)
@@ -385,7 +390,7 @@ point_count = 2
 size = Vector3(33.1211, 15.6416, 0.45166)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lwie"]
-size = Vector3(1, 4.78333, 8.63483)
+size = Vector3(1, 7.05878, 8.63483)
 
 [node name="Level 8" type="Node3D"]
 script = ExtResource("1_sh2tc")
@@ -417,7 +422,7 @@ mesh = SubResource("ArrayMesh_6w4nq")
 skeleton = NodePath("")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("7_ddled")]
-transform = Transform3D(0.276711, 0, 0.960954, 0, 1, 0, -0.960954, 0, 0.276711, -4.71188, 11.4017, 0.804553)
+transform = Transform3D(-0.988224, 0, 0.15302, 0, 1, 0, -0.15302, 0, -0.988224, 25.861, 4.12736, -30.3903)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(0.983556, 0, -0.180605, 0, 1, 0, 0.180605, 0, 0.983556, 26.175, 1.66375, -30.3679)
@@ -470,10 +475,6 @@ color = ["Lime", "Orange", "Green", "Black", "Red", "Blue", "Cyan"]
 transform = Transform3D(-0.91786, 0, 0.755738, 0, 1.18896, 0, -0.755738, 0, -0.91786, 17.5362, 10.605, 2.01109)
 color = ["Blue", "Lime", "Orange", "Green", "Black", "Red", "Cyan"]
 
-[node name="Color Changing6" parent="." instance=ExtResource("8_o8uju")]
-transform = Transform3D(-0.0117864, 0, 1.18889, 0, 1.18896, 0, -1.18889, 0, -0.0117864, -4.79933, 11.221, 0.748302)
-color = ["Blue", "Lime", "Orange", "Green", "Black", "Red", "Cyan"]
-
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.34641e-08, 0.106212, -0.994344, 4.64267e-09, 0.994344, 0.106212, 1, 0, -4.37114e-08, 22.4642, 8.43864, -14.2917)
 light_energy = 3.511
@@ -509,7 +510,7 @@ autoplay = "Up Down "
 transform = Transform3D(-1.18664, 0, -0.684343, 0, 0.725909, 0, 15.7782, 0, -0.051468, -0.554637, 10.9744, -8.15305)
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Moving Platform2"]
-transform = Transform3D(-0.000248443, 0.00734797, 0.835047, 3.22526e-09, 4.8828, -0.000369087, -0.394765, -0.00201342, -0.235775, 0.00234872, 0.00559139, 0.708581)
+transform = Transform3D(-0.000248443, 0.00734797, 0.496039, 3.22526e-09, 4.8828, -0.000219247, -0.394765, -0.00201342, -0.140057, 0.00234872, 0.00559139, 0.708581)
 material_override = ExtResource("17_hvhvb")
 use_collision = true
 mesh = SubResource("BoxMesh_wa23b")
@@ -530,7 +531,7 @@ transform = Transform3D(6.31768e-07, 3.51436, -0.00209443, 0.0262844, -0.0028661
 progress = 9.61729
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform2/Path3D/PathFollow3D"]
-transform = Transform3D(0.0762113, 0, 0, 0, 20.6717, 0, 0, 0, 2.62216, 0, 0, 0)
+transform = Transform3D(0.0762113, 0, 0, 0, 20.6717, 0, 0, 0, 1.55763, 0, 0, 0)
 remote_path = NodePath("../../../CSGMesh3D2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform2"]
@@ -553,14 +554,14 @@ radius = 0.863808
 height = 20.5075
 sides = 14
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.783175, 0, 0, 0, 1, 6.61325, 4.37429, 2.35673)
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.783175, 0, 0, 0, 1, 6.49397, 3.56033, 2.42384)
 use_collision = true
 height = 8.49704
 sides = 14
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." groups=["Blue"]]
-transform = Transform3D(1, 0, 0, 0, 0.0409621, 0, 0, 0, 1, 6.61325, 7.76232, 2.35673)
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." groups=["Blue"]]
+transform = Transform3D(1, 0, 0, 0, 0.0409621, 0, 0, 0, 1, 6.49397, 6.94836, 2.42384)
 material_override = ExtResource("13_svf2q")
 use_collision = true
 radius = 0.863808
@@ -568,10 +569,10 @@ height = 20.5075
 sides = 14
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." groups=["Blue"]]
-transform = Transform3D(5.14038, 0.595485, -0.273832, -0.58356, 5.14383, 0.23136, 0.298402, -0.198665, 5.16958, -7.22495, 6.7581, 0.572821)
+transform = Transform3D(5.14038, 0.595485, -0.273832, -0.58356, 5.14383, 0.23136, 0.298402, -0.198665, 5.16958, -7.24575, 6.57844, 0.57976)
 material_override = ExtResource("13_svf2q")
 use_collision = true
-size = Vector3(2.20737, 1.47467, 4.48601)
+size = Vector3(2.20737, 1.40482, 4.48601)
 
 [node name="World Border" parent="." instance=ExtResource("14_a4aju")]
 transform = Transform3D(5.08122, 0, 0, 0, 1, 0, 0, 0, 8.92184, 25.4701, 2.04484, -24.7312)
@@ -617,14 +618,36 @@ transform = Transform3D(0.362041, 0, 0.673129, 0, 1, 0, -0.329536, 0, 0.739525, 
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, 0, 0, 1, 1.94829, 2.17822, 0.274166)
 shape = SubResource("BoxShape3D_46bwj")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74004, 11.0977, -1.18403)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.283395, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768616, -0.723541)
-shape = SubResource("BoxShape3D_0lwie")
-
 [node name="Finsihed Levels" parent="." instance=ExtResource("18_wxmhb")]
 
+[node name="portal" parent="." instance=ExtResource("19_16r55")]
+transform = Transform3D(-0.0534935, 0.102494, -1.64989, 0.0767878, 1.64913, 0.0999577, 1.65128, -0.0733673, -0.0580966, -6.5261, 12.0152, -0.970178)
+
+[node name="Area3D" type="Area3D" parent="portal"]
+transform = Transform3D(-0.0211992, 0.00128433, 0.604247, 0.0365634, 0.603511, -1.7497e-09, -0.603139, 0.0365407, -0.021238, -0.124474, -0.9538, 0.100057)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal/Area3D"]
+transform = Transform3D(0.116273, 0, 0, 0, 0.410286, 0, 0, 0, 0.28803, 0.436381, 1.56318, 0.0767567)
+shape = SubResource("BoxShape3D_0lwie")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("20_utx0h")
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("21_dlvl5")
+
+[node name="Background Ambience" type="AudioStreamPlayer2D" parent="Node3D"]
+position = Vector2(-4, 0)
+stream = ExtResource("22_76873")
+volume_db = -10.0
+autoplay = true
+bus = &"Musics"
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("23_3lf0l")]
+transform = Transform3D(6.02452, 0, 0, 0, 2.91257, 0, 0, 0, 5.55943, 16.4762, 3.55205, -7.30973)
+amount = 1000
+
 [connection signal="body_entered" from="Moving Platform2/CSGMesh3D2/Area3D" to="." method="Obstacle"]
-[connection signal="body_entered" from="Area3D" to="." method="FinishReached"]
+[connection signal="body_entered" from="portal/Area3D" to="." method="FinishReached"]

@@ -9,23 +9,29 @@ var level = self
 @onready var player = get_node("CharacterBody3D")  # Adjust this path if needed
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
-
+@onready var death_sounds = [$Node3D/Death, $Node3D/Death2]
 const Balloon = preload("res://dialogue/balloon.tscn")
+var notificationCalled: bool
 
 func _ready() -> void:
 	GLB.connect("EnablePlayerMovement", Callable(self, "EnablePlayerMovement"))
 	GLB.connect("Died", Callable(self, "died_func"))
 	death_menu.hide()
-	
+	Callnotification()
 
 func _process(delta: float) -> void:
 	pass
 
 
+func play_random_death_sound():
+	var random_sound = death_sounds[randi() % death_sounds.size()]
+	random_sound.play()
+
 func died_func():
-	Player.queue_free()
+	player.queue_free()
 	death_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	play_random_death_sound()
 	
 
 
@@ -69,3 +75,9 @@ func EnablePlayerMovement():
 	get_tree().paused = false
 
 #endregion
+
+
+func Callnotification():
+	notificationCalled = true
+	GLB.emit_signal("Notification_color", Color.BLACK, "black")
+	GLB.emit_signal("Notification_Abilitytext", "Walking Speed Slower,Sprinting Speed Slowed.... ")

@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.223377, 0.0995334, 0.074767, 1)
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://UI/default_bus_layout.tres"
+
 [autoload]
 
 GLB="*res://Scripts/GlobalScript.gd"
@@ -23,6 +27,7 @@ SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GLBSaving="*res://Scripts/Saving_Autoload.gd"
 Graphics="*res://UI/Script/Graphics.gd"
+BG_Sound="*res://Levels/sound.tscn"
 
 [debug]
 

@@ -64,3 +64,5 @@ var ExpectedLevel7Time : float = 16.00
 var ExpectedLevel8Time : float = 16.00
 var ExpectedLevel9Time : float = 16.00
 var ExpectedLevel10Time : float = 16.00
+var ExpectedLevel11Time : float = 16.00
+var ExpectedLevel12Time : float = 16.00

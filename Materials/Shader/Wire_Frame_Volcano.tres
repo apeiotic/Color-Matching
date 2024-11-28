@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://driwf74d5yuts"]
 
-[sub_resource type="Shader" id="Shader_24ysi"]
+[sub_resource type="Shader" id="Shader_2ebv8"]
 code = "shader_type spatial;
 
 uniform vec4 albedo : source_color = vec4(1.0);
@@ -45,10 +45,10 @@ void fragment() {
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_24ysi")
-shader_parameter/albedo = Color(2.40654e-07, 0.43866, 0.409625, 1)
-shader_parameter/wire_color_start = Color(2.40654e-06, 0.810308, 0.759118, 1)
-shader_parameter/wire_color_end = Color(0, 0.381797, 0.42668, 1)
+shader = SubResource("Shader_2ebv8")
+shader_parameter/albedo = Color(0.593341, 0.274332, 0, 1)
+shader_parameter/wire_color_start = Color(1, 0.580128, 0.330682, 1)
+shader_parameter/wire_color_end = Color(0.511948, 0.249642, 0, 1)
 shader_parameter/wire_width = 0.264
 shader_parameter/wire_smoothness = 0.025
-shader_parameter/emission_color = Color(0.0455092, 0.2732, 0.306286, 1)
+shader_parameter/emission_color = Color(0.722629, 0.487725, 0, 1)

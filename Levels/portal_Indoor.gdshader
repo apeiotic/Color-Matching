@@ -14,13 +14,13 @@ void fragment() {
     vec2 uv = (SCREEN_UV * 2.0 - 1.0) * 0.5;
     vec3 col = vec3(0.0);
     float t = TIME;
-    
+
     vec2 n = vec2(0.0), q;
     vec2 N = vec2(0.0);
     vec2 p = uv + sin(t * 0.1 / 10.0);
     float S = 10.0;
     mat2 m = rotate2D(1.0 - (mouse_position.x * 0.001));
-    
+
     for (float j = 0.0; j < 30.0; j++) {
         p *= m;
         n *= m;

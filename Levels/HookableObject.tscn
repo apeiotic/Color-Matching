@@ -43,8 +43,20 @@ emission_enabled = true
 emission = Color(0.228296, 0.639925, 0, 1)
 emission_energy_multiplier = 16.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_yby7m"]
-radius = 0.977626
+[sub_resource type="Animation" id="Animation_qw5yk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icosphere:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2tlha"]
 resource_name = "RotationPlayer"
@@ -63,26 +75,14 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(6.28319, 6.28319, 6.28319)]
 }
 
-[sub_resource type="Animation" id="Animation_qw5yk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icosphere:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lj1bh"]
 _data = {
 "RESET": SubResource("Animation_qw5yk"),
 "RotationPlayer": SubResource("Animation_2tlha")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yby7m"]
+radius = 0.977626
 
 [node name="HookingObject" type="Node3D" groups=["Hookable"]]
 script = ExtResource("1_u54ex")
@@ -98,15 +98,15 @@ material_override = SubResource("StandardMaterial3D_s6m3o")
 mesh = SubResource("ArrayMesh_krbhm")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Icosphere" groups=["Hookable"]]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Icosphere/StaticBody3D" groups=["Hookable"]]
-shape = SubResource("SphereShape3D_yby7m")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lj1bh")
 }
 autoplay = "RotationPlayer"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Hookable"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" groups=["Hookable"]]
+shape = SubResource("SphereShape3D_yby7m")

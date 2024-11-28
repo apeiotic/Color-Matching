@@ -42,12 +42,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#get_tree().change_scene_to_file("res://Levels/MainLevels/level2.tscn")
 		died_func()
 
-func _on_area_3d_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
-		GLBSaving.emit_signal("Level1Finished")
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		player.queue_free()
-		GLBSaving.emit_signal("level7")
 		
 
 #region Dialogue system
@@ -80,4 +74,21 @@ func EnablePlayerMovement():
 func Callnotification():
 	notificationCalled = true
 	GLB.emit_signal("Notification_color", Color.BLACK, "black")
-	GLB.emit_signal("Notification_Abilitytext", "Walking Speed Slower,Sprinting Speed Slowed.... ")
+	GLB.emit_signal("Notification_Abilitytext", "Walking Speed Slower,Sprinting Speed Slowed,  
+	Hookable Allowed")
+
+
+func Dead(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player.queue_free()
+		death_menu.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		play_random_death_sound()
+
+
+func Finsihed(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		GLBSaving.emit_signal("Level1Finished")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		player.queue_free()
+		GLBSaving.emit_signal("level1")

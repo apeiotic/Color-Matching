@@ -19,7 +19,7 @@ func _ready() -> void:
 	GLBSaving.connect("Level8_time", Callable(self,"Level8func" ))
 	GLBSaving.connect("Level9_time", Callable(self,"Level9func" ))
 	GLBSaving.connect("Level10_time", Callable(self,"Level10func" ))
-
+	GLBSaving.connect("Level11_time", Callable(self,"Level11func" ))
 
 # Function to load saved data
 func load_save_data():
@@ -103,7 +103,13 @@ func load_and_display_leaderboard(Level : String):
 			SecondBestScore.text = str(data.level10_time2)
 			ThirdBestScore.text = str(data.level10_time3)
 			expected_time.text = str(GLBSaving.ExpectedLevel10Time) + ".00" + " seconds"
-
+	
+	if Level == "Level11":
+		if data != null:
+			BestScore.text = str(data.level11_time)
+			SecondBestScore.text = str(data.level11_time2)
+			ThirdBestScore.text = str(data.level11_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel11Time) + ".00" + " seconds"
 
 # Called when level 1 is completed
 func Level1func(FormattedTime: String):
@@ -177,7 +183,14 @@ func Level10func(FormattedTime: String):
 	FinalTime.text = FormattedTime
 	load_and_display_leaderboard("Level10")
 	BG_Sound.win_sound.play()
-	
+
+func Level11func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level11")
+	BG_Sound.win_sound.play()
+
 func _on_main_menu_pressed() -> void:
 	var LoadingMainMenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
 	get_tree().change_scene_to_packed(LoadingMainMenu)
@@ -225,3 +238,7 @@ func _on_next_level_pressed() -> void:
 	if current_level_name.to_lower() == "level_7":
 		var level8 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
 		get_tree().change_scene_to_packed(level8)
+	
+	if current_level_name.to_lower() == "level_8":
+		var level9 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		get_tree().change_scene_to_packed(level9)

@@ -265,6 +265,12 @@ func _physics_process(delta: float) -> void:
 	if walking != true: 
 		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
 	
+	if PlayerColor != "Black":
+		GLB.Can_hook = false
+		
+	else:
+		GLB.Can_hook = true
+		
 	
 #region Movement System
 

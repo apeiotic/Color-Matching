@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=4 uid="uid://cftbe27xvdx7d"]
+[gd_scene load_steps=37 format=4 uid="uid://cftbe27xvdx7d"]
 
+[ext_resource type="Script" path="res://Scripts/level_12.gd" id="1_8cioc"]
 [ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="1_fmwks"]
 [ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="2_1wdvn"]
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="3_vuigb"]
@@ -8,34 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="6_b7fjv"]
 [ext_resource type="PackedScene" uid="uid://cj2vx76x4gitk" path="res://Levels/HookableObject.tscn" id="7_xb8cy"]
 [ext_resource type="PackedScene" uid="uid://cvsljc7075nvo" path="res://Levels/JumpPad.tscn" id="8_fyi7o"]
+[ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="10_2w3py"]
 [ext_resource type="Material" uid="uid://b7x50u308c71v" path="res://Materials/White.tres" id="10_u615f"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mvlqw"]
-sky_top_color = Color(0.1368, 0.19, 0.172267, 1)
-sky_horizon_color = Color(0, 0.502454, 0.220981, 1)
-sky_energy_multiplier = 2.0
-ground_bottom_color = Color(0, 0.20607, 0.196506, 1)
-ground_horizon_color = Color(0, 0.769575, 0.57267, 1)
-ground_energy_multiplier = 2.0
-
-[sub_resource type="Sky" id="Sky_jm1ih"]
-sky_material = SubResource("ProceduralSkyMaterial_mvlqw")
-
-[sub_resource type="Environment" id="Environment_lpupd"]
-background_mode = 2
-sky = SubResource("Sky_jm1ih")
-ambient_light_source = 3
-sdfgi_enabled = true
-glow_enabled = true
-glow_bloom = 0.11
-fog_enabled = true
-fog_light_energy = 0.6
-fog_density = 0.0005
-fog_sky_affect = 0.0
-adjustment_enabled = true
-adjustment_brightness = 1.1
-adjustment_contrast = 1.54
-adjustment_saturation = 1.38
+[ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="11_qug30"]
+[ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="13_ei5lc"]
+[ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="14_xj6x6"]
+[ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="15_uvqrn"]
+[ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="16_5tsk8"]
+[ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="17_ipqi7"]
 
 [sub_resource type="Shader" id="Shader_bo71g"]
 code = "shader_type spatial;
@@ -178,7 +159,7 @@ shader = SubResource("Shader_wc3x1")
 shader_parameter/albedo = Color(0, 0, 0, 1)
 shader_parameter/wire_color_start = Color(0.689657, 0.285941, 1, 1)
 shader_parameter/wire_color_end = Color(0.664596, 0.00348813, 0.959947, 1)
-shader_parameter/wire_width = 0.836
+shader_parameter/wire_width = 0.589
 shader_parameter/wire_smoothness = 0.01
 shader_parameter/emission_color = Color(0.511067, 0.609784, 7.70092e-07, 1)
 
@@ -221,25 +202,123 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nrfhe")
 
+[sub_resource type="Curve3D" id="Curve3D_g6fsx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0787961, -6.19074, 0.0845852, 0, 0, 0, 0, 0, 0, 0.0804987, -0.957108, 0.175738),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_sagft"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D4:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 2.42)]
+}
+
+[sub_resource type="Animation" id="Animation_ur8bb"]
+resource_name = "RESET_2"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D4:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 2.42)]
+}
+
+[sub_resource type="Animation" id="Animation_g6lb6"]
+resource_name = "Up Down "
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcl88"]
+_data = {
+"RESET": SubResource("Animation_sagft"),
+"RESET_2": SubResource("Animation_ur8bb"),
+"Up Down ": SubResource("Animation_g6lb6")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptdnk"]
+size = Vector3(2.13538, 1.75757, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d7tbq"]
+sky_top_color = Color(0.538955, 0.277512, 0.844901, 1)
+sky_horizon_color = Color(0.325505, 0.688515, 0.953819, 1)
+sky_energy_multiplier = 2.0
+ground_bottom_color = Color(0.272434, 0.000326471, 0.366698, 1)
+ground_horizon_color = Color(1, 0.275954, 0.999956, 1)
+ground_energy_multiplier = 2.0
+
+[sub_resource type="Sky" id="Sky_taji8"]
+sky_material = SubResource("ProceduralSkyMaterial_d7tbq")
+
+[sub_resource type="Environment" id="Environment_n845e"]
+background_mode = 2
+sky = SubResource("Sky_taji8")
+ambient_light_source = 3
+sdfgi_enabled = true
+fog_enabled = true
+fog_light_energy = 0.62
+fog_density = 0.0005
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.45
+adjustment_saturation = 1.19
+
 [node name="Level_12" type="Node3D"]
-
-[node name="lighting" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
-transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
-light_color = Color(0.71, 0.71, 0.71, 1)
-light_energy = 4.0
-light_indirect_energy = 7.629
-light_volumetric_fog_energy = 2.248
-shadow_enabled = true
-shadow_opacity = 0.55
-shadow_blur = 5.186
-sky_mode = 1
-script = ExtResource("1_fmwks")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
-environment = SubResource("Environment_lpupd")
-script = ExtResource("2_1wdvn")
+script = ExtResource("1_8cioc")
 
 [node name="Land" type="Node3D" parent="."]
 
@@ -298,7 +377,7 @@ use_collision = true
 size = Vector3(1.55078, 3.19553, 1.85632)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Blue"]]
-transform = Transform3D(1.99107, 0, 0, 0, 0.0565359, 0, 0, 0, 4.47192, -1.75687, 0.127822, 75.8667)
+transform = Transform3D(1.38658, 0, 0, 0, 0.0565359, 0, 0, 0, 4.47192, -1.94549, 0.127822, 75.8667)
 material_override = ExtResource("4_w3yg6")
 use_collision = true
 size = Vector3(1, 8.5304, 1.76953)
@@ -328,10 +407,10 @@ use_collision = true
 size = Vector3(1, 8.5304, 1.76953)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_5fdwi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 4.42607, 85.589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201412, 2.42747, 85.2662)
 
 [node name="Color Changing" parent="." instance=ExtResource("6_b7fjv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28647, 2.57353, 80.6136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28647, 3.60172, 80.6136)
 color = ["Blue", "Black", "Green", "Red", "Lime", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("6_b7fjv")]
@@ -358,19 +437,15 @@ color = ["Lime", "Black", "Orange", "Blue", "Green", "Red", "Cyan"]
 transform = Transform3D(1.30739, 0, 0, 0, 1.30739, 0, 0, 0, 1.30739, 3.25137, 18.1422, -54.4098)
 color = ["Blue", "Lime", "Black", "Orange", "Green", "Red", "Cyan"]
 
+[node name="Color Changing9" parent="." instance=ExtResource("6_b7fjv")]
+transform = Transform3D(1.30739, 0, 0, 0, 1.30739, 0, 0, 0, 1.30739, 3.25137, 19.9946, -66.091)
+color = ["Black", "Blue", "Lime", "Orange", "Green", "Red", "Cyan"]
+
 [node name="HookingObject" parent="." instance=ExtResource("7_xb8cy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6146, 42.4559)
 
 [node name="HookingObject3" parent="." instance=ExtResource("7_xb8cy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0240326, 30.3187, -9.15204)
-
-[node name="JumpPad" parent="." instance=ExtResource("8_fyi7o")]
-transform = Transform3D(5.20952, 0, 0, 0, 0.215335, 0, 0, 0, 5.01811, 0.15628, -0.901296, 27.4132)
-repel_strength = 25.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="JumpPad"]
-transform = Transform3D(0.191956, 0, 0, 0, 5.31038, 0, 0, 0, 0.199278, -0.029999, 14.2296, 0.0178485)
-light_energy = 5.0
 
 [node name="JumpPad2" parent="." instance=ExtResource("8_fyi7o")]
 transform = Transform3D(5.20952, 0, 0, 0, 0.215335, 0, 0, 0, 5.01811, 0.15628, 22.4266, -35.5516)
@@ -434,3 +509,81 @@ use_collision = true
 radius = 1.28802
 height = 32.1184
 sides = 32
+
+[node name="Moving Platform" type="Node3D" parent="."]
+transform = Transform3D(21.9416, 0, 0, 0, 1.00663, 0, 0, 0, 0.951669, -9.82095, 2.41658, 27.1002)
+
+[node name="JumpPad" parent="Moving Platform" instance=ExtResource("8_fyi7o")]
+transform = Transform3D(-0.00425908, 0.000141742, 0.243191, -1.75961e-07, 0.236215, -4.28646e-05, -5.17956, -6.45571e-05, -0.0897156, 0.118705, 0.00541067, 0.461662)
+skeleton = NodePath("../..")
+repel_strength = 20.0
+
+[node name="Path3D" type="Path3D" parent="Moving Platform"]
+transform = Transform3D(-2.93793e-09, -0.124025, 0, 0.067212, -5.42131e-09, 0, 0, 0, 2.62699, 0, 0, 0)
+curve = SubResource("Curve3D_g6fsx")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
+transform = Transform3D(-2.61523e-06, 3.51448, -0.00063791, 0.0343405, -0.00114293, -1.96082, -1.97167, -2.45745e-05, -0.0341515, 0.0804987, -0.957108, 0.175738)
+progress = 5.23443
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
+remote_path = NodePath("../../../JumpPad")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform"]
+libraries = {
+"": SubResource("AnimationLibrary_kcl88")
+}
+autoplay = "Up Down "
+
+[node name="Finsihed Levels" parent="." instance=ExtResource("10_2w3py")]
+visible = false
+
+[node name="Death menu" parent="." instance=ExtResource("11_qug30")]
+visible = false
+
+[node name="World Border" parent="." instance=ExtResource("13_ei5lc")]
+transform = Transform3D(323.918, 0, 0, 0, 1, 0, 0, 0, 399.171, 0, -20.5521, -53.9277)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("14_xj6x6")
+volume_db = 10.0
+bus = &"SoundEffects"
+
+[node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
+stream = ExtResource("15_uvqrn")
+volume_db = 10.0
+bus = &"SoundEffects"
+
+[node name="portal" parent="." instance=ExtResource("16_5tsk8")]
+transform = Transform3D(-1.77948, 0, 1.55567e-07, 0, 1.77948, 0, -1.55567e-07, 0, -1.77948, 1.59628, 20.101, -70.8794)
+
+[node name="Area3D" type="Area3D" parent="portal"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.267572, -0.0966177, 0.0289307, -0.0550613)
+shape = SubResource("BoxShape3D_ptdnk")
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("17_ipqi7")]
+transform = Transform3D(7.21514, 0, 0, 0, 3.72285, 0, 0, 0, 16.3606, -11.521, -0.309628, 75.9642)
+amount = 1000
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
+light_energy = 1.448
+light_indirect_energy = 7.629
+light_volumetric_fog_energy = 2.248
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.55
+shadow_blur = 5.942
+script = ExtResource("1_fmwks")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n845e")
+script = ExtResource("2_1wdvn")
+
+[node name="lighting" type="Node3D" parent="."]
+
+[connection signal="body_entered" from="portal/Area3D" to="." method="Finished"]

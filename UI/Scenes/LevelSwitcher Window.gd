@@ -2,8 +2,7 @@ extends Control
 
 @export var HoverSound: AudioStreamPlayer2D
 @export_enum("level1", "level2", "level3", "level4", "level5", "level6",
-"level7", "level8", "level9", "level10", "level11", "level12","level13",
-"level14", "level15", "level16", "level17", "level18","level19", "level20",) var Level : String
+"level7", "level8", "level9", "level10", "level11", "level12") var Level : String
 @onready var MainLevelPreview: TextureRect = $"Main Image/TextureRect"
 @onready var NameOfLebel: Label = $Name/Label
 @onready var BestTime: Label = $"Finished Time/BestTime"
@@ -16,13 +15,22 @@ var SavingData : SavedGame = SavedGame.new()
 var clicked: bool
 var HoverBGI = "res://UI/images/GUI/Hover_MainPanel01.png"
 var NormalBGI = "res://UI/images/GUI/MainPanel01.png"
-var NameArray= ["Void Leaps", "Double Daring" , "Rush of Red", "Blue Velocity",
-"Vertical Blitz", "Echo’s Edge", "Vertical Vortex" ]
+var NameArray= ["Level 1", "Level 2" , "Level 3", "Level 4", 
+"Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10", "Level 11", "Level 12" ]
 
 var ImagePath= [
-	"res://UI/images/Level Background/Untitled.png",
-	"res://UI/images/Frame.png",
-	"res://UI/images/Warning Image.png"
+	"res://UI/images/Level Background/Level1.png",
+	"res://UI/images/Level Background/Level2.png",
+	"res://UI/images/Level Background/Level3.png",
+	"res://UI/images/Level Background/level4.png",
+	"res://UI/images/Level Background/Level5.png",
+	"res://UI/images/Level Background/Level6.png",
+	"res://UI/images/Level Background/Level7.png",
+	"res://UI/images/Level Background/Level8.png",
+	"res://UI/images/Level Background/Level9.png",
+	"res://UI/images/Level Background/Level10.png",
+	"res://UI/images/Level Background/Level11.png",
+	"res://UI/images/Level Background/Level12.png"
 ]
 
 
@@ -77,6 +85,10 @@ func is_finished():
 	if Level == "level11":
 		if data.FinishedLevel10 == false:
 			locked_or_not.show()
+	
+	if Level == "level12":
+		if data.FinishedLevel11 == false:
+			locked_or_not.show()
 
 
 func NextLevelToPlay():
@@ -110,6 +122,35 @@ func NextLevelToPlay():
 			if data.FinishedLevel6 == false:
 				if data.FinishedLevel5 == true:
 					choose_next_level.show()
+	elif Level == "level7":
+		if data.FinishedLevel8 == false:
+			if data.FinishedLevel7 == false:
+				if data.FinishedLevel6 == true:
+					choose_next_level.show()
+	elif Level == "level8":
+		if data.FinishedLevel9 == false:
+			if data.FinishedLevel8 == false:
+				if data.FinishedLevel7 == true:
+					choose_next_level.show()
+	elif Level == "level9":
+		if data.FinishedLevel10 == false:
+			if data.FinishedLevel9 == false:
+				if data.FinishedLevel8 == true:
+					choose_next_level.show()
+	elif Level == "level10":
+		if data.FinishedLevel11 == false:
+			if data.FinishedLevel10 == false:
+				if data.FinishedLevel9 == true:
+					choose_next_level.show()
+	elif Level == "level11":
+		if data.FinishedLevel12 == false:
+			if data.FinishedLevel11 == false:
+				if data.FinishedLevel10 == true:
+					choose_next_level.show()
+	elif Level == "level12":
+		if data.FinishedLevel12 == false:
+			if data.FinishedLevel11 == true:
+				choose_next_level.show()
 
 
 func load_save_data():
@@ -136,22 +177,47 @@ func ApplyAssets():
 	
 	elif Level == "level4":
 		NameOfLebel.text = NameArray[3]
-		var texture = load(ImagePath[2])
+		var texture = load(ImagePath[3])
 		MainLevelPreview.texture = texture
 	
 	elif Level == "level5":
 		NameOfLebel.text = NameArray[4]
-		var texture = load(ImagePath[2])
+		var texture = load(ImagePath[4])
 		MainLevelPreview.texture = texture
 	
 	elif Level == "level6":
 		NameOfLebel.text = NameArray[5]
-		var texture = load(ImagePath[2])
+		var texture = load(ImagePath[5])
 		MainLevelPreview.texture = texture
 	
 	elif Level == "level7":
 		NameOfLebel.text = NameArray[6]
-		var texture = load(ImagePath[2])
+		var texture = load(ImagePath[6])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level8":
+		NameOfLebel.text = NameArray[7]
+		var texture = load(ImagePath[7])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level9":
+		NameOfLebel.text = NameArray[8]
+		var texture = load(ImagePath[8])
+		MainLevelPreview.texture = texture
+		
+	elif Level == "level10":
+		NameOfLebel.text = NameArray[9]
+		var texture = load(ImagePath[9])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level11":
+		NameOfLebel.text = NameArray[10]
+		var texture = load(ImagePath[10])
+		MainLevelPreview.texture = texture
+	
+	elif Level == "level12":
+		NameOfLebel.text = NameArray[11]
+		var texture = load(ImagePath[11])
 		MainLevelPreview.texture = texture
 
 
@@ -231,4 +297,26 @@ func syncTime():
 		else:
 			BestTime.text = "Unfinished"
 		
+	elif Level == "level9":
+		if data.FinishedLevel9 == true:
+			BestTime.text = data.level9_time
+		else:
+			BestTime.text = "Unfinished"
+		
+	elif Level == "level10":
+		if data.FinishedLevel10 == true:
+			BestTime.text = data.level10_time
+		else:
+			BestTime.text = "Unfinished"
 	
+	elif Level == "level11":
+		if data.FinishedLevel11 == true:
+			BestTime.text = data.level11_time
+		else:
+			BestTime.text = "Unfinished"
+	
+	elif Level == "level12":
+		if data.FinishedLevel12 == true:
+			BestTime.text = data.level12_time
+		else:
+			BestTime.text = "Unfinished"

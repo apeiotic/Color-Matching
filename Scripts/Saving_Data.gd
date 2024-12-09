@@ -103,6 +103,11 @@ extends  Resource
 @export var Music: float = 1.0
 @export var MasterSound: float = 1.0
 
+
+#-----if has seen dialogue-----#
+@export var DialogueSeen1: bool = false
+@export var DialogueSeen2: bool = false
+
 @export var _SDFGI: bool = true
 @export var Fog: bool = true
 @export var Glow: bool = true

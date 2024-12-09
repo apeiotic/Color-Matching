@@ -14,6 +14,7 @@ signal Notification_color(GivenColor: Color, Text: String)
 signal Notification_Abilitytext(AbilityList: String)
 signal SaveWorldEnvironment(Value:bool, Type: String)
 signal LevelSelectorData(HoveredLevel: String)
+signal CanHook(FinalCanHook)
 signal LSClicked
 signal Restarted
 
@@ -26,6 +27,10 @@ var Can_hook: bool = true
 var state: bool = false
 var Camera_Drag: bool = true
 var Camera_shake : bool = true
+
+
+#if player has read the dialogue
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

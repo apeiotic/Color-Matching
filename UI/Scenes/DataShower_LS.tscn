@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://wwdo3xnap2k0"]
+[gd_scene load_steps=10 format=3 uid="uid://wwdo3xnap2k0"]
 
 [ext_resource type="Script" path="res://UI/Script/Data_shower_ls.gd" id="1_7sh23"]
 [ext_resource type="Theme" uid="uid://djaw4fh85h3dy" path="res://UI/Script/MainMenu.tres" id="1_j6xgj"]
+[ext_resource type="Texture2D" uid="uid://3fjt8pfxcpug" path="res://UI/images/Level Background/Level1.png" id="2_pifek"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_qd5gu"]
 [ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="2_xehst"]
 [ext_resource type="FontFile" uid="uid://bqgpwvpac80l3" path="res://UI/Fonts/GTProeliumItalic.otf" id="4_p1wev"]
@@ -78,12 +79,6 @@ void fragment() {
 shader = SubResource("Shader_pjp68")
 shader_parameter/SCALE = Vector2(300, 600)
 
-[sub_resource type="Gradient" id="Gradient_nypt6"]
-colors = PackedColorArray(0.950553, 0.611273, 3.85046e-07, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4o8sx"]
-gradient = SubResource("Gradient_nypt6")
-
 [node name="DataShower_LS" type="Control"]
 layout_mode = 3
 anchors_preset = 11
@@ -128,21 +123,21 @@ metadata/_edit_lock_ = true
 
 [node name="LevelPreview_Container" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -164.0
-offset_right = 164.0
-offset_bottom = 265.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 66
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 383
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelPreview" type="TextureRect" parent="LevelPreview_Container"]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_4o8sx")
+texture = ExtResource("2_pifek")
+expand_mode = 1
 
 [node name="DataListed" type="MarginContainer" parent="."]
 layout_mode = 0

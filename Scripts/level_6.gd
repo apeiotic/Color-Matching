@@ -18,6 +18,7 @@ func died_func():
 	death_menu.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	play_random_death_sound()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

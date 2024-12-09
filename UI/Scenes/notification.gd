@@ -3,7 +3,9 @@ extends Control
 @onready var ColorName: Label = $MarginContainer/VBoxContainer/Label
 @onready var PerksName: Label = $MarginContainer/VBoxContainer/Label2
 @onready var LifeTimer: Timer = $Timer
+@onready var notification_sound: AudioStreamPlayer2D = $NotificationSound
 
+ 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +25,7 @@ func GiveTextColorAndText(GivenColor, Text):
 	animation_player.play("new_animation")
 	show()
 	LifeTimer.start()
-	
+	notification_sound.play()
 
 func GiveAbilityList(AbilityList):
 	PerksName.text = AbilityList

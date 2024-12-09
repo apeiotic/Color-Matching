@@ -3,19 +3,26 @@ extends Control
 var Pplayerspeed: float = 0
 var jumpcount 
 var lookingat
+var canhook: bool
 
 @onready var text = $CanvasLayer/MarginContainer5/Color
 @onready var speedometre = $CanvasLayer/MarginContainer4/Label
 @onready var JumpCount: Label = $CanvasLayer/MarginContainer/Label
-@onready var texture_rect: TextureRect = $CanvasLayer/HBoxContainer/TextureRect
+@onready var crosshair: TextureRect = $CanvasLayer/HBoxContainer/TextureRect
+var crosshair1 = "res://UI/images/crosshair037.png"
+var crosshair2 = "res://UI/images/crosshair038.png"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GLB.connect("playerspeed", Callable(self, "Playerspeed"))
+	GLB.connect("CanHook", Callable(self, "CanHook"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if canhook == false: 
+		crosshair.texture = load(crosshair1)
+	else: 
+		crosshair.texture = load(crosshair2)
 	var speed = Pplayerspeed
 	
 	
@@ -31,6 +38,9 @@ func _process(delta: float) -> void:
 	else:
 		speedometre.text = "0"
 
+func CanHook(FinalCanHook):
+	canhook = FinalCanHook
+	
 
 func Playerspeed(playerspeed):
 	Pplayerspeed = playerspeed

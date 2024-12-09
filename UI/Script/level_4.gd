@@ -10,6 +10,7 @@ func _ready() -> void:
 	GLB.connect("Died", Callable(self, "died_func"))
 	death_menu.hide()
 	Callnotification()
+
 func play_random_death_sound():
 	var random_sound = death_sounds[randi() % death_sounds.size()]
 	random_sound.play()

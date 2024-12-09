@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b2dju0lbla1ce"]
+[gd_scene load_steps=40 format=4 uid="uid://b2dju0lbla1ce"]
 
 [ext_resource type="Script" path="res://Scripts/level_9.gd" id="1_vsgok"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="2_csikq"]
@@ -21,9 +21,13 @@
 [ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="19_bylsf"]
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="20_v3v0o"]
 [ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="21_bytmn"]
+[ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="22_je26s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s1jwy"]
 size = Vector3(1, 3.04672, 0.668945)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqu1t"]
+size = Vector3(1, 1.19739, 1)
 
 [sub_resource type="Shader" id="Shader_ccbbo"]
 code = "shader_type spatial;
@@ -264,9 +268,9 @@ adjustment_saturation = 2.07
 [node name="Level 9" type="Node3D"]
 script = ExtResource("1_vsgok")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Red"]]
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
 transform = Transform3D(9.74103, 0, 0, 0, 5.04195, 0, 0, 0, 9.27423, 0, 0, -11.9925)
-material_override = ExtResource("2_h1g4m")
+material_override = ExtResource("3_g8xu5")
 use_collision = true
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="." groups=["Black"]]
@@ -318,6 +322,12 @@ material_override = ExtResource("2_csikq")
 use_collision = true
 size = Vector3(1, 1, 0.489502)
 
+[node name="Area3D" type="Area3D" parent="CSGBox3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.494912, 0, 0.0986977, 0)
+shape = SubResource("BoxShape3D_oqu1t")
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="." groups=["Orange"]]
 transform = Transform3D(6.39749, 0, 0, 0, 0.5626, 0, 0, 0, 6.39749, 0, 33.2659, 64.4813)
 material_override = ExtResource("4_5jsow")
@@ -349,13 +359,13 @@ use_collision = true
 size = Vector3(1, 1.24744, 0.237549)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="." groups=["Red"]]
-transform = Transform3D(3.28811, 0, 0, 0, 0.361293, 0, 0, 0, 2.59429, -0.0626868, 1.47691, -22.347)
+transform = Transform3D(3.28811, 0, 0, 0, 0.361293, 0, 0, 0, 2.59429, -0.0626868, 1.47691, -19.6292)
 material_override = ExtResource("2_h1g4m")
 use_collision = true
 size = Vector3(1, 1.24744, 0.237549)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_eg05d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560371, 37.4104, 94.1258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122084, 36.6462, 94.1258)
 
 [node name="Color Changing" parent="." groups=["Blue"] instance=ExtResource("5_6th5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109584, 36.8409, 94.0077)
@@ -363,10 +373,14 @@ color = ["Blue", "Black", "Green", "Red", "Lime", "Cyan", "Orange"]
 
 [node name="Color Changing3" parent="." groups=["Red"] instance=ExtResource("5_6th5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425786, 4.52732, -8.04487)
-color = ["Red", "Blue", "Black", "Green", "Lime", "Cyan", "Orange"]
+color = ["Black", "Red", "Blue", "Green", "Lime", "Cyan", "Orange"]
+
+[node name="Color Changing6" parent="." groups=["Red"] instance=ExtResource("5_6th5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425786, 3.46839, -17.7137)
+color = ["Red", "Black", "Blue", "Green", "Lime", "Cyan", "Orange"]
 
 [node name="Color Changing4" parent="." instance=ExtResource("5_6th5a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227606, 2.62946, -26.7517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0227606, 3.60653, -25.7629)
 color = ["Lime", "Red", "Blue", "Black", "Green", "Cyan", "Orange"]
 
 [node name="Color Changing5" parent="." instance=ExtResource("5_6th5a")]
@@ -380,7 +394,7 @@ color = ["Orange", "Blue", "Black", "Green", "Red", "Lime", "Cyan"]
 [node name="Death menu" parent="." instance=ExtResource("8_i3b1s")]
 
 [node name="JumpPad" parent="." instance=ExtResource("11_gilpr")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, -0.0379947, 1.04706, -30.5695)
+transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, -0.0379947, 0.869153, -28.2186)
 repel_strength = 29.0
 
 [node name="World Border" parent="." instance=ExtResource("12_f5j5v")]
@@ -448,4 +462,7 @@ bus = &"SoundEffects"
 transform = Transform3D(8.81059, 0, 0, 0, 5.21476, 0, 0, 0, 23.6176, 9.30585, 13.599, 22.0886)
 amount = 1000
 
+[node name="Notification" parent="." instance=ExtResource("22_je26s")]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="CSGBox3D3/Area3D" to="." method="Notification"]

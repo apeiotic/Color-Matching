@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cwlmjrvocamdp"]
 
-[sub_resource type="Shader" id="Shader_wnltu"]
+[sub_resource type="Shader" id="Shader_ti7k3"]
 code = "shader_type spatial;
 
 uniform vec4 albedo : source_color = vec4(1.0);
@@ -45,10 +45,10 @@ void fragment() {
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_wnltu")
-shader_parameter/albedo = Color(2.40654e-07, 0.356105, 0.145168, 1)
-shader_parameter/wire_color_start = Color(0.447219, 0.75726, 0, 1)
-shader_parameter/wire_color_end = Color(6.61798e-07, 0.361765, 0.199661, 1)
+shader = SubResource("Shader_ti7k3")
+shader_parameter/albedo = Color(0.440446, 0.230804, 0, 1)
+shader_parameter/wire_color_start = Color(1, 0.491581, 0.259946, 1)
+shader_parameter/wire_color_end = Color(0.460772, 0.228603, 0, 1)
 shader_parameter/wire_width = 0.55
 shader_parameter/wire_smoothness = 0.005
-shader_parameter/emission_color = Color(0.0333226, 0.650727, 0, 1)
+shader_parameter/emission_color = Color(0.873061, 0.347434, 0, 1)

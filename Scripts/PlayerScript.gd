@@ -4,7 +4,6 @@ extends CharacterBody3D
 #variables
 #-------Booleans----------#
 var walking = false
-var CanDash = true
 var CanSlimeJump = true
 var jumppading= false
 var SlimeJump = false
@@ -15,6 +14,7 @@ var is_wallrunning = false
 var is_wallrun_jumping = false
 var CanWallrunDelay = false
 var Wallrunned = false
+
 
 var wallrun_current_angle = 0
 var wallrun_angle = 15
@@ -33,6 +33,8 @@ var wall_jump_dir = Vector3.ZERO
 var wall_jump_horizontal_power =2.5
 var wall_jump_vertical_power = 0.7
 var wall_jump_factor = 0.4
+var wind_volume_target = -10.0  # Default quiet volume
+var transition_speed = 0.1      # Adjust how fast volume changes
 
 var lerp_amount = 0.09
 var sway_speed = 0.05
@@ -55,7 +57,7 @@ signal canhook()
 @onready var wallrun_delay_default = wallrun_delay
 @onready var detector = $"Neck/Standing Raycast"
 @onready var camera = $"Neck/Neck 2/Neck 3/Camera3D"
-@onready var dashraycast = $"Neck/Dash raycast"
+
 @onready var jumptimer = $Neck/JumpTimer
 @onready var HUD= $"Neck/Neck 2/Neck 3/Camera3D/HUD"
 @onready var deathtimer = $"Neck/Death Timer"
@@ -72,6 +74,9 @@ signal canhook()
 @onready var looking_at_raycast: RayCast3D = $"Neck/Looking At Raycast"
 @onready var radial_drag: ColorRect = $"Effects/Radial Drag"
 @onready var green_jump_pad_sound: AudioStreamPlayer2D = $Soundeffects/GreenJumpPadSound
+@onready var jump_sound: AudioStreamPlayer2D = $Soundeffects/JumpSound
+@onready var jump_sound_2: AudioStreamPlayer2D = $Soundeffects/JumpSound2
+
 
 #endregion
 
@@ -172,23 +177,31 @@ func _physics_process(delta: float) -> void:
 	staminabar.material.set_shader_parameter("value", stamina)
 	
 	sprint()
-	dash()
+	
 	jump()
 	process_wallrun()
 	process_wallrun_rotation(delta)
 	
-	
-	if velocity.length() > 8.5: 
-		BG_Sound.wind_sound.play()
-		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, 0.0, 0.5)
-		
-	elif velocity.length() > 10.0:
-		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, 10.0, 0.5)
-		
+	#region WindSoundEffects
+	if velocity.length() > 15.0:
+		wind_volume_target = 2.0  # Maximum volume for high speed
+	elif velocity.length() > 8.5:
+		wind_volume_target = -10.0  # Medium volume for medium speed
 	else:
-		
-		BG_Sound.wind_sound.volume_db = lerp(BG_Sound.wind_sound.volume_db, -10.0, 0.5)
-		
+		wind_volume_target = -20.0  # Quiet for low speed
+
+	# Play sound only once
+	if not BG_Sound.wind_sound.playing:
+		BG_Sound.wind_sound.play()
+
+	# Gradually adjust the volume to target
+	BG_Sound.wind_sound.volume_db = lerp(
+		BG_Sound.wind_sound.volume_db,
+		wind_volume_target,
+		transition_speed
+	)
+	#endregion
+	
 	#region Detecting standing block type
 	if detector.is_colliding():
 		
@@ -461,27 +474,15 @@ func sprint(): #(Run this function in physics process delta)
 			stamina = stamina + 1
 			stamina = clamp(stamina, -1, 100)
 
-func dash(): #Dash function
-	if Input.is_action_just_pressed("Dash"):
-		if CanDash and walking: 
-			var Blink_Dist = 5
-			if PlayerColor != "Black":
-				if dashraycast.is_colliding(): 
-					var NewDashLoc = dashraycast.get_collision_point()
-					var NewBlinkDist = position.z - NewDashLoc.z
-					translate(Vector3(0,0, -NewBlinkDist))
-					CanDash = false
-				else: 
-					translate(Vector3(0,0, -Blink_Dist))
-					CanDash = false
-			else:
-				translate(Vector3(0,0, -Blink_Dist))
-				CanDash = false
+
 
 func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump' var
+	
+	
 	if Input.is_action_just_pressed("Jump") and jump_count< max_jump:
 		jumptimer.start()
 		velocity.y = velocity.y + JUMP_VELOCITY
+		play_random_jump_sound()
 		neck.rotation.x = lerp_angle(neck.rotation.x, deg_to_rad(-2), 0.35)
 	if PlayerColor != "Orange": 
 		max_jump = 1
@@ -489,6 +490,12 @@ func jump(): #Jump, you can do tripple or any amount jump by changing 'max jump'
 		max_jump= 2
 	if is_on_floor() :
 		jump_count = 0
+
+func play_random_jump_sound() -> void:
+	var jump_sounds = [jump_sound, jump_sound_2]
+	var random_index = randi() % jump_sounds.size()
+	jump_sounds[random_index].play()
+
 
 func ColorChanging(color: Variant):
 	PlayerColor = color
@@ -516,7 +523,6 @@ func OnRed(): #what to do when standing on red
 	JUMP_VELOCITY = 5
 	CameraSprintFov = 110.0
 	CameraNormalFov = 80.0
-	CanDash = true
 	max_jump = 1
 	lerp_amount = 0.12
 

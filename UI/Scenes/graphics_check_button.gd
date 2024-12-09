@@ -7,6 +7,7 @@ extends Control
 @export_enum("SDFGI", "Glow", "Fog") var label_enum : String
 var SavingData : SavedGame = SavedGame.new()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	NameLabel.text = label_enum
@@ -50,10 +51,6 @@ func LoadData():
 	
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	if label_enum == "SDFGI":
@@ -66,6 +63,17 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		Graphics.world_environment.environment.fog_enabled = toggled_on
 		GLB.emit_signal("SaveWorldEnvironment", toggled_on, "Fog")
 
+func DoesHaveWorldEnvironment():
+	var current_scene = get_tree().get_current_scene()
+	if not current_scene:
+		return false  # Ensure the current scene exists
 
+	for child in current_scene.get_children():
+		if child is WorldEnvironment:
+			return true  # Found a WorldEnvironment node
+	return false
+	
 func _on_timer_timeout() -> void:
-	LoadData()
+	var Env = DoesHaveWorldEnvironment()
+	if Env == true:
+		LoadData()

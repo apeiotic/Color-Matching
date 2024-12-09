@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://o0ib6yos2dhu"]
+[gd_scene load_steps=11 format=3 uid="uid://o0ib6yos2dhu"]
 
 [ext_resource type="Script" path="res://UI/Scenes/notification.gd" id="1_i2lcj"]
 [ext_resource type="Texture2D" uid="uid://tbof2h1rovp0" path="res://UI/images/Frame.png" id="2_oi14c"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="3_wmii4"]
 [ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="4_8615w"]
+[ext_resource type="AudioStream" uid="uid://bnt8vjf6iincl" path="res://Sound Effects/NotificationSound.wav" id="5_p6foj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o770u"]
 texture = ExtResource("2_oi14c")
@@ -139,5 +140,10 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
+
+[node name="NotificationSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_p6foj")
+volume_db = 24.0
+bus = &"SoundEffects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

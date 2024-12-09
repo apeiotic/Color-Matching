@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2r4xsvjyh6q0"]
 
 [ext_resource type="Script" path="res://UI/Script/BackgroundSound.gd" id="1_u21ar"]
-[ext_resource type="AudioStream" uid="uid://cd017h2erxlxu" path="res://Sound Effects/BackgroundMusic.wav" id="2_t7w17"]
-[ext_resource type="AudioStream" uid="uid://b50n8wsoqyq5k" path="res://Sound Effects/BackgroundMusic2.wav" id="3_ei3rh"]
-[ext_resource type="AudioStream" uid="uid://dxt5x5cktpc6r" path="res://Sound Effects/BackgroundMusic3.wav" id="4_y3lr5"]
+[ext_resource type="AudioStream" uid="uid://cw8vuv50gqocn" path="res://Sound Effects/BackgroundMusic2.5 (1).wav" id="2_04jku"]
+[ext_resource type="AudioStream" uid="uid://b35rsm684achb" path="res://Sound Effects/BackgroundMusic1.5 (1).wav" id="2_porre"]
+[ext_resource type="AudioStream" uid="uid://b4mch2835l5oj" path="res://Sound Effects/BackgroundMusic3.5.wav" id="4_vqeew"]
 [ext_resource type="AudioStream" uid="uid://c417ki0oed04c" path="res://Sound Effects/bacground Ambience (1).wav" id="5_saebw"]
 [ext_resource type="AudioStream" uid="uid://sws6uvttdcnt" path="res://Sound Effects/background Ambience.wav" id="6_6s8bi"]
 [ext_resource type="AudioStream" uid="uid://bqkitf7k6rght" path="res://Sound Effects/WinSound.wav" id="7_bifix"]
@@ -14,15 +14,15 @@ process_mode = 3
 script = ExtResource("1_u21ar")
 
 [node name="Background Music 1" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_t7w17")
+stream = ExtResource("2_porre")
 bus = &"Musics"
 
 [node name="Background Music2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ei3rh")
+stream = ExtResource("2_04jku")
 bus = &"Musics"
 
 [node name="Background Music3" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_y3lr5")
+stream = ExtResource("4_vqeew")
 bus = &"Musics"
 
 [node name="Ambient Sound 1" type="AudioStreamPlayer2D" parent="."]
@@ -42,7 +42,7 @@ bus = &"SoundEffects"
 
 [node name="WindSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_enx7q")
-bus = &"Musics"
+bus = &"SoundEffects"
 
 [connection signal="finished" from="Background Music 1" to="." method="BackgroundSoundFinished"]
 [connection signal="finished" from="Background Music2" to="." method="BackgroundSoundFinished"]

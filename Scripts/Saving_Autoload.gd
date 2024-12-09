@@ -54,15 +54,15 @@ signal Level15_time(FormattedTime)
 
 
 #-------Expected Times-------#
-var ExpectedLevel1Time : float = 16.00
-var ExpectedLevel2Time : float = 14.00
-var ExpectedLevel3Time : float = 12.00
-var ExpectedLevel4Time : float = 18.00
-var ExpectedLevel5Time : float = 19.00
-var ExpectedLevel6Time : float = 11.00
-var ExpectedLevel7Time : float = 16.00
-var ExpectedLevel8Time : float = 16.00
-var ExpectedLevel9Time : float = 16.00
-var ExpectedLevel10Time : float = 16.00
-var ExpectedLevel11Time : float = 16.00
-var ExpectedLevel12Time : float = 16.00
+var ExpectedLevel1Time : float = 18.00
+var ExpectedLevel2Time : float = 11.00
+var ExpectedLevel3Time : float = 18.00
+var ExpectedLevel4Time : float = 15.00
+var ExpectedLevel5Time : float = 24.00
+var ExpectedLevel6Time : float = 14.00
+var ExpectedLevel7Time : float = 35.00
+var ExpectedLevel8Time : float = 14.00
+var ExpectedLevel9Time : float = 26.00
+var ExpectedLevel10Time : float = 32.00
+var ExpectedLevel11Time : float = 20.00
+var ExpectedLevel12Time : float = 30.00

@@ -25,6 +25,7 @@ func _ready() -> void:
 	GLBSaving.connect("Level9Finished", Callable(self, "Level9Finished"))
 	GLBSaving.connect("Level10Finished", Callable(self, "Level10Finished"))
 	GLBSaving.connect("Level11Finished", Callable(self, "Level11Finished"))
+	GLBSaving.connect("Level12Finished", Callable(self, "Level12Finished"))
 	
 # Timer update
 func _on_timer_timeout() -> void:
@@ -328,6 +329,30 @@ func TimeSaveLevel11():
 	ResourceSaver.save(data, "user://savegame.tres")
 	GLBSaving.emit_signal("Level11_time", FormattedTime)
 
+func TimeSaveLevel12():
+	var data = load_save_data()
+	# Convert the current formatted time into milliseconds for comparison
+	var current_time_ms = time_to_milliseconds(FormattedTime)
+	
+	#region Level10 hihgscores saving
+	
+	# If there is no existing time, or if the current time is better, update the leaderboard
+	if data.level12_time == "" or time_to_milliseconds(data.level12_time) > current_time_ms:
+		data.level12_time3 = data.level12_time2  # Shift times down
+		data.level12_time2 = data.level12_time
+		data.level12_time = FormattedTime
+	elif data.level12_time2 == "" or time_to_milliseconds(data.level12_time2) > current_time_ms:
+		data.level12_time3 = data.level12_time2
+		data.level12_time2 = FormattedTime
+	elif data.level12_time3 == "" or time_to_milliseconds(data.level12_time3) > current_time_ms:
+		data.level12_time3 = FormattedTime
+	#endregion
+	
+	data.FinishedLevel12 = true
+	# Save the data back to the file
+	ResourceSaver.save(data, "user://savegame.tres")
+	GLBSaving.emit_signal("Level12_time", FormattedTime)
+
 
 # When level 1 is finished
 func Level1Finished():
@@ -375,3 +400,7 @@ func Level10Finished():
 func Level11Finished():
 	cantime = false
 	TimeSaveLevel11()
+
+func Level12Finished():
+	cantime = false
+	TimeSaveLevel12()

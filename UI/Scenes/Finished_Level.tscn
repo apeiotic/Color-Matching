@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dny1xgmis061m"]
+[gd_scene load_steps=19 format=3 uid="uid://dny1xgmis061m"]
 
 [ext_resource type="Script" path="res://UI/Script/Finished_Level.gd" id="1_djtjd"]
 [ext_resource type="FontFile" uid="uid://bpn5ov4sveth8" path="res://Materials/coolvetica rg.otf" id="1_w3pf6"]
@@ -131,6 +131,12 @@ fill_from = Vector2(0.5, 0.465812)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yjti"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhpd4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hi0kd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_feom7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wr5c"]
 
 [node name="Finsihed Levels" type="Control"]
 layout_mode = 3
@@ -402,28 +408,37 @@ theme_override_constants/separation = 219
 
 [node name="Main_Menu" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.729412, 1, 0.721569, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_mlkik")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hi0kd")
 text = "main menu "
 flat = true
 
 [node name="Retry" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.729412, 1, 0.721569, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_mlkik")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_feom7")
 text = "retry"
 flat = true
 
 [node name="Next Level" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.731236, 0.99919, 0.719973, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0.494697, 9.62615e-07, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_mlkik")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5wr5c")
 text = "next level"
 flat = true
 

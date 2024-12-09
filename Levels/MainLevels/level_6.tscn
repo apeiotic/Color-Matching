@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://4sdkpgwx5fk3"]
+[gd_scene load_steps=63 format=4 uid="uid://4sdkpgwx5fk3"]
 
 [ext_resource type="Material" uid="uid://cm8o61ahu0hrs" path="res://Materials/Black.tres" id="1_2ky27"]
 [ext_resource type="Script" path="res://Scripts/level_6.gd" id="1_s3nxh"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bw07ynt57rq55" path="res://Levels/Booster.tscn" id="19_hyq54"]
 [ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="22_bhoix"]
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="23_sx6h7"]
+[ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="24_g23bq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p26b0"]
 
@@ -413,7 +414,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dx761"]
-size = Vector3(10.6548, 6.46484, 1)
+size = Vector3(18.4424, 15.0527, 1)
 
 [node name="Level 6" type="Node3D"]
 script = ExtResource("1_s3nxh")
@@ -705,7 +706,7 @@ mesh = SubResource("ArrayMesh_lgmge")
 skeleton = NodePath("")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_h31wh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.764995, 0.314147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232306, 0.314147)
 
 [node name="Crate 1" parent="." instance=ExtResource("5_ekkga")]
 transform = Transform3D(1.10519, 0, 0, 0, -4.83094e-08, 1.10519, 0, -1.10519, -4.83094e-08, -2.82323, -0.485787, -3.04787)
@@ -714,7 +715,7 @@ transform = Transform3D(1.10519, 0, 0, 0, -4.83094e-08, 1.10519, 0, -1.10519, -4
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -1.70255, -0.410175, -3.44762)
 
 [node name="Color Changing" parent="." instance=ExtResource("8_sbp6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00873974, 0.849159, -5.63787)
+transform = Transform3D(0.730149, 0, 0, 0, 0.730149, 0, 0, 0, 0.730149, -0.00873974, 0.849159, -5.63787)
 color = ["Blue", "Black", "Green", "Red", "Lime", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("8_sbp6y")]
@@ -839,7 +840,6 @@ size = Vector3(1, 0.104492, 0.936905)
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
 transform = Transform3D(1.63899, 0, 0, 0, 5.35244, 0, 0, 0, 1.67123, -0.168556, 2.04826, -46.2695)
 material_override = ExtResource("11_xmq10")
-use_collision = true
 mesh = SubResource("BoxMesh_eb3mw")
 
 [node name="Area3D" type="Area3D" parent="CSGMesh3D2"]
@@ -851,7 +851,6 @@ shape = SubResource("BoxShape3D_238e8")
 [node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
 transform = Transform3D(1.96551, 0, 0, 0, 5.35244, 0, 0, 0, 1.67123, 3.15296, 2.04826, -46.2702)
 material_override = ExtResource("11_xmq10")
-use_collision = true
 mesh = SubResource("BoxMesh_eb3mw")
 
 [node name="Area3D" type="Area3D" parent="CSGMesh3D3"]
@@ -904,7 +903,7 @@ skeleton = NodePath("")
 transform = Transform3D(21.9416, 0, 0, 0, 1.00663, 0, 0, 0, 0.951669, -11.7865, 0.273347, -55.9301)
 
 [node name="JumpPad" parent="Moving Platform" instance=ExtResource("13_vngt0")]
-transform = Transform3D(-0.00437868, 0.000148623, 0.243188, -4.88202e-09, 0.236196, -4.49467e-05, -5.1795, -5.66936e-05, -0.0922351, 0.275834, 0.00541052, 0.461662)
+transform = Transform3D(-0.00437868, 0.000148623, 0.243188, -4.88201e-09, 0.236196, -4.49467e-05, -5.1795, -5.66936e-05, -0.0922351, 0.275834, 0.00541052, 0.461662)
 skeleton = NodePath("../..")
 repel_strength = 10.0
 
@@ -928,10 +927,10 @@ autoplay = "Up Down "
 [node name="Finsihed Levels" parent="." instance=ExtResource("19_1dr8s")]
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65213, -79.0481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.961854, 2.65213, -79.0481)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00571, 1.01975, 0)
+transform = Transform3D(0.199794, 0, 0, 0, 0.199794, 0, 0, 0, 0.0985335, 0.843378, 0.161844, 1.71648)
 shape = SubResource("BoxShape3D_dx761")
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -941,6 +940,9 @@ stream = ExtResource("22_bhoix")
 
 [node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
 stream = ExtResource("23_sx6h7")
+
+[node name="portal" parent="." instance=ExtResource("24_g23bq")]
+transform = Transform3D(-2.02729, 0, 1.77231e-07, 0, 2.02729, 0, -1.77231e-07, 0, -2.02729, 1.53541, 2.98037, -77.2389)
 
 [connection signal="body_entered" from="CSGMesh3D2/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="CSGMesh3D3/Area3D" to="." method="_on_area_3d_body_entered"]

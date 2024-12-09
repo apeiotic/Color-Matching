@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://bderfxngs2sy4"]
+
+[ext_resource type="Script" path="res://UI/Script/LoadingScreen/LS_LevelstrToLevel12.gd" id="1_mfqbe"]
+[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="2_4nfvb"]
+
+[sub_resource type="Shader" id="Shader_4y16t"]
+code = "/*
+	動的電子背景シェーダー by あるる（きのもと 結衣） @arlez80
+	Procedural Electric Background Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type canvas_item;
+
+uniform vec4 background_color : source_color = vec4( 0.0, 0.0, 0.0, 1.0 );
+uniform vec4 line_color : source_color = vec4( 0.0, 1.0, 1.0, 1.0 );
+uniform float line_freq = 9.56;
+uniform float height = 0.6;
+uniform float speed = 0.8;
+uniform vec2 scale = vec2( 2.0, 16.0 );
+
+void fragment( )
+{
+	vec2 uv = UV * scale;
+	float shift = cos( floor( uv.y ) );
+	uv.x += shift;
+
+	float freq = clamp( cos( uv.x * line_freq ) * 3.0, 0.0, 1.0 ) * height;
+	float line = 1.0 - clamp( abs( freq - mod( uv.y, 1.0 ) ) * 11.0, 0.0, 1.0 );
+
+	COLOR = mix( background_color, line_color, line * mod( uv.x - TIME * speed * abs( shift ), 1.0 ) /*  * mod( TIME + shift, 1.0 ) */ );
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mqds"]
+shader = SubResource("Shader_4y16t")
+shader_parameter/background_color = Color(0.07, 0.07, 0.07, 1)
+shader_parameter/line_color = Color(0.438503, 0.837422, 0.0631376, 1)
+shader_parameter/line_freq = 10.555
+shader_parameter/height = 0.455
+shader_parameter/speed = 0.635
+shader_parameter/scale = Vector2(1.615, 16)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uwn3l"]
+
+[node name="Loading Screen" type="Node2D"]
+script = ExtResource("1_mfqbe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2mqds")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+texture = SubResource("ViewportTexture_uwn3l")
+
+[node name="Coutdown" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -22.0
+offset_right = 40.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_4nfvb")
+theme_override_font_sizes/font_size = 35
+text = "1%"
+horizontal_alignment = 1

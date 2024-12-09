@@ -12,6 +12,7 @@ shader = ExtResource("3_x2sjp")
 shader_parameter/mouse_position = Vector2(-0.425, 0.5)
 shader_parameter/wave_color = Color(0, 1, 0.983333, 1)
 shader_parameter/wave_transparency = 1.0
+shader_parameter/max_emission = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j56ml"]
 

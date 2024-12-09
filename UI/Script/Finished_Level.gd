@@ -20,6 +20,7 @@ func _ready() -> void:
 	GLBSaving.connect("Level9_time", Callable(self,"Level9func" ))
 	GLBSaving.connect("Level10_time", Callable(self,"Level10func" ))
 	GLBSaving.connect("Level11_time", Callable(self,"Level11func" ))
+	GLBSaving.connect("Level12_time", Callable(self,"Level12func" ))
 
 # Function to load saved data
 func load_save_data():
@@ -110,6 +111,14 @@ func load_and_display_leaderboard(Level : String):
 			SecondBestScore.text = str(data.level11_time2)
 			ThirdBestScore.text = str(data.level11_time3)
 			expected_time.text = str(GLBSaving.ExpectedLevel11Time) + ".00" + " seconds"
+	
+	if Level == "Level12":
+		if data != null:
+			BestScore.text = str(data.level12_time)
+			SecondBestScore.text = str(data.level12_time2)
+			ThirdBestScore.text = str(data.level12_time3)
+			expected_time.text = str(GLBSaving.ExpectedLevel12Time) + ".00" + " seconds"
+	
 
 # Called when level 1 is completed
 func Level1func(FormattedTime: String):
@@ -191,6 +200,13 @@ func Level11func(FormattedTime: String):
 	load_and_display_leaderboard("Level11")
 	BG_Sound.win_sound.play()
 
+func Level12func(FormattedTime: String):
+	var data = load_save_data()
+	show()
+	FinalTime.text = FormattedTime
+	load_and_display_leaderboard("Level12")
+	BG_Sound.win_sound.play()
+
 func _on_main_menu_pressed() -> void:
 	var LoadingMainMenu = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToMainMenu.tscn")
 	get_tree().change_scene_to_packed(LoadingMainMenu)
@@ -236,9 +252,21 @@ func _on_next_level_pressed() -> void:
 		get_tree().change_scene_to_packed(level7)
 	
 	if current_level_name.to_lower() == "level_7":
-		var level8 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		var level8 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel8.tscn")
 		get_tree().change_scene_to_packed(level8)
 	
 	if current_level_name.to_lower() == "level_8":
-		var level9 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel7.tscn")
+		var level9 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel9.tscn")
 		get_tree().change_scene_to_packed(level9)
+	
+	if current_level_name.to_lower() == "level_9":
+		var level10 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel10.tscn")
+		get_tree().change_scene_to_packed(level10)
+	
+	if current_level_name.to_lower() == "level_10":
+		var level11 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel11.tscn")
+		get_tree().change_scene_to_packed(level11)
+	
+	if current_level_name.to_lower() == "level_11":
+		var level12 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel12.tscn")
+		get_tree().change_scene_to_packed(level12)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://rj52c7x5f18h"]
+[gd_scene load_steps=53 format=4 uid="uid://rj52c7x5f18h"]
 
 [ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="1_hqn5d"]
 [ext_resource type="Script" path="res://Scripts/level_8.gd" id="1_sh2tc"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="21_dlvl5"]
 [ext_resource type="AudioStream" uid="uid://c417ki0oed04c" path="res://Sound Effects/bacground Ambience (1).wav" id="22_76873"]
 [ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="23_3lf0l"]
+[ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="24_rwmp8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oufvj"]
 sky_top_color = Color(0.0679689, 0.0903383, 0.121446, 1)
@@ -392,6 +393,9 @@ size = Vector3(33.1211, 15.6416, 0.45166)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lwie"]
 size = Vector3(1, 7.05878, 8.63483)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bs4kt"]
+size = Vector3(4.08441, 1, 4.97314)
+
 [node name="Level 8" type="Node3D"]
 script = ExtResource("1_sh2tc")
 
@@ -422,7 +426,7 @@ mesh = SubResource("ArrayMesh_6w4nq")
 skeleton = NodePath("")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("7_ddled")]
-transform = Transform3D(-0.988224, 0, 0.15302, 0, 1, 0, -0.15302, 0, -0.988224, 25.861, 4.12736, -30.3903)
+transform = Transform3D(-0.988224, 0, 0.15302, 0, 1, 0, -0.15302, 0, -0.988224, 25.861, 3.9033, -30.3903)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(0.983556, 0, -0.180605, 0, 1, 0, 0.180605, 0, 0.983556, 26.175, 1.66375, -30.3679)
@@ -649,5 +653,15 @@ bus = &"Musics"
 transform = Transform3D(6.02452, 0, 0, 0, 2.91257, 0, 0, 0, 5.55943, 16.4762, 3.55205, -7.30973)
 amount = 1000
 
+[node name="Notification" parent="." instance=ExtResource("24_rwmp8")]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.980955, 0.0537253, 0, -0.194234, 0.271333, 0, 0, 0, 1, 25.1116, 4.1538, -20.6408)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.981914, -0.189319, -0.000366519, 0.189318, 0.981914, -3.20142e-10, 0.00035989, -6.93886e-05, 1, 0.235916, -0.809902, 0.320068)
+shape = SubResource("BoxShape3D_bs4kt")
+
 [connection signal="body_entered" from="Moving Platform2/CSGMesh3D2/Area3D" to="." method="Obstacle"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="FinishReached"]
+[connection signal="body_entered" from="Area3D" to="." method="GreenEntered"]

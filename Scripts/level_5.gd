@@ -37,7 +37,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func Callnotification():
 	notificationCalled = true
 	GLB.emit_signal("Notification_color", Color.ORANGE, "orange")
-	GLB.emit_signal("Notification_Abilitytext", "New Wallrunning ability called" )
+	GLB.emit_signal("Notification_Abilitytext", "New Wallrunning Ability Accquired" )
 
 
 func _on_notification_body_entered(body: Node3D) -> void:

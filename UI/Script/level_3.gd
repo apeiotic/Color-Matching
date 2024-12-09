@@ -1,12 +1,9 @@
 extends Node3D
 @onready var death_menu: Control = $"Death menu"
 @onready var player: CharacterBody3D = $CharacterBody3D
-@export var dialogue_resource: DialogueResource
-@export var dialogue_start: String = "start"
 @onready var death_sounds = [$Node3D2/Death, $Node3D2/Death2]
 var notificationCalled = false
 
-const Balloon = preload("res://dialogue/balloon.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -3,6 +3,7 @@ shader_type spatial;
 uniform vec2 mouse_position = vec2(0.5, 0.5);
 uniform vec4 wave_color : source_color = vec4(1.0, 2.0, 4.0, 1.0);
 uniform float wave_transparency : hint_range(0.0, 1.0) = 1.0;
+uniform float max_emission : hint_range(0.0, 10.0) = 1.0; // New variable to control max emission
 
 mat2 rotate2D(float r) {
     // 2D Rotation Matrix
@@ -32,6 +33,10 @@ void fragment() {
 
     float lengthN = max(length(N), 0.001);
     col = wave_color.rgb * pow((N.x + N.y + 0.4) + 0.005 / lengthN, 2.1);
+
+    // Apply the max_emission cap
+    col = min(col, max_emission);
+
     ALBEDO = col;
     ALPHA = wave_transparency;
 }

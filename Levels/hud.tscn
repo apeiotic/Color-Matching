@@ -31,6 +31,7 @@ z_index = -1
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_7w52q")
+expand_mode = 3
 
 [node name="MarginContainer5" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 3

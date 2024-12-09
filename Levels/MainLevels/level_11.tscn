@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bituylktv0nwr"]
+[gd_scene load_steps=37 format=4 uid="uid://bituylktv0nwr"]
 
 [ext_resource type="Material" uid="uid://cwlmjrvocamdp" path="res://Materials/Shader/WireFrame_VolcanoGround.tres" id="1_tbl1j"]
 [ext_resource type="Script" path="res://Scripts/level_11.gd" id="1_yficm"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="16_n5ggp"]
 [ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="17_yx3pq"]
 [ext_resource type="PackedScene" uid="uid://oqnff1oeqr6" path="res://Levels/World Border.tscn" id="18_7m3mp"]
+[ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="19_7t5y5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_widm0"]
 resource_name = "Material.003"
@@ -112,12 +113,12 @@ ground_bottom_color = Color(0, 0.20607, 0.196506, 1)
 ground_horizon_color = Color(0, 0.769575, 0.57267, 1)
 ground_energy_multiplier = 2.0
 
-[sub_resource type="Sky" id="Sky_jm1ih"]
+[sub_resource type="Sky" id="Sky_xonjy"]
 sky_material = SubResource("ProceduralSkyMaterial_cb8xn")
 
 [sub_resource type="Environment" id="Environment_uma0l"]
 background_mode = 2
-sky = SubResource("Sky_jm1ih")
+sky = SubResource("Sky_xonjy")
 ambient_light_source = 3
 sdfgi_enabled = true
 fog_enabled = true
@@ -317,7 +318,7 @@ use_collision = true
 size = Vector3(2.05566, 2.61542, 11.8238)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("6_nf334")]
-transform = Transform3D(-0.999603, 0, -0.0281834, 0, 1, 0, 0.0281834, 0, -0.999603, -23.1467, 2.55061, 13.2789)
+transform = Transform3D(-0.999603, 0, -0.0281834, 0, 1, 0, 0.0281834, 0, -0.999603, -23.1467, 2.53599, 13.2789)
 
 [node name="JumpPad" parent="." instance=ExtResource("7_5wqwq")]
 transform = Transform3D(3.5602, 0, 0, 0, 0.129019, 0, 0, 0, 3.50157, -23.4911, -0.719893, 19.931)
@@ -352,7 +353,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6136, 34.3068, 38.7802)
 transform = Transform3D(21.9416, 0, 0, 0, 1.00663, 0, 0, 0, 0.951669, -32.2518, 37.694, 73.8772)
 
 [node name="Obstacle" type="CSGBox3D" parent="Moving Platform"]
-transform = Transform3D(-0.0262878, 0.000243763, 0.458106, -0.000291301, 0.146125, -0.00076751, -1.24096, -3.94497e-05, -0.00970409, 0.158149, 0.00537491, 0.395477)
+transform = Transform3D(-0.0262878, 0.000243763, 0.458106, -0.000291301, 0.146125, -0.000767512, -1.24096, -3.94497e-05, -0.00970409, 0.158149, 0.00537491, 0.395477)
 material_override = ExtResource("11_ukhdn")
 size = Vector3(0.667847, 26.1047, 0.697266)
 
@@ -426,6 +427,10 @@ transform = Transform3D(35.8483, -0.000936721, 0.132732, -0.470386, 0.0377589, 3
 
 [node name="World Border6" parent="World Borders" instance=ExtResource("18_7m3mp")]
 transform = Transform3D(35.8483, -0.000936721, 0.132732, -0.813044, 0.0219671, 3.95205, -0.957488, -0.053724, 1.61363, -15.2608, 17.0424, 32.3203)
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("19_7t5y5")]
+transform = Transform3D(7.21514, 0, 0, 0, 3.72285, 0, 0, 0, 16.3606, -11.521, 10.1134, 75.9642)
+amount = 1000
 
 [connection signal="body_entered" from="Moving Platform/Obstacle/Area3D" to="." method="Obstacle"]
 [connection signal="body_entered" from="portal/Area3D" to="." method="Finsihed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://japgrjqq1av7"]
+[gd_scene load_steps=33 format=4 uid="uid://japgrjqq1av7"]
 
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_ahf1g"]
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_im32r"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://cj2vx76x4gitk" path="res://Levels/HookableObject.tscn" id="13_s7pe8"]
 [ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="14_vlikl"]
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="15_7q1q5"]
+[ext_resource type="PackedScene" uid="uid://b0pbitdr67u2v" path="res://Levels/Particle.tscn" id="15_ddabl"]
 [ext_resource type="PackedScene" uid="uid://8q4fuapeql63" path="res://UI/Scenes/death_menu.tscn" id="16_13dhm"]
 [ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="19_ykluv"]
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="20_eyodg"]
 [ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="21_51p5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43qaj"]
-size = Vector3(0.144531, 1.30908, 1.05713)
+size = Vector3(0.144531, 1.30908, 1.90045)
 
 [sub_resource type="Shader" id="Shader_pbct1"]
 code = "shader_type spatial;
@@ -251,6 +252,10 @@ adjustment_brightness = 1.58
 adjustment_contrast = 1.4
 adjustment_saturation = 2.07
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fqxa6"]
+height = 59.6518
+radius = 0.918191
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_nj776"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s0he"]
@@ -261,14 +266,14 @@ script = ExtResource("1_im32r")
 dialogue_resource = ExtResource("2_6ggen")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_ahf1g")]
-transform = Transform3D(-8.94066e-08, 0, -1, 0, 1, 0, 1, 0, -8.94066e-08, -29.2616, 1.11136, 0)
+transform = Transform3D(-8.94066e-08, 0, -1, 0, 1, 0, 1, 0, -8.94066e-08, -28.8128, 1.07773, -0.0442247)
 
 [node name="AreaDetected" type="Area3D" parent="."]
 process_mode = 3
 transform = Transform3D(2.19136, 0, 0, 0, 1.49695, 0, 0, 0, 2.05772, -27.9483, 1.34902, 0.0345749)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDetected"]
-transform = Transform3D(-3.53993e-08, 0, 2.51656, 0, 1, 0, -0.809841, 0, -1.10002e-07, 0.869144, -0.154541, -1.24564)
+transform = Transform3D(0.809841, 0, -3.37217e-13, 0, 1, 0, -2.76244e-14, 0, 2.51656, 0.256978, -0.154541, -0.184505)
 shape = SubResource("BoxShape3D_43qaj")
 
 [node name="Death menu" parent="." instance=ExtResource("16_13dhm")]
@@ -329,7 +334,7 @@ directional_shadow_split_1 = 0.022
 script = ExtResource("8_0144r")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Black"]]
-transform = Transform3D(1, 0, 0, 0, 0.188135, 0, 0, 0, 8.98791, -27.0865, -11.683, 0)
+transform = Transform3D(1, 0, 0, 0, 0.188135, 0, 0, 0, 8.98791, -27.0629, -11.683, 0.0169888)
 material_override = ExtResource("1_qxse4")
 use_collision = true
 size = Vector3(6.76001, 125.411, 1)
@@ -343,6 +348,7 @@ size = Vector3(7.10644, 125.411, 1)
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9987, -11.9207, 0.924318)
 material_override = ExtResource("4_af8q3")
+use_collision = true
 height = 22.1513
 sides = 12
 
@@ -357,6 +363,7 @@ sides = 12
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4444, -12.7879, -1.5121)
 material_override = ExtResource("4_af8q3")
+use_collision = true
 height = 25.9485
 sides = 12
 
@@ -371,6 +378,7 @@ sides = 12
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.213, -13.1023, -2.24643)
 material_override = ExtResource("4_af8q3")
+use_collision = true
 height = 25.9485
 sides = 12
 
@@ -394,6 +402,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1038, 2.28515, -1.68041)
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.85227, -15.094, 0.222596)
 material_override = ExtResource("4_af8q3")
+use_collision = true
 height = 25.9485
 sides = 12
 
@@ -411,6 +420,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39515, 0.293401, 0.1714)
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89507, -14.8621, 3.86969)
 material_override = ExtResource("4_af8q3")
+use_collision = true
 height = 25.9485
 sides = 12
 
@@ -422,11 +432,16 @@ radius = 0.919835
 height = 55.0637
 sides = 12
 
+[node name="Area3D" type="Area3D" parent="CSGCylinder3D10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCylinder3D10/Area3D"]
+shape = SubResource("CylinderShape3D_fqxa6")
+
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78583, 0.525393, 4.43571)
 
 [node name="HookingObject" parent="." instance=ExtResource("13_s7pe8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21449, 8.54379, 3.25208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56456, 8.88985, 3.25208)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(277.96, 0, 0, 0, 1, 0, 0, 0, 316.262, 0, -21.4715, -55.0517)
@@ -435,15 +450,20 @@ transform = Transform3D(277.96, 0, 0, 0, 1, 0, 0, 0, 316.262, 0, -21.4715, -55.0
 shape = SubResource("BoxShape3D_nj776")
 
 [node name="portal" parent="." instance=ExtResource("14_vlikl")]
-transform = Transform3D(-7.93319e-08, 0, 1.8149, 0, 1.8149, 0, -1.8149, 0, -7.93319e-08, 17.4169, 0.964696, 4.25116)
+transform = Transform3D(-7.93319e-08, 0, 1.8149, 0, 1.8149, 0, -1.8149, 0, -7.93319e-08, 17.4169, 1.01224, 4.25116)
 
-[node name="Area3D3" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2135, 0.892464, 4.46767)
+[node name="Area3D3" type="Area3D" parent="portal"]
+transform = Transform3D(-2.40848e-08, 0, -0.550995, 0, 0.550995, 0, 0.550995, 0, -2.40848e-08, -0.119296, -0.0397994, -0.112073)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal/Area3D3"]
 transform = Transform3D(0.472884, 0, 0, 0, 1.81086, 0, 0, 0, 3.39304, 0, 0.223947, 0)
 shape = SubResource("BoxShape3D_5s0he")
 
+[node name="GPUParticles3D" parent="." instance=ExtResource("15_ddabl")]
+transform = Transform3D(10.7409, 0, 0, 0, 3.72285, 0, 0, 0, 16.3606, -11.521, -2.7848, 10.3662)
+amount = 1000
+
 [connection signal="body_entered" from="AreaDetected" to="." method="_on_area_detected_body_entered"]
+[connection signal="body_entered" from="CSGCylinder3D10/Area3D" to="." method="Notification"]
 [connection signal="body_entered" from="Area3D" to="." method="Dead"]
-[connection signal="body_entered" from="Area3D3" to="." method="Finsihed"]
+[connection signal="body_entered" from="portal/Area3D3" to="." method="Finsihed"]

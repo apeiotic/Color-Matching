@@ -12,7 +12,7 @@ var notificationCalled: bool
 var notificationCalled2: bool
 var is_in_dialogue:bool = false
 const Balloon = preload("res://dialogue/balloon.tscn")
-
+var SavingData : SavedGame = SavedGame.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,14 +49,26 @@ func Finished(body: Node3D) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		player.queue_free()
 		GLBSaving.emit_signal("level2")
+	
+func load_save_data():
+	if FileAccess.file_exists("user://savegame.tres"):
+		var existing_data = ResourceLoader.load("user://savegame.tres")
+		if existing_data != null:
+			return existing_data
+	return SavingData.new()
 
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		var data = load_save_data()
 		if not is_in_dialogue:
-			start_dialogue()
+			if data.DialogueSeen2== false:
+				start_dialogue()
 
 func start_dialogue() -> void:
+	var data = load_save_data()
+	data.DialogueSeen2 = true
+	ResourceSaver.save(data, "user://savegame.tres")
 	is_in_dialogue = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if player:

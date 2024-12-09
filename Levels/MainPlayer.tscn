@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3h8u831jaqp0"]
+[gd_scene load_steps=37 format=3 uid="uid://3h8u831jaqp0"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScript.gd" id="1_551nc"]
 [ext_resource type="Material" uid="uid://cfep8ee5fq0t1" path="res://Materials/Player Colors/P_Black.tres" id="2_dqeak"]
@@ -14,7 +14,8 @@
 [ext_resource type="Shader" path="res://Materials/Shader/Radial_Drag.gdshader" id="10_gd72t"]
 [ext_resource type="Script" path="res://UI/Script/Shakable Camera.gd" id="10_h2qou"]
 [ext_resource type="Script" path="res://UI/Script/radial_drag.gd" id="11_n5f0n"]
-[ext_resource type="AudioStream" uid="uid://tqhcv1tvqcw" path="res://Sound Effects/FootStep.wav" id="15_7gxwg"]
+[ext_resource type="AudioStream" uid="uid://oisi0jf7arvv" path="res://Sound Effects/JumpSound.wav" id="15_dr0vu"]
+[ext_resource type="AudioStream" uid="uid://ckk17sfdc3n45" path="res://Sound Effects/jump2.wav" id="16_7io1q"]
 [ext_resource type="AudioStream" uid="uid://cnbwecx36ppdi" path="res://Sound Effects/GreenJumpPad.wav" id="16_w35t3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_itdbw"]
@@ -304,15 +305,12 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-36, 0)
 
 [node name="Pause Menu" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("6_8xgr3")]
+visible = false
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Standing Raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57026, 0)
-
-[node name="Dash raycast" type="RayCast3D" parent="Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
-target_position = Vector3(0, 0, -5)
 
 [node name="Looking At Raycast" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530463, 0)
@@ -370,8 +368,13 @@ wait_time = 2.5
 
 [node name="Soundeffects" type="Node3D" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Soundeffects"]
-stream = ExtResource("15_7gxwg")
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Soundeffects"]
+stream = ExtResource("15_dr0vu")
+bus = &"SoundEffects"
+
+[node name="JumpSound2" type="AudioStreamPlayer2D" parent="Soundeffects"]
+stream = ExtResource("16_7io1q")
+bus = &"SoundEffects"
 
 [node name="GreenJumpPadSound" type="AudioStreamPlayer2D" parent="Soundeffects"]
 stream = ExtResource("16_w35t3")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b48l7ear8lc3v"]
+[gd_scene load_steps=12 format=3 uid="uid://b48l7ear8lc3v"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_3bgtc"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_mf2qj"]
 [ext_resource type="Theme" uid="uid://djaw4fh85h3dy" path="res://UI/Script/MainMenu.tres" id="2_qkyvr"]
 [ext_resource type="AudioStream" uid="uid://cq7tu4jokf8yq" path="res://Sound Effects/sound (1).wav" id="5_teicj"]
+[ext_resource type="PackedScene" uid="uid://bu4cdw2810wuu" path="res://UI/Scenes/Setting/settings_page.tscn" id="6_dqa8t"]
 [ext_resource type="AudioStream" uid="uid://bglghu5jcsi3m" path="res://Sound Effects/click.wav" id="6_kgt8m"]
 
 [sub_resource type="Shader" id="Shader_4nxkh"]
@@ -214,6 +215,10 @@ volume_db = 5.66
 pitch_scale = 1.19
 panning_strength = 0.0
 bus = &"SoundEffects"
+
+[node name="Settings_Page" parent="." instance=ExtResource("6_dqa8t")]
+visible = false
+layout_mode = 1
 
 [connection signal="mouse_entered" from="Margin Play/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="Margin Play/VBoxContainer/Play" to="." method="_on_play_pressed"]

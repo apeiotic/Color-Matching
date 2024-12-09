@@ -20,19 +20,41 @@ extends Node
 @export_group("Advanced Settings")
 @export var hook_scene: PackedScene = preload("res://addons/grappling_hook_3d/src/hook.tscn")
 
+
+var FinalCanHook: bool = false
 var is_hook_launched: bool = false
 var _hook_model: Node3D = null
 var hook_target_normal: Vector3 = Vector3.ZERO
 var hook_target_node: Marker3D = null
 var hook_target_position: Vector3
+var PColor
 
 signal hook_launched()
 signal hook_attached(body)
 signal hook_detached()
 
 
+func _ready() -> void:
+	GLB.connect("color", Callable(self,"colorchanged"))
+
+func colorchanged(PlayerColor: Variant):
+	PColor = PlayerColor
+
+
 func _physics_process(delta: float) -> void:
 	
+	GLB.emit_signal("CanHook", FinalCanHook)
+	if hook_raycast.is_colliding() and GLB.Can_hook == true:
+		var hookable_object = hook_raycast.get_collider()
+		if hookable_object.is_in_group("Hookable"):
+			FinalCanHook = true
+		else: 
+			FinalCanHook = false
+	else: 
+		FinalCanHook = false
+	
+	if PColor != "Black":
+		_retract_hook2()
 	
 	if Input.is_action_just_pressed(launch_action_name) and GLB.Can_hook == true:
 		hook_launched.emit()
@@ -81,6 +103,7 @@ func _launch_hook() -> void:
 
 ## Disables the hook, frees the target node and the hook model, emits required signals.
 func _retract_hook() -> void:
+	
 	is_hook_launched = false
 	
 	hook_target_node.queue_free()
@@ -89,9 +112,27 @@ func _retract_hook() -> void:
 	hook_detached.emit()
 
 
+func _retract_hook2() -> void:
+	
+	if is_hook_launched:
+		is_hook_launched = false
+
+		if hook_target_node and is_instance_valid(hook_target_node):
+			hook_target_node.queue_free()
+			hook_target_node = null  # Clear reference
+
+		if _hook_model and is_instance_valid(_hook_model):
+			_hook_model.queue_free()
+			_hook_model = null  # Clear reference
+
+		hook_detached.emit()
+
+
+	
 ## Handles the physics of the hook, and its visible model.
 ## NOTE: It adds the directional velocity to the player.
 func _handle_hook(delta: float) -> void:
+	FinalCanHook = true
 	# Hook pull math
 	var pull_vector = (hook_target_node.global_position - player_body.global_position).normalized()
 

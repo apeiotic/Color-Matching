@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://hdmcnievbc57"]
+[gd_scene load_steps=31 format=4 uid="uid://hdmcnievbc57"]
 
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_12bqt"]
 [ext_resource type="Material" uid="uid://b1dxnjhlfvtpq" path="res://Materials/Orange.tres" id="1_las13"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dny1xgmis061m" path="res://UI/Scenes/Finished_Level.tscn" id="14_kivkq"]
 [ext_resource type="AudioStream" uid="uid://btpk0m02hrr8k" path="res://Sound Effects/Death.wav" id="15_rjag5"]
 [ext_resource type="AudioStream" uid="uid://dbqcujyf7d324" path="res://Sound Effects/death2.wav" id="16_np0m3"]
+[ext_resource type="PackedScene" uid="uid://b23huv46ymtt" path="res://portal.tscn" id="17_46bqr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hxblk"]
 sky_top_color = Color(0.0679689, 0.0903383, 0.121446, 1)
@@ -245,7 +246,7 @@ use_collision = true
 size = Vector3(1, 125.311, 1.78528)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_12bqt")]
-transform = Transform3D(-1.44442e-07, -0.000105843, -1, 0.000158397, 1, -0.000105843, 1, -0.000158397, -7.50224e-08, 55.1886, 17.7197, 24.6115)
+transform = Transform3D(1, -2.73485e-10, -4.87635e-08, 2.19513e-10, 1, 2.03727e-10, 1.0142e-07, -2.03727e-10, 1, 0.319419, 1.01081, 1.34573)
 
 [node name="JumpPad" parent="." instance=ExtResource("2_fxry4")]
 transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 1.91051, -0.0247436, -5.81765)
@@ -308,7 +309,7 @@ script = ExtResource("8_aw6ln")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
 transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
-light_energy = 0.425
+light_energy = 0.2
 light_indirect_energy = 7.629
 light_volumetric_fog_energy = 2.248
 light_bake_mode = 1
@@ -356,7 +357,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 6.65512e-12, 0, 5.68434e-13, 1, 0, 0, 0, 1, 60.2813, 17.8367, 27.5653)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.580888, 2.92058e-10, -7.27596e-12, 1.12476e-10, 1.30874, 0, 7.27596e-12, 1.45519e-11, 1.14958, 1.14441e-05, 3.00551, 1.16409)
+transform = Transform3D(0.262057, 1.32668e-10, -1.45519e-11, 5.1078e-11, 0.590413, 0, 5.45697e-12, 7.27596e-12, 0.518611, 0.601856, 2.04065, 2.49909)
 shape = SubResource("BoxShape3D_30mky")
 
 [node name="Finsihed Levels" parent="." instance=ExtResource("14_kivkq")]
@@ -368,5 +369,8 @@ stream = ExtResource("15_rjag5")
 
 [node name="Death2" type="AudioStreamPlayer2D" parent="Node3D"]
 stream = ExtResource("16_np0m3")
+
+[node name="portal" parent="." instance=ExtResource("17_46bqr")]
+transform = Transform3D(-1.2682e-07, 0.000466925, 2.94782, -0.000312006, 2.94782, -0.000466925, -2.94782, -0.000312006, -7.74598e-08, 61.0308, 19.5978, 29.5513)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

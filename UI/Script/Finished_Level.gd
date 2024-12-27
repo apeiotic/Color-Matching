@@ -243,7 +243,8 @@ func _on_next_level_pressed() -> void:
 		var level5 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel5.tscn")
 		get_tree().change_scene_to_packed(level5)
 	
-	if current_level_name.to_lower() == "level5":
+	if current_level_name.to_lower() == "level_5":
+		print("level6")
 		var level6 = preload("res://UI/Scenes/LoadingScreens/LS_LevelSwitrToLevel6.tscn")
 		get_tree().change_scene_to_packed(level6)
 	

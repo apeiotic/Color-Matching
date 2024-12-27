@@ -53,15 +53,17 @@ func LoadData():
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	if label_enum == "SDFGI":
-		Graphics.world_environment.environment.sdfgi_enabled = toggled_on
-		GLB.emit_signal("SaveWorldEnvironment", toggled_on,"SDFGI")
-	if label_enum == "Glow":
-		Graphics.world_environment.environment.glow_enabled = toggled_on
-		GLB.emit_signal("SaveWorldEnvironment", toggled_on,  "Glow")
-	if label_enum == "Fog":
-		Graphics.world_environment.environment.fog_enabled = toggled_on
-		GLB.emit_signal("SaveWorldEnvironment", toggled_on, "Fog")
+	var Env = DoesHaveWorldEnvironment()
+	if Env == true:
+		if label_enum == "SDFGI":
+			Graphics.world_environment.environment.sdfgi_enabled = toggled_on
+			GLB.emit_signal("SaveWorldEnvironment", toggled_on,"SDFGI")
+		if label_enum == "Glow":
+			Graphics.world_environment.environment.glow_enabled = toggled_on
+			GLB.emit_signal("SaveWorldEnvironment", toggled_on,  "Glow")
+		if label_enum == "Fog":
+			Graphics.world_environment.environment.fog_enabled = toggled_on
+			GLB.emit_signal("SaveWorldEnvironment", toggled_on, "Fog")
 
 func DoesHaveWorldEnvironment():
 	var current_scene = get_tree().get_current_scene()
@@ -76,4 +78,33 @@ func DoesHaveWorldEnvironment():
 func _on_timer_timeout() -> void:
 	var Env = DoesHaveWorldEnvironment()
 	if Env == true:
+		print("Has Environment")
 		LoadData()
+	else: 
+		var data = load_save_data()
+		if label_enum == "SDFGI":
+			if data._SDFGI == true:
+				
+				_Button.button_pressed = true
+			else:
+				
+				_Button.button_pressed = false
+		
+		if label_enum == "Glow":
+			if data.Glow == true:
+				
+				_Button.button_pressed = true
+			else:
+				
+				_Button.button_pressed = false
+		
+		
+		if label_enum == "Fog":
+			if data.Fog== true:
+				
+				_Button.button_pressed = true
+			else:
+				
+				_Button.button_pressed = false
+	
+	

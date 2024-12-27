@@ -94,11 +94,11 @@ extends  Resource
 @export var FinishedLevel15 : bool= false
 
 ##-------------SETTINGS RELATED-------------##
-@export var CameraBob : bool = false
-@export var CameraSway : bool = false
-@export var CameraShake : bool = false
-@export var CameraDrag : bool = false
-@export var Senstivity: float = 1.0
+@export var CameraBob : bool = true
+@export var CameraSway : bool = true
+@export var CameraShake : bool = true
+@export var CameraDrag : bool = true
+@export var Senstivity: float = 0.1
 @export var SFX_sound: float = 1.0
 @export var Music: float = 1.0
 @export var MasterSound: float = 1.0

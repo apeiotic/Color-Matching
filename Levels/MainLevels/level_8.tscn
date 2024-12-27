@@ -399,19 +399,19 @@ size = Vector3(4.08441, 1, 4.97314)
 [node name="Level 8" type="Node3D"]
 script = ExtResource("1_sh2tc")
 
-[node name="lighting" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8s3rx")
 script = ExtResource("1_hqn5d")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
 light_energy = 0.425
 light_indirect_energy = 7.629
 light_volumetric_fog_energy = 2.248
 light_bake_mode = 1
 script = ExtResource("2_qeb0s")
+
+[node name="lighting" type="Node3D" parent="."]
 
 [node name="Object_5" type="MeshInstance3D" parent="."]
 transform = Transform3D(63.3647, 1.55433e-09, -158.225, 1.02445e-08, 182.702, -2.79397e-09, 109.751, -1.11759e-08, 91.3509, -2.41311, 4.83539, 5.89631)

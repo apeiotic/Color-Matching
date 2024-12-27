@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=12 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="Theme" uid="uid://dux8bsdyu6g42" path="res://dialogue/DialogueTheme.tres" id="2_5b3cm"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="3_k52xr"]
 [ext_resource type="Texture2D" uid="uid://cm6bik82nxhen" path="res://icon.svg" id="4_quua1"]
+[ext_resource type="AudioStream" uid="uid://dkbfuqbfa5utw" path="res://Sound Effects/little-robot-sound-84657.wav" id="6_r8asr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -144,5 +145,13 @@ theme_override_constants/separation = 3305
 position = Vector2(-1, 12)
 scale = Vector2(1.01953, 1.00781)
 texture = ExtResource("4_quua1")
+
+[node name="SoundEffect" type="Node2D" parent="."]
+
+[node name="RobotTalkingSound" type="AudioStreamPlayer" parent="SoundEffect"]
+stream = ExtResource("6_r8asr")
+volume_db = 10.0
+pitch_scale = 0.81
+bus = &"SoundEffects"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

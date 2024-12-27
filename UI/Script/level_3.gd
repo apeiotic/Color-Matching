@@ -37,8 +37,7 @@ func Callnotification():
 	print("nitfucaagigfiagsif")
 	notificationCalled = true
 	GLB.emit_signal("Notification_color", Color.RED, "red")
-	GLB.emit_signal("Notification_Abilitytext", "Speed Increased, Jump Velocity Increased, 
-	Dash Ability Accquired (Press 'V')," )
+	GLB.emit_signal("Notification_Abilitytext", "Speed Increased, Jump Velocity Increased. " )
 
 
 func Notification(body: Node3D) -> void:

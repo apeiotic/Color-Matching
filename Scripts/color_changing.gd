@@ -17,13 +17,34 @@ func _process(delta: float) -> void:
 
 
 func Body_Enter(body: Node3D) -> void:
-	ChangeColor.emit(color[0])
-	GLB.colorchange.emit(color[0])
-	color_changing.play()
-	 # Replace with function body.
+	if body.is_in_group("Player"):
+		ChangeColor.emit(color[0])
+		GLB.colorchange.emit(color[0])
+		color_changing.play()
+	
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	GLB.colorchange.emit(color[0])
 	
 	 # Replace with function body.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func Body_EnterC(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		ChangeColor.emit(color[0])
+		GLB.colorchange.emit(color[0])
+		color_changing.play()
+	

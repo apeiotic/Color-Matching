@@ -6,6 +6,7 @@ extends CanvasLayer
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
+@onready var robot_talking: AudioStreamPlayer = $SoundEffect/RobotTalkingSound
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -32,6 +33,7 @@ var dialogue_line: DialogueLine:
 		if not next_dialogue_line:
 			queue_free()
 			GLB.emit_signal("EnablePlayerMovement")
+			robot_talking.stop()
 			return
 
 		# If the node isn't ready yet then none of the labels will be ready yet either
@@ -68,6 +70,7 @@ var dialogue_line: DialogueLine:
 			next(dialogue_line.next_id)
 		else:
 			is_waiting_for_input = true
+			robot_talking.stop()
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 	get:
@@ -106,6 +109,7 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	robot_talking.play()
 	temporary_game_states =  [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
@@ -114,6 +118,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 
 ## Go to the next line
 func next(next_id: String) -> void:
+	robot_talking.play()
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 

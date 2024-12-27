@@ -86,7 +86,7 @@ func Callnotification():
 	notificationCalled = true
 	GLB.emit_signal("Notification_color", Color.BLACK, "black")
 	GLB.emit_signal("Notification_Abilitytext", "Walking Speed Slower,Sprinting Speed Slowed,  
-	Hookable Allowed")
+	Grapple Allowed")
 
 func Callnotification2():
 	notificationCalled2 = true

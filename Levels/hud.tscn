@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b30pgcos787d5"]
+[gd_scene load_steps=4 format=3 uid="uid://b30pgcos787d5"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_p6ksy"]
 [ext_resource type="Texture2D" uid="uid://dtemw1d2mx0ra" path="res://UI/images/crosshair037.png" id="2_7w52q"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="4_dx8le"]
-[ext_resource type="FontFile" uid="uid://ciuabl015y5ch" path="res://UI/Fonts/coolvetica rg.otf" id="4_ttya7"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -48,9 +47,9 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("4_ttya7")
+theme_override_fonts/font = ExtResource("4_dx8le")
 theme_override_font_sizes/font_size = 54
-text = "Default"
+text = "orange"
 horizontal_alignment = 2
 metadata/_edit_lock_ = true
 

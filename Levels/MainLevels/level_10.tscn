@@ -437,9 +437,7 @@ size = Vector3(2.13818, 1.86438, 1)
 [node name="Level 10" type="Node3D"]
 script = ExtResource("1_4pl7o")
 
-[node name="lighting" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
 light_energy = 1.448
 light_indirect_energy = 7.629
@@ -450,9 +448,11 @@ shadow_opacity = 0.55
 shadow_blur = 5.942
 script = ExtResource("2_47q4x")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0288f")
 script = ExtResource("1_f3wi5")
+
+[node name="lighting" type="Node3D" parent="."]
 
 [node name="Land" type="Node3D" parent="."]
 transform = Transform3D(-14.9949, 0, -47.6187, 0, 49.9238, 0, 47.6187, 0, -14.9949, -2.24049, 21.3038, 41.3148)
@@ -500,7 +500,7 @@ use_collision = true
 size = Vector3(1, 8.31982, 1.4433)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(5.52517, 0, 0, 0, 1.37109, 0, 0, 0, 0.145461, -10.7144, 41.9599, 47.7708)
+transform = Transform3D(5.52517, 0, 0, 0, 1.37109, 0, 0, 0, 0.145461, -10.7144, 40.8781, 55.141)
 material_override = ExtResource("6_a3c1l")
 use_collision = true
 size = Vector3(1, 2.12197, 2.15521)
@@ -512,7 +512,7 @@ transform = Transform3D(0.18099, 0, 1.28601e-15, 0, 1.61137, 0, -4.88477e-14, 0,
 transform = Transform3D(0.18099, 0, 0, 0, 2.17739, 0, 0, 0, 6.8747, -0.470149, -3.18104, -0.116425)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(5.52517, 0, 0, 0, 1.37109, 0, 0, 0, 0.325247, -10.7144, 52.7584, 84.74)
+transform = Transform3D(5.52517, 0, 0, 0, 1.37109, 0, 0, 0, 0.325247, -10.7144, 52.7584, 93.8761)
 material_override = ExtResource("6_kekx7")
 use_collision = true
 size = Vector3(1, 0.731561, 1.34265)
@@ -524,7 +524,7 @@ transform = Transform3D(0.18099, 0, 1.28601e-15, 0, 0.729347, 0, -2.18462e-14, 0
 transform = Transform3D(0.18099, 0, 0, 0, 0.729347, 0, 0, 0, 3.07458, -0.470149, -1.15055, 0.0432129)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." groups=["Orange"]]
-transform = Transform3D(-2.3867e-07, -0.0897881, 0.16902, -3.69439e-08, 0.580063, 0.0261626, -5.52517, 0, -7.47608e-09, -13.8726, 34.7379, 56.1647)
+transform = Transform3D(-2.3867e-07, -0.0897881, 0.16902, -3.69439e-08, 0.580063, 0.0261626, -5.52517, 0, -7.47608e-09, -13.8726, 34.7379, 65.3008)
 material_override = ExtResource("6_r7h7t")
 use_collision = true
 size = Vector3(1.28613, 11.655, 1.34265)
@@ -533,47 +533,47 @@ size = Vector3(1.28613, 11.655, 1.34265)
 transform = Transform3D(-0.999841, 0.0178538, 5.95951e-08, 0.0178538, 0.999841, -1.06417e-09, -5.96046e-08, 0, -1, -10.6416, 37.3562, 24.5646)
 
 [node name="HookingObject" parent="." instance=ExtResource("7_bjyk4")]
-transform = Transform3D(0.669078, 0, 0, 0, 0.669078, 0, 0, 0, 0.669078, -10.5315, 45.0338, 33.7827)
+transform = Transform3D(0.669078, 0, 0, 0, 0.669078, 0, 0, 0, 0.669078, -10.5315, 46.6894, 34.1635)
 
 [node name="HookingObject2" parent="." instance=ExtResource("7_bjyk4")]
-transform = Transform3D(0.669078, 0, 0, 0, 0.669078, 0, 0, 0, 0.669078, -10.5315, 42.7317, 63.835)
+transform = Transform3D(0.669078, 0, 0, 0, 0.669078, 0, 0, 0, 0.669078, -10.5315, 42.7317, 72.0641)
 
 [node name="HookingObject3" parent="." instance=ExtResource("7_bjyk4")]
-transform = Transform3D(1.01005, 0, 0, 0, 1.01005, 0, 0, 0, 1.01005, -11.3247, 53.1573, 93.1315)
+transform = Transform3D(1.01005, 0, 0, 0, 1.01005, 0, 0, 0, 1.01005, -11.3247, 53.1573, 102.268)
 
 [node name="JumpPad" parent="." instance=ExtResource("8_8ascc")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.144302, 0, 0, 0, 3.42939, -9.91308, 37.7375, 39.8215)
+transform = Transform3D(3.5602, 0, 0, 0, 0.144302, 0, 0, 0, 3.42939, -9.91308, 37.7375, 43.4062)
 
 [node name="Color Changing" parent="." instance=ExtResource("9_7xuch")]
-transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -9.86563, 40.343, 39.718)
+transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -9.86563, 40.343, 43.3027)
 color = ["Lime", "Black", "Green", "Red", "Blue", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("9_7xuch")]
-transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -11.6663, 40.343, 52.2865)
+transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -11.6663, 40.343, 61.4226)
 color = ["Orange", "Lime", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing4" parent="." instance=ExtResource("9_7xuch")]
-transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -10.8088, 44.4887, 65.9699)
+transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -12.1449, 46.1634, 80.7178)
 color = ["Lime", "Orange", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing3" parent="." instance=ExtResource("9_7xuch")]
-transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -11.6663, 34.2284, 60.2724)
+transform = Transform3D(-1.54775, 0, 1.35309e-07, 0, 1.54775, 0, -1.35309e-07, 0, -1.54775, -11.6663, 34.2284, 69.4085)
 color = ["Black", "Orange", "Lime", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Moving Platform" type="Node3D" parent="."]
 transform = Transform3D(21.9416, 0, 0, 0, 1.00663, 0, 0, 0, 0.951669, -21.1318, 42.5845, 71.6925)
 
 [node name="JumpPad" parent="Moving Platform" instance=ExtResource("8_8ascc")]
-transform = Transform3D(-0.00673409, 0.000223989, 0.243135, 1.81159e-07, 0.236215, -6.77471e-05, -5.17838, -0.000118057, -0.141851, 0.275834, 0.00540924, 0.461662)
+transform = Transform3D(-0.00673409, 0.000223989, 0.243135, 1.81159e-07, 0.236215, -6.77471e-05, -5.17838, -0.000118057, -0.141851, 0.275834, 0.00540924, 10.0617)
 skeleton = NodePath("../..")
 repel_strength = 25.0
 
 [node name="Path3D" type="Path3D" parent="Moving Platform"]
-transform = Transform3D(-2.93793e-09, -0.124025, 0, 0.067212, -5.42131e-09, 0, 0, 0, 2.62699, 0, 0, 0)
+transform = Transform3D(-2.93793e-09, -0.124025, 0, 0.067212, -5.42131e-09, 0, 0, 0, 2.62699, 0, 0, 9.60007)
 curve = SubResource("Curve3D_67x0r")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(2.69971e-06, 3.51448, -0.00100812, 0.0542962, -0.00180608, -1.96037, -1.97122, -4.49399e-05, -0.0539974, 0.0804987, -2.22402, 0.175739)
+transform = Transform3D(2.69971e-06, 3.51448, -0.00100812, 0.0542963, -0.00180608, -1.96037, -1.97122, -4.49399e-05, -0.0539974, 0.0804987, -2.22402, 0.175739)
 progress = 3.3105
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]
@@ -589,11 +589,11 @@ autoplay = "Up Down "
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1318, 46.4866, 89.1175)
 
 [node name="Color Changing5" parent="Moving Platform2" instance=ExtResource("9_7xuch")]
-transform = Transform3D(-1.54775, -1.73095e-09, -1.35309e-07, -1.73095e-09, 1.54775, -5.71869e-08, 1.35309e-07, -5.71869e-08, -1.54775, 7.67599, 0.00536346, 0.359962)
+transform = Transform3D(-1.54775, -1.73095e-09, -1.35309e-07, -1.73095e-09, 1.54775, -5.71869e-08, 1.35309e-07, -5.71869e-08, -1.54775, 7.67599, 0.00536346, 9.49605)
 color = ["Black", "Orange", "Lime", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Path3D" type="Path3D" parent="Moving Platform2"]
-transform = Transform3D(-2.93793e-09, -0.124025, 0, 0.067212, -5.42131e-09, 0, 0, 0, 2.62699, 0, 0, 0)
+transform = Transform3D(-2.93793e-09, -0.124025, 0, 0.067212, -5.42131e-09, 0, 0, 0, 2.62699, 0, 0, 9.13609)
 curve = SubResource("Curve3D_7n8vf")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform2/Path3D"]
@@ -612,7 +612,7 @@ libraries = {
 autoplay = "Up Down "
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(9.88061, 0, 0, 0, 4.62702, 0, 0, 0, 4.62702, -12.0288, 40.3512, 108.182)
+transform = Transform3D(9.88061, 0, 0, 0, 4.62702, 0, 0, 0, 4.62702, -12.0288, 40.3512, 117.318)
 material_override = ExtResource("7_05tks")
 size = Vector3(1, 2.23096, 1.42529)
 
@@ -629,7 +629,7 @@ transform = Transform3D(87.5898, 0.0311419, 4.71777e-09, -2.43792, 1.11792, 2.92
 transform = Transform3D(60.3159, 0.0311419, 2.90306e-09, -1.65274, 1.10057, 13.0327, 0.298684, -0.198896, 72.115, -3.50697, 38.9355, 114.014)
 
 [node name="World Border3" parent="." instance=ExtResource("13_5pkuh")]
-transform = Transform3D(24.97, -0.0133913, 0.0721146, 0.630556, 0.433025, 5.03458, -0.374207, -0.1639, 13.2955, -9.59237, 31.1275, 73.6081)
+transform = Transform3D(24.97, -0.0133913, 0.0721146, 0.630556, 0.433025, 5.03458, -0.374207, -0.1639, 13.2955, -9.59237, 31.1275, 82.7442)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(65.1786, 0, 0, 0, 1, 0, 0, 0, -17.8074, 281.428, 0.496223, 203.078)
@@ -637,7 +637,7 @@ material_override = ExtResource("15_x2gsn")
 size = Vector3(63.6401, 1, 227.461)
 
 [node name="portal" parent="." instance=ExtResource("17_tj77k")]
-transform = Transform3D(2.45422, 0, 0, 0, 2.45422, 0, 0, 0, 2.45422, -11.6761, 48.4742, 109.964)
+transform = Transform3D(2.45422, 0, 0, 0, 2.45422, 0, 0, 0, 2.45422, -11.6761, 48.4742, 119.1)
 
 [node name="Area3D" type="Area3D" parent="portal"]
 
@@ -663,7 +663,7 @@ volume_db = 10.0
 bus = &"SoundEffects"
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("23_goolo")]
-transform = Transform3D(7.21514, 0, 0, 0, 3.72285, 0, 0, 0, 16.3606, -11.521, 37.6624, 75.9642)
+transform = Transform3D(7.21514, 0, 0, 0, 3.72285, 0, 0, 0, 16.3606, -11.521, 37.6624, 85.1003)
 amount = 1000
 
 [connection signal="body_entered" from="portal/Area3D" to="." method="Finished"]

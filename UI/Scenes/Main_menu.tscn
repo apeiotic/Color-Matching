@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b48l7ear8lc3v"]
+[gd_scene load_steps=11 format=3 uid="uid://b48l7ear8lc3v"]
 
 [ext_resource type="Script" path="res://Scripts/Main_Menu.gd" id="1_3bgtc"]
 [ext_resource type="FontFile" uid="uid://d3jmy4hwjbvtr" path="res://UI/Fonts/Dream MMA.ttf" id="2_mf2qj"]
@@ -38,31 +38,22 @@ void fragment( )
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gqx03"]
 shader = SubResource("Shader_4nxkh")
 shader_parameter/background_color = Color(0, 0, 0, 1)
-shader_parameter/line_color = Color(0.968627, 0, 0, 1)
-shader_parameter/line_freq = 12.525
+shader_parameter/line_color = Color(0.96642, 0, 0.118742, 1)
+shader_parameter/line_freq = 11.73
 shader_parameter/height = 0.6
 shader_parameter/speed = 0.16
-shader_parameter/scale = Vector2(1.285, 16)
+shader_parameter/scale = Vector2(1.255, 16.815)
 
 [sub_resource type="Gradient" id="Gradient_xq3q3"]
-offsets = PackedFloat32Array(0, 0.225146, 0.467836, 0.719298, 0.836257, 0.880117)
-colors = PackedColorArray(0.980614, 0.947052, 0.946844, 0.0189694, 0.73889, 0.286861, 0.284053, 0.255495, 0.635294, 0.00392157, 0, 0.356863, 0.855152, 0.604394, 0.602837, 0.141733, 0.89729, 0.71948, 0.718375, 0.100501, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.225146, 0.467836, 0.719298, 0.836257)
+colors = PackedColorArray(0.203696, 0.0980686, 0.102808, 0.0189694, 0.611556, 0.221189, 0.220919, 0.255495, 0.635294, 0.00392157, 0, 0.564706, 0.496234, 0.261505, 0.268187, 0.254902, 0.601633, 0.342579, 0.349533, 0.100501)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sh3xe"]
 gradient = SubResource("Gradient_xq3q3")
-fill_from = Vector2(0.5, 0.7)
+fill_from = Vector2(0.52, 1.034)
 fill_to = Vector2(0.5, 0.2)
 metadata/_snap_enabled = true
-metadata/_snap_count = 20
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpn2j"]
-shader = SubResource("Shader_4nxkh")
-shader_parameter/background_color = Color(0, 0, 0, 0)
-shader_parameter/line_color = Color(0.939728, 0, 0.431753, 1)
-shader_parameter/line_freq = 12.525
-shader_parameter/height = -0.025
-shader_parameter/speed = 0.145
-shader_parameter/scale = Vector2(1, 11.73)
+metadata/_snap_count = 25
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -89,7 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.09, 0.09, 0.09, 0.505882)
+color = Color(0.0901961, 0.0901961, 0.0901961, 0.278431)
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect"]
 layout_mode = 1
@@ -100,18 +91,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_sh3xe")
 
-[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
-visible = false
-material = SubResource("ShaderMaterial_rpn2j")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 1.12)
-
 [node name="Margin Play" type="MarginContainer" parent="."]
 z_index = 1
 layout_mode = 1
@@ -121,9 +100,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -114.5
-offset_top = -114.58
+offset_top = 3.0
 offset_right = 114.5
-offset_bottom = -49.58
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -150,10 +129,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = 42.155
-offset_right = 89.5
-offset_bottom = 106.155
+offset_left = -103.5
+offset_top = 159.735
+offset_right = 103.5
+offset_bottom = 223.735
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -181,9 +160,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -199.0
-offset_top = -32.0
+offset_top = 85.58
 offset_right = 200.0
-offset_bottom = 32.0
+offset_bottom = 149.58
 grow_horizontal = 2
 grow_vertical = 2
 

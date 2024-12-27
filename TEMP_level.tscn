@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://fgvg1vereqae"]
+[gd_scene load_steps=15 format=3 uid="uid://fgvg1vereqae"]
 
 [ext_resource type="PackedScene" uid="uid://3h8u831jaqp0" path="res://Levels/MainPlayer.tscn" id="1_4jgte"]
 [ext_resource type="PackedScene" uid="uid://dslkbp5ncuecm" path="res://Levels/color_changing.tscn" id="2_o2ygn"]
 [ext_resource type="Material" uid="uid://crnaaffmkpf4q" path="res://Materials/Green2.tres" id="2_wko0j"]
+[ext_resource type="Script" path="res://Scripts/WorldEnvironment.gd" id="4_5r3fu"]
+[ext_resource type="Script" path="res://Scripts/DirectionalLight.gd" id="5_6gcor"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ickht"]
 sky_horizon_color = Color(0.62625, 0.6435, 0.6675, 1)
@@ -47,6 +49,55 @@ emission_energy_multiplier = 8.76
 
 [sub_resource type="BoxMesh" id="BoxMesh_ab5rp"]
 material = SubResource("StandardMaterial3D_wg2i1")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sasvd"]
+sky_top_color = Color(0.0842141, 0.109491, 0.144642, 1)
+sky_horizon_color = Color(0.26036, 0.267266, 0.278167, 1)
+ground_bottom_color = Color(0.0292347, 0.0910619, 0.10872, 1)
+ground_horizon_color = Color(0.307317, 0.315095, 0.327372, 1)
+sun_angle_max = 0.0
+sun_curve = 10.6519
+energy_multiplier = 3.0
+
+[sub_resource type="Sky" id="Sky_vuxl0"]
+sky_material = SubResource("ProceduralSkyMaterial_sasvd")
+
+[sub_resource type="Environment" id="Environment_50dcp"]
+background_mode = 2
+background_energy_multiplier = 0.73
+sky = SubResource("Sky_vuxl0")
+sky_rotation = Vector3(0, -1.30551, 0)
+tonemap_mode = 1
+tonemap_exposure = 1.13
+ssr_fade_in = 1.883
+ssr_fade_out = 1.51572
+ssr_depth_tolerance = 16.91
+ssao_radius = 22.1
+ssao_power = 1.60766
+ssao_detail = 2.94
+ssao_horizon = 0.05
+ssao_light_affect = 0.03
+ssil_intensity = 0.35
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.41
+sdfgi_energy = 0.203
+glow_enabled = true
+glow_intensity = 0.97
+glow_bloom = 0.01
+fog_enabled = true
+fog_light_color = Color(0.169268, 0.49793, 0.544795, 1)
+fog_light_energy = 0.06
+fog_density = 0.002
+fog_aerial_perspective = 0.423
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.0132
+volumetric_fog_emission_energy = 37.83
+volumetric_fog_length = 55.94
+volumetric_fog_sky_affect = 0.048
+adjustment_enabled = true
+adjustment_brightness = 1.58
+adjustment_contrast = 1.4
+adjustment_saturation = 2.07
 
 [node name="Node3D" type="Node3D"]
 
@@ -102,3 +153,15 @@ lifetime = 20.0
 preprocess = 16.0
 process_material = SubResource("ParticleProcessMaterial_1auo5")
 draw_pass_1 = SubResource("BoxMesh_ab5rp")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_50dcp")
+script = ExtResource("4_5r3fu")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 2.17235, -9.87595)
+light_energy = 0.636
+light_indirect_energy = 7.629
+light_volumetric_fog_energy = 2.248
+directional_shadow_split_1 = 0.022
+script = ExtResource("5_6gcor")

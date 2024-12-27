@@ -222,25 +222,25 @@ use_collision = true
 size = Vector3(1, 362.721, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." groups=["Black"]]
-transform = Transform3D(7.96237, 1.0776e-12, 0, -4.23483e-12, 0.0147072, 0, 0, -8.6402e-12, 7.60296, 27.0365, -1.89859, 28.9395)
+transform = Transform3D(7.96237, 1.16281e-12, 0, -4.23483e-12, 0.0147072, 0, 0, -9.32232e-12, 7.60296, 27.0382, -1.89579, 50.1644)
 material_override = ExtResource("7_y55l3")
 use_collision = true
 size = Vector3(1.46533, 4890.75, 2.14453)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." groups=["Black"]]
-transform = Transform3D(7.96227, 7.06227e-13, 5.82077e-11, 1.8386e-10, 0.00698723, 5.70435e-09, 0, -5.00222e-12, 7.60345, 59.5805, -6.81102, 28.9383)
+transform = Transform3D(7.96227, 7.06241e-13, 1.16415e-10, 1.98412e-10, 0.00698723, 5.93718e-09, -1.16415e-10, -5.00222e-12, 7.60345, 59.5822, -6.80821, 50.1632)
 material_override = ExtResource("7_y55l3")
 use_collision = true
 size = Vector3(2.52527, 6541.37, 2.14453)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Orange"]]
-transform = Transform3D(0.190881, -0.00545415, 0, 0.0161328, 0.064533, 0, 0, 0, 6.9146, -2.39585, 29.9216, 8.48812)
+transform = Transform3D(0.190881, -0.00545415, 1.16415e-10, 0.0161328, 0.064533, 0, -3.63798e-12, -9.09495e-13, 6.9146, -2.39458, 29.9237, 24.2513)
 material_override = ExtResource("1_las13")
 use_collision = true
 size = Vector3(1, 125.311, 1.70166)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." groups=["Orange"]]
-transform = Transform3D(7.45058e-09, -6.23967e-17, 6.9146, 0.0264053, 0.0641448, -1.33144e-08, -0.189733, 0.00892708, -7.19215e-10, 12.5816, 38.8584, 33.3072)
+transform = Transform3D(7.45058e-09, 9.09495e-13, 6.9146, 0.0264053, 0.0641448, -1.32405e-08, -0.189733, 0.00892708, -6.98492e-10, 12.5833, 38.8612, 54.5321)
 material_override = ExtResource("1_las13")
 use_collision = true
 size = Vector3(1, 125.311, 1.78528)
@@ -253,7 +253,7 @@ transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 1.91051, -0
 repel_strength = 12.0
 
 [node name="JumpPad3" parent="." instance=ExtResource("2_fxry4")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.111507, -1.29044, 0, 0.0452875, 3.17734, 1.91051, 5.38077, -11.5543)
+transform = Transform3D(3.5602, 4.54747e-13, 0, 7.94032e-12, 0.111507, -1.29044, 0, 0.0452875, 3.17734, 1.91021, 5.38029, -15.2061)
 repel_strength = 20.0
 
 [node name="JumpPad2" parent="." instance=ExtResource("2_fxry4")]
@@ -261,10 +261,10 @@ transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 1.91051, 19
 repel_strength = 13.0
 
 [node name="JumpPad4" parent="." instance=ExtResource("2_fxry4")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 1.91051, 25.7234, 17.5532)
+transform = Transform3D(3.5602, 1.10356e-13, 0, 1.52163e-11, 0.120353, -5.82077e-11, 0, 0, 3.42939, 1.91178, 25.7255, 33.3164)
 
 [node name="JumpPad5" parent="." instance=ExtResource("2_fxry4")]
-transform = Transform3D(3.5602, 0, 0, 0, 0.120353, 0, 0, 0, 3.42939, 6.41359, 33.9134, 24.2845)
+transform = Transform3D(3.5602, -1.17018e-13, 0, 2.97682e-11, 0.120353, -1.45519e-10, 0, 0, 3.42939, 6.41521, 33.916, 44.2937)
 repel_strength = 10.0
 
 [node name="Color Changing" parent="." instance=ExtResource("3_ewgy5")]
@@ -272,51 +272,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89402, 1.18931, -3.90344)
 color = ["Lime", "Black", "Green", "Red", "Blue", "Cyan", "Orange"]
 
 [node name="Color Changing2" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-1.98576, 0, 0.264851, 0, 2.00335, 0, -0.264851, 0, -1.98576, -0.109287, 28.2143, 4.90527)
+transform = Transform3D(-1.98576, 1.77813e-12, 0.264851, 0, 2.00335, 5.82077e-11, -0.264851, 0, -1.98576, -0.108013, 28.2164, 20.6684)
 color = ["Orange", "Lime", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing3" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-1.73455, 0, -1.00237, 0, 2.00335, 0, 1.00237, 0, -1.73455, 0.780195, 28.6509, 16.8849)
+transform = Transform3D(-1.73455, 1.77813e-12, -1.00237, 0, 2.00335, 2.91038e-11, 1.00237, 0, -1.73455, 0.781469, 28.653, 32.6481)
 color = ["Lime", "Orange", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing4" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-1.96351, 0, -0.397519, 0, 2.00335, 0, 0.397519, 0, -1.96351, 7.97761, 39.9463, 31.4064)
+transform = Transform3D(-1.96351, 1.77813e-12, -0.397519, 7.27596e-12, 2.00335, 0, 0.397519, 0, -1.96351, 7.97933, 39.9491, 52.6313)
 color = ["Orange", "Lime", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." groups=["Orange"]]
-transform = Transform3D(-0.0159178, 0.000753333, -6.89022, 0.0180713, 0.0644738, 0.0259611, 0.190042, -0.00606781, -0.579592, 42.8633, 26.5876, 25.8217)
+transform = Transform3D(-0.0159178, 0.000753333, -6.89022, 0.0180713, 0.0644738, 0.0259611, 0.190042, -0.00606781, -0.579592, 42.865, 26.5904, 47.0466)
 material_override = ExtResource("1_las13")
 use_collision = true
 size = Vector3(1, 125.311, 2.05914)
 
 [node name="Color Changing6" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-0.0728782, 0.421632, -1.95712, 0.0158731, 1.95848, 0.421332, 2.00196, -0.00017949, -0.0745868, 36.8382, 28.6545, 26.9558)
+transform = Transform3D(-0.0728782, 0.421632, -1.95712, 0.0158731, 1.95848, 0.421332, 2.00196, -0.000179492, -0.0745868, 36.8399, 28.6573, 48.1807)
 color = ["Orange", "Lime", "Black", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing5" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-0.122279, 0.352767, -1.96825, 0.0218737, 1.97205, 0.352087, 1.99949, 0, -0.12422, 20.5482, 36.5405, 31.4064)
+transform = Transform3D(-0.122279, 0.352767, -1.96825, 0.0218737, 1.97205, 0.352087, 1.99949, -1.57161e-09, -0.12422, 20.5499, 36.5433, 52.6313)
 color = ["Black", "Orange", "Lime", "Green", "Red", "Blue", "Cyan"]
 
 [node name="Color Changing7" parent="." instance=ExtResource("3_ewgy5")]
-transform = Transform3D(-0.106286, 1.03917, -1.70946, 0.0645106, 1.71276, 1.03716, 1.99948, -2.12001e-05, -0.124331, 51.7241, 20.3507, 28.141)
+transform = Transform3D(-0.106286, 1.03917, -1.70946, 0.0645106, 1.71276, 1.03716, 1.99948, -2.12075e-05, -0.124331, 51.7258, 20.3535, 49.3659)
 color = ["Black", "Orange", "Lime", "Green", "Red", "Blue", "Cyan"]
 
-[node name="lighting" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q7mxc")
 script = ExtResource("8_aw6ln")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lighting"]
-transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, 0, 5.48533, -9.87595)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.980857, 0.115447, 0.156815, -0.182752, 0.267693, 0.946014, 0.0672359, -0.956563, 0.283667, -0.000295055, 5.48485, -13.5277)
 light_energy = 0.2
 light_indirect_energy = 7.629
 light_volumetric_fog_energy = 2.248
 light_bake_mode = 1
 script = ExtResource("9_6rrdq")
 
+[node name="lighting" type="Node3D" parent="."]
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.956141, 0.292906, 0, -0.292906, -0.956141, 13.0056, 42.5951, 23.7909)
+transform = Transform3D(1, 9.18772e-09, -6.45377e-09, 5.68434e-13, -0.956141, 0.292906, 0, -0.292906, -0.956141, 13.0069, 42.5972, 39.5541)
 light_energy = 1.994
 spot_range = 23.3059
 spot_angle = 55.7471
@@ -325,7 +325,7 @@ spot_angle = 55.7471
 transform = Transform3D(104.667, 0, 0, 0, 1, 0, 0, 0, 162.606, 0, -9.72812, 0)
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("10_utxrh")]
-transform = Transform3D(2.06877, 0, 0, 0, 1.00015, 0, 0, 0, 1.90906, 0.120065, 11.4116, 11.0448)
+transform = Transform3D(2.06877, 2.79954e-12, 0, 3.39284e-13, 1.00015, 0, -2.91038e-11, 0, 1.90906, 0.121339, 11.4137, 26.808)
 
 [node name="Death menu" parent="." instance=ExtResource("12_athmp")]
 
@@ -357,7 +357,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 6.65512e-12, 0, 5.68434e-13, 1, 0, 0, 0, 1, 60.2813, 17.8367, 27.5653)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.262057, 1.32668e-10, -1.45519e-11, 5.1078e-11, 0.590413, 0, 5.45697e-12, 7.27596e-12, 0.518611, 0.601856, 2.04065, 2.49909)
+transform = Transform3D(0.262057, 1.32664e-10, -1.45519e-11, 5.10822e-11, 0.590413, -2.91038e-11, 5.45697e-12, 7.27596e-12, 0.518611, 0.603573, 2.04345, 23.724)
 shape = SubResource("BoxShape3D_30mky")
 
 [node name="Finsihed Levels" parent="." instance=ExtResource("14_kivkq")]
@@ -371,6 +371,6 @@ stream = ExtResource("15_rjag5")
 stream = ExtResource("16_np0m3")
 
 [node name="portal" parent="." instance=ExtResource("17_46bqr")]
-transform = Transform3D(-1.2682e-07, 0.000466925, 2.94782, -0.000312006, 2.94782, -0.000466925, -2.94782, -0.000312006, -7.74598e-08, 61.0308, 19.5978, 29.5513)
+transform = Transform3D(-1.2682e-07, 0.000466925, 2.94782, -0.000312006, 2.94782, -0.000466925, -2.94782, -0.000312006, -7.74307e-08, 61.0325, 19.6006, 50.7762)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

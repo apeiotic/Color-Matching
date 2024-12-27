@@ -46,5 +46,5 @@ func Playerspeed(playerspeed):
 	Pplayerspeed = playerspeed
 
 func _on_character_body_3d_color(PlayerColor: Variant) -> void:
-	text.text = PlayerColor
+	text.text = PlayerColor.to_lower()
 	pass # Replace with function body.

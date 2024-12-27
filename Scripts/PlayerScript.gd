@@ -87,7 +87,7 @@ func _ready():
 	
 #Event tick
 func _physics_process(delta: float) -> void:
-	
+
 	
 	if Input.is_action_just_pressed("Esc"): 
 		HUD.hide()
@@ -176,7 +176,7 @@ func _physics_process(delta: float) -> void:
 	GLB.emit_signal("playerspeed", playerspeed)
 	staminabar.material.set_shader_parameter("value", stamina)
 	
-	sprint()
+	
 	
 	jump()
 	process_wallrun()
@@ -215,7 +215,7 @@ func _physics_process(delta: float) -> void:
 					OnOrange()
 					standingColor = "Orange"
 				else: 
-					NotSameColor()
+					NotSameColor()#death function
 			if "green" in group.to_lower():
 				if PlayerColor == "Green":
 					OnGreen()
@@ -285,6 +285,7 @@ func _physics_process(delta: float) -> void:
 		GLB.Can_hook = true
 		
 	
+	sprint()
 #region Movement System
 
 	var input_dir = Input.get_vector("Left", "Right", "Up", "Down")
@@ -404,7 +405,8 @@ func process_wallrun():
 			
 		else: 
 			is_wallrunning = false
-
+	if not is_on_wall():
+		is_wallrunning = false
 func process_wallrun_rotation(delta):
 	if is_wallrunning:
 		
@@ -453,19 +455,10 @@ func _input(event):
 
 func sprint(): #(Run this function in physics process delta)
 	if Input.is_action_pressed("Sprint"):
-		if walking==true and stamina > 0: #(when moving set the walking to true)
-			if stamina > 0:
+		if walking==true:#(when moving set the walking to true)
 				SPEED = sprinting_speed
-				stamina = stamina - 0.5
 				camera.fov = lerp(camera.fov, CameraSprintFov, 0.075) #(this is for FOV change of camera so you would need a refrence to camera)
 				sprinting= true
-				stamina = clamp(stamina, -1, 100)
-				
-	
-	
-	if Input.is_action_just_released("Sprint"):
-		camera.fov = lerp(camera.fov, CameraNormalFov, 0.1)
-		SPEED= 5
 	
 	
 	if not Input.is_action_pressed("Sprint") or stamina <= 0:
@@ -503,8 +496,8 @@ func ColorChanging(color: Variant):
 
 #region Color Regions
 func OnBlack(): #what to do when standing on black
-	SPEED =  3
-	sprinting_speed = 5
+	SPEED = 3
+	sprinting_speed = 4
 	JUMP_VELOCITY = 4
 	CameraSprintFov = 80.0
 	CameraNormalFov = 65.0

@@ -328,12 +328,12 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 6
 
-[node name="Main_Menu" type="Button" parent="VBoxContainer"]
+[node name="Restart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_kxenv")
 theme_override_fonts/font = ExtResource("1_rfk2f")
 theme_override_font_sizes/font_size = 28
-text = "main menu "
+text = "restart"
 flat = true
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
@@ -344,12 +344,12 @@ theme_override_font_sizes/font_size = 28
 text = "settings"
 flat = true
 
-[node name="Restart" type="Button" parent="VBoxContainer"]
+[node name="Main_Menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_kxenv")
 theme_override_fonts/font = ExtResource("1_rfk2f")
 theme_override_font_sizes/font_size = 28
-text = "restart"
+text = "main menu "
 flat = true
 
 [node name="Node" type="Node" parent="."]
@@ -371,9 +371,9 @@ bus = &"SoundEffects"
 visible = false
 layout_mode = 1
 
-[connection signal="mouse_entered" from="VBoxContainer/Main_Menu" to="." method="_on_button_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/Settings" to="." method="_on_button_2_mouse_entered"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Restart" to="." method="_on_button_3_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Settings" to="." method="_on_button_2_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Main_Menu" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Main_Menu" to="." method="_on_main_menu_pressed"]

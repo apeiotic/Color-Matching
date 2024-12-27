@@ -47,8 +47,8 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_2ebv8")
 shader_parameter/albedo = Color(2.45467e-06, 0.400964, 0.615454, 1)
-shader_parameter/wire_color_start = Color(1, 0.580128, 0.330682, 1)
-shader_parameter/wire_color_end = Color(0.511948, 0.249642, 0, 1)
+shader_parameter/wire_color_start = Color(4.81308e-06, 0.794808, 0.8664, 1)
+shader_parameter/wire_color_end = Color(1.68458e-06, 0.365865, 0.480007, 1)
 shader_parameter/wire_width = 0.264
 shader_parameter/wire_smoothness = 0.025
-shader_parameter/emission_color = Color(0.722629, 0.487725, 0, 1)
+shader_parameter/emission_color = Color(0.413244, 0.474026, 1, 1)

@@ -6,7 +6,7 @@ var scene_load_status = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sceneName = "res://Levels/MainLevels/level1.tscn"
+	sceneName = "res://Levels/MainLevels/Level1.tscn"
 	ResourceLoader.load_threaded_request(sceneName)
 
 
@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Label.text = str (floor(progress[0] * 100)) + "%"
 	
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
-		print("SCene Loaded")
 		var newScene = ResourceLoader.load_threaded_get(sceneName)
 		get_tree().change_scene_to_packed(newScene)
 	

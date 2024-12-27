@@ -9,20 +9,22 @@ extends Control
 var SavingData : SavedGame = SavedGame.new()
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Lable_Text()
+func _ready():
+	if not FileAccess.file_exists("user://savegame.tres"):
+		ResourceSaver.save(SavingData, "user://savegame.tres") # Create the file with default data
 	loadSettings()
-
-
-func _process(delta: float) -> void:
-	pass
-	
+	Lable_Text()
 
 func load_save_data():
 	if FileAccess.file_exists("user://savegame.tres"):
 		var existing_data = ResourceLoader.load("user://savegame.tres")
-		if existing_data != null:
+		if existing_data != null and existing_data is SavedGame:
 			return existing_data
+		else:
+			if existing_data == null:
+				print("Error: Could not load savegame.tres. File may be corrupted or missing.")
+			else:
+				print("Error: Loaded data is not of type SavedGame. Check save file structure.")
 	return SavingData.new()
 
 func Lable_Text() -> void: 

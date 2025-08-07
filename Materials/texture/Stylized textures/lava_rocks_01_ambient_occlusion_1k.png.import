@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://csaxpeh2vpdyf"
 path.s3tc="res://.godot/imported/lava_rocks_01_ambient_occlusion_1k.png-2c9fd5744a28a8ddd5cfaa0bdfc6d23e.s3tc.ctex"
+path.etc2="res://.godot/imported/lava_rocks_01_ambient_occlusion_1k.png-2c9fd5744a28a8ddd5cfaa0bdfc6d23e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/Stylized textures/lava_rocks_01_ambient_occlusion_1k.png"
-dest_files=["res://.godot/imported/lava_rocks_01_ambient_occlusion_1k.png-2c9fd5744a28a8ddd5cfaa0bdfc6d23e.s3tc.ctex"]
+dest_files=["res://.godot/imported/lava_rocks_01_ambient_occlusion_1k.png-2c9fd5744a28a8ddd5cfaa0bdfc6d23e.s3tc.ctex", "res://.godot/imported/lava_rocks_01_ambient_occlusion_1k.png-2c9fd5744a28a8ddd5cfaa0bdfc6d23e.etc2.ctex"]
 
 [params]
 

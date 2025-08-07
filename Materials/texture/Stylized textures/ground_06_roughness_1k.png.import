@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvmm3yj6j81xc"
 path.s3tc="res://.godot/imported/ground_06_roughness_1k.png-c9fa03438bd6177aca9f7db356aeab76.s3tc.ctex"
+path.etc2="res://.godot/imported/ground_06_roughness_1k.png-c9fa03438bd6177aca9f7db356aeab76.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/Stylized textures/ground_06_roughness_1k.png"
-dest_files=["res://.godot/imported/ground_06_roughness_1k.png-c9fa03438bd6177aca9f7db356aeab76.s3tc.ctex"]
+dest_files=["res://.godot/imported/ground_06_roughness_1k.png-c9fa03438bd6177aca9f7db356aeab76.s3tc.ctex", "res://.godot/imported/ground_06_roughness_1k.png-c9fa03438bd6177aca9f7db356aeab76.etc2.ctex"]
 
 [params]
 

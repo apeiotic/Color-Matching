@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8ln3847h3pup"
 path.s3tc="res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.s3tc.ctex"
+path.etc2="res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/JS Displacement/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png"
-dest_files=["res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.s3tc.ctex"]
+dest_files=["res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.s3tc.ctex", "res://.godot/imported/JS-2-2024-09-30-15-32-37-Seamless-Normalg.png-35622ff9aae4d267a8aa9ae43a3bf011.etc2.ctex"]
 
 [params]
 

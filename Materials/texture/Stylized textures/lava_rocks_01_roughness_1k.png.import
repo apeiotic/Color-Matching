@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkk8py3ylcuhy"
 path.s3tc="res://.godot/imported/lava_rocks_01_roughness_1k.png-755396adffd174f7052fd43258f15a10.s3tc.ctex"
+path.etc2="res://.godot/imported/lava_rocks_01_roughness_1k.png-755396adffd174f7052fd43258f15a10.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/Stylized textures/lava_rocks_01_roughness_1k.png"
-dest_files=["res://.godot/imported/lava_rocks_01_roughness_1k.png-755396adffd174f7052fd43258f15a10.s3tc.ctex"]
+dest_files=["res://.godot/imported/lava_rocks_01_roughness_1k.png-755396adffd174f7052fd43258f15a10.s3tc.ctex", "res://.godot/imported/lava_rocks_01_roughness_1k.png-755396adffd174f7052fd43258f15a10.etc2.ctex"]
 
 [params]
 

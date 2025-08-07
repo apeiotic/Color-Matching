@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs2nq0vyvcmy3"
 path.s3tc="res://.godot/imported/ground_01_normal_gl_1k.png-38d33fe35a35c03982661620737421d0.s3tc.ctex"
+path.etc2="res://.godot/imported/ground_01_normal_gl_1k.png-38d33fe35a35c03982661620737421d0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/Stylized textures/ground_01_normal_gl_1k.png"
-dest_files=["res://.godot/imported/ground_01_normal_gl_1k.png-38d33fe35a35c03982661620737421d0.s3tc.ctex"]
+dest_files=["res://.godot/imported/ground_01_normal_gl_1k.png-38d33fe35a35c03982661620737421d0.s3tc.ctex", "res://.godot/imported/ground_01_normal_gl_1k.png-38d33fe35a35c03982661620737421d0.etc2.ctex"]
 
 [params]
 

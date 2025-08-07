@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnx7modpdna2"
 path.s3tc="res://.godot/imported/JS-2-2024-09-30-14-23-52-Seamless-Color.png-c0c92fc36b4e8ce090696054b184f794.s3tc.ctex"
+path.etc2="res://.godot/imported/JS-2-2024-09-30-14-23-52-Seamless-Color.png-c0c92fc36b4e8ce090696054b184f794.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/JS Displacement/JS-2-2024-09-30-14-23-52-Seamless-Color.png"
-dest_files=["res://.godot/imported/JS-2-2024-09-30-14-23-52-Seamless-Color.png-c0c92fc36b4e8ce090696054b184f794.s3tc.ctex"]
+dest_files=["res://.godot/imported/JS-2-2024-09-30-14-23-52-Seamless-Color.png-c0c92fc36b4e8ce090696054b184f794.s3tc.ctex", "res://.godot/imported/JS-2-2024-09-30-14-23-52-Seamless-Color.png-c0c92fc36b4e8ce090696054b184f794.etc2.ctex"]
 
 [params]
 

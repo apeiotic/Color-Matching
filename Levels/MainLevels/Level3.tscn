@@ -1450,7 +1450,7 @@ shape = SubResource("ConvexPolygonShape3D_vohlx")
 curve = SubResource("Curve3D_qy0eb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Moving Platform/Path3D"]
-transform = Transform3D(-9.68469e-08, 0.999992, -0.000203098, 0.0106666, -0.000203092, -0.999903, -0.999834, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
+transform = Transform3D(-9.6847e-08, 0.999992, -0.000203098, 0.0106666, -0.000203092, -0.999903, -0.999834, -2.2631e-06, -0.0106673, 0.0804991, 0.204925, 0.175739)
 progress = 8.5433
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Moving Platform/Path3D/PathFollow3D"]

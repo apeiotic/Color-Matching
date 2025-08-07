@@ -279,10 +279,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221889, 0.129726)
 fov = 85.0
 
 [node name="HUD" parent="Neck/Neck 2/Neck 3/Camera3D" instance=ExtResource("2_n7qrv")]
-offset_left = -40.0
-offset_top = -30.0
-offset_right = -40.0
-offset_bottom = -30.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
 metadata/_edit_use_anchors_ = true
 
 [node name="HookRaycast" type="RayCast3D" parent="Neck/Neck 2/Neck 3/Camera3D"]

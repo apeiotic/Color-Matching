@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0f315l4jka5o"
 path.s3tc="res://.godot/imported/greenPng.png-f9c217a13ca7791a27f4b75c2bbba7cd.s3tc.ctex"
+path.etc2="res://.godot/imported/greenPng.png-f9c217a13ca7791a27f4b75c2bbba7cd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/texture/JS Displacement/greenPng.png"
-dest_files=["res://.godot/imported/greenPng.png-f9c217a13ca7791a27f4b75c2bbba7cd.s3tc.ctex"]
+dest_files=["res://.godot/imported/greenPng.png-f9c217a13ca7791a27f4b75c2bbba7cd.s3tc.ctex", "res://.godot/imported/greenPng.png-f9c217a13ca7791a27f4b75c2bbba7cd.etc2.ctex"]
 
 [params]
 

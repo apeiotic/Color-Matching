@@ -57,7 +57,6 @@ signal canhook()
 @onready var wallrun_delay_default = wallrun_delay
 @onready var detector = $"Neck/Standing Raycast"
 @onready var camera = $"Neck/Neck 2/Neck 3/Camera3D"
-
 @onready var jumptimer = $Neck/JumpTimer
 @onready var HUD= $"Neck/Neck 2/Neck 3/Camera3D/HUD"
 @onready var deathtimer = $"Neck/Death Timer"
@@ -84,6 +83,7 @@ signal canhook()
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GLB.connect("colorchange", Callable(self, "ColorChanging"))
+	
 	
 #Event tick
 func _physics_process(delta: float) -> void:

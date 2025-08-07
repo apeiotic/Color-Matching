@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b2dju0lbla1ce"]
+[gd_scene load_steps=41 format=4 uid="uid://b2dju0lbla1ce"]
 
 [ext_resource type="Script" path="res://Scripts/level_9.gd" id="1_vsgok"]
 [ext_resource type="Material" uid="uid://dlw1bypbncpcr" path="res://Materials/Blue.tres" id="2_csikq"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://o0ib6yos2dhu" path="res://UI/Scenes/Notification.tscn" id="22_je26s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s1jwy"]
-size = Vector3(1, 3.04672, 0.668945)
+size = Vector3(1.2973, 3.88595, 0.668945)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oqu1t"]
 size = Vector3(1, 1.19739, 1)
@@ -265,6 +265,9 @@ adjustment_brightness = 1.1
 adjustment_contrast = 1.99
 adjustment_saturation = 2.07
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kr2f1"]
+size = Vector3(1, 7.05878, 8.63483)
+
 [node name="Level 9" type="Node3D"]
 script = ExtResource("1_vsgok")
 
@@ -307,7 +310,7 @@ size = Vector3(1, 2.47369, 0.771973)
 transform = Transform3D(2.14519, 0, 0, 0, 1.31726, 0, 0, 0, 1, 0, 3.91367, -13.3548)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.979, 0, 0, 0, 0.507173, 0, 0, 0, 0.128027, 0.0547317, 23.5683, -34.3323)
+transform = Transform3D(0.979, 0, 0, 0, 0.507173, 0, 0, 0, 0.128027, 0.471407, 23.9534, -39.5847)
 shape = SubResource("BoxShape3D_s1jwy")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Blue"]]
@@ -365,7 +368,7 @@ use_collision = true
 size = Vector3(1, 1.24744, 0.237549)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_eg05d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122084, 36.6462, 94.1258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122084, 36.7251, 94.2451)
 
 [node name="Color Changing" parent="." groups=["Blue"] instance=ExtResource("5_6th5a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109584, 36.8409, 94.0077)
@@ -437,9 +440,6 @@ script = ExtResource("4_8gvb5")
 
 [node name="Finsihed Levels" parent="." instance=ExtResource("17_q482g")]
 
-[node name="portal" parent="." instance=ExtResource("18_chcyx")]
-transform = Transform3D(-1.38378, 0, -8.24795e-08, 0, 1.38378, 0, 8.24795e-08, 0, -1.38378, 0, 34.9713, -53.8694)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.7544, -49.7589)
 light_energy = 10.73
@@ -463,6 +463,16 @@ transform = Transform3D(8.81059, 0, 0, 0, 5.21476, 0, 0, 0, 23.6176, 9.30585, 13
 amount = 1000
 
 [node name="Notification" parent="." instance=ExtResource("22_je26s")]
+
+[node name="portal2" parent="." instance=ExtResource("18_chcyx")]
+transform = Transform3D(-1.65298, 0.0133487, 0.0544233, 0.0166888, 1.65071, 0.102004, -0.0534936, 0.102494, -1.64989, 0.939109, 35.4335, -53.1826)
+
+[node name="Area3D" type="Area3D" parent="portal2"]
+transform = Transform3D(-0.0211992, 0.00128433, 0.604247, 0.0365634, 0.603511, -1.7497e-09, -0.603139, 0.0365407, -0.021238, -0.124474, -0.9538, 0.100057)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal2/Area3D"]
+transform = Transform3D(0.116273, -5.82077e-11, 0, -1.45519e-11, 0.410286, -1.4586e-10, 0, 2.56705e-10, 0.28803, 0.434639, 1.571, 0.0780525)
+shape = SubResource("BoxShape3D_kr2f1")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="CSGBox3D3/Area3D" to="." method="Notification"]
